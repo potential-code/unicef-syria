@@ -1,0 +1,198 @@
+{
+  "appName": "مسارات الشباب",
+  "appFullName": "مسارات الشباب، اليونيسف سوريا",
+  "demoLabel": "منصة تجريبية — بيانات نموذجية",
+  "skip": "تخطَّ إلى المحتوى الرئيسي",
+  "close": "إغلاق",
+  "save": "حفظ",
+  "saved": "تم الحفظ",
+  "cancel": "إلغاء",
+  "back": "رجوع",
+  "next": "التالي",
+  "continue": "متابعة",
+  "edit": "تعديل",
+  "open": "فتح",
+  "view": "عرض",
+  "viewAll": "عرض الكل",
+  "search": "بحث",
+  "filters": "عوامل التصفية",
+  "clearFilters": "مسح التصفية",
+  "noResults": "لا توجد نتائج مطابقة لهذه التصفية.",
+  "loading": "جارٍ التحميل",
+  "print": "طباعة",
+  "download": "تنزيل",
+  "points": "{{count}} نقطة",
+  "minutes": "{{count}} دقيقة",
+  "language": "اللغة",
+  "switchToArabic": "العربية",
+  "switchToEnglish": "English",
+  "signIn": "تسجيل الدخول",
+  "signOut": "تسجيل الخروج",
+  "menu": "القائمة",
+  "breadcrumb": "مسار التنقل",
+  "home": "الرئيسية",
+  "arabicPlaceholder": "نص عربي مؤقت",
+  "notFound": {
+    "title": "الصفحة غير موجودة",
+    "body": "هذه الصفحة ليست جزءاً من العرض التجريبي.",
+    "home": "الذهاب إلى الصفحة الرئيسية"
+  },
+  "denied": {
+    "title": "غير متاح في هذا العرض",
+    "body": "هذا السجل يتبع مركزاً أو دوراً آخر. في النسخة الفعلية تُطبَّق هذه القيود عبر الخادم."
+  },
+  "demo": {
+    "presenter": "مقدّم العرض",
+    "switchRole": "تبديل الدور",
+    "reset": "إعادة ضبط العرض",
+    "resetTitle": "إعادة ضبط العرض التجريبي؟",
+    "resetBody": "تعود الطلبات والنقاط وتقدّم الدورات والحضور والتقارير إلى البيانات الأولية. تبقى اللغة كما هي.",
+    "resetDone": "تمت إعادة العرض إلى البيانات الأولية",
+    "motion": "تقليل الحركة",
+    "signedInAs": "تم الدخول باسم {{name}}"
+  },
+  "roles": {
+    "youth": "الشباب",
+    "trainer": "مدرب",
+    "employer": "صاحب عمل أو عميل",
+    "centre": "مدير مركز",
+    "partner": "مدير الشريك",
+    "unicef": "مسؤول اليونيسف",
+    "viewer": "مطّلع على التقارير"
+  },
+  "routes": {
+    "employment": "وظيفة بدوام كامل",
+    "enterprise": "ريادة الأعمال",
+    "freelance": "عمل حر أو بدوام جزئي"
+  },
+  "routesShort": {
+    "employment": "التوظيف",
+    "enterprise": "ريادة الأعمال",
+    "freelance": "العمل الحر"
+  },
+  "status": {
+    "todo": "للبدء",
+    "inProgress": "قيد التقدم",
+    "completed": "مكتمل",
+    "done": "تم"
+  },
+  "stages": {
+    "draft": "مسودة",
+    "submitted": "مُرسل",
+    "underReview": "قيد المراجعة",
+    "shortlisted": "في القائمة المختصرة",
+    "interview": "مقابلة",
+    "offer": "عرض عمل",
+    "hired": "تم التوظيف",
+    "clientDiscussion": "نقاش مع العميل",
+    "selected": "تم الاختيار",
+    "inDelivery": "قيد التنفيذ",
+    "review": "مراجعة",
+    "accepted": "مقبول",
+    "participating": "مشارك",
+    "notSelected": "لم يتم الاختيار",
+    "withdrawn": "مسحوب"
+  },
+  "certificate": {
+    "pendingReview": "بانتظار المراجعة",
+    "recommended": "موصى بها",
+    "approved": "معتمدة",
+    "issued": "صادرة"
+  },
+  "attendance": {
+    "present": "حاضر",
+    "absent": "غائب",
+    "excused": "معذور",
+    "unmarked": "غير مسجل"
+  },
+  "oppTypes": {
+    "job": "وظيفة",
+    "internship": "تدريب عملي",
+    "partTime": "دوام جزئي",
+    "freelance": "مشروع حر",
+    "enterprise": "دعم المشاريع"
+  },
+  "format": {
+    "online": "عبر الإنترنت",
+    "centre": "في المركز",
+    "onsite": "في الموقع",
+    "hybrid": "مختلط",
+    "remote": "عن بعد"
+  },
+  "nav": {
+    "youth": {
+      "dashboard": "لوحة التحكم",
+      "discovery": "استكشاف المسار المهني",
+      "path": "مساري التعليمي",
+      "library": "مكتبة الدورات",
+      "cohort": "مجموعتي وجلساتي",
+      "coaches": "المدربون الأذكياء",
+      "mentors": "الإرشاد",
+      "toolkit": "أدوات المسار المهني",
+      "opportunities": "الفرص",
+      "community": "المجتمع والفعاليات",
+      "progress": "التقدم والمكافآت"
+    },
+    "trainer": {
+      "dashboard": "لوحة التحكم",
+      "applications": "الطلبات",
+      "cohorts": "مجموعاتي",
+      "sessions": "الجلسات والحضور",
+      "resources": "موارد التعلم",
+      "assessments": "التقييمات",
+      "results": "النتائج والشهادات"
+    },
+    "employer": {
+      "dashboard": "لوحة التحكم",
+      "profile": "ملف المنظمة",
+      "opportunities": "الفرص",
+      "candidates": "البحث عن مرشحين",
+      "applications": "الطلبات",
+      "placements": "التوظيف والملاحظات"
+    },
+    "centre": {
+      "overview": "نظرة عامة",
+      "courses": "الدورات والمجموعات",
+      "participants": "المشاركون",
+      "trainers": "المدربون",
+      "sessions": "الجلسات",
+      "results": "النتائج والشهادات",
+      "reports": "التقارير"
+    },
+    "partner": {
+      "overview": "نظرة عامة",
+      "centres": "المراكز",
+      "programmes": "البرامج",
+      "participants": "المشاركون",
+      "outcomes": "النتائج",
+      "reports": "التقارير"
+    },
+    "unicef": {
+      "overview": "النظرة الوطنية",
+      "partners": "الشركاء والمراكز",
+      "programmes": "البرامج",
+      "inclusion": "الشمول",
+      "outcomes": "نتائج التوظيف",
+      "labour": "رؤى سوق العمل",
+      "followup": "المتابعة",
+      "admin": "الإدارة"
+    },
+    "viewer": {
+      "overview": "التقارير المجمّعة"
+    }
+  },
+  "signInPage": {
+    "title": "مرحباً بك في مسارات الشباب",
+    "subtitle": "سجّل الدخول لمتابعة رحلتك، أو افتح ملفاً تجريبياً أدناه.",
+    "email": "البريد الإلكتروني أو رقم الجوال",
+    "password": "كلمة المرور",
+    "required": "أدخل البريد الإلكتروني وكلمة المرور.",
+    "unknown": "هذا العرض يسمح فقط بالملفات النموذجية. اختر بطاقة ملف أدناه.",
+    "noAccount": "جديد هنا؟",
+    "register": "أنشئ ملفك الشخصي",
+    "demoTitle": "الملفات التجريبية",
+    "demoBody": "بنقرة واحدة يُفتح كل ملف بعرضه ونطاق بياناته.",
+    "youthStories": "قصص الشباب",
+    "staff": "المدربون وأصحاب العمل والشركاء واليونيسف"
+  }
+}

@@ -1,0 +1,32 @@
+/*
+  UNICEF Syria Youth Pathways brand primitives, taken from unicef.org/syria colors.css.
+  Measured contrast on white:
+    --unicef-cyan  #00AEEF 2.4:1  decorative, large display text on dark, never small text on white
+    --unicef-blue  #0047BB 8.6:1  primary actions, links, headings
+    --unicef-navy  #003996 10.7:1 deep surfaces, footer, hover
+    --unicef-yellow #FFB500       accent fills with ink text only
+    --unicef-orange #D14808 4.6:1 accent, warnings
+    --unicef-red   #E2231A 4.4:1  errors (large text or with icon)
+*/
+:root {
+  --unicef-cyan: #00aeef;
+  --unicef-cyan-600: #008bbf;
+  --unicef-blue: #0047bb;
+  --unicef-navy: #003996;
+  --unicef-yellow: #ffb500;
+  --unicef-orange: #d14808;
+  --unicef-red: #e2231a;
+  --unicef-sky-50: #f3fbfe;
+  --unicef-sky-100: #e6f7fd;
+  --unicef-sky-200: #c5effc;
+  --unicef-blue-50: #e6edf8;
+  --unicef-ink: #111111;
+  --unicef-grey: #595959;
+  --unicef-line: #d3dbdf;
+
+  --font-family: "Noto Sans", "Noto Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+}
+
+html[lang="ar"] {
+  --font-family: "Noto Sans Arabic", "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+}

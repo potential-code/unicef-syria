@@ -1,0 +1,624 @@
+UNICEF Syria youth employability mockup developer instructions
+Prepared by Rawzaba Alhalabi for Aliya  |  Shadi Banna copied  |  11 November 2026
+The task
+Aliya, please create a UNICEF-branded clickable mockup that shows how young people discover a career direction, build relevant capabilities and access earning opportunities. Use this brief as the complete content and interaction specification. We can work on this during 16–20 November, with time for an internal review before the UNICEF walkthrough in the week of 23 November. There is no urgent turnaround required; the meeting slot is awaiting UNICEF confirmation.
+The outcome we need to demonstrate
+Potential.com connects vocational training, personalised career support and employer engagement in one continuous journey. Every participant should receive useful development support, while UNICEF can see progress and outcomes across training centres, partners and governorates.
+Scope and delivery
+Build a responsive front-end prototype using fictional data and simulated actions. Include the full-time employment, entrepreneurship and part-time or freelancing routes. Keep the TVET-centre-to-employment story as the main walkthrough, matching Hiba Ahmad’s email. The AI examples are scripted demonstrations. The career assessment is illustrative and is not a validated psychometric instrument.
+Deliver the mockup link, role access instructions, three youth demo profiles, a reset action and a short list of assumptions or unresolved items.
+Include all core modules and stakeholder views in this brief. Use shared components and role-specific data scope rather than disconnected designs.
+No backend, real messages, real applications, payment flows, live AI integrations or production authentication are required for this mockup.
+All people, employers, centres, vacancies, course content, session availability and statistics supplied below are fictional demonstration material unless explicitly identified as source evidence.
+Reading map
+Pages 2–7 cover roles, screens, assessment and the learning player. Pages 8–12 cover courses and sessions. Pages 13–17 cover coaches, career tools, opportunities and employers. Pages 18–22 cover operational views, reporting and data. Pages 23–26 cover interactions, walkthroughs, acceptance and source traceability.
+1 Product experience and role access
+Use the working product name “UNICEF Syria Youth Pathways”. This is a proposed mockup name, not an approved programme title. The visual identity should use a clean UNICEF-inspired blue and white treatment, readable typography, welcoming photography or neutral illustrations and generous spacing. Use official brand assets only if already supplied or authorised; do not invent partner affiliations.
+Global behaviour
+Desktop: left navigation, clear page title, breadcrumbs on detail pages and a persistent next-action area. Mobile: compact navigation and single-column cards. Support keyboard navigation, visible focus, labels, captions and readable contrast.
+Provide English and Arabic navigation and key journey screens with correct right-to-left layout. Use a language toggle that preserves the current screen. Remaining sample course body text can be English with clearly identified Arabic content placeholders.
+Display “Demonstration platform — sample data” unobtrusively across demo views. Keep implementation terms such as backend and API out of beneficiary screens.
+Provide a presenter-only role switcher and “Reset demo” control. Keep youth profile, course progress, applications and visible reports consistent as the presenter changes roles.
+Role
+Primary navigation and scope
+Youth
+Dashboard; Career Discovery; My Learning Path; Course Library; My Cohort and Sessions; AI Coaches; Mentorship; Career Toolkit; Opportunities; Community and Events; Progress and Rewards.
+Trainer
+Dashboard; Applications; My Cohorts; Sessions and Attendance; Learning Resources; Assessments; Results and Certificates. Assigned cohorts only.
+Employer or client
+Dashboard; Organisation Profile; Opportunities; Candidate Search; Applications; Placements and Feedback. Own organisation only.
+Centre administrator
+Overview; Courses and Cohorts; Participants; Trainers; Sessions; Results and Certificates; Reports. Own centre only.
+Partner administrator
+Overview; Centres; Programmes; Participants; Outcomes; Reports. Own partner network only.
+UNICEF administrator
+National Overview; Partners and Centres; Programmes; Inclusion; Employment Outcomes; Labour Market Insights; Follow-up; Administration.
+Reporting viewer
+Optional read-only aggregate reporting view for government stakeholders. Show as an optional role, not a confirmed UNICEF requirement.
+2 Public website and beneficiary registration
+P01 Public homepage
+Hero: “Discover your strengths. Build your skills. Take your next step.” Supporting copy: “Explore learning, career guidance and opportunities to work, freelance or build a business.” Primary button: “Start my journey”. Secondary: “Explore training”. Show the three career routes, how the journey works, featured courses, sample centres, upcoming public events and links for employers and programme partners.
+P02 Catalogue and opportunity preview
+Allow browsing of public course summaries and sample opportunities before registration. Filters: career route, skill area, delivery format, governorate, centre and level. A course detail shows outcomes, units, duration, language and prerequisites. Applying, enrolling or saving prompts registration and returns to the selected item afterwards.
+Y01 Registration and profile
+Field group
+Fields and interaction
+Account
+Name, email or mobile, password and preferred language. Simulate verification with an explicit demo action. Do not send OTPs.
+Background
+Age or date of birth, governorate, education, employment status, experience, digital access and preferred learning format. Seed adults aged 18–24; age eligibility for production remains to be confirmed.
+Interests
+Career interests, existing skills, preferred sectors, work availability and optional CV upload simulation.
+Support
+Optional accessibility and learning-support preferences; explain who can see this information. Disability information is optional and excluded from employer profiles.
+Permissions
+Separate acknowledgement for programme participation and optional employer-profile visibility. Show a clear profile-sharing control; use sample information only.
+Save draft, validate required fields and show profile completion. After registration: “Your profile is ready. Discover the career directions that may suit you.” Button: “Start career discovery”. Include “Do this later”; users retain access to the general library.
+Y02 Dashboard
+Before assessment, prioritise the discovery card. Afterwards, show selected route, recommended next action, learning progress, next assigned session, relevant opportunities, mentor access and points. Empty states must explain the next step rather than showing blank panels. No cohort should read “You are not assigned to a training cohort yet. Explore self-paced courses while you wait.”
+3 Career discovery assessment design
+Y03 is a 12-question scenario assessment taking approximately 8–10 minutes. Each question has four options; users select the response most like them. Explain that the exercise supports exploration, has no pass or fail and does not determine admission or employment eligibility. Include a progress indicator, back, save and resume, and a final review screen.
+Illustrative dimensions and scoring
+Use four work-preference dimensions for the demo: P practical problem solving; C communication and collaboration; I initiative and enterprise; O organisation and delivery. Each option below awards two points to its indicated dimension. Scores are deterministic for repeatable demonstrations. These are mockup rules, not a scientific model or validated psychometric scoring system.
+Question 1
+A training project is falling behind. What do you do first?
+P: Fix the task causing the delay.  |  C: Ask the group what support they need.  |  I: Suggest a new approach to the project.  |  O: Break the remaining work into a schedule.
+Question 2
+A local business wants to improve its service. What interests you most?
+P: Finding a practical tool that solves the problem.  |  C: Talking to customers about their experience.  |  I: Designing a new service people would buy.  |  O: Improving the daily process and records.
+Question 3
+You are asked to help run a community event. Which task do you choose?
+P: Set up equipment and troubleshoot.  |  C: Welcome participants and answer questions.  |  I: Create a new activity and attract interest.  |  O: Coordinate bookings and the timetable.
+Question 4
+You have a free afternoon to learn something. What do you choose?
+P: Practise a hands-on technical skill.  |  C: Join a group discussion or presentation workshop.  |  I: Test an idea for a service.  |  O: Learn a tool for planning or handling data.
+Question 5
+A customer explains an unclear request. What is your first step?
+P: Build a small example to check what works.  |  C: Ask questions and listen to their priorities.  |  I: Offer several creative possibilities.  |  O: Write down the requirements and constraints.
+Question 6
+Your group receives a small project budget. What do you enjoy doing?
+P: Choose the tools and materials.  |  C: Agree responsibilities with the team.  |  I: Find a way to create extra value.  |  O: Track costs and deadlines.
+4 Assessment questions and results
+Question 7
+You receive feedback that your work needs improvement. What helps you most?
+P: A practical demonstration and another attempt.  |  C: A conversation to understand the feedback.  |  I: Freedom to try a different solution.  |  O: A clear checklist of improvements.
+Question 8
+A new opportunity has an unfamiliar task. What appeals to you?
+P: Learning how to do the technical work.  |  C: Working with new people.  |  I: Exploring what the opportunity could become.  |  O: Understanding the process and delivering reliably.
+Question 9
+A team disagrees about a solution. What role do you naturally take?
+P: Test the options against the actual problem.  |  C: Help people hear each other’s views.  |  I: Suggest a fresh option.  |  O: Compare options against agreed criteria.
+Question 10
+You are proudest after completing which task?
+P: Repairing or creating something useful.  |  C: Helping a person or team succeed.  |  I: Turning an idea into an opportunity.  |  O: Delivering accurate work on time.
+Question 11
+A freelance client changes the request. What do you focus on first?
+P: Check what is technically possible.  |  C: Clarify the client’s priorities.  |  I: Explore an improved solution.  |  O: Agree the revised scope and timeline.
+Question 12
+You are planning your next learning step. What draws your attention?
+P: A technical skill I can practise.  |  C: A role involving service or teamwork.  |  I: An opportunity to create my own service.  |  O: A role involving coordination and reliable delivery.
+Y04 Results and route choice
+Show strongest two dimensions as a simple bar chart and a plain-language explanation. Examples: P plus O = Practical organiser; C plus O = People-focused coordinator; I plus C = Enterprising communicator. For ties, show “Balanced preferences” and let the user explore. Always show “These results are a starting point for exploration”.
+Then ask three separate preference questions: preferred earning model, desired work environment and current priority. The earning-model answer drives the recommended route; the assessment dimensions inform suggested roles and learning. Do not infer that a personality score alone determines employment versus entrepreneurship.
+Show all three route cards with Explore and Choose actions. Provide suggested career families and “Why this may suit you” explanations. Allow a user to choose any route, keep an optional secondary interest, edit the decision and retake the assessment. Retain completed learning when changing routes. Never present a match score as a hiring prediction.
+5 Personalised learning path and progression
+Y05 Generate and edit a learning path
+Inputs are assessment dimensions, chosen route, interests, current skills, goals and time availability. Animate a short generation state, then show a deterministic sample plan. Course recommendations must come from the catalogue in this brief. Each recommendation includes a reason, estimated time, prerequisites and the capability it develops.
+Route
+Recommended sequence and milestones
+Full-time employment
+C01 Career Direction → C02 Digital Essentials → C03 Workplace Communication → C05 Job Search and CV → C06 Interview Readiness → C13 Customer Service. Milestones: profile, CV, interview practice, course evidence, job application.
+Entrepreneurship
+C01 → C02 → C03 → C07 Business Idea and Customer Discovery → C08 Business Model and Money → C09 Marketing and Sales → C16 Pitch Your Business. Milestones: problem statement, customer evidence, business model, basic cash plan, pitch and support application.
+Freelancing or part-time
+C01 → C02 → C03 → C10 Freelance Foundations → C11 Portfolio and Proposals → C12 Client Delivery → C15 Digital Content Skills. Milestones: service profile, work sample, proposal, client discussion and assignment application.
+C04 Work Habits and Wellbeing and C14 Spreadsheet Skills are optional recommendations across routes. Make C13–C15 illustrative technical tasters; they demonstrate how UNICEF’s actual TVET content could later be organised and do not establish occupational qualifications.
+Progress rules
+Each learning path mixes self-paced learning, practical outputs, AI practice and eligible sessions. Display cohort sessions only after the learner has been assigned to that cohort.
+Show Todo, In progress and Completed. Mark course completion only when all units, the knowledge check and required practical task are complete.
+A completed learning activity increases readiness evidence; it does not guarantee a job. Keep points, learning progress and career outcomes as separate measures.
+The user may browse other courses, change the route and reorder optional activities. Keep assessment and application histories visible after route changes.
+Demonstration path example
+For Nour, show “Customer service employment pathway”. Explain: “You enjoy helping people and organising work. Start with communication and digital skills, then prepare a CV and practise a customer-service interview.” Her next action is to finish C05 Unit 3 and save a CV draft. Link the plan directly to that activity.
+6 Course library and learning player
+Y06 Catalogue and course detail
+Seed 16 courses grouped into Career Foundations, Employment, Entrepreneurship, Freelancing and Technical Tasters. Cards show category, duration, route relevance, language, delivery type, progress and certificate availability. Filters: route, topic, beginner or intermediate, language, duration, free-text search and status. Use 30–50 minutes per course as demonstration estimates.
+The detail screen shows intended outcomes, four units, downloadable resource placeholders, a practical task and a final knowledge check. Buttons: Start course, Continue and Add to my plan. General courses are open to all; assigned trainer sessions remain cohort-restricted.
+Y07 Learning player
+Display a four-unit sidebar, content area, transcript, resource link and next button. Use a short original text lesson on every unit, a video placeholder with transcript on selected units and a working knowledge check. A video placeholder must never appear as a broken playable asset. Label it “Sample lesson preview” with readable content available underneath.
+Each unit uses: learning objective; 80–150 words of original explanation; one practical scenario; one takeaway; and one check question with feedback. Use the unit synopsis on the following pages to create these lesson snippets. Fully populate C05, C07 and C11 as the three route showcase courses; other courses must have readable unit summaries and working navigation.
+Assessment and certificate rules
+Use a five-question final quiz, 80 percent pass threshold, two demo attempts followed by trainer-support guidance and a clearly displayed score. A practical task can be self-submitted for general learning or reviewed by a trainer for assigned cohorts. Give feedback on incorrect answers and link to the relevant unit. Demonstrate one retry and successful completion.
+Certificate preview includes sample participant name, course title, completion date, certificate ID and “Demonstration certificate”. Do not describe certificates as accredited or recognised unless UNICEF later confirms this. Download should produce a simple sample certificate or printable view.
+Resource examples
+Provide useful editable text templates inside the mockup: career action plan; CV outline; interview STAR worksheet; customer interview guide; business cash-plan grid; freelance proposal template; and portfolio checklist. These can open in a modal or downloadable text view. Use no external course licences or unverified content links.
+7 Course catalogue career foundations
+C01 Discover Your Career Direction
+All routes • 35 minutes
+Unit 1 — Know your strengths: Interpret interests and preferences without treating them as fixed labels.
+Unit 2 — Explore ways of earning: Compare employment, entrepreneurship and freelancing using realistic trade-offs.
+Unit 3 — Understand roles and skills: Read a sample opportunity and identify its required capabilities.
+Unit 4 — Build your next step plan: Choose a goal, learning action and milestone for the next month.
+Output: a three-step career action plan. Quiz example: A career profile should help you explore options, not decide your future permanently. Correct: True.
+C02 Digital Essentials for Learning and Work
+All routes • 40 minutes
+Unit 1 — Use digital tools confidently: Organise files, create documents and join online learning.
+Unit 2 — Communicate online: Write clear emails and use collaborative documents.
+Unit 3 — Protect information: Recognise suspicious messages and share personal information carefully.
+Unit 4 — Use AI thoughtfully: Check AI outputs and avoid uploading sensitive information.
+Output: a professional email and organised sample folder structure. Quiz example: An unexpected request for your password should be independently verified, not answered. Correct: True.
+C03 Communication and Teamwork at Work
+All routes • 40 minutes
+Unit 1 — Listen and ask clear questions: Confirm what another person needs before acting.
+Unit 2 — Write with purpose: Create concise messages with a clear request and next step.
+Unit 3 — Work with others: Allocate tasks and raise concerns respectfully.
+Unit 4 — Handle difficult conversations: Respond calmly to feedback and resolve a service problem.
+Output: a response to a dissatisfied customer. Quiz example: The first response to an unclear request is to ask clarifying questions. Correct: True.
+C04 Work Habits and Personal Wellbeing
+All routes • 30 minutes
+Unit 1 — Plan your time: Break a goal into manageable tasks and priorities.
+Unit 2 — Build dependable habits: Use checklists, calendars and progress reviews.
+Unit 3 — Manage pressure: Identify practical ways to pause, ask for help and adjust workload.
+Unit 4 — Set boundaries and seek support: Recognise when to contact a trainer or appropriate support service.
+Output: a weekly learning and work plan. Keep this course educational; it must not offer clinical assessment or treatment.
+8 Course catalogue employment and enterprise
+C05 Job Search and CV Essentials
+Employment • 45 minutes
+Unit 1 — Read a job advert: Separate required skills, desirable skills and application instructions.
+Unit 2 — Build your CV: Organise education, experience, practical projects and contact details.
+Unit 3 — Show evidence of skills: Rewrite vague claims into specific examples without inventing experience.
+Unit 4 — Tailor and apply: Adapt a CV to a role and submit a complete application.
+Output: a saved CV linked to a sample vacancy. Sample unit scenario: Nour supported a training event; turn “helped at events” into “Registered participants and coordinated the attendance list for a training event”. Do not invent numbers.
+C06 Interview Readiness
+Employment • 40 minutes
+Unit 1 — Prepare for the role: Research the opportunity and prepare relevant examples.
+Unit 2 — Tell your story: Structure an answer using situation, task, action and result.
+Unit 3 — Practise common questions: Answer strengths, teamwork and customer-service questions.
+Unit 4 — Follow up professionally: Ask useful questions and send a concise follow-up.
+Output: two saved practice answers and an improvement plan. Quiz example: A specific example of what you did is stronger than a general claim. Correct: True.
+C07 Business Idea and Customer Discovery
+Entrepreneurship • 45 minutes
+Unit 1 — Choose a problem worth solving: Describe the customer and the problem before proposing a product.
+Unit 2 — Talk to potential customers: Ask open questions about current behaviour rather than leading questions.
+Unit 3 — Test a small solution: Create a simple service trial or prototype.
+Unit 4 — Review the evidence: Decide what to keep, change or test next.
+Output: problem statement and three customer interview questions. Sample scenario: Omar explores an appointment-booking service for local repair businesses; he first asks how they currently manage enquiries and missed appointments.
+C08 Business Model and Money Basics
+Entrepreneurship • 45 minutes
+Unit 1 — Map how the business works: Identify customers, value, channels and key activities.
+Unit 2 — Understand costs and pricing: Separate setup costs, regular costs and a proposed price.
+Unit 3 — Plan simple cash flow: Estimate when cash comes in and when costs are paid.
+Unit 4 — Check assumptions: Compare an optimistic and cautious example before committing resources.
+Output: one-page business model and sample cash plan. Use fictional amounts only; show no financing promise or business-registration advice.
+9 Course catalogue enterprise and freelancing
+C09 Marketing and Sales for a Small Business
+Entrepreneurship • 40 minutes
+Unit 1 — Know your customer: Describe a specific customer segment and need.
+Unit 2 — Explain your value: Write a short message connecting the offer to the problem.
+Unit 3 — Choose practical channels: Compare referrals, local outreach and digital channels.
+Unit 4 — Follow up and learn: Record enquiries, objections and the next action.
+Output: a short offer statement and outreach plan. Quiz example: A specific customer problem makes an offer easier to explain. Correct: True.
+C10 Freelance and Part Time Foundations
+Freelancing or part-time • 40 minutes
+Unit 1 — Choose a service or role: Connect an existing skill to a realistic client need.
+Unit 2 — Define a clear scope: Describe deliverables, boundaries and timing.
+Unit 3 — Plan availability and pricing: Estimate effort and explain a proposed fee or availability.
+Unit 4 — Evaluate an opportunity: Check the brief, client expectations and fit before applying.
+Output: a service profile and weekly availability. Show example project-based and part-time opportunities as separate formats.
+C11 Build a Portfolio and Write Proposals
+Freelancing • 45 minutes
+Unit 1 — Select useful work samples: Choose or create a sample showing a relevant skill.
+Unit 2 — Explain your contribution: Describe the task, approach and result honestly.
+Unit 3 — Write a focused proposal: Connect the client brief to a deliverable and timeline.
+Unit 4 — Review before submitting: Check scope, clarity, portfolio links and next steps.
+Output: a portfolio card and proposal draft. Sample scenario: Lina creates three original sample social posts for a fictional local retailer, labels them as sample work and proposes a five-post starter package.
+C12 Client Communication and Project Delivery
+Freelancing • 40 minutes
+Unit 1 — Clarify the brief: Agree what success looks like before starting.
+Unit 2 — Plan milestones: Break the assignment into reviewable stages.
+Unit 3 — Manage feedback and changes: Record revisions and discuss scope changes.
+Unit 4 — Close the assignment: Confirm delivery and request constructive feedback.
+Output: a short project plan and a response to a change request. Quiz example: A new deliverable should trigger a scope discussion. Correct: True.
+10 Course catalogue technical tasters and pitching
+C13 Customer Service and Office Support
+Technical taster for employment • 40 minutes
+Unit 1 — Understand the service journey: Identify the customer request and next responsible person.
+Unit 2 — Handle enquiries: Ask questions and record accurate information.
+Unit 3 — Use simple office records: Maintain an enquiry or attendance spreadsheet.
+Unit 4 — Resolve and escalate: Know when to solve the issue or involve a supervisor.
+Output: a sample enquiry log and customer response. This is an introductory skills demonstration, not a professional qualification.
+C14 Spreadsheet Skills for Everyday Work
+Technical taster for all routes • 45 minutes
+Unit 1 — Organise a worksheet: Use clear columns, data types and consistent entries.
+Unit 2 — Calculate simple totals: Use SUM and basic arithmetic in a sample budget.
+Unit 3 — Sort and filter records: Find relevant entries in a simple data table.
+Unit 4 — Present a useful summary: Create a basic chart and check what it actually shows.
+Output: a sample weekly budget or attendance summary using fictional data.
+C15 Digital Content and Design Basics
+Technical taster for freelancing • 45 minutes
+Unit 1 — Understand a content brief: Identify the audience, message and desired action.
+Unit 2 — Create clear visual content: Apply readable layout, contrast and original assets.
+Unit 3 — Write useful short copy: Create a headline, supporting copy and call to action.
+Unit 4 — Package a portfolio sample: Present sample work with a clear description and honest attribution.
+Output: three sample posts for a fictional business. Do not require a paid design tool or use unlicensed assets.
+C16 Pitch Your Business and Find Support
+Entrepreneurship • 40 minutes
+Unit 1 — Structure your pitch: Explain the customer, problem, solution and evidence.
+Unit 2 — Explain the business model: Describe how the idea could sustain itself.
+Unit 3 — Prepare for questions: Recognise assumptions and answer with available evidence.
+Unit 4 — Choose a support opportunity: Review programme eligibility and prepare a relevant application.
+Output: a two-minute pitch outline and enterprise-support application draft. Incubation and funding opportunities are fictional examples; do not imply funding availability.
+11 Cohorts sessions and trainer delivery
+Y08 My Cohort and Sessions contains only assigned training activities. General course enrolment never automatically grants access to restricted sessions. Show delivery format, centre or online location, trainer, date, Syria timezone, capacity, materials, attendance and assignments. Use a calendar and list view. Joining an online session opens a demo room; do not create a live Teams meeting.
+Cohort
+Membership and delivery
+K01 Employment Readiness Damascus
+24 fictional learners; Nour enrolled; centre T01; trainer Rania Haddad; online and centre-based sessions.
+K02 Enterprise Launch Aleppo
+18 fictional learners; Omar enrolled; centre T02; trainer Samer Khalil; online workshops and a pitch clinic.
+K03 Freelance Starter Homs
+20 fictional learners; Lina enrolled; centre T03; trainer Maya Darwish; online sessions and a practical studio.
+Session
+Format and sample schedule
+Purpose and output
+S01 Career goals workshop
+K01 • online • 17 Nov 2026 • 10:00–11:00
+Rania; interpret career choices and create a goal.
+S02 Workplace communication lab
+K01 • T01 • 19 Nov • 10:00–12:00
+Rania; practise customer conversations and teamwork.
+S03 CV and interview clinic
+K01 • online • 24 Nov • 10:00–11:30
+Rania; review CVs and practise interview answers.
+S04 Customer discovery workshop
+K02 • online • 18 Nov • 11:00–12:30
+Samer; draft interview questions and test assumptions.
+S05 Business model studio
+K02 • T02 • 22 Nov • 10:00–12:00
+Samer; build a simple business model and cash plan.
+S06 Pitch feedback clinic
+K02 • online • 26 Nov • 11:00–12:30
+Samer; present a two-minute pitch and receive feedback.
+S07 Portfolio studio
+K03 • T03 • 18 Nov • 13:00–15:00
+Maya; develop an original sample portfolio piece.
+S08 Proposal and client brief lab
+K03 • online • 23 Nov • 13:00–14:30
+Maya; prepare a scoped proposal and timeline.
+S09 Client delivery simulation
+K03 • online • 25 Nov • 13:00–14:00
+Maya; handle feedback and agree a revision.
+E01 Meet employers and clients
+Public event • online • 30 Nov • 12:00–13:00
+Illustrative employer panel; registration open to all demo learners.
+All schedules and hosts above are sample data, not booked sessions. For a completed-session example use S01 in the historical demo state, regardless of the walkthrough date, labelled as a sample scenario. The trainer can mark Present, Absent or Excused, attach a resource and review the linked assignment.
+12 AI coaches and sample interactions
+Y09 uses five clearly identified AI coaches. Each coach shows a name, title, purpose and three starter prompts. Use scripted branching responses grounded in the selected learner and catalogue. Do not simulate unrestricted chat that gives unrelated or fabricated answers. An unrecognised prompt should offer relevant sample questions or human support.
+Coach
+Title and purpose
+Starter prompts
+Nour AI
+Career Navigator — assessment explanation, route exploration and next steps. Distinguish from beneficiary Nour Hassan.
+Help me understand my career profile; Compare my three routes; What should I do next?
+Rami AI
+Learning Companion — explains course concepts and recommends learning already in the library.
+Explain this lesson simply; Test my understanding; Which course helps my goal?
+Lina AI
+CV and Interview Coach — supports honest CV writing and interview practice. Distinguish from beneficiary Lina Saleh.
+Improve this CV bullet; Practise a customer-service interview; Help me explain my strengths.
+Amal AI
+Enterprise Coach — problem discovery, customer questions, business model and pitch practice.
+Help me test my idea; Review my customer questions; Practise my pitch.
+Ziad AI
+Freelance and Client Coach — service positioning, portfolio, proposals and scope discussions.
+Help me define my service; Review my proposal; How do I respond to a change request?
+Interaction examples
+Career Navigator: “Your strongest preferences are communication and organisation. You may enjoy customer-facing or coordination work. Would you like to explore employment, building a business or freelance work?” After the user chooses Employment, show C03, C05 and C13 with reasons and Add to my plan actions.
+CV Coach: “Tell me what you actually did during your training project.” User: “I helped register people.” Coach: “You could write: Supported participant registration and maintained the attendance list for a training event. Add numbers only if you can verify them.” Buttons: Use this draft; Edit; Practise an interview.
+Enterprise Coach: “Who experiences the problem you want to solve?” Omar chooses repair businesses. The coach asks how enquiries are currently handled, then helps draft three open customer questions. Button: Save to my business concept.
+Freelance Coach: Lina selects a sample content brief. The coach proposes a structure: client goal, five deliverables, review stage, timing and assumptions. Button: Save proposal draft. The user must review before submitting.
+13 AI practice and human mentorship
+AI practice outcomes
+Interview practice shows a role-specific question, typed response and feedback against relevance, clarity and evidence. Use descriptive ratings such as Developing and Clear, not a psychometric or hiring probability score. Save a suggested next practice task. Enterprise practice produces a pitch outline; freelance practice produces a proposal draft. All AI drafts remain editable.
+Y10 Human mentor directory
+The following are fictional demo personas with placeholder avatars. Every card must say “Sample mentor profile”. Do not use real people’s photographs, qualifications, employer affiliations or availability without permission. Trainers and mentors are separate roles; a trainer can also mentor when explicitly assigned.
+Name and title
+Focus and language
+Sample availability and access
+Rania Haddad — Career Readiness Mentor
+Employment, CVs, interviews; Arabic and English. Also K01 trainer.
+Mon 23 Nov, 15:00–15:30; 100 points or programme allocation.
+Samer Khalil — Entrepreneurship Mentor
+Customer discovery, business models, pitching; Arabic and English. Also K02 trainer.
+Tue 24 Nov, 14:00–14:30; 100 points or allocation.
+Maya Darwish — Freelance Portfolio Mentor
+Digital portfolios, service offers, proposals; Arabic and English. Also K03 trainer.
+Wed 25 Nov, 15:00–15:30; 100 points or allocation.
+Dima Nasser — Digital Workplace Mentor
+Digital confidence, office tools and work planning; Arabic.
+Thu 26 Nov, 10:00–10:30; 100 points or allocation.
+Tarek Mansour — Employer Readiness Mentor
+Opportunity requirements, workplace expectations and applications; Arabic and English.
+Thu 26 Nov, 14:00–14:30; 100 points or allocation.
+Booking and follow-up journey
+Open profile → select a sample slot → specify a goal and question → choose a points booking or assigned entitlement → confirm → see the booking in My Sessions. Deduct points only once. Simulate cancellation returning points if cancelled before the session. No invitations or notifications leave the prototype.
+After a simulated completed session, show mentor feedback, two agreed actions and a learner rating. A mentor view can be a compact panel containing their sample schedule, learner goal and feedback form. Do not grant mentors access to disability data or other unrelated records.
+If access is locked, show points balance and activities that unlock a session. If access is assigned by the programme, show “Included in your programme”. Essential learning and access to applications should not require points.
+14 Career toolkit rewards and community
+Y11 Route specific career toolkit
+Tool
+Fields and working actions
+CV builder
+Contact details, summary, education, experience, training, projects, skills and languages. Save, preview and print or download a sample. Pull course certificates into a suggested section after user review.
+Interview practice
+Select opportunity, question, response and feedback. Save practice history and a next step.
+Business concept
+Customer, problem, proposed solution, interview evidence, business model, costs and next experiment. Save draft and generate a pitch outline.
+Freelance profile
+Services, work samples, availability, preferred assignments and optional illustrative pricing. Save profile and preview what a client sees.
+Proposal builder
+Client goal, relevant experience, deliverables, timing, review stage, assumptions and proposed fee where appropriate. Save and attach to an application.
+Y12 Points and rewards
+Completed action
+Points and conditions
+Profile completed
+20 once
+Career assessment completed
+30 once; retakes do not earn more
+Course completed
+40 once per course
+Practical output submitted
+20 once per approved activity
+Assigned session attended
+20 after trainer confirms attendance
+Mentor session redeemed
+Deduct 100 on successful booking; prevent duplicate redemption
+Badges: Career Explorer after assessment and route choice; Learning Starter after first course; Job Ready Profile after CV plus interview practice; Enterprise Explorer after business concept plus C07; Freelance Starter after service profile plus portfolio. Badges represent completed demo activities, not guaranteed competency or hiring eligibility. Show a points ledger and balance; prevent repeat clicks from adding points twice.
+Y13 Community and events
+Seed moderated groups for Career Questions, Job Search Practice, Enterprise Ideas and Freelance Portfolio Feedback. Provide a sample post, reply and report action; show a moderation acknowledgement. Cohort groups are restricted to their members. E01 is a public sample event with a working registration state. Community access and leaderboard visibility must not expose personal support data; default to no competitive public ranking.
+15 Opportunities and application journeys
+Y14 Opportunity hub
+Use tabs for Jobs and Internships, Part Time and Freelance, and Enterprise Support. Cards show title, organisation, location, work format, deadline, required skills and opportunity type. Filters adapt to the type. Recommendations explain specific skills or preferences that match and any gaps; do not fabricate live labour-market evidence.
+ID and title
+Fictional organisation and requirements
+Application evidence
+O01 Customer Service Assistant
+Demo Services Company; Damascus; full-time; communication, digital records and teamwork.
+CV, C03 and C13 evidence, short motivation answer.
+O02 Office Support Intern
+Demo Community Services; Damascus; internship; basic documents and spreadsheets.
+CV, availability and C02 or C14 evidence.
+O03 Part Time Administration Assistant
+Demo Training Services; Homs; part-time; scheduling and accurate records.
+CV, availability and work sample.
+O04 Social Media Content Starter Project
+Demo Local Retailer; remote freelance; five original posts, copy and one review round.
+Service profile, portfolio and proposal.
+O05 Spreadsheet Cleanup Assignment
+Demo Business Support; remote freelance; organise a sample inventory worksheet.
+Spreadsheet sample, proposed approach and availability.
+O06 Enterprise Idea Development Clinic
+Demo Enterprise Hub; Aleppo; mentoring and customer-validation support.
+Business concept and motivation. No cash funding promised.
+Y15 Application detail and tracking
+Employment: Draft → Submitted → Under review → Shortlisted → Interview → Offer → Hired, with Not selected and Withdrawn branches. Freelance: Draft → Submitted → Client discussion → Selected → In delivery → Completed, with Not selected and Withdrawn. Enterprise support: Draft → Submitted → Review → Accepted → Participating → Completed.
+Show a timeline, required documents, deadlines, next action and feedback. A hiring outcome is recorded by the employer and visible to the learner. A learner-reported outcome is separately labelled pending confirmation. Freelance selection is not completed work; track both. “Not selected” offers a helpful next step and relevant learning, keeping support available.
+16 Employer and client workspace
+E01 Organisation profile and opportunity creation
+The employer dashboard shows open opportunities, applicants, shortlisted candidates, pending interviews and placements. Profile fields: fictional organisation name, sector, governorate, description, contact and opportunity types. A centre or UNICEF approval state can be shown for new organisations, with publication simulated.
+Create opportunity fields: type; title; description; location; on-site, hybrid or remote; full-time or part-time; required skills; qualifications where relevant; dates; application questions; and compensation or fee information when supplied. Freelance postings additionally need deliverables, timeline, review expectations and project fee format. Validate title, scope, deadline and contact before publishing.
+E02 Candidate discovery and applications
+Candidate search includes opted-in profiles only. Filters: skills, completed training, career interest, location and availability. A candidate card shows relevant experience, portfolio and course evidence. It never exposes the assessment responses, disability information or private coaching notes. Explain suggested matches using declared skills and evidence.
+Open an application → review CV or proposal → shortlist → record an interview or client discussion → add outcome and feedback. Changing status updates the same learner’s application timeline. Simulate any notification in-app only. Keep employer screening and hiring decisions human-led.
+E03 Placements and workforce feedback
+For employment record start date, role, work type, confirmation source and follow-up status. For a freelance assignment record selection date, start, completion and optional sample fee. Ask the employer about observed strengths, missing skills and future role needs; connect aggregate feedback to the reporting view. Do not treat a selected applicant as a confirmed placement before the relevant confirmation step.
+Enterprise support host
+Reuse the organisation workspace for the fictional enterprise-support host. Allow application review, acceptance and completion tracking for O06. Keep enterprise milestones separate from employment placements. No investor marketplace or funding transaction is included.
+Required states
+No applicants yet: explain how to publish a clear opportunity.
+No matching candidates: suggest adjusting requirements or reviewing skills gaps.
+Opportunity closed: retain applications and outcomes, disable new applications.
+Applicant not selected: record respectful feedback without revealing other applicants.
+17 Trainer workspace and learning operations
+T01 Applications and cohort assignment
+Show applications to assigned training programmes with profile summary, interest, current learning and support requests appropriate to the trainer’s role. Open a sample application, review it, mark Needs information, Accepted, Waitlisted or Not selected, and assign an accepted learner to a cohort. General learning remains available while an application is pending or waitlisted.
+T02 Cohort management
+Display roster, learner progress, attendance rate, assessment status and practical submissions. The learner detail has a chronological training record and next support action. Filters: progress, attendance, assessment status and support follow-up. Trainers see only assigned cohorts; switching from Rania to Maya changes the roster and sessions.
+T03 Session management
+Create or edit a sample session with title, cohort, trainer, online or in-person format, date, Syria timezone, joining placeholder or centre room, resources and assignment. Record attendance individually or in bulk, and add a brief follow-up note. Present is counted; Excused is tracked separately; Absent creates a support reminder. Attendance changes must update the learner’s session and points ledger once.
+T04 Learning resources and assessments
+Associate a resource and task with a course or cohort. Show a learner submission, a rubric, feedback and a grade. Example practical task: customer enquiry response. Rubric: understands request, clear response, appropriate next step; each 0–2. A score of at least 4/6 meets the demo task threshold. Return for revision if below threshold. This rubric is proposed sample content.
+T05 Results and certificates
+Show quiz score, practical review and completion prerequisites. Trainer recommends certification; centre administrator approves. Demonstrate Pending review → Recommended → Approved → Issued. If a prerequisite is incomplete, show exactly what is missing. A general self-paced course can issue its demonstration certificate automatically after its stated requirements, while the cohort programme uses approval.
+Trainer performance panel
+Show assigned participants, attendance, completion, pending grading and learners requiring follow-up. Link each metric to its roster view. Include one learner with missed sessions and one pending practical review so the interface demonstrates action, not only totals.
+18 Centre partner and UNICEF administration
+Workspace
+Screens and required working actions
+Centre administrator
+Own-centre overview; programme and cohort setup; trainer assignments; applications and roster; session capacity and attendance; results and certificates; follow-up list; centre reports. Approve one certificate and assign one learner to a cohort.
+Partner administrator
+Overview across own centres; compare enrolment, completion and outcomes; centre directory; programme performance; graduate follow-up; export preview. Drill from partner to centre to programme and open an action list.
+UNICEF administrator
+National overview; partner and centre directory; programme filters; reach and inclusion; learning outcomes; employment and freelance outcomes; enterprise milestones; labour-market insights; follow-up oversight; user and role management mock screen.
+Reporting viewer
+Read-only aggregate dashboard if included. No direct learner contact details or private operational records.
+Organisation hierarchy and data scope
+Use UNICEF Syria as the oversight layer. Governorate is a geographic filter, not the owner of every partner. Partner A contains T01 Damascus and T03 Homs; Partner B contains T02 Aleppo. A programme can run across centres and each cohort belongs to a programme and centre. Store these links explicitly so filters intersect correctly without double-counting a learner.
+Follow-up workflow
+Display graduates due for 3-, 6- or 12-month follow-up, responsible centre or partner, last contact, outcome source and next action. Opening a record shows a short form: employment status, work type, start date, still in the role, challenges and support requested. Allow Save as learner-reported and Confirm from employer as distinct actions. Mock reminders remain inside the prototype.
+Operational alerts
+Seed alerts for low completion in one cohort, a graduate with overdue follow-up, two vacancies with an identified skills gap and a practical task awaiting grading. Each alert should open the relevant filtered records. All values must come from the same fictional dataset or from the explicitly separated historical analytics dataset.
+Role boundaries
+Demonstrate access denied or an empty authorised view if a user tries another centre’s restricted record. Use role-based display in the front-end for the prototype and document that production enforcement would require backend controls. The prototype must never contain real beneficiary data.
+19 KPI dashboard definitions
+Show the selected period and all active filters on every report. Keep learning activity, readiness and earning outcomes separate. Include tooltips with denominators and confirmation status. Never add employment, internship and freelance counts together and label the sum as unique young people unless deduplicated.
+Metric
+Definition for the mockup
+Registered youth
+Distinct youth profiles registered within the selected scope and registration period.
+Active learners
+Distinct registered youth with at least one learning activity in the last 30 days, as of the displayed snapshot date.
+Participation by demographic
+Distinct participants by age group, gender, voluntarily provided disability status and governorate. Show Not disclosed where relevant.
+Course completion rate
+Completed course enrolments divided by course enrolments in the selected cohort or enrolment period. Label as enrolments, not unique people.
+Career guidance coverage
+Distinct graduates receiving a recorded guidance interaction divided by distinct graduates. Show count and percentage; assessment completion alone is separate.
+Internship placements
+Distinct confirmed internship placement records; provide a separate unique-youth count.
+Employment placements
+Distinct confirmed job-start records. Exclude unaccepted offers and freelance selection.
+Employment at 3 6 and 12 months
+Confirmed employed graduates divided by all graduates eligible for that follow-up window. Display response coverage and unknown status separately.
+Average time to employment
+Mean calendar days from graduation to first confirmed job start for placed graduates with both dates. Show population size.
+Employment retention
+Participants confirmed still in the placed role at the specified interval divided by placements eligible for that interval; show unknowns separately.
+Freelance outcomes
+Assignments selected, assignments completed, unique earners and repeat clients as separate measures. Fees only if sample data supports them.
+Enterprise milestones
+Business concepts completed, customer tests, support-programme acceptances and first reported sales. Do not count these as employment placements.
+Filters: national scope; governorate; partner; centre; programme; cohort; career route; demographic group; and date period. Drilldowns must retain active filters. Export can open a printable report preview with the filter context and “Sample data” label.
+20 Sample analytics and labour market insights
+Historical snapshot for the demonstration
+Use a clearly separate synthetic historical dataset, snapshot 1 November 2026, to demonstrate longer-term outcomes. The three named youth stories belong to the current demonstration cohort and do not claim to have completed twelve months of follow-up. Historical aggregate cards are not derived from the three named profiles.
+Measure
+Sample value and supporting context
+Registered and active
+1,000 registered; 720 active in last 30 days. Routes: 600 employment, 250 freelance or part-time, 150 enterprise.
+Course enrolment completion
+900 completed enrolments / 1,200 course enrolments = 75%. These are enrolments across courses.
+Programme graduates and guidance
+400 graduates; 320 with recorded guidance = 80%.
+Placement records
+140 confirmed job starts and 40 internships; 10 youth appear in both across time. Unique youth with either outcome = 170.
+Three month employment
+200 eligible graduates; 180 responses; 120 confirmed employed = 60% of eligible graduates. Coverage 90%; unknown 20.
+Six month employment
+120 eligible; 100 responses; 66 confirmed employed = 55%. Coverage 83.3%; unknown 20.
+Twelve month employment
+60 eligible; 50 responses; 30 confirmed employed = 50%. Coverage 83.3%; unknown 10.
+Time to first job
+42 days average among 140 placed graduates with complete graduation and start dates.
+Three month role retention
+100 placements eligible; 90 responses; 75 still in the placed role = 75% of eligible placements; unknown 10.
+Freelance and enterprise
+80 completed assignments by 50 young people; 15 with repeat clients. 90 business concepts; 35 customer tests; 20 clinic acceptances; 8 self-reported first sales.
+Labour market intelligence
+Show occupation demand, requested skills, skills gaps by sector and location, vacancies over time and placement trends. Label this “Illustrative insights from sample platform opportunities and employer feedback”; do not describe it as verified national labour-market intelligence.
+Sample insight: “Customer communication appears in 18 of 30 sample vacancy records, while 11 of 25 reviewed candidates have completed the relevant module.” Action: Open C03 and View candidate readiness. A second insight can compare spreadsheet requirements and course participation.
+For filterable charts, create underlying synthetic rows or consistent aggregate partitions. Governorate totals must sum to national totals, and all chart slices must preserve denominators. Do not randomly change numbers when filters are selected. For a filter without sufficient sample data, show a meaningful empty state.
+21 Connected demonstration data
+Entity
+Seed record and relationship
+Nour Hassan Y001
+Age 22; Damascus; full-time employment; assessment C12 O8 P2 I2; 80 points initially; K01; C05 in progress; application O01 saved as draft. Career profile People-focused coordinator.
+Omar Khalil Y002
+Age 24; Aleppo; entrepreneurship; I12 C8 P2 O2; 120 points initially; K02; C07 in progress; repair-business booking-service concept; O06 application draft.
+Lina Saleh Y003
+Age 21; Homs; freelancing; I8 C8 P4 O4; 90 points initially; K03; C11 in progress; sample content portfolio; O04 proposal draft. Balanced enterprise and communication preferences.
+Partner A P01
+Demo Youth Development Partner; centres T01 and T03. Fictional implementing partner.
+Partner B P02
+Demo Skills Partner; centre T02. Fictional implementing partner.
+Centres
+T01 Demo Damascus Training Centre; T02 Demo Aleppo Training Centre; T03 Demo Homs Training Centre. No real address or affiliation.
+Programme and cohort links
+PR01 Employment Readiness → K01 → T01; PR02 Enterprise Launch → K02 → T02; PR03 Freelance Starter → K03 → T03.
+Supporting learners
+Add fictional waitlisted applicant, learner with incomplete attendance, graduate due for follow-up and candidate not selected. Keep each linked to an authorised centre and programme.
+Data fields to retain in the prototype
+Youth: ID, profile, route, assessment result, consent visibility, cohort IDs, skill evidence, learning progress, points ledger and applications. Course: ID, units, checks, resources and completion criteria. Session: ID, cohort, trainer, format, date, location, capacity and attendance. Opportunity: ID, organisation, type, requirements and status. Application: ID, youth, opportunity, documents and timeline. Outcome: type, date, source, confirmation and follow-up window.
+Use stable IDs throughout; do not create separate copies of Nour for employer and trainer screens. A status change in one role should be reflected when switching roles. Store demo changes in local state if useful and provide a reset to the seeded snapshot. Reset should restore applications, points, course state and session attendance together.
+Sample accessibility and inclusion
+Use diverse, respectful illustrations and neutral placeholders. Avoid implying that disability determines career suitability. Optional support preferences affect access arrangements, not rankings. For the mockup, use generic sample accommodation text and avoid diagnostic details.
+22 State changes and interaction requirements
+Action
+Required state change and visible evidence
+Save profile
+Validation succeeds, completion updates, assessment CTA appears.
+Complete assessment
+Scores total 24, result appears, route can be selected. Reload preserves result until reset.
+Choose or change route
+Recommendations and toolkit adapt; completed learning and points remain.
+Complete learning
+Unit progress updates; quiz feedback appears; course requirements gate certificate and points.
+Assign to cohort
+Restricted sessions appear for that learner only; other cohorts remain inaccessible.
+Mark attendance
+Learner timeline and attendance metric update; eligible points awarded once.
+Book mentor
+Slot becomes booked, balance changes once or entitlement is used, confirmation appears.
+Submit application
+Required evidence validated; application becomes Submitted in youth and employer views.
+Employer shortlists
+Application timeline updates; next step shows interview or discussion.
+Record placement
+Confirmed start appears under outcomes; an offer alone is excluded from placements.
+Complete assignment
+Freelance outcome records completion rather than employment.
+Approve certificate
+Issued state appears for learner with sample certificate preview.
+Filter reports
+All cards and charts use the same filter context; drilldown preserves scope.
+Reset demo
+All connected records return to the same baseline without duplicate rewards.
+Forms and feedback
+Provide form labels, inline validation and clear success feedback. Disable duplicate submission while an action is processing. Include no results, no sessions, unavailable mentor slot, failed quiz, incomplete profile, closed opportunity and insufficient points states. For simulated uploads, display the sample filename and allow removal; never ask the presenter to upload real personal documents.
+Information boundaries
+Assessment answers and private mentoring notes stay in learner and authorised support views. Employer profiles show applicant-approved career evidence only. Aggregate demographic reporting must not expose individual support needs. A production privacy and safeguarding design is a later implementation requirement; this brief uses adult fictional personas and no live personal data.
+23 Walkthrough scripts for the three career routes
+Main story Nour from discovery to employment
+1. Start at the homepage and register as Nour. Complete the profile and career discovery assessment using the preset answers or presenter shortcut. Show her communication and organisation preferences and choose Full-time employment.
+2. Generate the customer-service path, explain why C03, C05 and C13 are recommended, then open C05 Unit 3. Edit an honest CV bullet with Lina AI and save it to the CV builder.
+3. Switch to trainer Rania. Accept Nour’s sample training application and assign K01 if using a fresh-registration state. Record attendance and review a practical task. Switch back to show the cohort-only session and progress.
+4. Complete one course and show points increasing. Book a mentor using points or demonstrate the programme allocation alternative. Practise an interview and save feedback.
+5. Open O01, review the match explanation and submit the CV and motivation answer. Switch to employer, shortlist, record an interview and then a confirmed job start. Return to Nour’s application timeline.
+6. Switch to UNICEF. Show current-cohort activity separately from historical outcome cards, then drill into the sample graduate follow-up view. Explain how the pathway remains useful for learners who have not secured a role.
+Second story Omar builds a business concept
+Choose Entrepreneurship → show C07 and C08 recommendations → open customer discovery → use Amal AI to draft interview questions → save the business concept → view K02 business-model studio → book Samer → apply to O06 → record clinic acceptance. End on milestones, not an invented business success or funding award.
+Third story Lina applies for a freelance assignment
+Choose Freelancing → open C11 and a sample portfolio → view K03 portfolio studio → ask Ziad AI to improve a proposal → submit to O04 → switch to client to record a discussion and selection → mark delivery completed → show the assignment outcome and follow-up. Explain the distinction between being selected, completing work and receiving payment.
+Additional branch worth demonstrating
+Mark a sample employment application Not selected. Show constructive feedback, a recommended learning activity, ongoing opportunity access and career support. This demonstrates the proposition that every participant gains value even without an immediate placement.
+24 Acceptance checks and developer handover
+Required checks before sharing
+All seven role views and the optional reporting view, if included, open with the correct navigation and sample scope.
+All three career routes work from assessment result to learning, career tools and a relevant opportunity.
+The 12 assessment questions, scoring, results and route override work; results are visibly illustrative.
+All 16 courses and their four units are visible. C05, C07 and C11 have complete sample lessons, quizzes and practical outputs; every other unit has a useful readable summary.
+Open e-learning and restricted cohort sessions are clearly separated. A non-member cannot join a restricted session.
+Five AI coaches show working sample branches and save editable outputs to the correct toolkit.
+Five fictional human mentor profiles show access rules, availability, booking and follow-up; points are not deducted twice.
+Jobs, internships, part-time roles, freelance projects and enterprise support use appropriate application stages.
+Trainer grading, attendance and centre certificate approval update the connected learner record.
+Dashboard denominators, follow-up eligibility and sample data labels are visible; totals reconcile and historical outcomes are separated from current youth stories.
+English and Arabic key screens, mobile layout, keyboard navigation and empty or error states are usable.
+Reset restores a consistent demo. No real emails, invitations, applications, personal data or live transactions leave the prototype.
+Delivery package
+Please share the mockup URL and access instructions with Rawzaba, along with the demo role list, a short recommended walkthrough order and any known limitations. Include a concise checklist mapping the brief to completed modules. Flag genuine gaps rather than leaving silent dead buttons.
+Timing
+Please plan the build during the week of 16 November, with an internal review before the UNICEF walkthrough in the week of 23 November. There is no rush for an immediate first version. The client meeting time is still awaiting confirmation; coordinate the internal review with Rawzaba rather than treating a proposed slot as a confirmed deadline.
+25 Source traceability and open implementation decisions
+This brief combines UNICEF’s stated scenario with the beneficiary journey approved by Rawzaba. The detailed catalogue, sample assessment, coaches, sessions, organisations and datasets are proposed content for the mockup, not representations of existing UNICEF programmes.
+Source
+What it establishes
+Hiba Ahmad email 10 November 2026
+TVET training-centre-to-employment scenario; beneficiary, trainer, employer and administration interfaces; multilevel KPIs; labour-market insights. Hiba invited us to select from her feature lists.
+UNICEF Syria meeting 9 November 2026
+Vocational, digital and soft skills; learning-to-earning; extending support beyond a physical job fair; useful career support even without placement; a branded clickable front-end mockup.
+Potential X UNICEF Youth Employability Initiative PDF
+Personalised learning, AI career support, CV and interview preparation, community, events, coaching, employer access and programme oversight.
+Potential CRM opportunity
+UNICEF Syria 2027 Youth Skills and Transition-to-Work Programme; Rawzaba owner; exploratory Lead; no agreed budget or procurement commitment.
+Rawzaba approved direction in this conversation
+Scenario-based career discovery; three routes; personalised path plus open e-learning library; restricted trainer-led cohort sessions; points and assigned mentorship access; earning opportunities; detailed mockup developer brief.
+Latest scheduling email
+Walkthrough proposed for the week of 23 November; UNICEF confirmation pending. Development can be completed next week with internal review beforehand.
+Source references
+Meeting note: https://chatgpt.com/space/page_5ec928adb3bc8191b3eaeb90e4767272
+CRM: https://crm.potentiallead.com/ — opportunity 1200e695-e21f-428f-b418-358787a2339f
+Proposal: Potential X UNICEF - Youth Employability Initiative.pdf, shared with Hiba on 10 November. UNICEF email subject: Re: 2027 planning: youth skills and transition-to-work programmes.
+Items to carry into a later implementation discussion
+Confirm actual eligible ages, approved branding and programme name, Arabic content requirements, validated assessment framework, real TVET catalogue and centres, mentor roster, enterprise-support partners, data residency, integrations, privacy and safeguarding requirements, and agreed KPI definitions. These do not block the fictional clickable prototype. Do not infer client commitments or production scope from this brief.

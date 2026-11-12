@@ -1,0 +1,198 @@
+{
+  "appName": "Youth Pathways",
+  "appFullName": "UNICEF Syria Youth Pathways",
+  "demoLabel": "Demonstration platform — sample data",
+  "skip": "Skip to main content",
+  "close": "Close",
+  "save": "Save",
+  "saved": "Saved",
+  "cancel": "Cancel",
+  "back": "Back",
+  "next": "Next",
+  "continue": "Continue",
+  "edit": "Edit",
+  "open": "Open",
+  "view": "View",
+  "viewAll": "View all",
+  "search": "Search",
+  "filters": "Filters",
+  "clearFilters": "Clear filters",
+  "noResults": "No results match these filters.",
+  "loading": "Loading",
+  "print": "Print",
+  "download": "Download",
+  "points": "{{count}} points",
+  "minutes": "{{count}} min",
+  "language": "Language",
+  "switchToArabic": "العربية",
+  "switchToEnglish": "English",
+  "signIn": "Sign in",
+  "signOut": "Sign out",
+  "menu": "Menu",
+  "breadcrumb": "Breadcrumb",
+  "home": "Home",
+  "arabicPlaceholder": "Arabic content placeholder",
+  "notFound": {
+    "title": "Page not found",
+    "body": "This page is not part of the demonstration.",
+    "home": "Go to the homepage"
+  },
+  "denied": {
+    "title": "Not available in this view",
+    "body": "This record belongs to another centre or role. In production this would be enforced by backend controls."
+  },
+  "demo": {
+    "presenter": "Presenter",
+    "switchRole": "Switch role",
+    "reset": "Reset demo",
+    "resetTitle": "Reset the demonstration?",
+    "resetBody": "Applications, points, course progress, attendance and reports return to the seeded snapshot. Your language stays the same.",
+    "resetDone": "Demo reset to the seeded snapshot",
+    "motion": "Reduce motion",
+    "signedInAs": "Signed in as {{name}}"
+  },
+  "roles": {
+    "youth": "Youth",
+    "trainer": "Trainer",
+    "employer": "Employer or client",
+    "centre": "Centre administrator",
+    "partner": "Partner administrator",
+    "unicef": "UNICEF administrator",
+    "viewer": "Reporting viewer"
+  },
+  "routes": {
+    "employment": "Full-time employment",
+    "enterprise": "Entrepreneurship",
+    "freelance": "Freelancing or part-time"
+  },
+  "routesShort": {
+    "employment": "Employment",
+    "enterprise": "Enterprise",
+    "freelance": "Freelance"
+  },
+  "status": {
+    "todo": "To do",
+    "inProgress": "In progress",
+    "completed": "Completed",
+    "done": "Done"
+  },
+  "stages": {
+    "draft": "Draft",
+    "submitted": "Submitted",
+    "underReview": "Under review",
+    "shortlisted": "Shortlisted",
+    "interview": "Interview",
+    "offer": "Offer",
+    "hired": "Hired",
+    "clientDiscussion": "Client discussion",
+    "selected": "Selected",
+    "inDelivery": "In delivery",
+    "review": "Review",
+    "accepted": "Accepted",
+    "participating": "Participating",
+    "notSelected": "Not selected",
+    "withdrawn": "Withdrawn"
+  },
+  "certificate": {
+    "pendingReview": "Pending review",
+    "recommended": "Recommended",
+    "approved": "Approved",
+    "issued": "Issued"
+  },
+  "attendance": {
+    "present": "Present",
+    "absent": "Absent",
+    "excused": "Excused",
+    "unmarked": "Not marked"
+  },
+  "oppTypes": {
+    "job": "Job",
+    "internship": "Internship",
+    "partTime": "Part-time",
+    "freelance": "Freelance project",
+    "enterprise": "Enterprise support"
+  },
+  "format": {
+    "online": "Online",
+    "centre": "At the centre",
+    "onsite": "On-site",
+    "hybrid": "Hybrid",
+    "remote": "Remote"
+  },
+  "nav": {
+    "youth": {
+      "dashboard": "Dashboard",
+      "discovery": "Career Discovery",
+      "path": "My Learning Path",
+      "library": "Course Library",
+      "cohort": "My Cohort and Sessions",
+      "coaches": "AI Coaches",
+      "mentors": "Mentorship",
+      "toolkit": "Career Toolkit",
+      "opportunities": "Opportunities",
+      "community": "Community and Events",
+      "progress": "Progress and Rewards"
+    },
+    "trainer": {
+      "dashboard": "Dashboard",
+      "applications": "Applications",
+      "cohorts": "My Cohorts",
+      "sessions": "Sessions and Attendance",
+      "resources": "Learning Resources",
+      "assessments": "Assessments",
+      "results": "Results and Certificates"
+    },
+    "employer": {
+      "dashboard": "Dashboard",
+      "profile": "Organisation Profile",
+      "opportunities": "Opportunities",
+      "candidates": "Candidate Search",
+      "applications": "Applications",
+      "placements": "Placements and Feedback"
+    },
+    "centre": {
+      "overview": "Overview",
+      "courses": "Courses and Cohorts",
+      "participants": "Participants",
+      "trainers": "Trainers",
+      "sessions": "Sessions",
+      "results": "Results and Certificates",
+      "reports": "Reports"
+    },
+    "partner": {
+      "overview": "Overview",
+      "centres": "Centres",
+      "programmes": "Programmes",
+      "participants": "Participants",
+      "outcomes": "Outcomes",
+      "reports": "Reports"
+    },
+    "unicef": {
+      "overview": "National Overview",
+      "partners": "Partners and Centres",
+      "programmes": "Programmes",
+      "inclusion": "Inclusion",
+      "outcomes": "Employment Outcomes",
+      "labour": "Labour Market Insights",
+      "followup": "Follow-up",
+      "admin": "Administration"
+    },
+    "viewer": {
+      "overview": "Aggregate reports"
+    }
+  },
+  "signInPage": {
+    "title": "Welcome to Youth Pathways",
+    "subtitle": "Sign in to continue your journey, or open a demo profile below.",
+    "email": "Email or mobile",
+    "password": "Password",
+    "required": "Enter your email and password.",
+    "unknown": "This demo only signs in the sample profiles. Choose a profile card below.",
+    "noAccount": "New here?",
+    "register": "Create your profile",
+    "demoTitle": "Demo profiles",
+    "demoBody": "One click opens each profile with its own view and data scope.",
+    "youthStories": "Youth stories",
+    "staff": "Trainers, employers, partners and UNICEF"
+  }
+}

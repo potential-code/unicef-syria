@@ -1,0 +1,18 @@
+import type { Session } from '@shared/types'
+import { L } from './l'
+
+// Brief §11. Times are Syria time (UTC+3). Sample data, not booked sessions.
+const at = (d: string, t: string) => `2026-${d}T${t}:00+03:00`
+
+export const SESSIONS: Session[] = [
+  { id: 'S01', title: L('Career goals workshop', 'ورشة الأهداف المهنية'), cohortId: 'K01', trainerId: 'TR01', format: 'online', start: at('11-17', '10:00'), end: at('11-17', '11:00'), capacity: 24, purpose: L('Interpret career choices and create a goal.', 'فهم الخيارات المهنية ووضع هدف.') },
+  { id: 'S02', title: L('Workplace communication lab', 'مختبر التواصل في العمل'), cohortId: 'K01', trainerId: 'TR01', format: 'centre', centreId: 'T01', start: at('11-19', '10:00'), end: at('11-19', '12:00'), capacity: 24, purpose: L('Practise customer conversations and teamwork.', 'التدرب على محادثات العملاء والعمل الجماعي.') },
+  { id: 'S03', title: L('CV and interview clinic', 'عيادة السيرة الذاتية والمقابلة'), cohortId: 'K01', trainerId: 'TR01', format: 'online', start: at('11-24', '10:00'), end: at('11-24', '11:30'), capacity: 24, purpose: L('Review CVs and practise interview answers.', 'مراجعة السير الذاتية والتدرب على الإجابات.') },
+  { id: 'S04', title: L('Customer discovery workshop', 'ورشة اكتشاف العملاء'), cohortId: 'K02', trainerId: 'TR02', format: 'online', start: at('11-18', '11:00'), end: at('11-18', '12:30'), capacity: 18, purpose: L('Draft interview questions and test assumptions.', 'صياغة أسئلة المقابلة واختبار الافتراضات.') },
+  { id: 'S05', title: L('Business model studio', 'استوديو نموذج العمل'), cohortId: 'K02', trainerId: 'TR02', format: 'centre', centreId: 'T02', start: at('11-22', '10:00'), end: at('11-22', '12:00'), capacity: 18, purpose: L('Build a simple business model and cash plan.', 'بناء نموذج عمل بسيط وخطة نقدية.') },
+  { id: 'S06', title: L('Pitch feedback clinic', 'عيادة تقييم العرض'), cohortId: 'K02', trainerId: 'TR02', format: 'online', start: at('11-26', '11:00'), end: at('11-26', '12:30'), capacity: 18, purpose: L('Present a two-minute pitch and receive feedback.', 'تقديم عرض لمدة دقيقتين وتلقي الملاحظات.') },
+  { id: 'S07', title: L('Portfolio studio', 'استوديو ملف الأعمال'), cohortId: 'K03', trainerId: 'TR03', format: 'centre', centreId: 'T03', start: at('11-18', '13:00'), end: at('11-18', '15:00'), capacity: 20, purpose: L('Develop an original sample portfolio piece.', 'تطوير عينة أصلية لملف الأعمال.') },
+  { id: 'S08', title: L('Proposal and client brief lab', 'مختبر العرض وموجز العميل'), cohortId: 'K03', trainerId: 'TR03', format: 'online', start: at('11-23', '13:00'), end: at('11-23', '14:30'), capacity: 20, purpose: L('Prepare a scoped proposal and timeline.', 'إعداد عرض محدد النطاق وجدول زمني.') },
+  { id: 'S09', title: L('Client delivery simulation', 'محاكاة التسليم للعميل'), cohortId: 'K03', trainerId: 'TR03', format: 'online', start: at('11-25', '13:00'), end: at('11-25', '14:00'), capacity: 20, purpose: L('Handle feedback and agree a revision.', 'التعامل مع الملاحظات والاتفاق على تعديل.') },
+  { id: 'E01', title: L('Meet employers and clients', 'لقاء أصحاب العمل والعملاء'), cohortId: null, trainerId: null, format: 'online', start: at('11-30', '12:00'), end: at('11-30', '13:00'), capacity: 200, purpose: L('Illustrative employer panel; registration open to all demo learners.', 'لقاء توضيحي مع أصحاب العمل؛ التسجيل مفتوح لجميع المتعلمين.'), public: true },
+]
