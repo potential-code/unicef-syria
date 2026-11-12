@@ -36,7 +36,7 @@ function SelectTrigger({
       data-slot="select-trigger"
       data-size={size}
       className={cn(
-        "group flex w-full items-center justify-between gap-2 rounded-xl border-2 border-input bg-white px-3 py-2 text-start text-base text-ink transition-colors hover:border-primary outline-none focus-visible:border-ink disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive data-[placeholder]:text-ink-soft data-[size=default]:min-h-12 data-[size=sm]:min-h-11 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "group flex w-full items-center justify-between gap-2 rounded-xl border border-border bg-white px-3 py-1.5 text-start text-sm text-ink shadow-xs transition-colors hover:border-input outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/30 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive data-[placeholder]:text-ink-soft data-[size=default]:h-10 data-[size=sm]:h-9 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       {...props}
@@ -110,7 +110,7 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "relative flex min-h-12 w-full cursor-pointer items-center gap-2 rounded-xl py-2 ps-3 pe-10 text-base text-ink outline-hidden select-none data-[highlighted]:bg-sky-100 data-[state=checked]:font-semibold data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "relative flex min-h-9 w-full cursor-pointer items-center gap-2 rounded-lg py-1.5 ps-3 pe-9 text-sm text-ink outline-hidden select-none data-[highlighted]:bg-sky-100 data-[state=checked]:font-semibold data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       {...props}

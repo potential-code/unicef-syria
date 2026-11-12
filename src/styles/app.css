@@ -35,7 +35,7 @@
   --accent: var(--unicef-sky-100);
   --accent-foreground: var(--ink);
   --destructive: #b3170f;
-  --border: var(--unicef-line);
+  --border: #dfe6ec;
   --input: #8a99a3;
   --ring: var(--unicef-blue);
 
@@ -48,10 +48,12 @@
   --danger: #b3170f;
   --danger-soft: #fde8e7;
 
-  --shadow-sm: 0 1px 2px rgb(0 57 150 / 0.06), 0 2px 6px rgb(0 57 150 / 0.06);
-  --shadow-md: 0 2px 4px rgb(0 57 150 / 0.06), 0 10px 28px rgb(0 57 150 / 0.1);
-  --shadow-lg: 0 6px 12px rgb(0 57 150 / 0.08), 0 22px 54px rgb(0 57 150 / 0.16);
-  --shadow-pop: 0 10px 20px rgb(0 57 150 / 0.12), 0 30px 70px rgb(0 57 150 / 0.22);
+  /* Elevation: cards always lift off the page (tinted with UNICEF navy, never pure black). */
+  --shadow-xs: 0 1px 2px rgb(0 57 150 / 0.06);
+  --shadow-sm: 0 1px 2px rgb(0 57 150 / 0.05), 0 4px 14px -2px rgb(0 57 150 / 0.12);
+  --shadow-md: 0 2px 4px rgb(0 57 150 / 0.06), 0 12px 32px -6px rgb(0 57 150 / 0.18);
+  --shadow-lg: 0 4px 10px rgb(0 57 150 / 0.08), 0 24px 56px -10px rgb(0 57 150 / 0.26);
+  --shadow-pop: 0 10px 20px rgb(0 57 150 / 0.12), 0 34px 80px -12px rgb(0 57 150 / 0.32);
 }
 
 @theme inline {
@@ -78,6 +80,7 @@
   --color-ink-soft: var(--ink-soft);
   --color-surface: var(--surface);
 
+  --shadow-xs: var(--shadow-xs);
   --shadow-sm: var(--shadow-sm);
   --shadow-md: var(--shadow-md);
   --shadow-lg: var(--shadow-lg);
@@ -171,6 +174,17 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+  /* Standard surface card: white, soft border, real elevation. */
+  .card {
+    @apply rounded-2xl border border-border/70 bg-white shadow-md;
+  }
+  .card-hover {
+    @apply transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-lg;
+  }
+  /* Vertical brand gradient for the sidebar and auth panel. */
+  .bg-grad-unicef-v {
+    background-image: linear-gradient(180deg, var(--unicef-blue) 0%, var(--unicef-navy) 60%, #002a73 100%);
   }
   .lift {
     transition:

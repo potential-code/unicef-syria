@@ -16,8 +16,8 @@ export function SideNav({ role, onNavigate }: { role: Role; onNavigate?: () => v
               activeOptions={{ exact: !!item.exact }}
               onClick={onNavigate}
               className={cn(
-                'group flex min-h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium text-ink-soft transition-colors hover:bg-sky-100 hover:text-navy',
-                'data-[status=active]:bg-blue data-[status=active]:text-white data-[status=active]:shadow-md',
+                'group flex h-10 items-center gap-3 rounded-xl px-3 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white',
+                'data-[status=active]:bg-white data-[status=active]:font-semibold data-[status=active]:text-navy data-[status=active]:shadow-md',
               )}
             >
               <item.icon className="size-[18px] shrink-0" aria-hidden />

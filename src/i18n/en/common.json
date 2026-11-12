@@ -182,8 +182,8 @@
     }
   },
   "signInPage": {
-    "title": "Welcome to Youth Pathways",
-    "subtitle": "Sign in to continue your journey, or open a demo profile below.",
+    "title": "Sign in",
+    "subtitle": "Continue your journey, or open a demo profile below.",
     "email": "Email or mobile",
     "password": "Password",
     "required": "Enter your email and password.",
@@ -193,6 +193,11 @@
     "demoTitle": "Demo profiles",
     "demoBody": "One click opens each profile with its own view and data scope.",
     "youthStories": "Youth stories",
-    "staff": "Trainers, employers, partners and UNICEF"
+    "staff": "Trainers, employers, partners and UNICEF",
+    "panelEyebrow": "UNICEF Syria Youth Pathways",
+    "panelTitle": "From learning to earning, one connected journey.",
+    "point1": "Discover a career direction that suits you",
+    "point2": "Learn with courses, cohorts, AI coaches and mentors",
+    "point3": "Reach jobs, freelance work and enterprise support"
   }
 }

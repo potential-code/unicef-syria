@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, Sparkles } from 'lucide-react'
+import { Motif } from '@/components/brand'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
@@ -22,21 +23,21 @@ export function NextAction({
   return (
     <div
       className={cn(
-        'on-dark relative overflow-hidden rounded-2xl bg-grad-unicef p-5 text-white shadow-md',
+        'on-dark relative overflow-hidden rounded-2xl bg-grad-unicef p-6 text-white shadow-lg',
         className,
       )}
     >
-      <div
-        className="pointer-events-none absolute -end-10 -top-10 size-40 rounded-full bg-white/10"
-        aria-hidden
-      />
-      <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-white/85">
+      <Motif variant="card" className="text-white/[0.12]" />
+      <p className="relative flex items-center gap-1.5 text-xs font-bold tracking-wider text-white/85 uppercase">
         <Sparkles className="size-3.5" aria-hidden />
         {label}
       </p>
-      <p className="mt-1.5 text-lg font-bold leading-snug">{title}</p>
-      {body && <p className="mt-1 text-sm text-white/85">{body}</p>}
-      <Button asChild variant="secondary" className="mt-4 bg-white text-navy hover:bg-sky-100">
+      <p className="relative mt-1.5 text-xl leading-snug font-bold">{title}</p>
+      {body && <p className="relative mt-1 text-sm text-white/85">{body}</p>}
+      <Button
+        asChild
+        className="relative mt-4 rounded-full bg-white text-navy shadow-md hover:bg-sky-100"
+      >
         <Link to={to}>
           {cta}
           <ArrowRight className="size-4 rtl-mirror" aria-hidden />

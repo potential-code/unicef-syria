@@ -3,6 +3,7 @@ import { Link, Outlet, useRouterState } from '@tanstack/react-router'
 import { Menu } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import { MotionPage } from '@/components/motion'
 import { DemoTag } from '@/components/shared/DemoTag'
 import { LangToggle } from '@/components/shared/LangToggle'
@@ -29,21 +30,24 @@ export function AppShell({ area: role }: { area: Role }) {
   if (!persona || persona.role !== role) return null
   return (
     <div className="min-h-dvh bg-background">
-      <aside className="fixed inset-y-0 start-0 z-30 hidden w-64 flex-col border-e bg-white lg:flex">
-        <Link to="/" className="flex h-16 items-center gap-2 border-b px-5">
-          <Logo className="h-6" />
+      <aside className="on-dark fixed inset-y-0 start-0 z-30 hidden w-64 flex-col overflow-hidden bg-grad-unicef-v text-white shadow-lg lg:flex">
+        <Motif variant="sidebar" className="text-white/[0.08]" />
+        <Link to="/" className="relative flex h-16 items-center gap-2 px-5">
+          <Logo variant="white" className="h-6" />
         </Link>
-        <p className="px-5 pt-4 pb-2 text-xs font-semibold uppercase tracking-wide text-ink-soft">
+        <p className="relative px-5 pt-3 pb-2 text-[11px] font-bold tracking-widest text-cyan uppercase">
           {t(`roles.${role}`)}
         </p>
-        <div className="flex-1 overflow-y-auto px-3 pb-6">
+        <div className="relative flex-1 overflow-y-auto px-3 pb-6">
           <SideNav role={role} />
         </div>
-        <p className="border-t px-5 py-3 text-xs text-ink-soft">{t('appFullName')}</p>
+        <p className="relative border-t border-white/10 px-5 py-3 text-xs text-white/60">
+          {t('appFullName')}
+        </p>
       </aside>
 
       <div className="lg:ps-64">
-        <header className="sticky top-0 z-20 flex h-16 items-center gap-2 border-b bg-white/90 px-4 backdrop-blur sm:px-6">
+        <header className="sticky top-0 z-20 flex h-16 items-center gap-2 border-b border-border/70 bg-white/85 px-4 shadow-xs backdrop-blur sm:px-6">
           <Button
             variant="ghost"
             size="icon"
@@ -74,11 +78,15 @@ export function AppShell({ area: role }: { area: Role }) {
       </div>
 
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetContent side={lang === 'ar' ? 'right' : 'left'} className="w-72 p-0">
-          <SheetTitle className="flex h-16 items-center border-b px-5">
-            <Logo className="h-6" />
+        <SheetContent
+          side={lang === 'ar' ? 'right' : 'left'}
+          className="on-dark w-72 overflow-hidden border-0 bg-grad-unicef-v p-0 text-white"
+        >
+          <Motif variant="sidebar" className="text-white/[0.07]" />
+          <SheetTitle className="relative flex h-16 items-center px-5">
+            <Logo variant="white" className="h-6" />
           </SheetTitle>
-          <div className="overflow-y-auto p-3">
+          <div className="relative overflow-y-auto p-3">
             <SideNav role={role} onNavigate={() => setOpen(false)} />
           </div>
         </SheetContent>
