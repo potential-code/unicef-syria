@@ -53,12 +53,12 @@ export function CentreResultsPage() {
   return (
     <div className="space-y-6">
       <PageHeader title={t('results.title')} description={t('results.body')} />
-      <section className="rounded-3xl border bg-sky-50 p-5">
+      <section className="card p-5">
         <p className="mb-4 text-sm font-semibold text-navy">{t('results.flowTitle')}</p>
         <CertificateFlow state="issued" />
       </section>
       {!hasRecommended && (
-        <aside className="flex flex-col gap-3 rounded-2xl border border-dashed border-blue/30 bg-white p-4 sm:flex-row sm:items-center">
+        <aside className="flex flex-col gap-3 rounded-2xl bg-blue-50 p-4 ring-1 ring-blue/15 sm:flex-row sm:items-center">
           <Sparkles className="size-5 shrink-0 text-blue" aria-hidden />
           <p className="flex-1 text-sm text-ink-soft">{t('results.sampleBody')}</p>
           <Button variant="outline" size="sm" className="rounded-full" onClick={prepareSample}>
@@ -82,7 +82,7 @@ export function CentreResultsPage() {
             return (
               <li
                 key={key}
-                className="grid gap-4 rounded-2xl border bg-white p-5 shadow-sm lg:grid-cols-[1fr_1.4fr_auto] lg:items-center"
+                className="card grid gap-4 p-5 lg:grid-cols-[1fr_1.4fr_auto] lg:items-center"
               >
                 <div className="space-y-1">
                   <LearnerName y={y} to="/centre/participants/$youthId" />

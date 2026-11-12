@@ -131,7 +131,9 @@ export function BarChart({
             ))}
             <LabelList
               dataKey="value"
-              position={horizontal ? (rtl ? 'left' : 'right') : 'top'}
+              // With a reversed axis Recharts gives RTL bars a negative width, so 'right' already
+              // lands at the data end in both directions.
+              position={horizontal ? 'right' : 'top'}
               formatter={(v: unknown) => format(Number(v))}
               style={{ fill: 'var(--unicef-ink)', fontSize: 12, fontWeight: 600 }}
             />

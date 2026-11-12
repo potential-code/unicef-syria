@@ -18,7 +18,7 @@ export function UnicefInclusionPage() {
   return (
     <div className="space-y-6">
       <PageHeader title={t('inclusion.title')} description={t('inclusion.body')} />
-      <aside className="flex items-start gap-3 rounded-2xl border border-cyan/40 bg-sky-50 p-4 text-sm">
+      <aside className="flex items-start gap-3 card border-s-4 border-s-blue p-4 text-sm">
         <ShieldCheck className="mt-0.5 size-5 shrink-0 text-blue" aria-hidden />
         <p>{t('inclusion.privacy')}</p>
       </aside>
@@ -30,7 +30,7 @@ export function UnicefInclusionPage() {
         ) : (
           <div className="space-y-4">
             <ParticipationCharts rows={h.rows} />
-            <div className="grid gap-3 xl:grid-cols-2">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,26rem),1fr))] gap-3">
               <InclusionTable rows={h.rows} dim="disability" />
               <InclusionTable rows={h.rows} dim="gender" />
             </div>

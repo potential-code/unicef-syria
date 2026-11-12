@@ -239,7 +239,8 @@
     "met": "Reached",
     "notYet": "Not yet",
     "openToolkit": "Open my career toolkit",
-    "readiness": "Completed learning adds to your readiness evidence. It does not guarantee a job, a client or funding."
+    "readiness": "Completed learning adds to your readiness evidence. It does not guarantee a job, a client or funding.",
+    "stepN": "Step {{n}}"
   },
   "milestones": {
     "profile": "Profile",
@@ -388,7 +389,8 @@
     "reviewUnits": "Review the units",
     "passedBest": "Knowledge check passed with {{score}} percent.",
     "shortcut": "Complete this course (demo)",
-    "shortcutDone": "Course requirements completed for the demonstration"
+    "shortcutDone": "Course requirements completed for the demonstration",
+    "questionN": "Question {{n}} of {{total}}"
   },
   "practical": {
     "title": "Practical task",
@@ -471,12 +473,18 @@
     "ruleCondition": "Condition",
     "rulesNote": "Each activity counts once. Repeat clicks never add points twice.",
     "rules": {
-      "profile": { "action": "Profile completed", "condition": "Once" },
+      "profile": {
+        "action": "Profile completed",
+        "condition": "Once"
+      },
       "assessment": {
         "action": "Career assessment completed",
         "condition": "Once; retakes do not earn more"
       },
-      "course": { "action": "Course completed", "condition": "Once per course" },
+      "course": {
+        "action": "Course completed",
+        "condition": "Once per course"
+      },
       "practical": {
         "action": "Practical output submitted",
         "condition": "Once per approved activity"
@@ -496,8 +504,14 @@
       "name": "Career Explorer",
       "how": "Complete career discovery and choose a route."
     },
-    "learningStarter": { "name": "Learning Starter", "how": "Complete your first course." },
-    "jobReady": { "name": "Job Ready Profile", "how": "Save a CV and practise an interview." },
+    "learningStarter": {
+      "name": "Learning Starter",
+      "how": "Complete your first course."
+    },
+    "jobReady": {
+      "name": "Job Ready Profile",
+      "how": "Save a CV and practise an interview."
+    },
     "enterpriseExplorer": {
       "name": "Enterprise Explorer",
       "how": "Save a business concept and complete C07."

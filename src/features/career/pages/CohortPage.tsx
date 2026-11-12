@@ -1,9 +1,21 @@
 import type { CohortId, Session } from '@shared/types'
-import { BookOpen, CalendarCheck, CalendarDays, List, MapPin, UserRound, Users } from 'lucide-react'
+import {
+  BookOpen,
+  CalendarCheck,
+  CalendarClock,
+  CalendarDays,
+  CheckCircle2,
+  List,
+  MapPin,
+  Ticket,
+  UserRound,
+  Users,
+} from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion'
 import { EmptyState } from '@/components/shared/EmptyState'
+import { StatCard } from '@/components/shared/StatCard'
 import { Button } from '@/components/ui/button'
 import { CENTRES, COHORTS, TRAINERS } from '@/data/orgs'
 import { useLocalized } from '@/i18n'
@@ -17,6 +29,7 @@ import { SessionCard } from '../components/cohort/SessionCard'
 import { EventCard } from '../components/EventCard'
 import { ViewToggle } from '../components/ViewToggle'
 import { hashHref } from '../lib/links'
+import { sessionTiming } from '../lib/session'
 
 /** Y08 My Cohort and Sessions: assigned cohort sessions only, plus the public E01 event. */
 export function CohortPage() {
@@ -42,6 +55,7 @@ export function CohortPage() {
   const cohorts = COHORTS.filter((c) => youth.cohortIds.includes(c.id))
   const publicEvents = all.filter((s) => s.public)
   const attended = mine.filter((s) => youth.attendance[s.id] === 'present').length
+  const upcoming = mine.filter((s) => sessionTiming(s) === 'upcoming').length
 
   const pick = (id: string) => {
     setSelected(id)
@@ -70,7 +84,7 @@ export function CohortPage() {
               return (
                 <div
                   key={c.id}
-                  className="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-2xl bg-white/15 px-4 py-2.5 text-sm"
+                  className="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-xl bg-white/15 px-4 py-2.5 text-sm ring-1 ring-white/20"
                 >
                   <span className="font-bold">{l(c.name)}</span>
                   <span className="flex items-center gap-1">
@@ -88,12 +102,35 @@ export function CohortPage() {
                 </div>
               )
             })}
-            <div className="rounded-2xl bg-yellow px-4 py-2.5 text-sm font-bold text-ink">
-              {t('cohort.attendedCount', { attended, total: mine.length })}
-            </div>
           </div>
         )}
       </CareerHero>
+
+      {cohorts.length > 0 && (
+        <div className="grid gap-4 sm:grid-cols-3">
+          <StatCard
+            tone="blue"
+            icon={CheckCircle2}
+            label={t('cohort.stats.attended')}
+            value={`${attended}/${mine.length}`}
+            hint={t('cohort.stats.attendedHint', { total: mine.length })}
+          />
+          <StatCard
+            tone="cyan"
+            icon={CalendarClock}
+            label={t('cohort.stats.upcoming')}
+            value={upcoming}
+            hint={t('cohort.stats.upcomingHint')}
+          />
+          <StatCard
+            tone="yellow"
+            icon={Ticket}
+            label={t('cohort.stats.events')}
+            value={publicEvents.length}
+            hint={t('cohort.stats.eventsHint')}
+          />
+        </div>
+      )}
 
       {cohorts.length === 0 ? (
         <EmptyState
@@ -113,7 +150,7 @@ export function CohortPage() {
         <section aria-labelledby="sessions-heading" className="space-y-4">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
-              <h2 id="sessions-heading" className="text-2xl">
+              <h2 id="sessions-heading" className="text-xl">
                 {t('cohort.sessionsTitle')}
               </h2>
               <p className="text-sm text-ink-soft">{t('cohort.sessionsBody')}</p>
@@ -175,7 +212,7 @@ export function CohortPage() {
       )}
 
       <section aria-labelledby="events-heading" className="space-y-3">
-        <h2 id="events-heading" className="text-2xl">
+        <h2 id="events-heading" className="text-xl">
           {t('cohort.eventsTitle')}
         </h2>
         <EventCard youth={youth} />

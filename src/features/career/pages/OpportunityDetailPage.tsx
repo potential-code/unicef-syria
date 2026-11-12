@@ -77,7 +77,7 @@ export function OpportunityDetailPage({ oppId }: { oppId: string }) {
       >
         <dl className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           {facts.map((f) => (
-            <div key={f.label} className="rounded-2xl bg-white/15 p-3">
+            <div key={f.label} className="min-w-0 rounded-xl bg-white/12 p-3 ring-1 ring-white/20">
               <dt className="flex items-center gap-1.5 text-xs font-semibold text-white/85">
                 <f.icon className="size-3.5" aria-hidden />
                 {f.label}
@@ -88,9 +88,9 @@ export function OpportunityDetailPage({ oppId }: { oppId: string }) {
         </dl>
       </CareerHero>
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_26rem]">
+      <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_24rem]">
         <div className="space-y-6">
-          <Reveal className="space-y-5 rounded-2xl border bg-white p-5 shadow-sm">
+          <Reveal className="card space-y-6 p-5 sm:p-6">
             <section>
               <h2 className="mb-2 text-lg">{t('opps.detail.about')}</h2>
               <p>
@@ -111,8 +111,8 @@ export function OpportunityDetailPage({ oppId }: { oppId: string }) {
                 ))}
               </ul>
             </section>
-            <section className="flex items-start gap-3 rounded-xl bg-yellow/15 p-4">
-              <FileCheck2 className="mt-0.5 size-5 shrink-0 text-ink" aria-hidden />
+            <section className="flex items-start gap-3 rounded-xl border-s-4 border-s-yellow bg-notice-soft p-4">
+              <FileCheck2 className="mt-0.5 size-5 shrink-0 text-orange" aria-hidden />
               <div>
                 <h2 className="text-base">{t('opps.detail.evidence')}</h2>
                 <p className="text-sm">{l(opp.evidence)}</p>
@@ -126,7 +126,7 @@ export function OpportunityDetailPage({ oppId }: { oppId: string }) {
             <MatchPanel match={explainMatch(youth, opp)} />
           </Reveal>
         </div>
-        <div className="lg:sticky lg:top-24 lg:self-start">
+        <div className="xl:sticky xl:top-24 xl:self-start">
           <ApplyPanel youth={youth} opp={opp} app={app} />
         </div>
       </div>

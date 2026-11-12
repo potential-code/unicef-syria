@@ -99,21 +99,14 @@
           "title": "Earn",
           "body": "Apply to sample jobs, internships, freelance projects and enterprise support with your evidence ready."
         }
-      }
+      },
+      "step": "Step {{n}}"
     },
     "featured": {
       "eyebrow": "Featured courses",
       "title": "Short courses, real practice.",
       "body": "Every course has four units, a practical task and a quick knowledge check. Start with these.",
       "cta": "Browse all 16 courses"
-    },
-    "stats": {
-      "title": "What is inside the demo",
-      "label": "Sample catalogue, not programme results",
-      "courses": "sample courses",
-      "routes": "career routes",
-      "coaches": "AI coaches (scripted)",
-      "mentors": "sample mentors"
     },
     "centres": {
       "eyebrow": "Sample centres",
@@ -141,12 +134,14 @@
       "employers": {
         "title": "Hiring young talent?",
         "body": "Post opportunities, see skills evidence and give feedback that improves training.",
-        "cta": "For employers"
+        "cta": "For employers",
+        "eyebrow": "Employers"
       },
       "partners": {
         "title": "Running a programme?",
         "body": "Follow participation, learning and outcomes across your centres in one place.",
-        "cta": "For programme partners"
+        "cta": "For programme partners",
+        "eyebrow": "Programme partners"
       }
     },
     "final": {
@@ -445,6 +440,13 @@
       "d_notDisclosed": "Prefer not to say",
       "d_yes": "Yes",
       "d_no": "No"
+    },
+    "panel": {
+      "eyebrow": "Join Youth Pathways",
+      "title": "Your profile is the start of your journey.",
+      "point1": "Five short steps, about five minutes, with a draft you can save.",
+      "point2": "Get route suggestions and courses matched to your interests.",
+      "point3": "You decide what employers and mentors can see."
     }
   }
 }

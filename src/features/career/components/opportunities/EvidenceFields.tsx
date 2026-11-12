@@ -46,7 +46,7 @@ export function EvidenceFields({
   if (track === 'freelance') {
     return (
       <div className="space-y-5">
-        <div className="rounded-xl border p-3">
+        <div className="rounded-xl border border-border/70 bg-sky-50/40 p-3">
           <p className="text-sm font-semibold">{t('opps.apply.req.serviceProfile')}</p>
           {tk.freelanceProfile ? (
             <p className="mt-1 text-sm text-ink-soft">{tk.freelanceProfile.services}</p>
@@ -100,7 +100,7 @@ export function EvidenceFields({
 
   if (track === 'enterprise') {
     return tk.business ? (
-      <div className="flex items-start gap-3 rounded-xl border p-3">
+      <div className="flex items-start gap-3 rounded-xl border border-border/70 bg-sky-50/40 p-3">
         <Checkbox
           id="attach-biz"
           checked={form.attachBusiness}
@@ -116,7 +116,7 @@ export function EvidenceFields({
         </Label>
       </div>
     ) : (
-      <p className="rounded-xl border p-3 text-sm">
+      <p className="rounded-xl border border-border/70 bg-sky-50/40 p-3 text-sm">
         {t('opps.apply.noBusiness')} {toolkitLink}
       </p>
     )
@@ -126,7 +126,7 @@ export function EvidenceFields({
   return (
     <div className="space-y-5">
       {tk.cv ? (
-        <div className="flex items-start gap-3 rounded-xl border p-3">
+        <div className="flex items-start gap-3 rounded-xl border border-border/70 bg-sky-50/40 p-3">
           <Checkbox
             id="attach-cv"
             checked={form.attachCv}
@@ -140,12 +140,12 @@ export function EvidenceFields({
           </Label>
         </div>
       ) : (
-        <p className="rounded-xl border p-3 text-sm">
+        <p className="rounded-xl border border-border/70 bg-sky-50/40 p-3 text-sm">
           {t('opps.apply.noCv')} {toolkitLink}
         </p>
       )}
       {opp.evidenceCourses.length > 0 && (
-        <fieldset className="rounded-xl border p-3">
+        <fieldset className="rounded-xl border border-border/70 bg-sky-50/40 p-3">
           <legend className="px-1 text-sm font-semibold">
             {t(`opps.apply.coursesRule.${rule}`)}
           </legend>

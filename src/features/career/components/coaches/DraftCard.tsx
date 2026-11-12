@@ -25,7 +25,7 @@ export function DraftCard({
   const empty = !text.trim()
 
   return (
-    <div className="mt-3 rounded-2xl border-2 border-dashed border-cyan/60 bg-white p-4">
+    <div className="mt-3 rounded-2xl border border-border/70 border-t-4 border-t-cyan bg-white p-4 shadow-md">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <Label htmlFor={id} className="flex items-center gap-1.5 text-sm font-bold text-navy">
           <PencilLine className="size-4" aria-hidden />
@@ -45,7 +45,7 @@ export function DraftCard({
         aria-invalid={empty}
       />
       {empty && <p className="mt-1 text-sm text-danger">{t('coaches.draft.empty')}</p>}
-      <label className="mt-3 flex min-h-11 cursor-pointer items-start gap-2 rounded-xl bg-notice-soft p-3 text-sm text-ink">
+      <label className="mt-3 flex cursor-pointer items-start gap-2 rounded-xl bg-notice-soft p-3 text-sm text-ink">
         <input
           type="checkbox"
           className="mt-0.5 size-5 accent-blue"

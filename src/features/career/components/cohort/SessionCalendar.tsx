@@ -1,5 +1,6 @@
 import type { Session } from '@shared/types'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import { formatDate, formatTime, useLocalized } from '@/i18n'
 import { now } from '@/lib/clock'
 import { cn } from '@/lib/utils'
@@ -39,12 +40,13 @@ export function SessionCalendar({
   )
 
   return (
-    <div className="overflow-hidden rounded-2xl border bg-white shadow-sm">
-      <div className="flex items-center justify-between bg-grad-unicef px-5 py-3 text-white">
-        <p className="text-lg font-bold">
+    <div className="card overflow-hidden">
+      <div className="relative flex items-center justify-between overflow-hidden bg-grad-unicef px-5 py-3.5 text-white">
+        <Motif variant="corner" className="text-white/15" />
+        <p className="relative text-lg font-bold">
           {formatDate(first.toISOString(), lang, { month: 'long', year: 'numeric' })}
         </p>
-        <p className="text-xs text-white/85">{t('cohort.syriaTime')}</p>
+        <p className="relative text-xs text-white/85">{t('cohort.syriaTime')}</p>
       </div>
       <div className="grid grid-cols-7 border-b bg-sky-50 text-center text-xs font-semibold text-navy">
         {weekdays.map((w) => (
@@ -84,11 +86,11 @@ export function SessionCalendar({
                     onClick={() => onSelect(s.id)}
                     aria-pressed={selected === s.id}
                     className={cn(
-                      'block min-h-11 w-full rounded-md px-1 py-0.5 text-start text-[0.65rem] leading-tight font-semibold sm:px-1.5 sm:text-xs',
+                      'block min-h-9 w-full rounded-md px-1 py-0.5 text-start text-[0.65rem] leading-tight font-semibold sm:px-1.5 sm:text-xs',
                       s.public
                         ? 'bg-yellow text-ink'
                         : s.format === 'online'
-                          ? 'bg-cyan/25 text-navy'
+                          ? 'bg-sky-100 text-navy ring-1 ring-cyan/40'
                           : 'bg-blue text-white',
                       selected === s.id && 'ring-2 ring-navy ring-offset-1',
                     )}
@@ -105,7 +107,7 @@ export function SessionCalendar({
         })}
       </div>
       <div className="flex flex-wrap gap-4 px-5 py-3 text-xs text-ink-soft">
-        <Legend className="bg-cyan/25" label={t('common:format.online')} />
+        <Legend className="bg-sky-100 ring-1 ring-cyan/40" label={t('common:format.online')} />
         <Legend className="bg-blue" label={t('common:format.centre')} />
         <Legend className="bg-yellow" label={t('cohort.publicEvent')} />
       </div>

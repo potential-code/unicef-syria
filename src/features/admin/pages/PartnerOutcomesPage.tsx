@@ -2,12 +2,9 @@ import { useTranslation } from 'react-i18next'
 import { PageHeader } from '@/components/shared/PageHeader'
 import { CentreCompare } from '../components/CentreCompare'
 import { FilterBar } from '../components/FilterBar'
-import { HistoricalEmpty } from '../components/HistoricalEmpty'
-import { LayerSection } from '../components/LayerSection'
 import { OutcomeSections } from '../components/OutcomeSections'
 import { ReportContext } from '../components/ReportContext'
 import { useAdminFilters } from '../lib/useAdminFilters'
-import { useHistorical } from '../lib/useHistorical'
 import { useScope } from '../lib/useScope'
 
 /** Partner outcomes: employment, freelance and enterprise kept as separate measures. */
@@ -15,7 +12,6 @@ export function PartnerOutcomesPage() {
   const { t } = useTranslation('admin')
   const { filters } = useAdminFilters()
   const { centreIds } = useScope()
-  const h = useHistorical(filters)
   return (
     <div className="space-y-6">
       <PageHeader title={t('partner.outcomes.title')} description={t('partner.outcomes.body')} />
@@ -32,17 +28,14 @@ export function PartnerOutcomesPage() {
         ]}
       />
       <ReportContext />
-      <OutcomeSections />
-      <LayerSection layer="historical">
-        {h.availability !== 'ok' || h.empty ? (
-          <HistoricalEmpty availability={h.availability} />
-        ) : (
+      <OutcomeSections
+        historicalExtra={
           <CentreCompare
             centreIds={centreIds.filter((c) => !filters.centreId || c === filters.centreId)}
             filters={filters}
           />
-        )}
-      </LayerSection>
+        }
+      />
     </div>
   )
 }

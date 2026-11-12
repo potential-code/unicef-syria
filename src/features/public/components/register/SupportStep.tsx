@@ -10,7 +10,7 @@ export function SupportStep({ form, set }: StepProps) {
   const { t } = useTranslation('public')
   return (
     <div className="space-y-6">
-      <div className="flex gap-3 rounded-2xl bg-sky-100 p-4 text-sm text-navy">
+      <div className="flex gap-2.5 rounded-xl bg-sky-100 p-3.5 text-sm text-navy">
         <Lock className="mt-0.5 size-5 shrink-0" aria-hidden />
         <div>
           <p className="font-bold">{t('register.support.whoTitle')}</p>

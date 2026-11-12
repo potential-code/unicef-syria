@@ -4,6 +4,7 @@ import { FileText, Save } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
+import { Motif } from '@/components/brand'
 import { Button } from '@/components/ui/button'
 import { saveToolkit } from '@/store/actions/toolkit'
 import { CertificateSuggestions } from './CertificateSuggestions'
@@ -51,7 +52,7 @@ export function CvBuilder({ youth }: { youth: Youth }) {
         </>
       }
     >
-      <div className="grid gap-6 lg:grid-cols-[1fr_20rem]">
+      <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_18rem]">
         <div className="space-y-5">
           <Field
             id="cv-summary"
@@ -108,7 +109,8 @@ export function CvBuilder({ youth }: { youth: Youth }) {
             onChange={(v) => set('includeCertificates', v)}
           />
         </div>
-        <aside className="h-fit space-y-2 rounded-2xl bg-navy p-5 text-white on-dark">
+        <aside className="relative h-fit space-y-2 overflow-hidden rounded-2xl bg-[linear-gradient(150deg,var(--unicef-navy),#002a73)] p-5 text-white shadow-lg on-dark [&>*:not(:first-child)]:relative">
+          <Motif variant="corner" className="text-cyan/25" />
           <h3 className="text-sm font-bold uppercase tracking-wide text-white/80">
             {t('toolkit.cv.contact')}
           </h3>
@@ -119,7 +121,7 @@ export function CvBuilder({ youth }: { youth: Youth }) {
           <p className="pt-2 text-xs text-white/75">{t('toolkit.cv.contactHint')}</p>
           <Link
             to="/youth/profile"
-            className="inline-flex min-h-11 items-center font-semibold text-yellow hover:underline"
+            className="inline-flex min-h-9 items-center font-semibold text-yellow hover:underline"
           >
             {t('toolkit.cv.editProfile')}
           </Link>

@@ -1,51 +1,35 @@
+import { CircleCheck } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useTranslation } from 'react-i18next'
+import { StatCard } from '@/components/shared/StatCard'
 
-/** Profile completion ring with a plain-language status. */
+/** Profile completion as a stat card with a plain-language status and a progress bar. */
 export function CompletionMeter({ value, complete }: { value: number; complete: boolean }) {
   const { t } = useTranslation('career')
-  const r = 28
-  const c = 2 * Math.PI * r
   return (
-    <div className="flex items-center gap-4 rounded-2xl bg-white/15 p-3 pe-5">
-      <svg
-        width="72"
-        height="72"
-        viewBox="0 0 72 72"
-        className="-rotate-90"
-        role="img"
-        aria-label={t('profile.completion', { value })}
-      >
-        <circle
-          cx="36"
-          cy="36"
-          r={r}
-          fill="none"
-          stroke="currentColor"
-          strokeOpacity="0.25"
-          strokeWidth="8"
-        />
-        <motion.circle
-          cx="36"
-          cy="36"
-          r={r}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="8"
-          strokeLinecap="round"
-          strokeDasharray={c}
-          initial={{ strokeDashoffset: c }}
-          animate={{ strokeDashoffset: c - (c * value) / 100 }}
-          transition={{ duration: 0.8 }}
-          className="text-yellow"
-        />
-      </svg>
-      <div>
-        <p className="text-2xl font-bold tabular-nums text-white">{value}%</p>
-        <p className="text-sm text-white/85">
-          {complete ? t('profile.requiredDone') : t('profile.requiredMissing')}
-        </p>
-      </div>
-    </div>
+    <StatCard
+      tone={complete ? 'blue' : 'yellow'}
+      icon={CircleCheck}
+      label={t('profile.completionLabel')}
+      value={`${value}%`}
+      hint={complete ? t('profile.requiredDone') : t('profile.requiredMissing')}
+      footer={
+        <div
+          className="h-2 overflow-hidden rounded-full bg-black/15"
+          role="progressbar"
+          aria-valuenow={value}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label={t('profile.completion', { value })}
+        >
+          <motion.div
+            className={complete ? 'h-full rounded-full bg-yellow' : 'h-full rounded-full bg-navy'}
+            initial={{ width: 0 }}
+            animate={{ width: `${value}%` }}
+            transition={{ duration: 0.8 }}
+          />
+        </div>
+      }
+    />
   )
 }

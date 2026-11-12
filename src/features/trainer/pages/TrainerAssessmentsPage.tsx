@@ -6,7 +6,6 @@ import { EmptyState } from '@/components/shared/EmptyState'
 import { PageHeader } from '@/components/shared/PageHeader'
 import { StatusBadge } from '@/components/shared/StatusBadge'
 import { Button } from '@/components/ui/button'
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { COURSE_BY_ID } from '@/data/courses'
 import { COHORT_COURSES } from '@/data/orgs'
 import { useLocalized } from '@/i18n'
@@ -14,6 +13,7 @@ import { parseReview } from '@/store/actions/work-extra'
 import { useDb } from '@/store/db'
 import { LearnerName } from '../components/LearnerName'
 import { ReviewDialog } from '../components/ReviewDialog'
+import { SegmentTabs } from '../components/SegmentTabs'
 import { useTrainerScope } from '../hooks/useTrainerScope'
 
 type Tab = 'submitted' | 'returned' | 'approved'
@@ -45,22 +45,15 @@ export function TrainerAssessmentsPage() {
   return (
     <div className="space-y-6">
       <PageHeader title={t('assessments.title')} description={t('assessments.subtitle')} />
-      <Tabs value={tab} onValueChange={(v) => setTab(v as Tab)}>
-        <TabsList className="no-scrollbar h-auto w-full justify-start overflow-x-auto rounded-xl bg-sky-50 p-1">
-          {TABS.map((s) => (
-            <TabsTrigger
-              key={s}
-              value={s}
-              className="min-h-10 flex-none px-3 data-[state=active]:text-blue"
-            >
-              {t(`practical.${s}`)}
-              <span className="ms-1 rounded-full bg-white px-1.5 text-xs tabular-nums text-ink-soft">
-                {all.filter((r) => r.state === s).length}
-              </span>
-            </TabsTrigger>
-          ))}
-        </TabsList>
-      </Tabs>
+      <SegmentTabs
+        value={tab}
+        onChange={setTab}
+        items={TABS.map((s) => ({
+          value: s,
+          label: t(`practical.${s}`),
+          count: all.filter((r) => r.state === s).length,
+        }))}
+      />
       {rows.length === 0 ? (
         <EmptyState
           icon={tab === 'submitted' ? Inbox : ClipboardCheck}
@@ -70,28 +63,26 @@ export function TrainerAssessmentsPage() {
       ) : (
         <ul className="grid gap-4 md:grid-cols-2 [&>*]:min-w-0">
           {rows.map(({ y, courseId, review }) => (
-            <li
-              key={`${y.id}-${courseId}`}
-              className="lift flex flex-col gap-3 rounded-2xl border bg-card p-5 shadow-sm"
-            >
-              <div className="flex items-start justify-between gap-3">
-                <LearnerName youth={y} sub={y.cohortIds.join(', ')} />
+            <li key={`${y.id}-${courseId}`} className="card flex flex-col gap-4 p-5">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <LearnerName youth={y} sub={y.cohortIds.join(', ')} className="min-w-0 flex-1" />
                 <StatusBadge
+                  className="shrink-0"
                   tone={tab === 'approved' ? 'success' : tab === 'returned' ? 'notice' : 'info'}
                 >
                   {t(`practical.${tab}`)}
                 </StatusBadge>
               </div>
-              <div>
-                <p className="text-xs font-semibold text-blue">{courseId}</p>
-                <p className="font-bold">{l(COURSE_BY_ID[courseId].title)}</p>
+              <div className="border-t border-border/70 pt-3">
+                <p className="text-xs font-bold tracking-wide text-blue uppercase">{courseId}</p>
+                <p className="mt-0.5 font-bold text-navy">{l(COURSE_BY_ID[courseId].title)}</p>
                 <p className="mt-1 line-clamp-2 text-sm text-ink-soft">
                   {l(COURSE_BY_ID[courseId].practicalTask)}
                 </p>
               </div>
               {review && (
-                <div className="rounded-xl bg-muted p-3 text-sm">
-                  <p className="font-semibold tabular-nums">
+                <div className="rounded-xl bg-sky-50 p-3 text-sm ring-1 ring-cyan/20">
+                  <p className="font-semibold text-navy tabular-nums">
                     {t('review.total', { total: review.scores.reduce((a, b) => a + b, 0), max: 6 })}
                   </p>
                   {review.feedback && <p className="mt-1 text-ink-soft">{review.feedback}</p>}

@@ -39,26 +39,43 @@ export function StageTimeline({ app }: { app: Application }) {
               <span
                 aria-hidden
                 className={cn(
-                  'absolute start-[1.1rem] top-10 h-[calc(100%-2.5rem)] w-1 rounded-full md:start-[calc(50%+1.5rem)] md:top-[1.1rem] md:h-1 md:w-[calc(100%-3rem)]',
-                  done ? 'bg-blue' : 'bg-sky-200',
+                  'absolute start-[0.94rem] top-9 h-[calc(100%-2.5rem)] w-0.5 rounded-full md:start-[calc(50%+1.5rem)] md:top-[0.94rem] md:h-0.5 md:w-[calc(100%-3rem)]',
+                  done
+                    ? 'bg-blue'
+                    : 'bg-[repeating-linear-gradient(90deg,var(--color-sky-200)_0_6px,transparent_6px_10px)] max-md:bg-[repeating-linear-gradient(180deg,var(--color-sky-200)_0_6px,transparent_6px_10px)]',
                 )}
               />
             )}
             <motion.span
               initial={false}
-              animate={current ? { scale: [1, 1.12, 1] } : { scale: 1 }}
+              animate={
+                current
+                  ? {
+                      boxShadow: [
+                        '0 0 0 0px rgb(255 194 14 / 0.55)',
+                        '0 0 0 8px rgb(255 194 14 / 0)',
+                      ],
+                    }
+                  : undefined
+              }
               transition={current ? { duration: 1.6, repeat: Number.POSITIVE_INFINITY } : undefined}
               className={cn(
-                'relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full border-4 text-sm font-bold',
-                done && 'border-blue bg-blue text-white',
-                current && 'border-yellow bg-navy text-white shadow-lg',
-                !done && !current && 'border-sky-200 bg-white text-ink-soft',
+                'relative z-10 flex size-8 shrink-0 items-center justify-center rounded-full text-xs font-bold tabular-nums',
+                done && 'bg-blue text-white shadow-sm',
+                current && 'bg-navy text-white shadow-md ring-[3px] ring-yellow',
+                !done && !current && 'border-2 border-sky-200 bg-white text-ink-soft',
               )}
             >
-              {done ? <Check className="size-5" aria-hidden /> : i + 1}
+              {done ? <Check className="size-4" strokeWidth={3} aria-hidden /> : i + 1}
             </motion.span>
-            <span className="pt-1.5 md:px-1">
-              <span className={cn('block text-sm font-bold', !done && !current && 'text-ink-soft')}>
+            <span className="pt-1 md:px-1 md:pt-2.5">
+              <span
+                className={cn(
+                  'block text-sm leading-snug font-bold',
+                  current && 'text-navy',
+                  !done && !current && 'text-ink-soft',
+                )}
+              >
                 {t(`common:stages.${s}`)}
               </span>
               <span className="block text-xs text-ink-soft">{state}</span>
@@ -70,20 +87,20 @@ export function StageTimeline({ app }: { app: Application }) {
         <li className="relative flex flex-1 gap-3 md:flex-col md:items-center md:text-center">
           <span
             className={cn(
-              'relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full border-4',
-              app.stage === 'notSelected'
-                ? 'border-orange bg-orange text-white'
-                : 'border-ink-soft bg-muted text-ink',
+              'relative z-10 flex size-8 shrink-0 items-center justify-center rounded-full shadow-sm',
+              app.stage === 'notSelected' ? 'bg-orange text-white' : 'bg-ink-soft text-white',
             )}
           >
             {app.stage === 'notSelected' ? (
-              <CircleSlash className="size-5" aria-hidden />
+              <CircleSlash className="size-4" aria-hidden />
             ) : (
-              <Undo2 className="size-5" aria-hidden />
+              <Undo2 className="size-4" aria-hidden />
             )}
           </span>
-          <span className="pt-1.5 md:px-1">
-            <span className="block text-sm font-bold">{t(`common:stages.${app.stage}`)}</span>
+          <span className="pt-1 md:px-1 md:pt-2.5">
+            <span className="block text-sm leading-snug font-bold">
+              {t(`common:stages.${app.stage}`)}
+            </span>
             <span className="block text-xs text-ink-soft">
               {t(`apps.detail.branch.${app.stage}`)}
             </span>

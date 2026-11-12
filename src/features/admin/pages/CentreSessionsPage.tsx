@@ -30,7 +30,10 @@ export function CentreSessionsPage() {
   return (
     <div className="space-y-6">
       <PageHeader title={t('sessions.title')} description={t('sessions.body')} />
-      <ChartLegend items={legend} />
+      <div className="card flex flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3">
+        <span className="text-xs font-semibold text-ink">{t('record.attendance')}</span>
+        <ChartLegend items={legend} />
+      </div>
       {sessions.length === 0 && (
         <EmptyState
           icon={CalendarX2}
@@ -46,10 +49,7 @@ export function CentreSessionsPage() {
             members.filter((y) => (y.attendance[s.id] ?? 'unmarked') === m).length
           const past = Date.parse(s.end) < nowMs()
           return (
-            <li
-              key={s.id}
-              className="grid gap-4 rounded-2xl border bg-white p-5 shadow-sm md:grid-cols-[1.3fr_1fr]"
-            >
+            <li key={s.id} className="card grid gap-4 p-5 md:grid-cols-[1.3fr_1fr]">
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="rounded-lg bg-blue px-2 py-0.5 text-xs font-bold text-white">
@@ -59,7 +59,7 @@ export function CentreSessionsPage() {
                     {past ? t('sessions.held') : t('sessions.upcoming')}
                   </StatusBadge>
                 </div>
-                <h2 className="mt-2 text-lg">{l(s.title)}</h2>
+                <h2 className="mt-2 text-base font-semibold">{l(s.title)}</h2>
                 <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ink-soft">
                   <span>
                     {d(s.start)} · {formatTime(s.start, lang)}–{formatTime(s.end, lang)}

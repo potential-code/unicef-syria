@@ -1,9 +1,18 @@
 import { Link } from '@tanstack/react-router'
-import { Briefcase, CalendarClock, Handshake, Inbox, Plus, Star, Users } from 'lucide-react'
+import {
+  ArrowRight,
+  Briefcase,
+  CalendarClock,
+  Handshake,
+  Inbox,
+  Plus,
+  Star,
+  Users,
+} from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion'
 import { EmptyState } from '@/components/shared/EmptyState'
-import { StatCard } from '@/components/shared/StatCard'
+import { STAT_TONES, StatCard } from '@/components/shared/StatCard'
 import { Button } from '@/components/ui/button'
 import { ApplicationsTable } from '../components/ApplicationsTable'
 import { OpportunitySnapshot } from '../components/OpportunitySnapshot'
@@ -47,11 +56,7 @@ export function EmployerDashboardPage() {
         title={t('dashboard.title')}
         body={t('dashboard.body')}
         actions={
-          <Button
-            asChild
-            variant="secondary"
-            className="rounded-full bg-white text-navy hover:bg-sky-100"
-          >
+          <Button asChild className="rounded-full bg-white text-navy shadow-md hover:bg-sky-100">
             <Link to="/employer/opportunities/new">
               <Plus className="size-4" aria-hidden />
               {t('opps.create')}
@@ -60,62 +65,70 @@ export function EmployerDashboardPage() {
         }
       />
 
-      <Stagger className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-5">
-        {stats.map((s) => (
-          <StaggerItem key={s.key}>
-            <Link
-              to={s.to}
-              className="lift block rounded-2xl focus-visible:outline-2 focus-visible:outline-blue"
-            >
+      <div>
+        <Stagger className="grid grid-cols-2 gap-3 max-sm:[&>*:last-child:nth-child(odd)]:col-span-2 sm:grid-cols-[repeat(auto-fit,minmax(12.5rem,1fr))] sm:gap-4">
+          {stats.map((s, i) => (
+            <StaggerItem key={s.key} className="h-full">
               <StatCard
                 label={t(`dashboard.stats.${s.key}`)}
                 value={s.value}
                 icon={s.icon}
                 hint={t(`dashboard.hints.${s.key}`)}
+                tone={STAT_TONES[i % STAT_TONES.length]}
+                to={s.to}
                 className="h-full"
               />
-            </Link>
-          </StaggerItem>
-        ))}
-      </Stagger>
-      <p className="mt-3 text-xs text-ink-soft">
-        {t('dashboard.freelanceNote', { count: freelanceDone })}
-      </p>
-
-      <div className="mt-8 grid gap-6 xl:grid-cols-[1fr_22rem]">
-        <Reveal as="section">
-          <div className="mb-3 flex items-center justify-between gap-3">
-            <h2 className="text-xl">{t('dashboard.needsAction')}</h2>
-            <Button asChild variant="ghost" size="sm" className="text-blue">
-              <Link to="/employer/applications">{t('common:viewAll')}</Link>
-            </Button>
-          </div>
-          {applications.length === 0 ? (
-            <EmptyState
-              icon={Inbox}
-              title={t('empty.noApplicants.title')}
-              body={t('empty.noApplicants.body')}
-              action={
-                <Button asChild className="rounded-full">
-                  <Link to="/employer/opportunities/new">{t('opps.create')}</Link>
-                </Button>
-              }
-            />
-          ) : active.length === 0 ? (
-            <EmptyState
-              icon={Inbox}
-              title={t('dashboard.allClear.title')}
-              body={t('dashboard.allClear.body')}
-            />
-          ) : (
-            <ApplicationsTable apps={active} opportunities={opportunities} />
-          )}
-        </Reveal>
-        <Reveal as="section" delay={0.1}>
-          <h2 className="mb-3 text-xl">{t('dashboard.yourOpps')}</h2>
-          <OpportunitySnapshot opportunities={opportunities} applications={applications} />
-        </Reveal>
+            </StaggerItem>
+          ))}
+        </Stagger>
+        <p className="mt-3 text-xs text-ink-soft">
+          {t('dashboard.freelanceNote', { count: freelanceDone })}
+        </p>
       </div>
+
+      <Reveal as="section" className="mt-10">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <h2 className="min-w-0 flex-1 text-xl text-navy">{t('dashboard.needsAction')}</h2>
+          <Button asChild variant="ghost" size="sm" className="shrink-0 text-blue">
+            <Link to="/employer/applications">
+              {t('common:viewAll')}
+              <ArrowRight className="size-4 rtl-mirror" aria-hidden />
+            </Link>
+          </Button>
+        </div>
+        {applications.length === 0 ? (
+          <EmptyState
+            icon={Inbox}
+            title={t('empty.noApplicants.title')}
+            body={t('empty.noApplicants.body')}
+            action={
+              <Button asChild className="rounded-full">
+                <Link to="/employer/opportunities/new">{t('opps.create')}</Link>
+              </Button>
+            }
+          />
+        ) : active.length === 0 ? (
+          <EmptyState
+            icon={Inbox}
+            title={t('dashboard.allClear.title')}
+            body={t('dashboard.allClear.body')}
+          />
+        ) : (
+          <ApplicationsTable apps={active} opportunities={opportunities} />
+        )}
+      </Reveal>
+      <Reveal as="section" className="mt-10" delay={0.1}>
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <h2 className="min-w-0 flex-1 text-xl text-navy">{t('dashboard.yourOpps')}</h2>
+          <Button asChild variant="ghost" size="sm" className="shrink-0 text-blue">
+            <Link to="/employer/opportunities">
+              {t('common:viewAll')}
+              <ArrowRight className="size-4 rtl-mirror" aria-hidden />
+            </Link>
+          </Button>
+        </div>
+        <OpportunitySnapshot opportunities={opportunities} applications={applications} />
+      </Reveal>
     </div>
   )
 }

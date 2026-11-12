@@ -1,20 +1,29 @@
 import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Reveal } from '@/components/motion'
+import { GlobeGrid, LaurelBranch, Rings } from '@/components/brand'
 import { SmartImage } from '@/components/shared/SmartImage'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { gsap } from '@/lib/gsap'
+import { cn } from '@/lib/utils'
 import { JOURNEY_STEPS } from '../../config'
+import { SectionIntro } from '../SectionIntro'
 
-const STEP_TONES = [
-  'bg-cyan text-ink',
-  'bg-blue text-white',
-  'bg-yellow text-ink',
-  'bg-orange text-white',
-  'bg-navy text-white',
+/** Brand tone per step: accent bar, dot, icon colour and corner motif. */
+const FIRST_TONE = { bar: 'bg-cyan', dot: 'bg-cyan', icon: 'text-blue', motif: 'text-cyan/25' }
+const TONES = [
+  FIRST_TONE,
+  { bar: 'bg-blue', dot: 'bg-blue', icon: 'text-blue', motif: 'text-blue/15' },
+  { bar: 'bg-yellow', dot: 'bg-yellow', icon: 'text-orange', motif: 'text-yellow/35' },
+  { bar: 'bg-orange', dot: 'bg-orange', icon: 'text-orange', motif: 'text-orange/20' },
+  { bar: 'bg-navy', dot: 'bg-navy', icon: 'text-navy', motif: 'text-navy/15' },
 ]
+const MOTIFS = [GlobeGrid, LaurelBranch, Rings, LaurelBranch, GlobeGrid]
 
-/** "How the journey works": a numbered path whose progress line draws as you scroll. */
+/**
+ * "How the journey works": a zig-zag timeline. A progress line draws down the centre as you
+ * scroll; each step card slides in from its own side as the line reaches it. On phones the line
+ * runs down the start edge and every card sits beside it.
+ */
 export function JourneyPath() {
   const { t } = useTranslation('public')
   const reduce = useReducedMotion()
@@ -22,104 +31,157 @@ export function JourneyPath() {
   const line = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
-    if (reduce || !list.current) return
     const root = list.current
-    const mm = gsap.matchMedia()
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
+    if (reduce || !root) return
+    const ctx = gsap.context(() => {
       gsap.fromTo(
         line.current,
         { scaleY: 0 },
         {
           scaleY: 1,
           ease: 'none',
-          scrollTrigger: { trigger: root, start: 'top 65%', end: 'bottom 65%', scrub: true },
+          scrollTrigger: { trigger: root, start: 'top 70%', end: 'bottom 70%', scrub: 0.4 },
         },
       )
-      const shift = document.documentElement.dir === 'rtl' ? -40 : 40
-      for (const item of root.querySelectorAll<HTMLElement>('[data-step]')) {
+      const rtl = document.documentElement.dir === 'rtl'
+      const wide = window.matchMedia('(min-width: 1024px)').matches
+      gsap.utils.toArray<HTMLElement>('[data-step]', root).forEach((item, i) => {
+        const fromStart = !wide || i % 2 === 0
+        const dx = (fromStart ? -1 : 1) * (rtl ? -1 : 1) * 70
+        const trigger = { trigger: item, start: 'top 72%', once: true }
         gsap.from(item.querySelector('[data-dot]'), {
-          scale: 0.4,
-          opacity: 0.3,
+          scale: 0,
           duration: 0.5,
-          ease: 'back.out(2)',
-          scrollTrigger: {
-            trigger: item,
-            start: 'top 65%',
-            toggleActions: 'play none none reverse',
-          },
+          ease: 'back.out(2.4)',
+          scrollTrigger: trigger,
         })
         gsap.from(item.querySelector('[data-body]'), {
-          x: shift,
-          opacity: 0,
-          duration: 0.7,
+          x: dx,
+          autoAlpha: 0,
+          duration: 0.8,
           ease: 'power3.out',
-          scrollTrigger: { trigger: item, start: 'top 75%' },
+          scrollTrigger: trigger,
         })
-      }
-    })
-    return () => mm.revert()
+        const pic = item.querySelector('[data-pic]')
+        if (pic) {
+          gsap.fromTo(
+            pic,
+            { clipPath: 'inset(0% 0% 100% 0% round 1.5rem)', scale: 1.06 },
+            {
+              clipPath: 'inset(0% 0% 0% 0% round 1.5rem)',
+              scale: 1,
+              duration: 1,
+              ease: 'power3.out',
+              scrollTrigger: trigger,
+            },
+          )
+        }
+        gsap.from(item.querySelector('[data-num]'), {
+          yPercent: 40,
+          autoAlpha: 0,
+          duration: 1,
+          delay: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: trigger,
+        })
+      })
+    }, root)
+    return () => ctx.revert()
   }, [reduce])
 
   return (
     <section
       aria-labelledby="journey-title"
-      className="relative overflow-x-clip bg-white py-20 sm:py-28"
+      className="relative overflow-hidden bg-white py-20 sm:py-24"
     >
-      <span
-        className="pointer-events-none absolute -end-40 top-20 size-[30rem] rounded-full bg-sky-100 blur-3xl"
-        aria-hidden
-      />
-      <div className="container-page relative grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
-        <div className="lg:sticky lg:top-28 lg:self-start">
-          <Reveal>
-            <p className="mb-3 text-sm font-bold tracking-wider text-blue uppercase">
-              {t('home.journey.eyebrow')}
-            </p>
-            <h2 id="journey-title" className="text-4xl sm:text-5xl">
-              {t('home.journey.title')}
-            </h2>
-            <p className="mt-4 text-lg text-ink-soft">{t('home.journey.body')}</p>
-          </Reveal>
-          <Reveal className="relative mt-8 hidden lg:block">
-            <div className="overflow-hidden rounded-[2rem] shadow-lg">
-              <SmartImage
-                src="images/generated/scene-mentor.webp"
-                alt={t('home.journey.imageAlt')}
-                className="aspect-[4/3] w-full"
-              />
-            </div>
-            <p className="absolute -bottom-5 start-6 max-w-xs rounded-2xl bg-yellow px-4 py-3 text-sm font-bold text-ink shadow-lg">
-              {t('home.journey.caption')}
-            </p>
-          </Reveal>
-        </div>
-        <ol ref={list} className="relative space-y-10 ps-2">
+      <div className="pointer-events-none absolute inset-0 text-blue/[0.06]" aria-hidden>
+        <LaurelBranch className="absolute -end-6 top-16 h-72 w-auto" mirrored />
+        <LaurelBranch className="absolute -start-10 bottom-8 h-56 w-auto" />
+      </div>
+      <div className="container-page relative">
+        <SectionIntro
+          id="journey-title"
+          eyebrow={t('home.journey.eyebrow')}
+          title={t('home.journey.title')}
+          body={t('home.journey.body')}
+          className="mx-auto mb-14 text-center [&>p:first-child]:justify-center"
+        />
+        <ol ref={list} className="relative mx-auto max-w-5xl space-y-8 lg:space-y-10">
           <span
-            className="absolute start-[2.1rem] top-4 bottom-4 w-1 rounded-full bg-sky-100"
+            className="absolute start-[0.6875rem] top-2 bottom-2 w-0.5 rounded-full bg-sky-100 lg:start-1/2 lg:-translate-x-1/2 rtl:lg:translate-x-1/2"
             aria-hidden
           />
           <span
             ref={line}
-            className="absolute start-[2.1rem] top-4 bottom-4 w-1 origin-top rounded-full bg-grad-unicef"
+            className="absolute start-[0.6875rem] top-2 bottom-2 w-0.5 origin-top rounded-full bg-grad-unicef-v lg:start-1/2 lg:-translate-x-1/2 rtl:lg:translate-x-1/2"
             aria-hidden
           />
-          {JOURNEY_STEPS.map((s, i) => (
-            <li key={s.id} data-step className="relative flex gap-5">
-              <span
-                data-dot
-                className={`relative z-10 flex size-14 shrink-0 items-center justify-center rounded-2xl text-xl font-extrabold shadow-md ${STEP_TONES[i]}`}
+          {JOURNEY_STEPS.map((s, i) => {
+            const tone = TONES[i % TONES.length] ?? FIRST_TONE
+            const Motif = MOTIFS[i % MOTIFS.length] ?? GlobeGrid
+            const end = i % 2 === 1
+            return (
+              <li
+                key={s.id}
+                data-step
+                className="relative grid grid-cols-[1.5rem_minmax(0,1fr)] gap-5 lg:grid-cols-[minmax(0,1fr)_2rem_minmax(0,1fr)] lg:gap-8"
               >
-                {i + 1}
-              </span>
-              <div data-body className="flex-1 rounded-2xl border bg-white p-5 shadow-sm">
-                <div className="mb-1 flex items-center gap-2">
-                  <s.icon className="size-5 text-blue" aria-hidden />
-                  <h3 className="text-xl">{t(`home.journey.steps.${s.id}.title`)}</h3>
+                <span
+                  data-dot
+                  className={cn(
+                    'relative z-10 mt-7 size-6 rounded-full border-4 border-white shadow-md lg:col-start-2 lg:row-start-1 lg:mx-auto lg:mt-0 lg:self-center',
+                    tone.dot,
+                  )}
+                  aria-hidden
+                />
+                <div
+                  data-body
+                  className={cn(
+                    'card relative isolate min-w-0 self-center overflow-hidden p-6 lg:row-start-1',
+                    end ? 'lg:col-start-3' : 'lg:col-start-1',
+                  )}
+                >
+                  <span className={cn('absolute inset-x-0 top-0 h-1.5', tone.bar)} aria-hidden />
+                  <SmartImage
+                    src={s.image}
+                    alt=""
+                    className="-mx-6 -mt-6 mb-5 block aspect-[16/9] w-[calc(100%+3rem)] max-w-none lg:hidden"
+                  />
+                  <span
+                    data-num
+                    className="pointer-events-none absolute end-4 -top-3 -z-10 text-[5.5rem] leading-none font-extrabold text-blue/[0.07] select-none"
+                    aria-hidden
+                  >
+                    0{i + 1}
+                  </span>
+                  <Motif
+                    className={cn(
+                      'pointer-events-none absolute -end-6 -bottom-8 -z-10 h-28 w-auto',
+                      tone.motif,
+                    )}
+                  />
+                  <p className="mb-2 flex items-center gap-2 text-xs font-bold tracking-widest text-ink-soft uppercase">
+                    <s.icon className={cn('size-4', tone.icon)} aria-hidden />
+                    {t('home.journey.step', { n: i + 1 })}
+                  </p>
+                  <h3 className="text-lg sm:text-xl">{t(`home.journey.steps.${s.id}.title`)}</h3>
+                  <p className="mt-1.5 max-w-sm text-ink-soft">
+                    {t(`home.journey.steps.${s.id}.body`)}
+                  </p>
                 </div>
-                <p className="text-ink-soft">{t(`home.journey.steps.${s.id}.body`)}</p>
-              </div>
-            </li>
-          ))}
+                <div
+                  data-pic
+                  className={cn(
+                    'relative hidden aspect-[16/9] overflow-hidden rounded-3xl shadow-lg lg:row-start-1 lg:block',
+                    end ? 'lg:col-start-1' : 'lg:col-start-3',
+                  )}
+                >
+                  <SmartImage src={s.image} alt="" className="size-full" />
+                  <div className={cn('absolute inset-x-0 bottom-0 h-1.5', tone.bar)} aria-hidden />
+                </div>
+              </li>
+            )
+          })}
         </ol>
       </div>
     </section>

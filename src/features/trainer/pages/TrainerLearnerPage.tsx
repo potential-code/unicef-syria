@@ -2,6 +2,7 @@ import type { YouthId } from '@shared/types'
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, Compass } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import { Reveal } from '@/components/motion'
 import { AccessDenied } from '@/components/shared/AccessDenied'
 import { PageHeader } from '@/components/shared/PageHeader'
@@ -46,15 +47,15 @@ export function TrainerLearnerPage({ youthId }: { youthId: string }) {
   return (
     <div className="space-y-6">
       <PageHeader title={p.name} crumbs={crumbs} description={t('learner.subtitle')} />
-      <div className="grid gap-6 lg:grid-cols-[1fr_22rem] [&>*]:min-w-0">
+      <div className="grid gap-6 xl:grid-cols-[1fr_20rem] [&>*]:min-w-0">
         <div className="space-y-6">
-          <section className="rounded-2xl border bg-card p-5 shadow-sm">
+          <section className="card p-5 sm:p-6">
             <LearnerName
               youth={youth}
               sub={`${youth.id} · ${p.age} · ${p.governorate}`}
               link={false}
             />
-            <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-3">
+            <dl className="mt-4 grid gap-4 border-t border-border/70 pt-4 text-sm sm:grid-cols-3">
               <div>
                 <dt className="text-xs text-ink-soft">{t('learner.cohort')}</dt>
                 <dd className="font-semibold">{cohort ?? t('learner.notAssigned')}</dd>
@@ -81,9 +82,9 @@ export function TrainerLearnerPage({ youthId }: { youthId: string }) {
           {courses.length > 0 && (
             <section className="grid gap-4 sm:grid-cols-2">
               {courses.map((c) => (
-                <div key={c} className="rounded-2xl border bg-card p-5 shadow-sm">
-                  <p className="text-xs font-semibold text-blue">{c}</p>
-                  <p className="font-bold">{l(COURSE_BY_ID[c].title)}</p>
+                <div key={c} className="card min-w-0 p-5">
+                  <p className="text-xs font-bold tracking-wide text-blue uppercase">{c}</p>
+                  <p className="font-bold text-navy">{l(COURSE_BY_ID[c].title)}</p>
                   <div className="mt-3">
                     <MissingList progress={youth.progress[c]} />
                   </div>
@@ -92,31 +93,30 @@ export function TrainerLearnerPage({ youthId }: { youthId: string }) {
             </section>
           )}
 
-          <section className="rounded-2xl border bg-card p-5 shadow-sm">
-            <h2 className="mb-4 text-lg">{t('learner.record')}</h2>
+          <section className="card p-5 sm:p-6">
+            <h2 className="mb-4 text-lg text-navy">{t('learner.record')}</h2>
             <TrainingRecord items={items} />
           </section>
         </div>
 
         {next && (
           <Reveal>
-            <aside className="on-dark relative overflow-hidden rounded-2xl bg-grad-unicef p-5 text-white shadow-md lg:sticky lg:top-24">
-              <div
-                className="pointer-events-none absolute -end-10 -top-10 size-40 rounded-full bg-white/10"
-                aria-hidden
-              />
-              <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-white/85">
+            <aside className="on-dark relative overflow-hidden rounded-2xl bg-grad-unicef p-5 text-white shadow-lg sm:p-6 xl:sticky xl:top-24">
+              <Motif variant="card" className="text-white/[0.14]" />
+              <p className="relative flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-white/85">
                 <Compass className="size-4" aria-hidden />
                 {t('learner.nextAction')}
               </p>
-              <p className="mt-2 text-lg font-bold leading-snug">
+              <p className="relative mt-2 text-lg font-bold leading-snug">
                 {t(`nextAction.${next.key}.title`)}
               </p>
-              <p className="mt-1 text-sm text-white/85">{t(`nextAction.${next.key}.body`)}</p>
+              <p className="relative mt-1 text-sm text-white/85">
+                {t(`nextAction.${next.key}.body`)}
+              </p>
               <Button
                 asChild
                 variant="secondary"
-                className="mt-4 rounded-full bg-white text-navy hover:bg-sky-100"
+                className="relative mt-4 rounded-full bg-white text-navy hover:bg-sky-100"
               >
                 <Link to={next.to} params={next.params}>
                   {t(`nextAction.${next.key}.cta`)}

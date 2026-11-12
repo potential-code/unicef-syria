@@ -345,6 +345,14 @@ function supporting(): Youth[] {
     }),
   )
   notSelected.route = 'employment'
+  notSelected.assessment = {
+    answers: PRESET_ANSWERS.Y001,
+    scores: { C: 12, O: 8, P: 2, I: 2 },
+    completedAt: '2026-11-08T10:00:00+03:00',
+  }
+  notSelected.preferences = { earningModel: 'salary', environment: 'team', priority: 'stability' }
+  notSelected.pathGenerated = true
+  notSelected.plan = ['C01', 'C02', 'C03', 'C05', 'C06', 'C13']
   notSelected.cohortIds = ['K01']
   notSelected.trainingApplication = {
     programmeId: 'PR01',

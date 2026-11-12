@@ -83,7 +83,7 @@ export function CentreOverviewPage() {
         actions={
           <Link
             to="/centre/reports"
-            className="inline-flex min-h-11 items-center rounded-full px-3 text-sm font-semibold text-blue hover:bg-white"
+            className="inline-flex h-9 items-center gap-1 rounded-full bg-white px-3 text-sm font-semibold text-blue shadow-xs ring-1 ring-blue/20 hover:bg-blue hover:text-white"
           >
             {t('centre.fullReport')}
           </Link>

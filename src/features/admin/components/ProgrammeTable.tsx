@@ -31,11 +31,11 @@ export function ProgrammeTable({
   const { n, p, programme } = useLabels()
   const { linkSearch } = useAdminFilters()
   return (
-    <div className="overflow-x-auto rounded-2xl border bg-white shadow-sm">
-      <Table className="min-w-[48rem]">
+    <div className="card overflow-hidden">
+      <Table className="min-w-[48rem] lg:min-w-0 [&_th]:whitespace-normal">
         <TableHeader>
           <TableRow>
-            <TableHead>{t('table.programme')}</TableHead>
+            <TableHead className="min-w-44">{t('table.programme')}</TableHead>
             <TableHead>{t('kpi.registered')}</TableHead>
             <TableHead>{t('compare.enrolments')}</TableHead>
             <TableHead>{t('kpi.completion')}</TableHead>

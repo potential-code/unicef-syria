@@ -27,7 +27,7 @@ export function ChoiceField<T extends string>({
         {label}
       </Label>
       <Select value={value} onValueChange={(v) => onChange(v as T)}>
-        <SelectTrigger id={id} className="min-h-11 w-full">
+        <SelectTrigger id={id} className="w-full">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>

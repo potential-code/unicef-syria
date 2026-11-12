@@ -63,11 +63,7 @@ export function OpportunityForm({ scope }: { scope: OrgScope }) {
   )
 
   return (
-    <form
-      onSubmit={submit}
-      noValidate
-      className="grid gap-5 rounded-2xl border bg-white p-5 shadow-sm sm:grid-cols-2 sm:p-7"
-    >
+    <form onSubmit={submit} noValidate className="card grid gap-5 p-5 sm:grid-cols-2 sm:p-7">
       <Field id="opp-type" label={t('form.type')}>
         <ChoiceSelect
           id="opp-type"
@@ -169,11 +165,11 @@ export function OpportunityForm({ scope }: { scope: OrgScope }) {
           <FreelanceFields draft={draft} errors={errors} set={set} />
         </div>
       )}
-      <div className="flex flex-col-reverse gap-3 border-t pt-5 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-ink-soft">
+      <div className="flex flex-col-reverse gap-3 border-t border-border/70 pt-5 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
+        <p className="min-w-0 flex-1 text-sm text-ink-soft">
           {scope.approved ? t('form.publishNote') : t('form.approvalNote')}
         </p>
-        <Button type="submit" disabled={busy} className="rounded-full">
+        <Button type="submit" disabled={busy} className="shrink-0 rounded-full">
           {busy ? (
             <Loader2 className="size-4 animate-spin" aria-hidden />
           ) : (

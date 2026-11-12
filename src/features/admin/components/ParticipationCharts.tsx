@@ -48,7 +48,7 @@ export function ParticipationCharts({
   const gov = series('governorate')
   const govSum = gov.reduce((a, g) => a + g.value, 0)
   return (
-    <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))] gap-3">
       {showRoute && (
         <ChartCard
           title={t('charts.route')}

@@ -3,6 +3,7 @@ import { MessageSquareText, Wand2 } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
+import { Motif } from '@/components/brand'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import {
@@ -90,7 +91,7 @@ export function InterviewPractice({ youth }: { youth: Youth }) {
                   reset()
                 }}
               >
-                <SelectTrigger id="iv-opp" className="min-h-11 w-full">
+                <SelectTrigger id="iv-opp" className="w-full">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -113,7 +114,7 @@ export function InterviewPractice({ youth }: { youth: Youth }) {
                   reset()
                 }}
               >
-                <SelectTrigger id="iv-q" className="min-h-11 w-full">
+                <SelectTrigger id="iv-q" className="w-full">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -127,8 +128,9 @@ export function InterviewPractice({ youth }: { youth: Youth }) {
             </div>
           </div>
           {question && (
-            <blockquote className="rounded-2xl bg-grad-unicef p-5 text-lg font-bold text-white on-dark">
-              “{l(question.text)}”
+            <blockquote className="relative overflow-hidden rounded-2xl bg-grad-unicef p-5 text-lg font-bold text-white shadow-md on-dark">
+              <Motif variant="corner" className="text-white/15" />
+              <span className="relative">“{l(question.text)}”</span>
             </blockquote>
           )}
           <Field

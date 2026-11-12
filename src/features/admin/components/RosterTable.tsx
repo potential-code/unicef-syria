@@ -18,8 +18,8 @@ export function RosterTable({ youth }: { youth: Youth[] }) {
   const { t } = useTranslation('admin')
   const { n } = useLabels()
   return (
-    <div className="overflow-x-auto rounded-2xl border bg-white shadow-sm">
-      <Table className="min-w-[40rem]">
+    <div className="card overflow-hidden">
+      <Table className="min-w-[40rem] lg:min-w-0 [&_th]:whitespace-normal">
         <TableHeader>
           <TableRow>
             <TableHead>{t('table.learner')}</TableHead>

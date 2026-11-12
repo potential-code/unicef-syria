@@ -47,7 +47,7 @@ export function LearnerRecordPage({ youthId }: { youthId: string }) {
   return (
     <div className="space-y-6">
       <PageHeader title={y.profile.name} crumbs={crumbs} description={t('record.scopeNote')} />
-      <section className="flex flex-wrap items-center gap-4 rounded-3xl border bg-white p-5 shadow-sm">
+      <section className="card flex flex-wrap items-center gap-4 p-5">
         <Avatar src={y.image} name={y.profile.name} size={64} />
         <dl className="grid flex-1 grid-cols-2 gap-3 text-sm sm:grid-cols-4">
           <div>
@@ -74,10 +74,10 @@ export function LearnerRecordPage({ youthId }: { youthId: string }) {
           </div>
         </dl>
       </section>
-      <div className="grid gap-4 lg:grid-cols-2">
-        <section className="rounded-2xl border bg-white p-5 shadow-sm">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,22rem),1fr))] gap-4">
+        <section className="card p-5">
           <h2 className="mb-3 text-lg">{t('record.learning')}</h2>
-          <ul className="divide-y">
+          <ul className="divide-y divide-border/70">
             {progress.map((p) => (
               <li
                 key={p.courseId}
@@ -100,9 +100,9 @@ export function LearnerRecordPage({ youthId }: { youthId: string }) {
             ))}
           </ul>
         </section>
-        <section className="rounded-2xl border bg-white p-5 shadow-sm">
+        <section className="card p-5">
           <h2 className="mb-3 text-lg">{t('record.attendance')}</h2>
-          <ul className="divide-y text-sm">
+          <ul className="divide-y divide-border/70 text-sm">
             {SESSIONS.filter((s) => s.cohortId && y.cohortIds.includes(s.cohortId)).map((s) => (
               <li key={s.id} className="flex items-center justify-between gap-2 py-2">
                 <span>

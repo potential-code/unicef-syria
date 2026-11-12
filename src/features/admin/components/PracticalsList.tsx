@@ -31,7 +31,7 @@ export function PracticalsList({ youth }: { youth: Youth[] }) {
         courseId ? (
           <li
             key={`${y.id}-${courseId}`}
-            className="flex flex-col gap-3 rounded-2xl border bg-white p-4 shadow-sm sm:flex-row sm:items-center"
+            className="card flex flex-col gap-3 p-4 sm:flex-row sm:items-center"
           >
             <LearnerName y={y} to="/centre/participants/$youthId" />
             <div className="flex-1 text-sm">

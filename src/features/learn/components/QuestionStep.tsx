@@ -8,12 +8,6 @@ import { useLocalized } from '@/i18n'
 import { cn } from '@/lib/utils'
 import { OptionRadio } from './OptionRadio'
 
-const TONES = [
-  'bg-cyan text-ink',
-  'bg-yellow text-ink',
-  'bg-orange text-white',
-  'bg-blue text-white',
-]
 const LETTERS = ['A', 'B', 'C', 'D']
 
 interface Props {
@@ -55,7 +49,7 @@ export function QuestionStep({
       </div>
       <Progress
         value={pct}
-        className="mt-2 h-3 bg-sky-100"
+        className="mt-2 h-2.5 bg-sky-100"
         aria-label={t('discovery.progress', { n: index + 1, total })}
       />
 
@@ -82,21 +76,31 @@ export function QuestionStep({
                   checked={selected}
                   onChange={() => onSelect(o.dimension)}
                   className={cn(
-                    'flex min-h-24 items-start gap-3 rounded-2xl border-2 bg-white p-4 text-start shadow-sm transition-all hover:-translate-y-1 hover:shadow-md active:scale-[0.98]',
+                    'group relative flex min-h-20 items-start gap-3 rounded-2xl border p-4 text-start shadow-sm transition-[transform,box-shadow,background-color,border-color] duration-200 active:scale-[0.99] sm:p-5',
                     selected
-                      ? 'border-blue bg-blue-50 shadow-md'
-                      : 'border-transparent hover:border-sky-200',
+                      ? 'border-blue bg-blue text-white shadow-lg'
+                      : 'border-border/70 bg-white hover:-translate-y-0.5 hover:border-cyan/60 hover:shadow-md',
                   )}
                 >
                   <span
                     className={cn(
-                      'flex size-10 shrink-0 items-center justify-center rounded-xl text-lg font-extrabold',
-                      TONES[i],
+                      'w-4 shrink-0 pt-0.5 text-sm font-bold tabular-nums',
+                      selected ? 'text-white/70' : 'text-ink-soft/70 group-hover:text-blue',
                     )}
+                    aria-hidden
                   >
-                    {selected ? <Check className="size-5" aria-hidden /> : LETTERS[i]}
+                    {LETTERS[i]}
                   </span>
-                  <span className="pt-1.5 font-semibold">{l(o.text)}</span>
+                  <span className="flex-1 pe-7 leading-snug font-semibold">{l(o.text)}</span>
+                  <span
+                    className={cn(
+                      'absolute end-4 top-4 flex size-5 items-center justify-center rounded-full border-2 transition-colors sm:end-5 sm:top-5',
+                      selected ? 'border-white bg-white text-blue' : 'border-input bg-white',
+                    )}
+                    aria-hidden
+                  >
+                    {selected && <Check className="size-3.5" strokeWidth={3} />}
+                  </span>
                 </OptionRadio>
               )
             })}

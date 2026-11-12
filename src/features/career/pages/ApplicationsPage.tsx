@@ -1,8 +1,9 @@
 import { Link } from '@tanstack/react-router'
-import { Briefcase, ClipboardList } from 'lucide-react'
+import { Archive, Briefcase, ClipboardList, Send } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Stagger, StaggerItem } from '@/components/motion'
 import { EmptyState } from '@/components/shared/EmptyState'
+import { StatCard } from '@/components/shared/StatCard'
 import { Button } from '@/components/ui/button'
 import { useApplications, useOpportunities } from '@/store/actions/applications'
 import { useMyYouth } from '@/store/hooks'
@@ -65,6 +66,29 @@ export function ApplicationsPage() {
         />
       ) : (
         <div className="space-y-8">
+          <div className="grid gap-4 sm:grid-cols-3">
+            <StatCard
+              tone="blue"
+              icon={ClipboardList}
+              label={t('apps.stats.total')}
+              value={apps.length}
+              hint={t('apps.stats.totalHint')}
+            />
+            <StatCard
+              tone="cyan"
+              icon={Send}
+              label={t('apps.stats.active')}
+              value={active.length}
+              hint={t('apps.stats.activeHint')}
+            />
+            <StatCard
+              tone="navy"
+              icon={Archive}
+              label={t('apps.stats.closed')}
+              value={closed.length}
+              hint={t('apps.stats.closedHint')}
+            />
+          </div>
           <section aria-labelledby="active-apps">
             <h2 id="active-apps" className="mb-3 text-xl">
               {t('apps.activeTitle', { count: active.length })}

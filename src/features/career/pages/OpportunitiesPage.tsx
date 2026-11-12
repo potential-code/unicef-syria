@@ -79,7 +79,7 @@ export function OpportunitiesPage() {
       <div
         role="tablist"
         aria-label={t('opps.tabsLabel')}
-        className="no-scrollbar -mx-4 mb-4 flex gap-2 overflow-x-auto px-4 sm:mx-0 sm:px-0"
+        className="no-scrollbar -mx-4 mb-4 flex gap-2 overflow-x-auto px-4 py-1 sm:mx-0 sm:px-0"
       >
         {HUB_TABS.map((x) => {
           const Icon = TAB_ICON[x.id]
@@ -95,17 +95,17 @@ export function OpportunitiesPage() {
               aria-controls="opps-panel"
               onClick={() => switchTab(x.id)}
               className={cn(
-                'flex min-h-12 shrink-0 items-center gap-2 rounded-full border-2 px-5 font-semibold transition-colors',
+                'flex h-10 shrink-0 items-center gap-2 rounded-full border px-4 text-sm font-semibold shadow-sm transition-colors',
                 active
                   ? 'border-blue bg-blue text-white shadow-md'
-                  : 'border-sky-200 bg-white text-ink hover:border-blue',
+                  : 'border-border bg-white text-ink hover:border-blue/60',
               )}
             >
               <Icon className="size-4" aria-hidden />
               {t(`opps.tabs.${x.id}`)}
               <span
                 className={cn(
-                  'rounded-full px-2 text-xs',
+                  'rounded-full px-1.5 text-xs tabular-nums',
                   active ? 'bg-white/20' : 'bg-sky-100 text-navy',
                 )}
               >
@@ -117,7 +117,7 @@ export function OpportunitiesPage() {
       </div>
 
       <div id="opps-panel" role="tabpanel" aria-labelledby={`tab-${tab}`} className="space-y-5">
-        <p className="text-ink-soft">{t(`opps.tabHint.${tab}`)}</p>
+        <p className="text-sm text-ink-soft">{t(`opps.tabHint.${tab}`)}</p>
         <OpportunityFilters
           keys={config.filters}
           types={config.types}
@@ -126,7 +126,7 @@ export function OpportunitiesPage() {
           onChange={setFilters}
         />
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <p className="font-semibold" aria-live="polite">
+          <p className="text-sm font-semibold text-ink-soft" aria-live="polite">
             {t('opps.count', { count: shown.length })}
           </p>
           {dirty && (
@@ -166,7 +166,7 @@ export function OpportunitiesPage() {
           </Stagger>
         )}
 
-        <p className="flex items-start gap-2 rounded-xl bg-sky-50 p-4 text-sm text-ink-soft">
+        <p className="flex items-start gap-2 rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm text-ink-soft">
           <Info className="mt-0.5 size-4 shrink-0 text-blue" aria-hidden />
           {t('opps.match.disclaimer')}
         </p>

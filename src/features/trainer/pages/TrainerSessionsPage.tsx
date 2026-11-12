@@ -29,12 +29,14 @@ export function TrainerSessionsPage() {
   }
   const group = (title: string, list: Session[]) => (
     <section className="space-y-3">
-      <h2 className="text-lg">
-        {title}{' '}
-        <span className="text-sm font-medium text-ink-soft tabular-nums">({list.length})</span>
+      <h2 className="flex items-center gap-2 text-xl text-navy">
+        {title}
+        <span className="rounded-full bg-sky-100 px-2 py-0.5 text-xs font-bold text-navy tabular-nums">
+          {list.length}
+        </span>
       </h2>
       {list.length === 0 ? (
-        <p className="rounded-xl border border-dashed bg-sky-50 p-4 text-sm text-ink-soft">
+        <p className="rounded-2xl border border-dashed border-cyan/40 bg-sky-50/70 p-4 text-sm text-ink-soft">
           {t('sessions.noneInGroup')}
         </p>
       ) : (

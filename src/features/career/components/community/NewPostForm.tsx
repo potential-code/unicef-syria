@@ -34,11 +34,7 @@ export function NewPostForm({
   }
 
   return (
-    <form
-      onSubmit={submit}
-      noValidate
-      className="rounded-2xl border-2 border-blue/20 bg-white p-4 shadow-sm"
-    >
+    <form onSubmit={submit} noValidate className="card p-4">
       <Label htmlFor="new-post" className="font-semibold">
         {t('community.newPost', { group: groupName })}
       </Label>

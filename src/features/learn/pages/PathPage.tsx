@@ -4,6 +4,7 @@ import { Plus, Route as RouteIcon } from 'lucide-react'
 import { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
+import { Motif } from '@/components/brand'
 import { Reveal } from '@/components/motion'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { NextAction } from '@/components/shared/NextAction'
@@ -112,16 +113,9 @@ export function PathPage() {
 
       <Reveal className="grid gap-4 lg:grid-cols-[1.5fr_1fr]">
         <section
-          className={`relative overflow-hidden rounded-3xl p-6 shadow-md sm:p-8 ${meta.block}`}
+          className={`relative overflow-hidden rounded-3xl p-6 shadow-lg sm:p-8 ${meta.block}`}
         >
-          <span
-            className="pointer-events-none absolute -end-12 -top-12 size-48 rounded-full bg-white/15"
-            aria-hidden
-          />
-          <span
-            className="pointer-events-none absolute end-8 bottom-6 size-20 rounded-full border-[10px] border-white/20"
-            aria-hidden
-          />
+          <Motif variant="card" className="text-white/25" />
           <p className="relative inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-sm font-semibold">
             <meta.icon className="size-4" aria-hidden />
             {t(`common:routes.${route}`)}
@@ -148,11 +142,11 @@ export function PathPage() {
 
       <div className="grid gap-8 lg:grid-cols-[1.6fr_1fr]">
         <section aria-labelledby="journey">
-          <h2 id="journey" className="mb-1 text-2xl">
+          <h2 id="journey" className="mb-1 text-xl">
             {t('path.journey')}
           </h2>
           <p className="mb-5 text-sm text-ink-soft">{t('path.journeyNote')}</p>
-          <ol className="relative space-y-4 before:absolute before:inset-y-6 before:start-6 before:w-1 before:rounded-full before:bg-sky-200">
+          <ol className="relative space-y-4 before:absolute before:inset-y-6 before:start-[7px] before:w-0.5 before:rounded-full before:bg-sky-200">
             {plan.map((id, i) => (
               <li key={id} className="space-y-4">
                 <PlanCourseNode
@@ -172,19 +166,20 @@ export function PathPage() {
             ))}
           </ol>
           {youth.cohortIds.length === 0 && (
-            <p className="mt-4 rounded-2xl bg-sky-100 p-4 text-sm text-navy">
+            <p className="mt-4 rounded-2xl bg-sky-100 px-4 py-3 text-sm text-navy">
               {t('dash.noCohort')}
             </p>
           )}
           {addable.length > 0 && (
-            <div className="mt-6 rounded-3xl border border-dashed border-cyan/50 bg-white p-5">
+            <div className="card mt-6 p-5">
               <p className="font-semibold">{t('path.addOptional')}</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {addable.map((id) => (
                   <Button
                     key={id}
-                    variant="secondary"
-                    className="h-auto max-w-full shrink rounded-full py-2 text-start whitespace-normal"
+                    variant="outline"
+                    size="sm"
+                    className="h-auto min-h-9 max-w-full shrink rounded-full py-1.5 text-start whitespace-normal"
                     onClick={() => {
                       addToPlan(youth.id, id)
                       toast.success(t('path.added', { title: l(COURSE_BY_ID[id].title) }))
@@ -200,7 +195,9 @@ export function PathPage() {
         </section>
         <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
           <MilestonesPanel youth={youth} route={route} />
-          <p className="rounded-2xl bg-sky-50 p-4 text-sm text-ink-soft">{t('path.readiness')}</p>
+          <p className="rounded-2xl bg-sky-100 px-4 py-3 text-sm text-navy">
+            {t('path.readiness')}
+          </p>
         </aside>
       </div>
     </div>

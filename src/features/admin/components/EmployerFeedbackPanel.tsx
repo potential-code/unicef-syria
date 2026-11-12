@@ -27,12 +27,14 @@ export function EmployerFeedbackPanel() {
     bySector.set(sector, e)
   }
   return (
-    <div className="rounded-2xl border bg-white p-5 shadow-sm">
-      <p className="font-semibold">{t('labour.feedbackTitle', { count: feedback.length })}</p>
+    <div className="card p-5">
+      <p className="text-base font-semibold">
+        {t('labour.feedbackTitle', { count: feedback.length })}
+      </p>
       <p className="mb-3 text-xs text-ink-soft">{t('labour.feedbackSub')}</p>
-      <ul className="space-y-3">
+      <ul className="divide-y divide-border/70 overflow-hidden rounded-xl ring-1 ring-border/70">
         {[...bySector.entries()].map(([sector, e]) => (
-          <li key={sector} className="rounded-xl bg-sky-50 p-3 text-sm">
+          <li key={sector} className="px-4 py-3 text-sm">
             <p className="font-medium">
               {sector}{' '}
               <span className="text-xs text-ink-soft">

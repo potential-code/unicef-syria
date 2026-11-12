@@ -41,7 +41,8 @@
     "disability": "Disability status",
     "period": "Period",
     "show": "Show filters",
-    "hide": "Hide filters"
+    "hide": "Hide filters",
+    "more": "More filters"
   },
   "context": {
     "label": "Report context",

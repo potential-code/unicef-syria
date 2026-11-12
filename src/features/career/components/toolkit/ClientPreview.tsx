@@ -2,6 +2,7 @@ import type { Toolkit, Youth } from '@shared/types'
 import { Briefcase, Clock, Images, Tag } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import { Avatar } from '@/components/shared/Avatar'
 import { COURSE_BY_ID } from '@/data/courses'
 import { useLocalized } from '@/i18n'
@@ -31,14 +32,15 @@ export function ClientPreview({ youth, profile }: { youth: Youth; profile: Profi
     <motion.article
       initial={{ opacity: 0, scale: 0.97 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="overflow-hidden rounded-3xl border bg-white shadow-lg"
+      className="overflow-hidden rounded-3xl border border-border/70 bg-white shadow-lg"
     >
-      <div className="relative h-20 bg-grad-unicef">
+      <div className="relative h-20 overflow-hidden bg-grad-unicef">
+        <Motif variant="card" className="text-white/15" />
         <span className="absolute end-4 top-3 rounded-full bg-white/20 px-2.5 py-0.5 text-xs font-semibold text-white">
           {t('toolkit.freelance.clientView')}
         </span>
       </div>
-      <div className="-mt-8 space-y-4 p-5">
+      <div className="relative -mt-8 space-y-4 p-5">
         <Avatar
           src={youth.image}
           name={youth.profile.name}

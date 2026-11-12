@@ -26,13 +26,13 @@ export function PitchOutline({
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      className="space-y-3 rounded-2xl bg-grad-sunrise p-5"
+      className="card relative space-y-3 overflow-hidden p-5 before:absolute before:inset-x-0 before:top-0 before:h-1.5 before:bg-[linear-gradient(90deg,var(--unicef-yellow),var(--unicef-orange))]"
     >
       <div className="flex items-center gap-2">
-        <Presentation className="size-5" aria-hidden />
+        <Presentation className="size-5 text-orange" aria-hidden />
         <h3 className="text-lg">{t('toolkit.business.outlineTitle')}</h3>
       </div>
-      <div className="rounded-xl bg-white p-3">
+      <div>
         <Field
           id="pitch-outline"
           label={t('toolkit.business.outlineLabel')}
@@ -43,8 +43,10 @@ export function PitchOutline({
           hint={t('toolkit.business.outlineHint')}
         />
       </div>
-      <p className="text-sm text-ink">{t('toolkit.business.noFunding')}</p>
-      <Button variant="secondary" className="rounded-full bg-white" onClick={copy}>
+      <p className="rounded-xl bg-notice-soft px-3 py-2 text-sm text-ink">
+        {t('toolkit.business.noFunding')}
+      </p>
+      <Button variant="outline" className="rounded-full" onClick={copy}>
         <Copy className="size-4" aria-hidden />
         {t('toolkit.business.copy')}
       </Button>

@@ -184,7 +184,12 @@
   }
   /* Vertical brand gradient for the sidebar and auth panel. */
   .bg-grad-unicef-v {
-    background-image: linear-gradient(180deg, var(--unicef-blue) 0%, var(--unicef-navy) 60%, #002a73 100%);
+    background-image: linear-gradient(
+      180deg,
+      var(--unicef-blue) 0%,
+      var(--unicef-navy) 60%,
+      #002a73 100%
+    );
   }
   .lift {
     transition:
@@ -218,7 +223,7 @@ html.lenis body {
   overflow: hidden;
 }
 
-@media (prefers-reduced-motion: reduce) {
+html[data-motion="reduce"] {
   *,
   *::before,
   *::after {

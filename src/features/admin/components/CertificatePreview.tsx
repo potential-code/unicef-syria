@@ -1,6 +1,7 @@
 import type { CourseId } from '@shared/types'
 import { Award, Eye } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import { Logo } from '@/components/shared/Logo'
 import { Button } from '@/components/ui/button'
 import {
@@ -31,11 +32,8 @@ export function CertificatePreview({ name, courseId }: { name: string; courseId:
         <DialogTitle className="sr-only">{t('results.preview')}</DialogTitle>
         <DialogDescription className="sr-only">{t('results.previewNote')}</DialogDescription>
         <div className="relative overflow-hidden rounded-2xl border-4 border-double border-blue/40 bg-sky-50 p-8 text-center">
-          <div
-            className="pointer-events-none absolute -end-12 -top-12 size-40 rounded-full border-[18px] border-cyan/20"
-            aria-hidden
-          />
-          <Logo className="mx-auto h-7" />
+          <Motif variant="card" className="text-blue/10" />
+          <Logo className="relative mx-auto h-7" />
           <Award className="mx-auto mt-5 size-10 text-blue" aria-hidden />
           <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-ink-soft">
             {t('results.certHeading')}

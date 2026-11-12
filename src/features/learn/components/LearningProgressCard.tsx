@@ -19,18 +19,13 @@ export function LearningProgressCard({ youth }: { youth: Youth }) {
   const active = plan.filter((id) => courseStatus(youth.progress[id]) === 'inProgress')
 
   return (
-    <section
-      className="rounded-3xl border bg-white p-5 shadow-sm sm:p-6"
-      aria-labelledby="dash-learning"
-    >
+    <section className="card p-5 sm:p-6" aria-labelledby="dash-learning">
       <div className="flex items-center justify-between gap-3">
-        <h2 id="dash-learning" className="flex items-center gap-2 text-xl">
-          <span className="flex size-9 items-center justify-center rounded-xl bg-blue text-white">
-            <GraduationCap className="size-5" aria-hidden />
-          </span>
+        <h2 id="dash-learning" className="flex min-w-0 flex-1 items-center gap-2 text-lg">
+          <GraduationCap className="size-5 shrink-0 text-blue" aria-hidden />
           {t('dash.learning')}
         </h2>
-        <Link to="/youth/path" className="text-sm font-semibold text-blue hover:underline">
+        <Link to="/youth/path" className="shrink-0 text-sm font-semibold text-blue hover:underline">
           {t('dash.viewPath')}
         </Link>
       </div>
@@ -43,13 +38,13 @@ export function LearningProgressCard({ youth }: { youth: Youth }) {
         />
       ) : (
         <>
-          <div className="mt-5 flex items-end gap-3">
-            <p className="text-5xl font-extrabold tracking-tight text-navy tabular-nums">{pct}%</p>
-            <p className="pb-1.5 text-sm text-ink-soft">
+          <div className="mt-4 flex items-baseline justify-between gap-3 text-sm">
+            <p className="text-ink-soft">
               {t('dash.coursesDone', { done: completed, total: plan.length })}
             </p>
+            <p className="font-extrabold text-navy tabular-nums">{pct}%</p>
           </div>
-          <Progress value={pct} className="mt-3 h-3 bg-sky-100" aria-label={t('dash.learning')} />
+          <Progress value={pct} className="mt-2 h-2.5 bg-sky-100" aria-label={t('dash.learning')} />
           <ul className="mt-5 space-y-2">
             {active.map((id) => {
               const where = resumeTarget(youth.progress[id])
@@ -64,13 +59,11 @@ export function LearningProgressCard({ youth }: { youth: Youth }) {
                     params={
                       where === 'quiz' ? { courseId: id } : { courseId: id, unit: String(where) }
                     }
-                    className="lift flex min-h-12 items-center gap-3 rounded-2xl bg-sky-50 p-3"
+                    className="card-hover flex min-h-12 items-center gap-3 rounded-xl border border-border/70 bg-white p-3 shadow-sm"
                   >
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-yellow text-sm font-extrabold text-ink">
-                      {id}
-                    </span>
                     <span className="min-w-0 flex-1">
-                      <span className="block truncate font-semibold">
+                      <span className="block text-xs font-bold tracking-wide text-blue">{id}</span>
+                      <span className="block truncate text-sm font-semibold">
                         {l(COURSE_BY_ID[id].title)}
                       </span>
                       <span className="block text-xs text-ink-soft">

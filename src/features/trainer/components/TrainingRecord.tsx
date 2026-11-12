@@ -27,10 +27,12 @@ export function TrainingRecord({ items }: { items: RecordItem[] }) {
         const Icon = ICONS[it.kind]
         return (
           <li key={it.id} className="relative">
-            <span className="absolute -start-[37px] top-0 flex size-7 items-center justify-center rounded-full border-2 border-white bg-sky-100 text-blue shadow-sm">
-              <Icon className="size-3.5" aria-hidden />
-            </span>
-            <p className="text-xs font-medium text-ink-soft tabular-nums">
+            <span
+              className="absolute -start-[31px] top-1 size-3 rounded-full border-2 border-white bg-blue shadow-sm"
+              aria-hidden
+            />
+            <p className="flex items-center gap-1.5 text-xs font-medium text-ink-soft tabular-nums">
+              <Icon className="size-3.5 text-blue" aria-hidden />
               {formatDate(it.at, lang)}
             </p>
             <p className="font-semibold text-ink">{l(it.text)}</p>

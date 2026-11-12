@@ -1,75 +1,111 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, Check } from 'lucide-react'
+import { motion } from 'motion/react'
 import { useTranslation } from 'react-i18next'
+import { easeOut } from '@/components/motion/variants'
 import { SmartImage } from '@/components/shared/SmartImage'
 import { COURSE_BY_ID } from '@/data/courses'
 import { useLocalized } from '@/i18n'
 import { cn } from '@/lib/utils'
 import type { ROUTE_CARDS } from '../../config'
 
-/** One big career-route card: photo, route copy, three example skills and starter courses. */
+const item = {
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: easeOut } },
+}
+
+/**
+ * One career-route card: photo, route copy, three skills and starter courses. When `animate`
+ * is set, the photo wipes in from the start side and the copy rises line by line.
+ */
 export function RouteCard({
   route,
   index,
-  wide,
+  animate = false,
 }: {
   route: (typeof ROUTE_CARDS)[number]
   index: number
-  wide: boolean
+  animate?: boolean
 }) {
   const { t } = useTranslation('public')
-  const { l } = useLocalized()
+  const { l, dir } = useLocalized()
   const Icon = route.icon
   const points = t(`home.routes.${route.id}.points`, { returnObjects: true }) as string[]
+  const from = dir === 'rtl' ? 'inset(0% 0% 0% 100% round 0)' : 'inset(0% 100% 0% 0% round 0)'
+  const Line = animate ? motion.div : 'div'
+  const lineProps = animate ? { variants: item } : {}
   return (
     <article
-      data-route-card
-      className={cn(
-        'group relative grid overflow-hidden rounded-[2rem] bg-white shadow-lg md:grid-cols-[1fr_1.1fr]',
-        wide && 'lg:w-[min(64rem,78vw)] lg:shrink-0',
-      )}
+      id={`route-${route.id}`}
+      className="card group relative grid min-w-0 overflow-hidden md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]"
     >
-      <div className="relative min-h-64 overflow-hidden md:min-h-full">
-        <SmartImage
-          src={route.image}
-          alt={t(`home.routes.${route.id}.alt`)}
-          className="absolute inset-0 size-full transition-transform duration-700 group-hover:scale-105"
-        />
-        <span className="absolute start-5 top-5 text-7xl font-extrabold text-white/90 drop-shadow-lg">
+      <motion.div
+        className="relative min-h-56 overflow-hidden md:min-h-full"
+        initial={animate ? { clipPath: from } : false}
+        animate={{ clipPath: 'inset(0% 0% 0% 0% round 0)' }}
+        transition={{ duration: 0.8, ease: easeOut }}
+      >
+        <motion.div
+          className="absolute inset-0"
+          initial={animate ? { scale: 1.12 } : false}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.4, ease: easeOut }}
+        >
+          <SmartImage
+            src={route.image}
+            alt={t(`home.routes.${route.id}.alt`)}
+            className="absolute inset-0 size-full"
+          />
+        </motion.div>
+        <div className="absolute inset-0 bg-linear-to-t from-navy/60 via-transparent to-transparent" />
+        <span className="absolute start-4 bottom-3 text-4xl font-extrabold text-white drop-shadow">
           0{index + 1}
         </span>
-      </div>
-      <div className="flex flex-col gap-4 p-6 sm:p-8 lg:p-10">
-        <span
-          className={cn(
-            'inline-flex w-fit items-center gap-2 rounded-full px-3.5 py-1.5 text-sm font-bold',
-            route.tone,
-          )}
-        >
-          <Icon className="size-4" aria-hidden />
-          {t(`common:routes.${route.id}`)}
-        </span>
-        <h3 className="text-3xl sm:text-4xl">{t(`home.routes.${route.id}.title`)}</h3>
-        <p className="text-ink-soft">{t(`home.routes.${route.id}.body`)}</p>
-        <ul className="space-y-2">
-          {points.map((p) => (
-            <li key={p} className="flex gap-2 text-sm font-medium">
-              <Check className="mt-0.5 size-4 shrink-0 text-blue" aria-hidden />
-              {p}
-            </li>
-          ))}
-        </ul>
-        <div className="mt-auto border-t pt-4">
-          <p className="mb-2 text-xs font-bold tracking-wide text-ink-soft uppercase">
+      </motion.div>
+      <motion.div
+        className="flex min-w-0 flex-col justify-center gap-3 p-6 lg:p-8"
+        initial={animate ? 'hidden' : false}
+        animate="show"
+        transition={{ staggerChildren: 0.07, delayChildren: 0.2 }}
+      >
+        <Line {...lineProps}>
+          <span
+            className={cn(
+              'inline-flex w-fit items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold',
+              route.tone,
+            )}
+          >
+            <Icon className="size-3.5" aria-hidden />
+            {t(`common:routes.${route.id}`)}
+          </span>
+        </Line>
+        <Line {...lineProps}>
+          <h3 className="text-xl sm:text-2xl">{t(`home.routes.${route.id}.title`)}</h3>
+        </Line>
+        <Line {...lineProps}>
+          <p className="text-ink-soft">{t(`home.routes.${route.id}.body`)}</p>
+        </Line>
+        <Line {...lineProps}>
+          <ul className="space-y-1.5">
+            {points.map((p) => (
+              <li key={p} className="flex gap-2 text-sm font-medium">
+                <Check className="mt-0.5 size-4 shrink-0 text-blue" aria-hidden />
+                {p}
+              </li>
+            ))}
+          </ul>
+        </Line>
+        <Line {...lineProps} className="mt-2 border-t pt-4">
+          <p className="mb-2 text-[11px] font-bold tracking-widest text-ink-soft uppercase">
             {t('home.routes.starter')}
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5">
             {route.courses.map((id) => (
               <Link
                 key={id}
                 to="/explore/$courseId"
                 params={{ courseId: id }}
-                className="rounded-full bg-sky-100 px-3 py-1.5 text-sm font-semibold text-navy hover:bg-sky-200"
+                className="rounded-full bg-sky-100 px-2.5 py-1 text-xs font-semibold text-navy transition-colors hover:bg-sky-200"
               >
                 {l(COURSE_BY_ID[id].title)}
               </Link>
@@ -78,13 +114,13 @@ export function RouteCard({
           <Link
             to="/explore"
             search={{ route: route.id }}
-            className="mt-4 inline-flex min-h-11 items-center gap-1.5 font-bold text-blue hover:underline"
+            className="mt-3 inline-flex min-h-10 items-center gap-1.5 text-sm font-bold text-blue hover:underline"
           >
             {t('home.routes.cta')}
             <ArrowRight className="size-4 rtl-mirror" aria-hidden />
           </Link>
-        </div>
-      </div>
+        </Line>
+      </motion.div>
     </article>
   )
 }

@@ -16,8 +16,8 @@ function Block({
   children: ReactNode
 }) {
   return (
-    <section className="rounded-2xl border bg-white p-5 shadow-sm">
-      <h3 className="mb-3 flex items-center gap-2 text-base">
+    <section className="card p-5">
+      <h3 className="mb-3 flex items-center gap-2 text-base text-navy">
         <Icon className="size-5 text-blue" aria-hidden />
         {title}
       </h3>

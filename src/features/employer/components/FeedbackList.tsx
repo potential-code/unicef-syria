@@ -18,8 +18,10 @@ export function FeedbackList({ orgId }: { orgId: OrgId }) {
   return (
     <ul className="flex flex-col gap-3">
       {[...mine].reverse().map((f) => (
-        <li key={f.at} className="rounded-2xl border bg-white p-4 text-sm shadow-sm">
-          <p className="mb-2 text-xs font-semibold text-ink-soft">{formatDate(f.at, lang)}</p>
+        <li key={f.at} className="card space-y-1 p-4 text-sm">
+          <p className="mb-2 text-xs font-bold tracking-wide text-blue uppercase tabular-nums">
+            {formatDate(f.at, lang)}
+          </p>
           {(['strengths', 'missing', 'needs'] as const).map((k) =>
             f[k] ? (
               <p key={k}>

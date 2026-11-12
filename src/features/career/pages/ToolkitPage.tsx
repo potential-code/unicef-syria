@@ -44,19 +44,18 @@ export function ToolkitPage() {
         eyebrow={t('toolkit.eyebrow', { route: routeLabel })}
         title={t('toolkit.title')}
         body={t('toolkit.body')}
-      >
-        <ToolkitStats youth={youth} />
-      </CareerHero>
+      />
+      <ToolkitStats youth={youth} />
       <CoachDraftNote />
       <Tabs value={tab} onValueChange={(v) => setTab(v as ToolkitTab)} className="gap-5">
-        <TabsList className="no-scrollbar h-auto w-full justify-start gap-2 overflow-x-auto rounded-2xl bg-transparent p-0 group-data-[orientation=horizontal]/tabs:h-auto">
+        <TabsList className="no-scrollbar h-auto w-full justify-start gap-2 overflow-x-auto rounded-2xl bg-transparent p-1 group-data-[orientation=horizontal]/tabs:h-auto">
           {order.map((id, i) => {
             const Icon = ICONS[id]
             return (
               <TabsTrigger
                 key={id}
                 value={id}
-                className="min-h-12 flex-none gap-2 rounded-full border-2 border-sky-200 bg-white px-4 text-sm font-semibold text-ink data-[state=active]:border-blue data-[state=active]:bg-blue data-[state=active]:text-white"
+                className="h-10 flex-none gap-2 rounded-full border border-border bg-white px-4 text-sm font-semibold text-ink shadow-sm hover:border-blue/50 data-[state=active]:border-blue data-[state=active]:bg-blue data-[state=active]:text-white data-[state=active]:shadow-md"
               >
                 <Icon className="size-4" aria-hidden />
                 {t(`toolkit.tabs.${id}`)}

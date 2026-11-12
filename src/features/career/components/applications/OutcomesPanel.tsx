@@ -33,10 +33,7 @@ export function OutcomesPanel({ app }: { app: Application }) {
     !(app.track === 'employment' && find('internship'))
 
   return (
-    <section
-      aria-labelledby="outcomes-title"
-      className="space-y-3 rounded-2xl border bg-sky-50 p-5"
-    >
+    <section aria-labelledby="outcomes-title" className="card space-y-3 p-5">
       <h2 id="outcomes-title" className="text-lg">
         {t('apps.outcomes.title')}
       </h2>

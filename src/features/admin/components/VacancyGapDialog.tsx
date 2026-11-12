@@ -41,7 +41,7 @@ export function VacancyGapDialog({
             const o = opps.find((x) => x.id === r.opportunityId)
             const gap = SKILL_GAPS[r.gapIndex]
             return (
-              <li key={r.opportunityId} className="rounded-2xl border bg-sky-50 p-4">
+              <li key={r.opportunityId} className="card p-4">
                 <p className="flex items-center gap-2 font-semibold text-ink">
                   <Briefcase className="size-4 text-blue" aria-hidden />
                   {r.opportunityId} {l(o?.title)}

@@ -13,7 +13,7 @@ export function ProposalCard({
 }) {
   const { t } = useTranslation('career')
   return (
-    <article className="lift space-y-2 rounded-2xl border bg-white p-4 shadow-sm">
+    <article className="card card-hover space-y-2 p-4">
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0">
           <p className="text-xs font-bold uppercase tracking-wide text-blue">{proposal.id}</p>

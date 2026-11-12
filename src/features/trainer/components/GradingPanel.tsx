@@ -8,6 +8,7 @@ import { COURSE_BY_ID } from '@/data/courses'
 import { useLocalized } from '@/i18n'
 import type { LearnerStats } from '../hooks/useTrainerScope'
 import { LearnerName } from './LearnerName'
+import { PanelHeader } from './PanelHeader'
 
 /** Practical submissions awaiting a rubric review. */
 export function GradingPanel({ stats }: { stats: LearnerStats[] }) {
@@ -15,12 +16,13 @@ export function GradingPanel({ stats }: { stats: LearnerStats[] }) {
   const { l } = useLocalized()
   const rows = stats.flatMap((s) => s.pendingPracticals.map((c) => ({ s, c })))
   return (
-    <section className="rounded-2xl border bg-card p-5 shadow-sm">
-      <h2 className="flex items-center gap-2 text-lg">
-        <ClipboardCheck className="size-5 text-blue" aria-hidden />
-        {t('dashboard.gradingTitle')}
-      </h2>
-      <p className="mt-1 text-sm text-ink-soft">{t('dashboard.gradingBody')}</p>
+    <section className="card flex flex-col p-5 sm:p-6">
+      <PanelHeader
+        icon={ClipboardCheck}
+        title={t('dashboard.gradingTitle')}
+        body={t('dashboard.gradingBody')}
+        count={rows.length}
+      />
       {rows.length === 0 ? (
         <EmptyState
           className="mt-4 py-6"
@@ -29,24 +31,30 @@ export function GradingPanel({ stats }: { stats: LearnerStats[] }) {
           body={t('assessments.emptyBody')}
         />
       ) : (
-        <ul className="mt-4 divide-y">
+        <ul className="mt-3 divide-y divide-border/70">
           {rows.map(({ s, c }) => (
             <li
               key={`${s.youth.id}-${c}`}
-              className="flex flex-wrap items-center justify-between gap-3 py-3"
+              className="-mx-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 rounded-xl px-2 py-2 transition-colors hover:bg-sky-50/70"
             >
-              <LearnerName youth={s.youth} sub={`${c} · ${l(COURSE_BY_ID[c].title)}`} />
+              <LearnerName
+                youth={s.youth}
+                sub={`${c} · ${l(COURSE_BY_ID[c].title)}`}
+                className="min-w-0 flex-1"
+              />
               <StatusBadge tone="info">{t('practical.submitted')}</StatusBadge>
             </li>
           ))}
         </ul>
       )}
-      <Button asChild variant="secondary" size="sm" className="mt-4 rounded-full">
-        <Link to="/trainer/assessments">
-          {t('dashboard.openQueue')}
-          <ArrowRight className="size-4 rtl-mirror" aria-hidden />
-        </Link>
-      </Button>
+      <div className="mt-auto pt-4">
+        <Button asChild variant="outline" size="sm" className="rounded-full">
+          <Link to="/trainer/assessments">
+            {t('dashboard.openQueue')}
+            <ArrowRight className="size-4 rtl-mirror" aria-hidden />
+          </Link>
+        </Button>
+      </div>
     </section>
   )
 }

@@ -29,7 +29,7 @@ export function Field({
   const { t } = useTranslation('public')
   return (
     <div className="space-y-1.5">
-      <Label htmlFor={id} className="font-semibold">
+      <Label htmlFor={id} className="text-sm font-semibold">
         {label}
         {optional ? (
           <span className="ms-1 font-normal text-ink-soft">({t('register.optional')})</span>
@@ -41,7 +41,7 @@ export function Field({
       </Label>
       {children}
       {hint && !error && (
-        <p id={`${id}-hint`} className="text-sm text-ink-soft">
+        <p id={`${id}-hint`} className="text-xs text-ink-soft">
           {hint}
         </p>
       )}
@@ -84,7 +84,7 @@ export function SelectField({
       <Select value={value || undefined} onValueChange={onChange}>
         <SelectTrigger
           id={id}
-          className="min-h-12 w-full"
+          className="w-full"
           aria-invalid={!!error}
           aria-describedby={error ? `${id}-error` : hint ? `${id}-hint` : undefined}
         >
@@ -142,7 +142,7 @@ export function ChipGroup({
               type="button"
               aria-pressed={on}
               onClick={() => onChange(on ? value.filter((x) => x !== o.v) : [...value, o.v])}
-              className={`min-h-11 rounded-full border-2 px-4 text-sm font-semibold transition-colors ${on ? 'border-blue bg-blue text-white' : 'border-border bg-white text-ink hover:border-blue'}`}
+              className={`h-9 rounded-full border px-3.5 text-sm font-semibold transition-colors ${on ? 'border-blue bg-blue text-white' : 'border-border bg-white text-ink hover:border-blue'}`}
             >
               {o.label}
             </button>

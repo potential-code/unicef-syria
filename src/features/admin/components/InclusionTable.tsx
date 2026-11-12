@@ -1,5 +1,13 @@
 import type { AnalyticsRow } from '@shared/types'
 import { useTranslation } from 'react-i18next'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 import { filterRows, kpis, sumRows } from '@/domain/kpi'
 import { ORDER } from '../lib/entities'
 import { useLabels } from '../lib/useLabels'
@@ -17,51 +25,43 @@ export function InclusionTable({
   const { t } = useTranslation('admin')
   const { n, p, value } = useLabels()
   const cell = (x: number) => (x > 0 && x < SMALL ? t('inclusion.small') : n(x))
+  const cols = ['metric.registered', 'kpi.completion', 'metric.graduates', 'kpi.guidance']
   return (
-    <div className="overflow-x-auto rounded-2xl border bg-white p-5 shadow-sm">
-      <p className="mb-3 font-semibold">{t(`inclusion.tableTitle.${dim}`)}</p>
-      <table className="w-full min-w-[34rem] text-sm">
-        <thead>
-          <tr className="border-b text-xs text-ink-soft">
-            <th scope="col" className="py-2 text-start font-medium">
-              {t('charts.group')}
-            </th>
-            <th scope="col" className="py-2 text-start font-medium">
-              {t('metric.registered')}
-            </th>
-            <th scope="col" className="py-2 text-start font-medium">
-              {t('kpi.completion')}
-            </th>
-            <th scope="col" className="py-2 text-start font-medium">
-              {t('metric.graduates')}
-            </th>
-            <th scope="col" className="py-2 text-start font-medium">
-              {t('kpi.guidance')}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
+    <div className="card overflow-hidden">
+      <p className="px-5 pt-4 pb-3 text-base font-semibold text-ink">
+        {t(`inclusion.tableTitle.${dim}`)}
+      </p>
+      <Table className="min-w-[30rem] sm:min-w-0 [&_th]:whitespace-normal">
+        <TableHeader>
+          <TableRow>
+            <TableHead scope="col">{t('charts.group')}</TableHead>
+            {cols.map((c) => (
+              <TableHead key={c} scope="col">
+                {t(c)}
+              </TableHead>
+            ))}
+          </TableRow>
+        </TableHeader>
+        <TableBody>
           {(ORDER[dim] as readonly string[]).map((g) => {
             const k = kpis(sumRows(filterRows(rows, { [dim]: g })))
             return (
-              <tr key={g} className="border-b last:border-0 tabular-nums">
-                <th scope="row" className="py-2 text-start font-medium">
-                  {value(dim, g)}
-                </th>
-                <td className="py-2">{cell(k.registered)}</td>
-                <td className="py-2">
-                  {p(k.completionRate.value)}{' '}
+              <TableRow key={g} className="tabular-nums">
+                <TableCell className="font-semibold">{value(dim, g)}</TableCell>
+                <TableCell>{cell(k.registered)}</TableCell>
+                <TableCell>
+                  <span className="font-semibold">{p(k.completionRate.value)}</span>{' '}
                   <span className="text-xs text-ink-soft">
                     ({cell(k.completionRate.numerator)}/{cell(k.completionRate.denominator)})
                   </span>
-                </td>
-                <td className="py-2">{cell(k.graduates)}</td>
-                <td className="py-2">{p(k.guidanceCoverage.value)}</td>
-              </tr>
+                </TableCell>
+                <TableCell>{cell(k.graduates)}</TableCell>
+                <TableCell>{p(k.guidanceCoverage.value)}</TableCell>
+              </TableRow>
             )
           })}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </div>
   )
 }

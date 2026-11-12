@@ -23,15 +23,15 @@ export function UnicefPartnersPage() {
       {h.availability !== 'ok' ? (
         <HistoricalEmpty availability={h.availability} />
       ) : (
-        <div className="grid gap-4 xl:grid-cols-[1.1fr_1fr]">
+        <div className="space-y-8">
           <OrgTree filters={filters} />
-          <div className="space-y-3">
-            <h2 className="text-lg">{t('unicef.partners.compare')}</h2>
+          <section className="space-y-3">
+            <h2 className="text-xl">{t('unicef.partners.compare')}</h2>
             <CentreCompare
               centreIds={['T01', 'T02', 'T03']}
               filters={{ ...filters, partnerId: undefined, centreId: undefined }}
             />
-          </div>
+          </section>
         </div>
       )}
     </div>

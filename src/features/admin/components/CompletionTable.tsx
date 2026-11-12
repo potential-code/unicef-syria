@@ -18,7 +18,7 @@ export function CompletionTable({ youth }: { youth: Youth[] }) {
         const c = cohortCompletion(youth, k.id)
         const members = youth.filter((y) => y.cohortIds.includes(k.id))
         return (
-          <section key={k.id} className="rounded-2xl border bg-white p-5 shadow-sm">
+          <section key={k.id} className="card p-5">
             <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
               <h2 className="text-lg">{l(k.name)}</h2>
               <p className="text-sm text-ink-soft">
@@ -30,7 +30,7 @@ export function CompletionTable({ youth }: { youth: Youth[] }) {
                 })}
               </p>
             </div>
-            <ul className="divide-y">
+            <ul className="divide-y divide-border/70">
               {members.map((y) => (
                 <li key={y.id} className="flex flex-wrap items-center justify-between gap-3 py-2.5">
                   <LearnerName y={y} to="/centre/participants/$youthId" />

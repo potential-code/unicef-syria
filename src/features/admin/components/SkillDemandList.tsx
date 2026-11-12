@@ -29,7 +29,7 @@ export function SkillDemandList() {
           { key: 'c', label: t('labour.candidatesReady'), color: 'var(--unicef-cyan)' },
         ]}
       />
-      <ul className="space-y-3">
+      <ul className="mt-4 space-y-3">
         {SKILL_DEMAND.map((s) => (
           <li key={s.skill.en} className="grid gap-1.5 sm:grid-cols-[11rem_1fr] sm:items-center">
             <p className="text-sm font-medium">{l(s.skill)}</p>

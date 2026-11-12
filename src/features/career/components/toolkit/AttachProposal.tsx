@@ -4,6 +4,7 @@ import { CheckCircle2, Paperclip } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
+import { Motif } from '@/components/brand'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import {
@@ -34,7 +35,8 @@ export function AttachProposal({ youth }: { youth: Youth }) {
     toast.success(t('toolkit.proposal.attached', { title: title(app.opportunityId) }))
   }
   return (
-    <div className="space-y-3 rounded-2xl bg-navy p-5 text-white on-dark">
+    <div className="relative h-fit space-y-3 overflow-hidden rounded-2xl bg-[linear-gradient(150deg,var(--unicef-navy),#002a73)] p-5 text-white shadow-lg on-dark [&>*:not(:first-child)]:relative">
+      <Motif variant="corner" className="text-cyan/25" />
       <div className="flex items-center gap-2">
         <Paperclip className="size-5 text-yellow" aria-hidden />
         <h3 className="text-base text-white">{t('toolkit.proposal.attachTitle')}</h3>
@@ -69,7 +71,7 @@ export function AttachProposal({ youth }: { youth: Youth }) {
                   {t('toolkit.proposal.chooseApp')}
                 </Label>
                 <Select value={appId} onValueChange={setAppId}>
-                  <SelectTrigger id="attach-app" className="min-h-11 w-full bg-white text-ink">
+                  <SelectTrigger id="attach-app" className="w-full bg-white text-ink">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -82,7 +84,7 @@ export function AttachProposal({ youth }: { youth: Youth }) {
                 </Select>
               </div>
               <Button
-                className="rounded-full bg-yellow text-ink hover:bg-white"
+                className="shrink-0 rounded-full bg-yellow font-bold text-ink hover:bg-yellow/90"
                 onClick={attach}
                 disabled={!appId}
               >

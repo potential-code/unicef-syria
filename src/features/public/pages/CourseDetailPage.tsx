@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
+import { Motif } from '@/components/brand'
 import { Reveal } from '@/components/motion'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { SmartImage } from '@/components/shared/SmartImage'
@@ -42,7 +43,7 @@ export function CourseDetailPage({ courseId }: { courseId: string }) {
 
   if (!course) {
     return (
-      <div className="container-page pt-32 pb-20">
+      <div className="container-page pt-12 pb-20">
         <EmptyState
           icon={SearchX}
           title={t('course.missing')}
@@ -82,61 +83,60 @@ export function CourseDetailPage({ courseId }: { courseId: string }) {
 
   return (
     <>
-      <section className="on-dark relative overflow-hidden bg-grad-unicef pt-28 pb-14 text-white sm:pt-32">
-        <span
-          className="pointer-events-none absolute -end-24 -top-24 size-96 rounded-full bg-cyan/40 blur-3xl"
-          aria-hidden
-        />
-        <div className="container-page relative grid items-center gap-10 lg:grid-cols-[1.3fr_1fr]">
-          <Reveal>
-            <Breadcrumbs
-              items={[
-                { label: t('nav.home'), to: '/' },
-                { label: t('nav.explore'), to: '/explore' },
-                { label: course.id },
-              ]}
-            />
-            <span className="rounded-full bg-yellow px-3 py-1 text-xs font-bold text-ink">
-              {l(CATEGORY_LABELS[course.category])}
-            </span>
-            <h1 className="mt-4 text-4xl text-white sm:text-5xl">{l(course.title)}</h1>
-            <p className="mt-3 text-white/85">
-              {course.routes === 'all'
-                ? t('course.allRoutes')
-                : course.routes.map((r) => t(`common:routes.${r}`)).join(' · ')}
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button
-                size="lg"
-                onClick={() => act('enrol')}
-                className="rounded-full bg-yellow text-ink hover:bg-white"
-              >
-                <Sparkles className="size-5" aria-hidden />
-                {t('course.enrol')}
-              </Button>
-              <Button
-                size="lg"
-                variant="ghost"
-                onClick={() => act('save')}
-                disabled={inPlan}
-                className="rounded-full border-2 border-white/60 text-white hover:bg-white/15 hover:text-white"
-              >
-                <Bookmark className="size-5" aria-hidden />
-                {inPlan ? t('course.inPlan') : t('course.save')}
-              </Button>
-            </div>
-          </Reveal>
-          <Reveal className="overflow-hidden rounded-[2rem] border-4 border-white/20 shadow-pop">
-            <SmartImage src={course.image} alt="" className="aspect-[4/3] w-full" />
-          </Reveal>
-        </div>
-      </section>
+      <div className="container-page pt-6 sm:pt-8">
+        <section className="on-dark relative overflow-hidden rounded-3xl bg-grad-unicef p-6 text-white shadow-lg sm:p-10 lg:p-12">
+          <Motif variant="banner" className="text-white/[0.12]" />
+          <div className="relative grid items-center gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:gap-12">
+            <Reveal className="min-w-0">
+              <Breadcrumbs
+                items={[
+                  { label: t('nav.home'), to: '/' },
+                  { label: t('nav.explore'), to: '/explore' },
+                  { label: course.id },
+                ]}
+              />
+              <span className="rounded-full bg-yellow px-2.5 py-0.5 text-[11px] font-bold tracking-wider text-ink uppercase">
+                {l(CATEGORY_LABELS[course.category])}
+              </span>
+              <h1 className="mt-3 text-3xl text-white sm:text-4xl lg:text-[2.75rem]">
+                {l(course.title)}
+              </h1>
+              <p className="mt-3 text-white/85">
+                {course.routes === 'all'
+                  ? t('course.allRoutes')
+                  : course.routes.map((r) => t(`common:routes.${r}`)).join(' · ')}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button
+                  onClick={() => act('enrol')}
+                  className="rounded-full bg-yellow px-5 text-ink hover:bg-white"
+                >
+                  <Sparkles className="size-4" aria-hidden />
+                  {t('course.enrol')}
+                </Button>
+                <Button
+                  variant="ghost"
+                  onClick={() => act('save')}
+                  disabled={inPlan}
+                  className="rounded-full border border-white/60 px-5 text-white hover:bg-white/15 hover:text-white"
+                >
+                  <Bookmark className="size-4" aria-hidden />
+                  {inPlan ? t('course.inPlan') : t('course.save')}
+                </Button>
+              </div>
+            </Reveal>
+            <Reveal className="overflow-hidden rounded-2xl shadow-pop ring-1 ring-white/25">
+              <SmartImage src={course.image} alt="" className="aspect-[4/3] w-full" />
+            </Reveal>
+          </div>
+        </section>
+      </div>
 
-      <div className="container-page grid gap-10 py-14 lg:grid-cols-[1.5fr_1fr]">
+      <div className="container-page grid gap-10 py-12 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
         <div className="space-y-10">
           <Reveal as="section">
-            <h2 className="mb-4 text-2xl">{t('course.outcomes')}</h2>
-            <ul className="space-y-3">
+            <h2 className="mb-4 text-xl sm:text-2xl">{t('course.outcomes')}</h2>
+            <ul className="card space-y-3 p-5">
               {course.outcomes.map((o) => (
                 <li key={o.en} className="flex gap-3">
                   <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-success" aria-hidden />
@@ -146,16 +146,18 @@ export function CourseDetailPage({ courseId }: { courseId: string }) {
             </ul>
           </Reveal>
           <Reveal as="section">
-            <h2 className="mb-4 text-2xl">{t('course.units')}</h2>
+            <h2 className="mb-4 text-xl sm:text-2xl">{t('course.units')}</h2>
             <CourseUnits course={course} />
           </Reveal>
-          <Reveal as="section" className="rounded-2xl bg-yellow/20 p-6">
-            <h2 className="mb-2 flex items-center gap-2 text-2xl">
-              <Hammer className="size-6 text-blue" aria-hidden />
+          <Reveal as="section" className="card relative overflow-hidden p-6">
+            <span className="absolute inset-x-0 top-0 h-1.5 bg-yellow" aria-hidden />
+            <Motif variant="corner" className="text-blue/[0.07]" />
+            <h2 className="relative mb-2 flex items-center gap-2 text-xl">
+              <Hammer className="size-5 shrink-0 text-blue" aria-hidden />
               {t('course.practical')}
             </h2>
-            <p>{l(course.practicalTask)}</p>
-            <p className="mt-2 text-sm text-ink-soft">
+            <p className="relative">{l(course.practicalTask)}</p>
+            <p className="relative mt-2 text-sm text-ink-soft">
               <strong>{t('course.output')}</strong> {l(course.output)}
             </p>
             {isPlaceholder(course.practicalTask) && (
@@ -164,20 +166,20 @@ export function CourseDetailPage({ courseId }: { courseId: string }) {
           </Reveal>
         </div>
 
-        <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
-          <dl className="grid grid-cols-2 gap-3">
+        <aside className="space-y-5 lg:sticky lg:top-24 lg:self-start">
+          <dl className="card divide-y divide-border/60 px-5 py-1">
             {facts.map((f) => (
-              <div key={f.label} className="rounded-2xl border bg-white p-4 shadow-sm">
-                <f.icon className="mb-2 size-5 text-blue" aria-hidden />
-                <dt className="text-xs font-bold tracking-wide text-ink-soft uppercase">
+              <div key={f.label} className="flex items-center gap-3 py-3">
+                <dt className="flex min-w-0 flex-1 items-center gap-2 text-sm text-ink-soft">
+                  <f.icon className="size-4 shrink-0 text-blue" aria-hidden />
                   {f.label}
                 </dt>
-                <dd className="font-semibold">{f.value}</dd>
+                <dd className="text-end text-sm font-semibold">{f.value}</dd>
               </div>
             ))}
           </dl>
-          <div className="rounded-2xl border bg-white p-5 shadow-sm">
-            <h2 className="mb-2 flex items-center gap-2 text-lg">
+          <div className="card p-5">
+            <h2 className="mb-2 flex items-center gap-2 text-base">
               <Layers className="size-5 text-blue" aria-hidden />
               {t('course.prerequisites')}
             </h2>
@@ -190,7 +192,7 @@ export function CourseDetailPage({ courseId }: { courseId: string }) {
                     <Link
                       to="/explore/$courseId"
                       params={{ courseId: p }}
-                      className="font-semibold text-blue hover:underline"
+                      className="text-sm font-semibold text-blue hover:underline"
                     >
                       {p} · {l(COURSE_BY_ID[p].title)}
                     </Link>
@@ -199,8 +201,8 @@ export function CourseDetailPage({ courseId }: { courseId: string }) {
               </ul>
             )}
           </div>
-          <div className="rounded-2xl border bg-white p-5 shadow-sm">
-            <h2 className="mb-2 flex items-center gap-2 text-lg">
+          <div className="card p-5">
+            <h2 className="mb-2 flex items-center gap-2 text-base">
               <MapPin className="size-5 text-blue" aria-hidden />
               {t('course.where')}
             </h2>

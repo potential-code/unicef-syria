@@ -83,8 +83,8 @@ export function PlayerPage({ courseId, unit }: { courseId: string; unit: string 
           className="space-y-4 lg:sticky lg:top-24 lg:self-start"
           aria-label={t('course.units')}
         >
-          <div className="rounded-3xl border bg-white p-4 shadow-sm">
-            <p className="font-bold">{l(course.title)}</p>
+          <div className="card p-4">
+            <p className="text-sm font-bold">{l(course.title)}</p>
             <Progress
               value={(unitsDone(p) / 4) * 100}
               className="mt-2 h-2 bg-sky-100"
@@ -99,7 +99,7 @@ export function PlayerPage({ courseId, unit }: { courseId: string; unit: string 
             <Link
               to="/youth/learn/$courseId/quiz"
               params={{ courseId }}
-              className="mt-2 flex min-h-12 items-center gap-3 rounded-2xl bg-navy p-3 font-semibold text-white"
+              className="card-hover on-dark mt-2 flex min-h-12 items-center gap-3 rounded-2xl bg-navy px-3.5 py-3 text-sm font-semibold text-white shadow-md"
             >
               <BookOpenCheck className="size-5 text-yellow" aria-hidden />
               {t('course.finalCheck')}
@@ -131,9 +131,9 @@ export function PlayerPage({ courseId, unit }: { courseId: string; unit: string 
                 </Link>
               </Button>
             )}
-            <Button size="lg" className="ms-auto rounded-full" onClick={next}>
+            <Button className="ms-auto rounded-full" onClick={next}>
               {last ? t('player.toQuiz') : t('player.next')}
-              <ArrowRight className="size-5 rtl-mirror" aria-hidden />
+              <ArrowRight className="size-4 rtl-mirror" aria-hidden />
             </Button>
           </nav>
         </article>

@@ -25,7 +25,7 @@ export function CertificateSuggestions({
   const { l } = useLocalized()
   const done = completedCourses(youth)
   return (
-    <div className="rounded-2xl bg-grad-sky p-4 sm:p-5">
+    <div className="rounded-2xl border border-sky-200 bg-grad-sky p-4 shadow-sm sm:p-5">
       <div className="mb-3 flex items-center gap-2">
         <Award className="size-5 text-blue" aria-hidden />
         <h3 className="text-base">{t('toolkit.cv.suggestedTitle')}</h3>
@@ -46,7 +46,7 @@ export function CertificateSuggestions({
             return (
               <li
                 key={id}
-                className="flex min-h-12 flex-wrap items-center gap-3 rounded-xl bg-white px-3 py-2 shadow-sm"
+                className="flex flex-wrap items-center gap-3 rounded-xl bg-white px-3 py-2.5 shadow-sm"
               >
                 <Checkbox
                   id={`cert-${id}`}
@@ -68,7 +68,7 @@ export function CertificateSuggestions({
                 )}
                 <a
                   href={courseHref(id)}
-                  className="text-xs font-semibold text-blue hover:underline"
+                  className="shrink-0 text-xs font-semibold text-blue hover:underline"
                 >
                   {t('toolkit.cv.review')}
                 </a>

@@ -15,7 +15,6 @@ import {
   type LucideIcon,
   Rocket,
   Route,
-  Sparkles,
   Wallet,
 } from 'lucide-react'
 import { CENTRES, COHORT_COURSES, COHORTS } from '@/data/orgs'
@@ -52,23 +51,15 @@ export const ROUTE_CARDS: {
 ]
 
 /** "How the journey works": discover → choose route → learn → get support → earn. */
-export const JOURNEY_STEPS: { id: string; icon: LucideIcon }[] = [
-  { id: 'discover', icon: Compass },
-  { id: 'choose', icon: Route },
-  { id: 'learn', icon: GraduationCap },
-  { id: 'support', icon: HandHeart },
-  { id: 'earn', icon: Wallet },
+export const JOURNEY_STEPS: { id: string; icon: LucideIcon; image: string }[] = [
+  { id: 'discover', icon: Compass, image: 'images/generated/course-C01.webp' },
+  { id: 'choose', icon: Route, image: 'images/generated/scene-learning.webp' },
+  { id: 'learn', icon: GraduationCap, image: 'images/generated/course-C02.webp' },
+  { id: 'support', icon: HandHeart, image: 'images/generated/scene-mentor.webp' },
+  { id: 'earn', icon: Wallet, image: 'images/generated/band-employer.webp' },
 ]
 
 export const FEATURED_COURSES: CourseId[] = ['C01', 'C05', 'C07', 'C11']
-
-/** Sample catalogue figures only: never impact or outcome numbers. */
-export const SAMPLE_STATS: { id: string; value: number; icon: LucideIcon }[] = [
-  { id: 'courses', value: 16, icon: GraduationCap },
-  { id: 'routes', value: 3, icon: Route },
-  { id: 'coaches', value: 5, icon: Sparkles },
-  { id: 'mentors', value: 5, icon: HandHeart },
-]
 
 export const CATEGORIES: CourseCategory[] = [
   'foundations',

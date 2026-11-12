@@ -60,16 +60,16 @@ export function TemplateDialog({
         <button
           type="button"
           className={cn(
-            'lift group flex min-h-12 w-full items-center gap-3 rounded-2xl border bg-white p-3 text-start shadow-sm',
-            compact && 'p-2.5',
+            'card-hover group flex min-h-12 w-full items-center gap-3 rounded-xl border border-border/70 bg-white px-3.5 py-3 text-start shadow-sm',
+            compact && 'py-2.5',
             className,
           )}
         >
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-yellow text-ink">
-            <FileText className="size-5" aria-hidden />
-          </span>
+          <FileText className="size-5 shrink-0 text-blue" aria-hidden />
           <span className="min-w-0 flex-1">
-            <span className="block font-semibold">{l(tpl.title)}</span>
+            <span className="block text-sm font-semibold group-hover:text-blue">
+              {l(tpl.title)}
+            </span>
             <span className="block text-xs text-ink-soft">{t('template.hint')}</span>
           </span>
         </button>

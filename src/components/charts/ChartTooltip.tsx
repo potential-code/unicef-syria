@@ -11,7 +11,7 @@ export interface TooltipRow {
 export function ChartTooltipBody({ title, rows }: { title?: ReactNode; rows: TooltipRow[] }) {
   if (!rows.length) return null
   return (
-    <div className="min-w-36 rounded-xl border bg-white px-3 py-2 text-sm shadow-md">
+    <div className="min-w-36 rounded-xl border border-border/70 bg-white px-3 py-2 text-sm shadow-lg">
       {title && <p className="mb-1 text-xs font-medium text-ink-soft">{title}</p>}
       <ul className="space-y-1">
         {rows.map((r) => (

@@ -1,11 +1,10 @@
-import { BadgeCheck, Check, Circle, Loader2 } from 'lucide-react'
+import { BadgeCheck, CheckCircle2, Circle, Loader2 } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { formatDate, useLocalized } from '@/i18n'
 import { now } from '@/lib/clock'
-import { cn } from '@/lib/utils'
 import { approveOrganisation } from '@/store/actions/applications'
 import { type OrgProfileEdit, saveOrgProfile } from '@/store/actions/employer-extra'
 import type { OrgScope } from '../hooks/use-org-scope'
@@ -30,8 +29,8 @@ export function ApprovalPanel({ scope, profile }: { scope: OrgScope; profile: Or
     }, 600)
   }
   return (
-    <aside className="rounded-2xl border bg-white p-5 shadow-sm">
-      <h2 className="flex items-center gap-2 text-lg">
+    <aside className="card p-5 sm:p-6 xl:self-start">
+      <h2 className="flex items-center gap-2 text-lg text-navy">
         <BadgeCheck className="size-5 text-blue" aria-hidden />
         {t('approval.title')}
       </h2>
@@ -41,18 +40,11 @@ export function ApprovalPanel({ scope, profile }: { scope: OrgScope; profile: Or
       <ol className="mt-4 flex flex-col gap-3">
         {steps.map((s) => (
           <li key={s.key} className="flex items-center gap-3">
-            <span
-              className={cn(
-                'flex size-8 items-center justify-center rounded-full',
-                s.done ? 'bg-blue text-white' : 'bg-sky-100 text-navy',
-              )}
-            >
-              {s.done ? (
-                <Check className="size-4" aria-hidden />
-              ) : (
-                <Circle className="size-3" aria-hidden />
-              )}
-            </span>
+            {s.done ? (
+              <CheckCircle2 className="size-5 shrink-0 text-blue" aria-hidden />
+            ) : (
+              <Circle className="size-5 shrink-0 text-ink-soft/50" aria-hidden />
+            )}
             <span className="text-sm">
               <span className="font-semibold text-ink">{t(`approval.steps.${s.key}`)}</span>
               <span className="sr-only"> {s.done ? t('approval.done') : t('approval.notYet')}</span>
@@ -96,7 +88,9 @@ export function ApprovalPanel({ scope, profile }: { scope: OrgScope; profile: Or
           )}
         </div>
       )}
-      <p className="mt-4 rounded-xl bg-sky-50 p-3 text-xs text-ink">{t('approval.note')}</p>
+      <p className="mt-4 rounded-xl bg-sky-50 p-3 text-xs text-ink ring-1 ring-cyan/20">
+        {t('approval.note')}
+      </p>
     </aside>
   )
 }

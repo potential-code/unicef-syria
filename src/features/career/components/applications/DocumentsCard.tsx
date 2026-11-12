@@ -52,7 +52,7 @@ export function DocumentsCard({
             { key: 'motivation', label: t('apps.docs.motivation'), ok: Boolean(app.motivation) },
           ]
   return (
-    <section aria-labelledby="docs-title" className="rounded-2xl border bg-white p-5 shadow-sm">
+    <section aria-labelledby="docs-title" className="card p-5">
       <h2 id="docs-title" className="mb-3 flex items-center gap-2 text-lg">
         <FileText className="size-5 text-blue" aria-hidden />
         {t('apps.detail.documents')}

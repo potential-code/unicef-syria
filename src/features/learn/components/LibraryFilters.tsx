@@ -84,32 +84,45 @@ export function LibraryFilters({
     ]
 
   return (
-    <div className="rounded-3xl border bg-white p-4 shadow-sm sm:p-5">
-      <div className="relative">
-        <Label htmlFor="lib-search" className="sr-only">
-          {t('library.search')}
-        </Label>
-        <Search
-          className="pointer-events-none absolute start-4 top-1/2 size-5 -translate-y-1/2 text-ink-soft"
-          aria-hidden
-        />
-        <Input
-          id="lib-search"
-          type="search"
-          value={value.q}
-          onChange={(e) => set('q')(e.target.value)}
-          placeholder={t('library.search')}
-          className="min-h-12 rounded-full ps-12"
-        />
+    <div className="card p-4">
+      <div className="flex flex-wrap items-center gap-2">
+        <div className="relative min-w-0 flex-1 basis-60">
+          <Label htmlFor="lib-search" className="sr-only">
+            {t('library.search')}
+          </Label>
+          <Search
+            className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-ink-soft"
+            aria-hidden
+          />
+          <Input
+            id="lib-search"
+            type="search"
+            value={value.q}
+            onChange={(e) => set('q')(e.target.value)}
+            placeholder={t('library.search')}
+            className="h-10 ps-9"
+          />
+        </div>
+        {active && (
+          <Button
+            variant="ghost"
+            size="sm"
+            className="shrink-0 rounded-full text-blue"
+            onClick={() => onChange(EMPTY_FILTERS)}
+          >
+            <X className="size-4" aria-hidden />
+            {t('common:clearFilters')}
+          </Button>
+        )}
       </div>
-      <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
+      <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2.5 md:grid-cols-3 xl:grid-cols-6">
         {selects.map((s) => (
-          <div key={s.key}>
+          <div key={s.key} className="min-w-0">
             <Label htmlFor={`lib-${s.key}`} className="text-xs font-semibold text-ink-soft">
               {s.label}
             </Label>
             <Select value={value[s.key]} onValueChange={set(s.key)}>
-              <SelectTrigger id={`lib-${s.key}`} className="mt-1 min-h-11 w-full rounded-xl">
+              <SelectTrigger id={`lib-${s.key}`} size="sm" className="mt-1 w-full">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -124,17 +137,6 @@ export function LibraryFilters({
           </div>
         ))}
       </div>
-      {active && (
-        <Button
-          variant="ghost"
-          size="sm"
-          className="mt-2 rounded-full text-blue"
-          onClick={() => onChange(EMPTY_FILTERS)}
-        >
-          <X className="size-4" aria-hidden />
-          {t('common:clearFilters')}
-        </Button>
-      )}
     </div>
   )
 }

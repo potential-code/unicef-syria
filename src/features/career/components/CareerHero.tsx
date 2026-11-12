@@ -3,18 +3,19 @@ import type { LucideIcon } from 'lucide-react'
 import { ChevronRight } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import type { Crumb } from '@/components/shared/PageHeader'
 import { usePageTitle } from '@/hooks/use-page-title'
 import { cn } from '@/lib/utils'
 
 const TONES = {
   unicef: 'bg-grad-unicef text-white',
-  sunrise: 'bg-grad-sunrise text-ink',
-  navy: 'bg-navy text-white',
+  sunrise: 'bg-grad-unicef text-white',
+  navy: 'bg-[linear-gradient(135deg,var(--unicef-navy),#002a73)] text-white',
 } as const
 
 /**
- * Youth career-area page header: a bold colour block with CSS blobs and rings, an icon tile,
+ * Youth career-area page header: a bold brand colour block with the emblem motif, an inline icon,
  * optional breadcrumbs and actions. Sets the document title.
  */
 export function CareerHero({
@@ -25,6 +26,7 @@ export function CareerHero({
   tone = 'unicef',
   crumbs,
   actions,
+  leading,
   children,
 }: {
   title: string
@@ -34,11 +36,12 @@ export function CareerHero({
   tone?: keyof typeof TONES
   crumbs?: Crumb[]
   actions?: ReactNode
+  /** Optional identity element beside the title (e.g. a coach avatar). */
+  leading?: ReactNode
   children?: ReactNode
 }) {
   const { t } = useTranslation()
   usePageTitle(title)
-  const dark = tone !== 'sunrise'
   return (
     <header className="mb-6 sm:mb-8">
       {crumbs && crumbs.length > 0 && (
@@ -65,54 +68,27 @@ export function CareerHero({
       )}
       <div
         className={cn(
-          'relative overflow-hidden rounded-3xl p-6 shadow-md sm:p-8',
+          'relative overflow-hidden rounded-3xl p-6 shadow-lg sm:p-8',
           TONES[tone],
-          dark && 'on-dark',
+          'on-dark',
         )}
       >
-        <div
-          className="pointer-events-none absolute -end-16 -top-16 size-56 rounded-full bg-white/10"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute -end-4 top-10 size-32 rounded-full border-[10px] border-white/15"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute -bottom-20 start-1/3 size-44 rounded-full bg-yellow/20 blur-2xl"
-          aria-hidden
+        <Motif
+          variant="banner"
+          className={tone === 'navy' ? 'text-cyan/20' : 'text-white/[0.13]'}
         />
         <div className="relative flex flex-wrap items-end justify-between gap-5">
-          <div className="flex min-w-0 items-start gap-4">
-            {Icon && (
-              <span
-                className={cn(
-                  'hidden size-14 shrink-0 items-center justify-center rounded-2xl sm:flex',
-                  dark ? 'bg-white/15' : 'bg-white/60',
-                )}
-              >
-                <Icon className="size-7" aria-hidden />
-              </span>
-            )}
+          <div className="flex min-w-0 items-center gap-4 sm:gap-5">
+            {leading}
             <div className="min-w-0 space-y-1.5">
-              {eyebrow && (
-                <div
-                  className={cn(
-                    'text-xs font-bold uppercase tracking-wide',
-                    dark ? 'text-white/85' : 'text-ink/75',
-                  )}
-                >
+              {(eyebrow || Icon) && (
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-white/85">
+                  {Icon && <Icon className="size-4 shrink-0" aria-hidden />}
                   {eyebrow}
                 </div>
               )}
-              <h1 className={cn('text-2xl sm:text-4xl', dark ? 'text-white' : 'text-ink')}>
-                {title}
-              </h1>
-              {body && (
-                <div className={cn('max-w-2xl', dark ? 'text-white/85' : 'text-ink/80')}>
-                  {body}
-                </div>
-              )}
+              <h1 className="text-2xl text-white sm:text-[2.15rem] sm:leading-tight">{title}</h1>
+              {body && <div className="max-w-2xl text-white/85">{body}</div>}
             </div>
           </div>
           {actions && <div className="flex flex-wrap gap-2">{actions}</div>}

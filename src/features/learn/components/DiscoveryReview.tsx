@@ -29,12 +29,9 @@ export function DiscoveryReview({
           const a = answers[i]
           const opt = q.options.find((o) => o.dimension === a)
           return (
-            <li
-              key={q.id}
-              className="flex items-start gap-3 rounded-2xl border bg-white p-4 shadow-sm"
-            >
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-sky-100 font-bold text-navy">
-                {i + 1}
+            <li key={q.id} className="card flex items-start gap-3 p-4">
+              <span className="w-6 shrink-0 pt-0.5 text-sm font-extrabold text-blue tabular-nums">
+                {String(i + 1).padStart(2, '0')}
               </span>
               <div className="min-w-0 flex-1">
                 <p className="text-sm text-ink-soft">{l(q.prompt)}</p>
@@ -60,7 +57,7 @@ export function DiscoveryReview({
           )
         })}
       </ol>
-      <div className="sticky bottom-4 mt-6 flex flex-wrap items-center gap-3 rounded-2xl bg-white/95 p-3 shadow-lg backdrop-blur">
+      <div className="sticky bottom-4 mt-6 flex flex-wrap items-center gap-3 rounded-2xl border border-border/70 bg-white/95 p-3 shadow-lg backdrop-blur">
         <p className="text-sm text-ink-soft">
           {complete ? t('discovery.readyNote') : t('discovery.missingNote')}
         </p>
@@ -70,7 +67,7 @@ export function DiscoveryReview({
           onClick={onSubmit}
           disabled={!complete || busy}
         >
-          <Send className="size-5 rtl-mirror" aria-hidden />
+          <Send className="size-4 rtl-mirror" aria-hidden />
           {t('discovery.submit')}
         </Button>
       </div>

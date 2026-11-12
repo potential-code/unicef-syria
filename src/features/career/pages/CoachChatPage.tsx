@@ -13,6 +13,7 @@ import { useLocalized } from '@/i18n'
 import { useMyYouth } from '@/store/hooks'
 import { CareerHero } from '../components/CareerHero'
 import { AiBadge } from '../components/coaches/AiBadge'
+import { CoachAvatar } from '../components/coaches/CoachAvatar'
 import { CoachMessage } from '../components/coaches/CoachMessage'
 import { CoachSidePanel } from '../components/coaches/CoachSidePanel'
 import { TypingIndicator } from '../components/coaches/TypingIndicator'
@@ -107,6 +108,7 @@ export function CoachChatPage({ coachId, start }: { coachId: string; start?: str
         title={`${l(coach.name)} · ${l(coach.title)}`}
         body={l(coach.purpose)}
         crumbs={[{ label: t('coaches.title'), to: '/youth/coaches' }, { label: l(coach.name) }]}
+        leading={<CoachAvatar coachId={coach.id} size="lg" className="hidden sm:inline-flex" />}
         actions={
           msgs.length > 0 && (
             <Button
@@ -124,7 +126,7 @@ export function CoachChatPage({ coachId, start }: { coachId: string; start?: str
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
         <section
           aria-label={t('coaches.chatLabel', { name: l(coach.name) })}
-          className="flex min-h-[28rem] flex-col rounded-3xl bg-sky-50 p-3 sm:p-5"
+          className="card flex min-h-[28rem] flex-col bg-[linear-gradient(180deg,var(--unicef-sky-100),#ffffff_70%)] p-3 sm:p-5"
         >
           <div className="flex-1 space-y-4" aria-live="polite">
             <CoachMessage
@@ -155,7 +157,7 @@ export function CoachChatPage({ coachId, start }: { coachId: string; start?: str
             </AnimatePresence>
             <div ref={endRef} />
           </div>
-          <div className="mt-5 border-t border-sky-200 pt-4">
+          <div className="mt-5 border-t border-border/70 pt-4">
             <p className="mb-2 text-xs font-bold uppercase tracking-wide text-ink-soft">
               {t('coaches.starters')}
             </p>
@@ -166,7 +168,7 @@ export function CoachChatPage({ coachId, start }: { coachId: string; start?: str
                   type="button"
                   disabled={typing}
                   onClick={() => say(l(s.label), s.step)}
-                  className="min-h-11 rounded-full border border-blue/30 bg-white px-4 text-sm font-medium text-navy transition-colors hover:border-blue hover:bg-blue hover:text-white disabled:opacity-50"
+                  className="min-h-9 rounded-full border border-blue/30 bg-white px-3.5 py-1.5 text-start text-sm font-medium text-navy shadow-xs transition-colors hover:border-blue hover:bg-blue hover:text-white disabled:opacity-50"
                 >
                   {l(s.label)}
                 </button>
@@ -181,7 +183,7 @@ export function CoachChatPage({ coachId, start }: { coachId: string; start?: str
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder={t('coaches.inputPlaceholder')}
-                className="min-h-12 rounded-full bg-white px-5"
+                className="rounded-full bg-white px-4"
               />
               <Button
                 type="submit"
@@ -190,7 +192,7 @@ export function CoachChatPage({ coachId, start }: { coachId: string; start?: str
                 disabled={typing || !text.trim()}
                 aria-label={t('coaches.send')}
               >
-                <Send className="size-5 rtl-mirror" aria-hidden />
+                <Send className="size-4 rtl-mirror" aria-hidden />
               </Button>
             </form>
             <p className="mt-2 text-xs text-ink-soft">{t('coaches.scriptedNote')}</p>

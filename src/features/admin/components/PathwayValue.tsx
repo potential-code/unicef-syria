@@ -11,14 +11,14 @@ export function PathwayValue() {
     { key: 'opportunities', icon: Briefcase },
   ]
   return (
-    <section aria-labelledby="pathway-value" className="rounded-3xl bg-grad-sky p-5 sm:p-6">
-      <h2 id="pathway-value" className="text-lg">
+    <section aria-labelledby="pathway-value" className="card relative overflow-hidden p-5 sm:p-6">
+      <h2 id="pathway-value" className="relative text-xl">
         {t('followup.value.title')}
       </h2>
-      <p className="mt-1 max-w-3xl text-sm text-ink-soft">{t('followup.value.body')}</p>
-      <ul className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+      <p className="relative mt-1 max-w-3xl text-sm text-ink-soft">{t('followup.value.body')}</p>
+      <ul className="relative mt-4 grid grid-cols-[repeat(auto-fit,minmax(min(100%,14rem),1fr))] gap-3">
         {items.map((i) => (
-          <li key={i.key} className="flex gap-3 rounded-2xl bg-white p-4 shadow-sm">
+          <li key={i.key} className="flex gap-3 rounded-xl bg-sky-50 p-4 ring-1 ring-sky-200">
             <i.icon className="size-5 shrink-0 text-blue" aria-hidden />
             <span className="text-sm">
               <strong className="block">{t(`followup.value.${i.key}.title`)}</strong>

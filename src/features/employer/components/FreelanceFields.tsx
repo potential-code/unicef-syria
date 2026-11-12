@@ -17,7 +17,7 @@ export function FreelanceFields({
 }) {
   const { t } = useTranslation('employer')
   return (
-    <fieldset className="grid gap-4 rounded-2xl border border-cyan/40 bg-sky-50 p-4 sm:grid-cols-2 sm:p-5">
+    <fieldset className="grid gap-4 rounded-2xl border border-cyan/40 bg-sky-50/70 p-4 sm:grid-cols-2 sm:p-5">
       <legend className="px-2 text-sm font-semibold text-navy">{t('form.freelanceLegend')}</legend>
       <Field
         id="opp-deliverables"

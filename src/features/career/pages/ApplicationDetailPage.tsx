@@ -8,6 +8,7 @@ import {
   SearchX,
 } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import { Reveal } from '@/components/motion'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { StatusBadge } from '@/components/shared/StatusBadge'
@@ -88,7 +89,7 @@ export function ApplicationDetailPage({ appId }: { appId: string }) {
         }
       />
 
-      <Reveal className="mb-6 rounded-2xl border bg-white p-5 shadow-sm sm:p-6">
+      <Reveal className="card mb-6 p-5 sm:p-6">
         <h2 className="mb-5 text-lg">{t('apps.detail.timeline')}</h2>
         <StageTimeline app={app} />
       </Reveal>
@@ -99,10 +100,11 @@ export function ApplicationDetailPage({ appId }: { appId: string }) {
         </div>
       )}
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_22rem]">
+      <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_22rem]">
         <div className="space-y-6">
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="flex gap-3 rounded-2xl bg-navy p-5 text-white on-dark">
+            <div className="relative flex gap-3 overflow-hidden rounded-2xl bg-[linear-gradient(140deg,var(--unicef-navy),#002a73)] p-5 text-white shadow-md on-dark [&>*:not(:first-child)]:relative">
+              <Motif variant="corner" className="text-cyan/25" />
               <CornerDownRight
                 className="mt-0.5 size-5 shrink-0 text-yellow rtl-mirror"
                 aria-hidden
@@ -114,7 +116,8 @@ export function ApplicationDetailPage({ appId }: { appId: string }) {
                 <p className="mt-1 font-semibold">{t(`apps.next.${app.track}.${app.stage}`)}</p>
               </div>
             </div>
-            <div className="flex gap-3 rounded-2xl bg-yellow/20 p-5">
+            <div className="relative flex gap-3 overflow-hidden rounded-2xl bg-[linear-gradient(140deg,#ffd666,var(--unicef-yellow))] p-5 text-ink shadow-md [&>*:not(:first-child)]:relative">
+              <Motif variant="corner" className="text-white/50" />
               <CalendarClock className="mt-0.5 size-5 shrink-0" aria-hidden />
               <div>
                 <p className="text-xs font-bold uppercase tracking-wide text-ink/75">
@@ -130,10 +133,7 @@ export function ApplicationDetailPage({ appId }: { appId: string }) {
             </div>
           </div>
           {app.stage !== 'notSelected' && (
-            <section
-              aria-labelledby="fb-title"
-              className="rounded-2xl border bg-white p-5 shadow-sm"
-            >
+            <section aria-labelledby="fb-title" className="card p-5">
               <h2 id="fb-title" className="mb-2 flex items-center gap-2 text-lg">
                 <MessageSquareText className="size-5 text-blue" aria-hidden />
                 {t('apps.detail.feedback')}

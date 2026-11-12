@@ -1,42 +1,34 @@
 import { useTranslation } from 'react-i18next'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
 import { POINTS } from '@/domain/points'
+import { cn } from '@/lib/utils'
 import { POINT_RULES } from '../config'
 
-/** Points rules from the brief (§14 Y12). */
+/** Points rules from the brief (§14 Y12) as a readable list of rule rows. */
 export function PointsRules() {
   const { t } = useTranslation('learn')
   return (
-    <div className="overflow-x-auto rounded-3xl border bg-white shadow-sm">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>{t('progress.ruleAction')}</TableHead>
-            <TableHead className="text-end">{t('progress.rulePoints')}</TableHead>
-            <TableHead>{t('progress.ruleCondition')}</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {POINT_RULES.map((k) => (
-            <TableRow key={k}>
-              <TableCell className="font-semibold">{t(`progress.rules.${k}.action`)}</TableCell>
-              <TableCell className="text-end font-bold tabular-nums">
-                {POINTS[k] > 0 ? `+${POINTS[k]}` : POINTS[k]}
-              </TableCell>
-              <TableCell className="text-sm text-ink-soft">
+    <ul className="card divide-y divide-border/70 overflow-hidden">
+      {POINT_RULES.map((k) => {
+        const n = POINTS[k]
+        return (
+          <li key={k} className="flex items-start gap-4 px-5 py-3.5">
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-semibold text-ink">{t(`progress.rules.${k}.action`)}</p>
+              <p className="mt-0.5 text-xs leading-snug text-ink-soft">
                 {t(`progress.rules.${k}.condition`)}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </div>
+              </p>
+            </div>
+            <span
+              className={cn(
+                'mt-0.5 shrink-0 rounded-full px-2.5 py-1 text-xs font-extrabold tabular-nums',
+                n < 0 ? 'bg-danger-soft text-danger' : 'bg-success-soft text-success',
+              )}
+            >
+              <span dir="ltr">{n > 0 ? `+${n}` : n}</span> {t('dash.pointsUnit')}
+            </span>
+          </li>
+        )
+      })}
+    </ul>
   )
 }

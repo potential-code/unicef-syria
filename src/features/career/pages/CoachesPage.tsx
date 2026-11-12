@@ -1,7 +1,9 @@
 import { Link } from '@tanstack/react-router'
-import { Bot, HandHeart, ShieldCheck, Sparkles } from 'lucide-react'
+import { ArrowRight, Bot, HandHeart, ShieldCheck, Sparkles } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import { Stagger, StaggerItem } from '@/components/motion'
+import { Button } from '@/components/ui/button'
 import { COACHES } from '@/data/coaches'
 import { CareerHero } from '../components/CareerHero'
 import { CoachCard } from '../components/coaches/CoachCard'
@@ -39,16 +41,23 @@ export function CoachesPage() {
           </StaggerItem>
         ))}
         <StaggerItem className="h-full">
-          <div className="flex h-full flex-col justify-center gap-3 rounded-2xl border-2 border-dashed border-blue/30 bg-blue-50 p-6">
-            <HandHeart className="size-8 text-blue" aria-hidden />
-            <h3 className="text-xl">{t('coaches.mentorCard.title')}</h3>
-            <p className="text-sm text-ink-soft">{t('coaches.mentorCard.body')}</p>
-            <Link
-              to="/youth/mentors"
-              className="inline-flex min-h-11 w-fit items-center rounded-full bg-blue px-5 font-semibold text-white hover:bg-navy"
+          <div className="on-dark relative flex h-full min-h-72 flex-col justify-center gap-3 overflow-hidden rounded-2xl bg-[linear-gradient(150deg,var(--unicef-blue),var(--unicef-navy))] p-6 text-white shadow-md">
+            <Motif variant="card" className="text-white/[0.14]" />
+            <p className="relative flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-yellow">
+              <HandHeart className="size-4" aria-hidden />
+              {t('coaches.chips.human')}
+            </p>
+            <h3 className="relative text-xl text-white">{t('coaches.mentorCard.title')}</h3>
+            <p className="relative text-sm text-white/85">{t('coaches.mentorCard.body')}</p>
+            <Button
+              asChild
+              className="relative mt-2 w-fit rounded-full bg-yellow font-bold text-ink hover:bg-yellow/90"
             >
-              {t('coaches.bookMentor')}
-            </Link>
+              <Link to="/youth/mentors">
+                {t('coaches.bookMentor')}
+                <ArrowRight className="size-4 rtl-mirror" aria-hidden />
+              </Link>
+            </Button>
           </div>
         </StaggerItem>
       </Stagger>

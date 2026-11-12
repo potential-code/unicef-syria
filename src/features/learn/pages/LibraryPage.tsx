@@ -50,20 +50,16 @@ export function LibraryPage() {
   return (
     <div className="space-y-8">
       <PageHeader title={t('library.title')} description={t('library.subtitle')} />
-      <section className="on-dark relative overflow-hidden rounded-3xl bg-grad-unicef p-5 text-white sm:p-6">
-        <span
-          className="pointer-events-none absolute -end-10 -top-16 size-48 rounded-full bg-yellow/30 blur-2xl"
-          aria-hidden
-        />
-        <p className="relative flex items-start gap-3 text-sm sm:text-base">
-          <BookOpen className="mt-0.5 size-5 shrink-0" aria-hidden />
+      <div className="space-y-3">
+        <p className="flex items-start gap-2.5 rounded-2xl border border-cyan/30 bg-sky-100 px-4 py-3 text-sm font-medium text-navy">
+          <BookOpen className="mt-0.5 size-4 shrink-0 text-blue" aria-hidden />
           {t('library.openNote')}
         </p>
-      </section>
-      <LibraryFilters value={f} onChange={setF} />
-      <p className="text-sm font-semibold text-ink-soft" aria-live="polite">
-        {t('library.count', { n: list.length })}
-      </p>
+        <LibraryFilters value={f} onChange={setF} />
+        <p className="px-1 text-sm font-semibold text-ink-soft" aria-live="polite">
+          {t('library.count', { n: list.length })}
+        </p>
+      </div>
       {list.length === 0 ? (
         <EmptyState
           icon={SearchX}
@@ -82,10 +78,10 @@ export function LibraryPage() {
           const meta = CATEGORY_META[cat]
           return (
             <section key={cat} aria-labelledby={`cat-${cat}`}>
-              <h2 id={`cat-${cat}`} className="mb-4 flex items-center gap-3 text-2xl">
-                <span className={`h-8 w-2 rounded-full ${meta.block}`} aria-hidden />
+              <h2 id={`cat-${cat}`} className="mb-4 flex items-center gap-2.5 text-xl">
+                <span className={`h-6 w-1.5 rounded-full ${meta.block}`} aria-hidden />
                 {l(CATEGORY_LABELS[cat])}
-                <span className="text-base font-semibold text-ink-soft">({items.length})</span>
+                <span className="text-sm font-semibold text-ink-soft">({items.length})</span>
               </h2>
               {cat === 'technical' && (
                 <p className="-mt-2 mb-4 text-sm text-ink-soft">{t('library.tasterNote')}</p>

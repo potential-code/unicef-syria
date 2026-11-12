@@ -1,6 +1,7 @@
 import type { Course, Unit } from '@shared/types'
 import { BookOpenText, Hammer, Sparkles } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import { useLocalized } from '@/i18n'
 import { CheckQuestion } from './CheckQuestion'
 
@@ -21,45 +22,43 @@ export function UnitSummary({
       icon: BookOpenText,
       title: t('player.sumExplore'),
       body: l(unit.synopsis),
-      tone: 'bg-cyan text-ink',
+      tone: 'text-blue',
     },
     {
       icon: Hammer,
       title: t('player.sumPractise'),
       body: t('player.sumPractiseBody', { output: l(course.output) }),
-      tone: 'bg-yellow text-ink',
+      tone: 'text-orange',
     },
     {
       icon: Sparkles,
       title: t('player.sumReflect'),
       body: t('player.sumReflectBody'),
-      tone: 'bg-orange text-white',
+      tone: 'text-navy',
     },
   ]
   return (
     <div className="space-y-5">
-      <section className="on-dark relative overflow-hidden rounded-3xl bg-grad-unicef p-6 text-white sm:p-8">
-        <span
-          className="pointer-events-none absolute -end-10 -bottom-10 size-40 rounded-full bg-white/10"
-          aria-hidden
-        />
+      <section className="on-dark relative overflow-hidden rounded-3xl bg-grad-unicef p-6 text-white shadow-lg sm:p-8">
+        <Motif variant="card" className="text-white/[0.12]" />
         <p className="relative text-xs font-bold uppercase tracking-wide text-yellow">
           {t('player.summary')}
         </p>
         <p className="relative mt-2 text-2xl font-bold leading-snug">{l(unit.synopsis)}</p>
       </section>
-      <section className="rounded-3xl border bg-white p-5 shadow-sm sm:p-6">
-        <h2 className="text-xl">{t('player.inThisUnit')}</h2>
-        <ol className="mt-4 grid gap-3 md:grid-cols-3">
+      <section className="card rounded-3xl p-5 sm:p-6">
+        <h2 className="text-lg">{t('player.inThisUnit')}</h2>
+        <ol className="mt-3 divide-y divide-border/70">
           {steps.map((s, i) => (
-            <li key={s.title} className="rounded-2xl bg-sky-50 p-4">
-              <span className={`flex size-10 items-center justify-center rounded-xl ${s.tone}`}>
-                <s.icon className="size-5" aria-hidden />
-              </span>
-              <p className="mt-3 font-bold">
-                {i + 1}. {s.title}
-              </p>
-              <p className="mt-1 text-sm text-ink-soft">{s.body}</p>
+            <li key={s.title} className="flex items-start gap-3 py-3.5 last:pb-0">
+              <s.icon className={`mt-0.5 size-5 shrink-0 ${s.tone}`} aria-hidden />
+              <div className="min-w-0 flex-1">
+                <p className="font-bold">
+                  <span className="me-1.5 text-ink-soft tabular-nums">{i + 1}.</span>
+                  {s.title}
+                </p>
+                <p className="mt-0.5 text-sm text-ink-soft">{s.body}</p>
+              </div>
             </li>
           ))}
         </ol>

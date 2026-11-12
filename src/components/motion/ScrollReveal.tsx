@@ -1,4 +1,5 @@
 import { type ReactNode, useLayoutEffect, useRef } from 'react'
+import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 
 let refreshQueued = false
@@ -24,7 +25,7 @@ function queueRefresh() {
 export function ScrollReveal({
   children,
   className,
-  query = '(prefers-reduced-motion: no-preference)',
+  query = 'all',
 }: {
   children: ReactNode
   className?: string
@@ -32,8 +33,10 @@ export function ScrollReveal({
   query?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
+  const reduce = useReducedMotion()
 
   useLayoutEffect(() => {
+    if (reduce) return
     const root = ref.current
     if (!root) return
     const own = (el: HTMLElement) => el.parentElement?.closest('[data-reveal-root]') === root
@@ -82,7 +85,7 @@ export function ScrollReveal({
       queueRefresh()
     })
     return () => media.revert()
-  }, [query])
+  }, [query, reduce])
 
   return (
     <div ref={ref} data-reveal-root className={className}>

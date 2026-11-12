@@ -21,9 +21,9 @@ export function ApplicationCard({ app, opp }: { app: Application; opp?: Opportun
     <Link
       to="/youth/applications/$appId"
       params={{ appId: app.id }}
-      className="lift group flex h-full flex-col overflow-hidden rounded-2xl border bg-white shadow-sm"
+      className="card card-hover group flex h-full flex-col overflow-hidden"
     >
-      <div className={cn('h-2', opp ? TYPE_ACCENT[opp.type].bar : 'bg-blue')} aria-hidden />
+      <div className={cn('h-1.5', opp ? TYPE_ACCENT[opp.type].bar : 'bg-blue')} aria-hidden />
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex flex-wrap items-center gap-2">
           <StatusBadge tone={stageTone(app.stage)}>{t(`common:stages.${app.stage}`)}</StatusBadge>
@@ -45,7 +45,7 @@ export function ApplicationCard({ app, opp }: { app: Application; opp?: Opportun
             <span
               key={s}
               className={cn(
-                'h-2 flex-1 rounded-full',
+                'h-1.5 flex-1 rounded-full',
                 i <= reached ? (branch ? 'bg-orange' : 'bg-blue') : 'bg-sky-100',
               )}
             />

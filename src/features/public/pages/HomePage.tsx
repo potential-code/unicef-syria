@@ -8,7 +8,6 @@ import { Hero } from '../components/home/Hero'
 import { JourneyPath } from '../components/home/JourneyPath'
 import { PartnerBand } from '../components/home/PartnerBand'
 import { RoutesShowcase } from '../components/home/RoutesShowcase'
-import { StatsStrip } from '../components/home/StatsStrip'
 import { RegisterPrompt } from '../components/RegisterPrompt'
 import { useGate } from '../hooks/use-gate'
 
@@ -23,7 +22,6 @@ export function HomePage() {
       <RoutesShowcase />
       <JourneyPath />
       <FeaturedCourses />
-      <StatsStrip />
       <CentresSection />
       <EventsSection gate={gate} />
       <PartnerBand />

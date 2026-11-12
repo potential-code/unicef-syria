@@ -19,9 +19,9 @@ const TILE_TONES = [
   'bg-grad-unicef',
   'bg-navy',
   'bg-blue',
-  'bg-grad-sunrise',
-  'bg-cyan',
-  'bg-orange',
+  'bg-[linear-gradient(140deg,var(--unicef-orange),#a93a06)]',
+  'bg-[linear-gradient(140deg,var(--unicef-cyan-600),var(--unicef-navy))]',
+  'bg-[#0b3f8c]',
 ]
 const PEERS = ['Yazan', 'Lamar', 'Sami', 'Rasha']
 
@@ -64,7 +64,7 @@ export function DemoRoomDialog({
                   off ? 'bg-navy' : TILE_TONES[i % TILE_TONES.length],
                 )}
               >
-                <span className="flex size-12 items-center justify-center rounded-full bg-white/25 text-lg font-bold text-white">
+                <span className="flex size-12 items-center justify-center rounded-full text-lg font-bold text-white ring-2 ring-white/40">
                   {name
                     .split(' ')
                     .map((p) => p[0])

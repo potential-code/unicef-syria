@@ -44,20 +44,17 @@ export function UnicefAdminPage() {
           />
         }
       />
-      <section aria-labelledby="orgs" className="rounded-3xl border bg-white p-5 shadow-sm">
+      <section aria-labelledby="orgs" className="card p-5">
         <h2 id="orgs" className="mb-1 flex items-center gap-2 text-lg">
           <Building2 className="size-5 text-blue" aria-hidden />
           {t('admin.orgsTitle')}
         </h2>
         <p className="mb-4 text-sm text-ink-soft">{t('admin.orgsBody')}</p>
-        <ul className="space-y-3">
+        <ul className="divide-y divide-border/70 overflow-hidden rounded-xl ring-1 ring-border/70">
           {pending.map((o) => {
             const ok = !!approved[o.id]
             return (
-              <li
-                key={o.id}
-                className="flex flex-col gap-3 rounded-2xl border p-4 sm:flex-row sm:items-center"
-              >
+              <li key={o.id} className="flex flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center">
                 <div className="flex-1">
                   <p className="font-semibold">
                     {o.id} {l(o.name)}
@@ -75,7 +72,8 @@ export function UnicefAdminPage() {
                   </StatusBadge>
                 ) : (
                   <Button
-                    className="rounded-full"
+                    size="sm"
+                    className="shrink-0 rounded-full"
                     disabled={busy}
                     onClick={() => {
                       setBusy(true)
@@ -95,11 +93,11 @@ export function UnicefAdminPage() {
         </ul>
       </section>
       <section aria-labelledby="users" className="space-y-3">
-        <h2 id="users" className="text-lg">
+        <h2 id="users" className="text-xl">
           {t('admin.usersTitle')}
         </h2>
-        <div className="overflow-x-auto rounded-2xl border bg-white shadow-sm">
-          <Table className="min-w-[44rem]">
+        <div className="card overflow-hidden">
+          <Table className="min-w-[44rem] lg:min-w-0 [&_th]:whitespace-normal">
             <TableHeader>
               <TableRow>
                 <TableHead>{t('admin.col.user')}</TableHead>

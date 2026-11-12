@@ -1,9 +1,17 @@
-import { BookOpen, Users } from 'lucide-react'
+import { BookOpen, FlaskConical, Users } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { BarChart, ChartCard, LineChart } from '@/components/charts'
 import { PageHeader } from '@/components/shared/PageHeader'
 import { StatusBadge } from '@/components/shared/StatusBadge'
 import { Button } from '@/components/ui/button'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 import {
   LABOUR_LABEL,
   MONTHLY_TRENDS,
@@ -35,10 +43,11 @@ export function UnicefLabourPage() {
   return (
     <div className="space-y-6">
       <PageHeader title={t('labour.title')} description={t('labour.body')} />
-      <p className="inline-flex items-center gap-2 rounded-full bg-yellow/25 px-4 py-2 text-sm font-semibold text-ink">
+      <p className="-mt-2 inline-flex items-center gap-2 rounded-full bg-yellow px-3 py-1 text-xs font-semibold text-ink shadow-xs">
+        <FlaskConical className="size-3.5" aria-hidden />
         {l(LABOUR_LABEL)}
       </p>
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,24rem),1fr))] gap-4">
         <InsightCard
           label={t('labour.insight1')}
           sentence={t('labour.sentence1', {
@@ -88,7 +97,7 @@ export function UnicefLabourPage() {
           />
         </InsightCard>
       </div>
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,24rem),1fr))] gap-4">
         <ChartCard
           title={t('labour.occupations')}
           subtitle={t('labour.occupationsSub', { total: VACANCY_RECORDS })}
@@ -109,46 +118,48 @@ export function UnicefLabourPage() {
         </ChartCard>
         <SkillDemandList />
       </div>
-      <section className="rounded-2xl border bg-white p-5 shadow-sm">
-        <h2 className="text-lg">{t('labour.gapsTitle')}</h2>
-        <p className="mb-3 text-xs text-ink-soft">{t('labour.gapsSub')}</p>
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[32rem] text-sm">
-            <thead>
-              <tr className="border-b text-xs text-ink-soft">
-                {['sector', 'location', 'gap', 'severity'].map((c) => (
-                  <th key={c} scope="col" className="py-2 text-start font-medium">
-                    {t(`labour.col.${c}`)}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {SKILL_GAPS.map((g) => (
-                <tr key={`${g.sector.en}-${g.governorate}`} className="border-b last:border-0">
-                  <td className="py-2">{l(g.sector)}</td>
-                  <td className="py-2">{value('governorate', g.governorate)}</td>
-                  <td className="py-2 font-medium">{l(g.gap)}</td>
-                  <td className="py-2">
-                    <StatusBadge
-                      tone={
-                        g.severity === 'high'
-                          ? 'danger'
-                          : g.severity === 'medium'
-                            ? 'notice'
-                            : 'neutral'
-                      }
-                    >
-                      {t(`severity.${g.severity}`)}
-                    </StatusBadge>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      <section className="card overflow-hidden" aria-labelledby="gaps-title">
+        <div className="px-5 pt-4 pb-3">
+          <h2 id="gaps-title" className="text-base font-semibold">
+            {t('labour.gapsTitle')}
+          </h2>
+          <p className="mt-0.5 text-xs text-ink-soft">{t('labour.gapsSub')}</p>
         </div>
+        <Table className="min-w-[32rem] sm:min-w-0 [&_th]:whitespace-normal">
+          <TableHeader>
+            <TableRow>
+              {['sector', 'location', 'gap', 'severity'].map((c) => (
+                <TableHead key={c} scope="col">
+                  {t(`labour.col.${c}`)}
+                </TableHead>
+              ))}
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {SKILL_GAPS.map((g) => (
+              <TableRow key={`${g.sector.en}-${g.governorate}`}>
+                <TableCell>{l(g.sector)}</TableCell>
+                <TableCell>{value('governorate', g.governorate)}</TableCell>
+                <TableCell className="font-medium">{l(g.gap)}</TableCell>
+                <TableCell>
+                  <StatusBadge
+                    tone={
+                      g.severity === 'high'
+                        ? 'danger'
+                        : g.severity === 'medium'
+                          ? 'notice'
+                          : 'neutral'
+                    }
+                  >
+                    {t(`severity.${g.severity}`)}
+                  </StatusBadge>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </section>
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,24rem),1fr))] gap-4">
         <ChartCard
           title={t('labour.vacanciesTrend')}
           subtitle={t('labour.trendSub')}

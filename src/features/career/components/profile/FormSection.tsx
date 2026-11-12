@@ -16,16 +16,14 @@ export function FormSection({
 }) {
   const id = useId()
   return (
-    <section aria-labelledby={id} className="rounded-3xl border bg-white p-5 shadow-sm sm:p-6">
-      <div className="mb-4 flex items-start gap-3">
-        <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-sky-100 text-blue">
-          <Icon className="size-5" aria-hidden />
-        </span>
+    <section aria-labelledby={id} className="card rounded-3xl p-5 sm:p-6">
+      <div className="mb-4 border-b border-border/70 pb-3">
         <div>
-          <h2 id={id} className="text-lg">
+          <h2 id={id} className="flex items-center gap-2 text-lg">
+            <Icon className="size-5 shrink-0 text-blue" aria-hidden />
             {title}
           </h2>
-          {intro && <p className="text-sm text-ink-soft">{intro}</p>}
+          {intro && <p className="mt-0.5 text-sm text-ink-soft">{intro}</p>}
         </div>
       </div>
       <div className="grid gap-4 sm:grid-cols-2">{children}</div>

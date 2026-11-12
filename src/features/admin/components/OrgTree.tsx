@@ -1,7 +1,8 @@
 import type { CentreId, PartnerId } from '@shared/types'
 import { Link } from '@tanstack/react-router'
-import { Building2, Globe2, MapPin, Network } from 'lucide-react'
+import { Building2, ChevronRight, Globe2, MapPin, Network } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import { ANALYTICS_ROWS } from '@/data/analytics'
 import { CENTRES, COHORTS, PARTNERS } from '@/data/orgs'
 import { filterRows, kpis, sumRows } from '@/domain/kpi'
@@ -21,45 +22,56 @@ export function OrgTree({ filters }: { filters: AdminFilters }) {
   const reg = (f: { partnerId?: PartnerId; centreId?: CentreId }) =>
     kpis(sumRows(filterRows(ANALYTICS_ROWS, { ...base, ...f }))).registered
   return (
-    <div className="rounded-3xl border bg-white p-5 shadow-sm">
-      <div className="flex items-center gap-3 rounded-2xl bg-navy p-4 text-white">
-        <Globe2 className="size-6" aria-hidden />
-        <div className="flex-1">
+    <div className="card p-4 sm:p-5">
+      <div className="on-dark relative flex items-center gap-3 overflow-hidden rounded-2xl bg-navy p-4 text-white shadow-md">
+        <Motif variant="corner" className="text-cyan/25" />
+        <Globe2 className="relative size-5 shrink-0 text-cyan" aria-hidden />
+        <div className="relative min-w-0 flex-1">
           <p className="font-semibold">{t('tree.unicef')}</p>
           <p className="text-xs text-white/80">{t('tree.unicefBody')}</p>
         </div>
-        <p className="text-end">
-          <span className="block text-2xl font-bold tabular-nums">{n(reg({}))}</span>
+        <p className="relative text-end">
+          <span className="block text-2xl leading-none font-extrabold tabular-nums">
+            {n(reg({}))}
+          </span>
           <span className="text-xs text-white/80">{t('kpi.registered')}</span>
         </p>
       </div>
-      <ul className="mt-3 space-y-3 border-s-2 border-sky-200 ps-4 sm:ms-6">
+      <ul className="mt-3 grid items-start gap-4 lg:grid-cols-2">
         {PARTNERS.map((p) => (
           <li key={p.id} className="space-y-2">
             <Link
               to="/unicef/programmes"
               search={linkSearch({ partnerId: p.id })}
-              className="flex items-center gap-3 rounded-2xl border bg-sky-50 p-3 hover:border-blue"
+              className="card-hover group flex items-center gap-3 rounded-xl bg-blue-50 px-3 py-2.5 ring-1 ring-blue/15 hover:ring-blue/40 focus-visible:outline-2"
             >
-              <Network className="size-5 text-blue" aria-hidden />
-              <span className="flex-1">
-                <strong>{p.id}</strong> {l(p.name)}
+              <Network className="size-4 shrink-0 text-blue" aria-hidden />
+              <span className="min-w-0 flex-1 text-sm">
+                <strong className="me-1.5 font-bold text-blue">{p.id}</strong>
+                <span className="font-semibold text-ink">{l(p.name)}</span>
               </span>
-              <span className="text-end text-sm tabular-nums">
-                <strong>{n(reg({ partnerId: p.id }))}</strong>
+              <span className="text-base font-bold text-navy tabular-nums">
+                {n(reg({ partnerId: p.id }))}
               </span>
+              <ChevronRight
+                className="size-4 shrink-0 text-ink-soft rtl-mirror group-hover:text-blue"
+                aria-hidden
+              />
             </Link>
-            <ul className="space-y-2 border-s-2 border-sky-100 ps-4 sm:ms-6">
+            <ul className="ms-3 space-y-1.5 border-s-2 border-sky-100 ps-3 sm:ms-5 sm:ps-4">
               {CENTRES.filter((c) => c.partnerId === p.id).map((c) => (
                 <li key={c.id}>
                   <Link
                     to="/unicef/programmes"
                     search={linkSearch({ partnerId: p.id, centreId: c.id })}
-                    className="flex flex-wrap items-center gap-3 rounded-2xl border p-3 hover:border-blue hover:bg-sky-50"
+                    className="group flex items-center gap-3 rounded-xl bg-white px-3 py-2 ring-1 ring-border/70 transition-colors hover:bg-sky-50 hover:ring-blue/30 focus-visible:outline-2"
                   >
-                    <Building2 className="size-5 text-blue" aria-hidden />
-                    <span className="min-w-0 flex-1">
-                      <strong>{c.id}</strong> {l(c.name)}
+                    <Building2 className="size-4 shrink-0 text-blue" aria-hidden />
+                    <span className="min-w-0 flex-1 text-sm">
+                      <span className="block">
+                        <strong className="me-1.5 font-semibold text-ink-soft">{c.id}</strong>
+                        <span className="font-medium text-ink">{l(c.name)}</span>
+                      </span>
                       <span className="flex flex-wrap items-center gap-x-2 text-xs text-ink-soft">
                         <span className="inline-flex items-center gap-1">
                           <MapPin className="size-3" aria-hidden />
@@ -74,7 +86,9 @@ export function OrgTree({ filters }: { filters: AdminFilters }) {
                         </span>
                       </span>
                     </span>
-                    <span className="text-sm tabular-nums">{n(reg({ centreId: c.id }))}</span>
+                    <span className="text-sm font-semibold text-ink tabular-nums">
+                      {n(reg({ centreId: c.id }))}
+                    </span>
                   </Link>
                 </li>
               ))}

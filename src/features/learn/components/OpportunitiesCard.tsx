@@ -24,20 +24,15 @@ export function OpportunitiesCard({ youth }: { youth: Youth }) {
     .slice(0, 2)
 
   return (
-    <section
-      className="rounded-3xl border bg-white p-5 shadow-sm sm:p-6"
-      aria-labelledby="dash-opps"
-    >
+    <section className="card p-5 sm:p-6" aria-labelledby="dash-opps">
       <div className="flex items-center justify-between gap-3">
-        <h2 id="dash-opps" className="flex items-center gap-2 text-xl">
-          <span className="flex size-9 items-center justify-center rounded-xl bg-orange text-white">
-            <Briefcase className="size-5" aria-hidden />
-          </span>
+        <h2 id="dash-opps" className="flex min-w-0 flex-1 items-center gap-2 text-lg">
+          <Briefcase className="size-5 shrink-0 text-orange" aria-hidden />
           {t('dash.opportunities')}
         </h2>
         <Link
           to={CAREER_LINKS.opportunities}
-          className="text-sm font-semibold text-blue hover:underline"
+          className="shrink-0 text-sm font-semibold text-blue hover:underline"
         >
           {t('common:viewAll')}
         </Link>
@@ -50,13 +45,13 @@ export function OpportunitiesCard({ youth }: { youth: Youth }) {
             <li key={o.id}>
               <Link
                 to={CAREER_LINKS.opportunities}
-                className="lift flex min-h-12 items-start gap-3 rounded-2xl border p-3"
+                className="card-hover flex min-h-12 items-start gap-3 rounded-xl border border-border/70 bg-white p-3 shadow-sm"
               >
-                <span className="rounded-lg bg-sky-100 px-2 py-1 text-xs font-bold text-navy">
-                  {t(`common:oppTypes.${o.type}`)}
-                </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block font-semibold">{l(o.title)}</span>
+                  <span className="block text-xs font-bold tracking-wide text-blue">
+                    {t(`common:oppTypes.${o.type}`)}
+                  </span>
+                  <span className="block text-sm font-semibold">{l(o.title)}</span>
                   <span className="block text-xs text-ink-soft">
                     {l(ORGANISATIONS.find((g) => g.id === o.orgId)?.name)} ·{' '}
                     {t('dash.deadline', { date: formatDate(o.deadline, lang) })}

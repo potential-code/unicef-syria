@@ -28,7 +28,7 @@ export function ProfilePage() {
   return (
     <div>
       <PageHeader title={t('profile.title')} description={t('profile.body')} />
-      <div className="grid gap-6 lg:grid-cols-[1fr_20rem]">
+      <div className="grid gap-6 xl:grid-cols-[1fr_20rem] [&>*]:min-w-0">
         <ProfileForm key={saved ? 'saved' : 'seed'} scope={scope} initial={initial} />
         <ApprovalPanel scope={scope} profile={initial} />
       </div>

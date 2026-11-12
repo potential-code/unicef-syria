@@ -1,26 +1,26 @@
 import { BadgeCheck, CircleDashed, Info, type LucideIcon, MessageSquareText } from 'lucide-react'
-import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
-import { StatusBadge } from '@/components/shared/StatusBadge'
+import { StatCard, type StatTone } from '@/components/shared/StatCard'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { formatNumber, useLocalized } from '@/i18n'
 import { cn } from '@/lib/utils'
 
 export type Confirmation = 'confirmed' | 'reported' | 'activity' | 'live'
 
-const STATUS: Record<
-  Confirmation,
-  { icon: LucideIcon; tone: 'success' | 'notice' | 'info' | 'brand' }
-> = {
-  confirmed: { icon: BadgeCheck, tone: 'success' },
-  reported: { icon: MessageSquareText, tone: 'notice' },
-  activity: { icon: CircleDashed, tone: 'info' },
-  live: { icon: CircleDashed, tone: 'brand' },
+const STATUS_ICON: Record<Confirmation, LucideIcon> = {
+  confirmed: BadgeCheck,
+  reported: MessageSquareText,
+  activity: CircleDashed,
+  live: CircleDashed,
 }
 
+/** Light tones carry ink text; the rest carry white. */
+const LIGHT: StatTone[] = ['cyan', 'yellow', 'sky']
+
 /**
- * KPI tile (brief §19): value, the numerator and denominator in plain words, the confirmation
- * status as text, and a definition tooltip. The denominator is always visible, not hover-only.
+ * KPI tile (brief §19), a thin wrapper around the coloured `StatCard`: the value leads, the
+ * numerator and denominator sit in plain words in the hint, and the confirmation status plus a
+ * definition button close the card. The denominator is always visible, never hover-only.
  */
 export function KpiTile({
   label,
@@ -33,8 +33,9 @@ export function KpiTile({
   status,
   statusLabel,
   extra,
-  icon: Icon,
-  emphasis,
+  icon,
+  tone = 'blue',
+  to,
   className,
 }: {
   label: string
@@ -46,15 +47,19 @@ export function KpiTile({
   definition: string
   status: Confirmation
   statusLabel: string
-  extra?: ReactNode
+  /** One more plain-language line under the ratio, e.g. a share or unknown count. */
+  extra?: string
   icon?: LucideIcon
+  tone?: StatTone
+  to?: string
+  /** @deprecated kept for older call sites; tone now carries emphasis. */
   emphasis?: boolean
   className?: string
 }) {
   const { t } = useTranslation('admin')
   const { lang } = useLocalized()
-  const st = STATUS[status]
-  const suffix = kind === 'pct' ? '%' : ''
+  const StatusIcon = STATUS_ICON[status]
+  const light = LIGHT.includes(tone)
   const ratio =
     numerator !== undefined && denominator !== undefined
       ? t('kpi.ratio', {
@@ -64,58 +69,71 @@ export function KpiTile({
         })
       : denominatorLabel
   return (
-    <div
+    <StatCard
+      tone={tone}
+      icon={icon}
+      label={label}
+      to={to}
       className={cn(
-        'relative flex flex-col gap-2 rounded-2xl border bg-card p-4 shadow-sm transition-shadow hover:shadow-md sm:p-5',
-        emphasis && 'border-blue/30 bg-sky-50',
+        'h-full xl:[&>p:first-of-type]:min-h-10 xl:[&>p:first-of-type]:items-start [&>div:last-child]:mt-auto [&>div:last-child]:pt-3',
+        // Cyan carries ink text; lift the secondary lines for contrast.
+        tone === 'cyan' && '[&>p]:text-ink/90',
         className,
       )}
-    >
-      <div className="flex items-start justify-between gap-2">
-        <p className="flex items-center gap-2 text-sm font-medium text-ink-soft">
-          {Icon && <Icon className="size-4 text-blue" aria-hidden />}
-          {label}
-        </p>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <button
-              type="button"
-              className="-m-2 inline-flex size-9 shrink-0 items-center justify-center rounded-full text-ink-soft hover:bg-sky-100 hover:text-blue focus-visible:outline-2"
-              aria-label={t('kpi.definitionFor', { label })}
-            >
-              <Info className="size-4" aria-hidden />
-            </button>
-          </TooltipTrigger>
-          <TooltipContent className="max-w-72 space-y-1.5 p-3 text-start text-xs leading-relaxed">
-            <p className="font-semibold">{label}</p>
-            <p>{definition}</p>
-            {ratio && <p className="opacity-80">{ratio}</p>}
-            <p className="opacity-80">{statusLabel}</p>
-          </TooltipContent>
-        </Tooltip>
-      </div>
-      <p className="text-3xl font-bold tracking-tight text-ink tabular-nums">
-        {value === null ? (
-          <span className="text-lg font-semibold text-ink-soft">{t('kpi.noData')}</span>
+      value={
+        value === null ? (
+          <span className="text-xl font-bold">{t('kpi.noData')}</span>
         ) : (
           <>
             {formatNumber(value, lang)}
-            {suffix}
+            {kind === 'pct' && '%'}
             {kind === 'days' && (
-              <span className="ms-1 text-base font-semibold text-ink-soft">{t('kpi.days')}</span>
+              <span className="ms-1.5 text-base font-semibold opacity-80">{t('kpi.days')}</span>
             )}
           </>
-        )}
-      </p>
-      {ratio && <p className="text-xs text-ink-soft">{ratio}</p>}
-      {extra}
-      <StatusBadge
-        tone={st.tone}
-        icon={<st.icon className="size-3" aria-hidden />}
-        className="mt-auto w-fit max-w-full whitespace-normal"
-      >
-        {statusLabel}
-      </StatusBadge>
-    </div>
+        )
+      }
+      hint={
+        ratio || extra ? (
+          <>
+            {ratio && <span className="block">{ratio}</span>}
+            {extra && <span className="mt-0.5 block font-semibold">{extra}</span>}
+          </>
+        ) : undefined
+      }
+      footer={
+        <span
+          className={cn(
+            'flex items-center justify-between gap-2 border-t pt-2.5',
+            light ? 'border-ink/10' : 'border-white/20',
+          )}
+        >
+          <span className="inline-flex min-w-0 items-center gap-1.5 text-xs font-semibold">
+            <StatusIcon className="size-3.5 shrink-0" aria-hidden />
+            <span className="min-w-0">{statusLabel}</span>
+          </span>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button
+                type="button"
+                className={cn(
+                  '-m-1.5 inline-flex size-8 shrink-0 items-center justify-center rounded-full focus-visible:outline-2',
+                  light ? 'hover:bg-white/50' : 'hover:bg-white/15',
+                )}
+                aria-label={t('kpi.definitionFor', { label })}
+              >
+                <Info className="size-4" aria-hidden />
+              </button>
+            </TooltipTrigger>
+            <TooltipContent className="max-w-72 space-y-1.5 p-3 text-start text-xs leading-relaxed">
+              <p className="font-semibold">{label}</p>
+              <p>{definition}</p>
+              {ratio && <p className="opacity-80">{ratio}</p>}
+              <p className="opacity-80">{statusLabel}</p>
+            </TooltipContent>
+          </Tooltip>
+        </span>
+      }
+    />
   )
 }

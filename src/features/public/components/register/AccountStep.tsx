@@ -23,7 +23,7 @@ export function AccountStep({ form, set, errors }: StepProps) {
     }, 700)
   }
   return (
-    <div className="grid gap-5 sm:grid-cols-2">
+    <div className="grid gap-4 sm:grid-cols-2">
       <div className="sm:col-span-2">
         <Field id="name" label={t('register.account.name')} error={errors.name}>
           <Input
@@ -56,7 +56,7 @@ export function AccountStep({ form, set, errors }: StepProps) {
               className="flex-1"
             />
             {form.verified ? (
-              <span className="inline-flex min-h-12 items-center gap-1.5 rounded-xl bg-success-soft px-4 text-sm font-bold text-success">
+              <span className="inline-flex h-10 shrink-0 items-center gap-1.5 rounded-xl bg-success-soft px-4 text-sm font-bold text-success">
                 <BadgeCheck className="size-5" aria-hidden />
                 {t('register.account.verified')}
               </span>

@@ -25,10 +25,10 @@ import { PostCard } from '../components/community/PostCard'
 import { EventCard } from '../components/EventCard'
 
 const GROUP_STYLE = {
-  career: { icon: HelpCircle, tone: 'bg-blue text-white' },
-  jobSearch: { icon: Briefcase, tone: 'bg-cyan text-ink' },
-  enterprise: { icon: Lightbulb, tone: 'bg-orange text-white' },
-  freelance: { icon: Palette, tone: 'bg-yellow text-ink' },
+  career: { icon: HelpCircle, tone: 'text-blue', bar: 'before:bg-blue' },
+  jobSearch: { icon: Briefcase, tone: 'text-cyan-600', bar: 'before:bg-cyan' },
+  enterprise: { icon: Lightbulb, tone: 'text-orange', bar: 'before:bg-orange' },
+  freelance: { icon: Palette, tone: 'text-orange', bar: 'before:bg-yellow' },
 } as const
 
 /** Y13 moderated community groups, the learner's cohort group and the E01 event. */
@@ -55,7 +55,8 @@ export function CommunityPage() {
       description: t('community.cohortGroupBody'),
       count: count(c.id),
       icon: Users,
-      tone: 'bg-navy text-white',
+      tone: 'text-navy',
+      bar: 'before:bg-navy',
       members: true,
     })),
   ]
@@ -74,7 +75,7 @@ export function CommunityPage() {
       />
       <EventCard youth={youth} />
       <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
-        <div className="space-y-4">
+        <div className="min-w-0 space-y-4">
           <GroupPicker
             groups={groups}
             value={group?.id ?? ''}
@@ -84,7 +85,7 @@ export function CommunityPage() {
             postsLabel={(n) => t('community.posts', { count: n })}
           />
           {restricted.length > 0 && (
-            <p className="flex items-start gap-2 rounded-xl bg-blue-50 p-3 text-xs text-navy">
+            <p className="flex items-start gap-2 rounded-xl border border-sky-200 bg-sky-50 p-3 text-xs text-navy">
               <Lock className="mt-0.5 size-3.5 shrink-0" aria-hidden />
               {t('community.restricted', { cohorts: restricted.join(', ') })}
             </p>
@@ -95,7 +96,7 @@ export function CommunityPage() {
         </div>
         <section aria-labelledby="group-heading" className="space-y-4">
           <div>
-            <h2 id="group-heading" className="text-2xl">
+            <h2 id="group-heading" className="text-xl">
               {group?.name}
             </h2>
             <p className="text-sm text-ink-soft">{group?.description}</p>

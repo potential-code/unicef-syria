@@ -46,15 +46,15 @@ export function ApplicationDetailPage({ appId }: { appId: string }) {
         ]}
       />
       {opp.status === 'closed' && (
-        <p className="mb-4 flex items-start gap-2 rounded-xl bg-muted p-3 text-sm">
+        <p className="mb-4 flex items-start gap-2 rounded-xl bg-sky-50 p-3 text-sm text-navy ring-1 ring-cyan/25">
           <Info className="mt-0.5 size-4 shrink-0" aria-hidden />
           {t('opps.closedNote')}
         </p>
       )}
-      <section className="mb-6 rounded-2xl border bg-white p-5 shadow-sm">
-        <h2 className="mb-3 text-lg">{t('detail.progress')}</h2>
+      <section className="card mb-8 p-5 sm:p-6">
+        <h2 className="mb-3 text-lg text-navy">{t('detail.progress')}</h2>
         <StageStepper app={app} />
-        <div className="mt-4 border-t pt-4">
+        <div className="mt-4 border-t border-border/70 pt-4">
           <StageActions app={app} name={youth.profile.name} roleTitle={l(opp.title)} />
           {placed && <p className="text-sm font-medium text-success">{t('detail.placed')}</p>}
           {app.stage === 'completed' && (
@@ -62,24 +62,24 @@ export function ApplicationDetailPage({ appId }: { appId: string }) {
           )}
         </div>
       </section>
-      <div className="grid gap-6 lg:grid-cols-[1fr_22rem]">
+      <div className="grid gap-6 xl:grid-cols-[1fr_20rem] [&>*]:min-w-0">
         <div className="flex flex-col gap-4">
-          <h2 className="text-lg">{t('detail.evidence')}</h2>
+          <h2 className="text-xl text-navy">{t('detail.evidence')}</h2>
           <EvidencePanel app={app} youth={youth} opp={opp} />
         </div>
         <div className="flex flex-col gap-4">
           <ApplicantSummary youth={youth} />
           {app.feedback && (
-            <section className="rounded-2xl border bg-white p-5 shadow-sm">
-              <h2 className="mb-2 flex items-center gap-2 text-base">
+            <section className="card p-5">
+              <h2 className="mb-2 flex items-center gap-2 text-base text-navy">
                 <MessageSquareHeart className="size-5 text-blue" aria-hidden />
                 {t('detail.feedback')}
               </h2>
               <p className="whitespace-pre-line text-sm">{app.feedback}</p>
             </section>
           )}
-          <section className="rounded-2xl border bg-white p-5 shadow-sm">
-            <h2 className="mb-4 text-base">{t('detail.timeline')}</h2>
+          <section className="card p-5">
+            <h2 className="mb-4 text-base text-navy">{t('detail.timeline')}</h2>
             <ApplicationTimeline app={app} />
           </section>
         </div>

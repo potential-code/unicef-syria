@@ -1,4 +1,5 @@
 import { type ReactNode, useEffect, useRef } from 'react'
+import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { gsap } from '@/lib/gsap'
 import { cn } from '@/lib/utils'
 
@@ -16,12 +17,14 @@ export function Parallax({
   className?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
+  const reduce = useReducedMotion()
 
   useEffect(() => {
+    if (reduce) return
     const el = ref.current
     if (!el) return
     const media = gsap.matchMedia()
-    media.add('(prefers-reduced-motion: no-preference)', () => {
+    media.add('all', () => {
       gsap.fromTo(
         el,
         { yPercent: -speed },
@@ -33,7 +36,7 @@ export function Parallax({
       )
     })
     return () => media.revert()
-  }, [speed])
+  }, [speed, reduce])
 
   return (
     <div ref={ref} className={cn('will-change-transform', className)}>

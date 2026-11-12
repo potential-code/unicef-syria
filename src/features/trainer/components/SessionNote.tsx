@@ -15,8 +15,8 @@ export function SessionNote({ sessionId }: { sessionId: string }) {
   const [text, setText] = useState(saved)
   const dirty = text.trim() !== saved.trim()
   return (
-    <section className="rounded-2xl border bg-card p-5 shadow-sm">
-      <h2 className="flex items-center gap-2 text-lg">
+    <section className="card p-5 sm:p-6 xl:self-start">
+      <h2 className="flex items-center gap-2 text-lg text-navy">
         <NotebookPen className="size-5 text-blue" aria-hidden />
         {t('note.title')}
       </h2>

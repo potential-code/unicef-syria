@@ -44,14 +44,14 @@ export function RosterFilters({
   const keys = Object.keys(OPTIONS) as (keyof typeof OPTIONS)[]
   const active = JSON.stringify(value) !== JSON.stringify(NO_FILTERS)
   return (
-    <div className="grid gap-3 rounded-2xl border bg-card p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,1fr))_auto_auto] lg:items-end">
+    <div className="card grid grid-cols-2 gap-3 p-4 lg:grid-cols-4 xl:grid-cols-[repeat(4,minmax(0,1fr))_auto] xl:items-end">
       {keys.map((k) => (
-        <div key={k} className="space-y-1.5">
+        <div key={k} className="min-w-0 space-y-1">
           <Label htmlFor={`f-${k}`} className="text-xs font-semibold text-ink-soft">
             {t(`filters.${k}`)}
           </Label>
           <Select value={value[k]} onValueChange={(v) => onChange({ ...value, [k]: v })}>
-            <SelectTrigger id={`f-${k}`} className="min-h-11 w-full">
+            <SelectTrigger id={`f-${k}`} size="sm" className="w-full">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -64,19 +64,27 @@ export function RosterFilters({
           </Select>
         </div>
       ))}
-      <div className="flex min-h-11 items-center gap-2">
-        <Switch
-          id="f-follow"
-          checked={value.followUp}
-          onCheckedChange={(c) => onChange({ ...value, followUp: c })}
-        />
-        <Label htmlFor="f-follow" className="text-sm">
-          {t('filters.followUp')}
-        </Label>
+      <div className="col-span-2 flex flex-wrap items-center justify-between gap-3 border-t border-border/70 pt-3 lg:col-span-4 xl:col-span-1 xl:justify-end xl:border-0 xl:pt-0">
+        <div className="flex h-9 items-center gap-2">
+          <Switch
+            id="f-follow"
+            checked={value.followUp}
+            onCheckedChange={(c) => onChange({ ...value, followUp: c })}
+          />
+          <Label htmlFor="f-follow" className="text-sm whitespace-nowrap">
+            {t('filters.followUp')}
+          </Label>
+        </div>
+        <Button
+          variant="ghost"
+          size="sm"
+          className="text-blue"
+          disabled={!active}
+          onClick={() => onChange(NO_FILTERS)}
+        >
+          {t('common:clearFilters')}
+        </Button>
       </div>
-      <Button variant="ghost" size="sm" disabled={!active} onClick={() => onChange(NO_FILTERS)}>
-        {t('common:clearFilters')}
-      </Button>
     </div>
   )
 }

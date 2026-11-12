@@ -97,20 +97,18 @@ export function TrainerSessionDetailPage({ sessionId }: { sessionId: string }) {
           </Button>
         }
       />
-      <dl className="grid gap-3 rounded-2xl border bg-sky-50 p-5 sm:grid-cols-2 lg:grid-cols-3">
+      <dl className="card grid gap-x-6 gap-y-4 p-5 sm:grid-cols-2 sm:p-6 xl:grid-cols-3">
         {facts.map(({ icon: Icon, label, value }) => (
-          <div key={label} className="flex gap-3">
-            <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white text-blue shadow-sm">
-              <Icon className="size-4" aria-hidden />
-            </span>
-            <div className="min-w-0">
-              <dt className="text-xs font-semibold text-ink-soft">{label}</dt>
-              <dd className="text-sm font-medium break-words text-ink">{value}</dd>
-            </div>
+          <div key={label} className="min-w-0">
+            <dt className="flex items-center gap-1.5 text-xs font-semibold text-ink-soft">
+              <Icon className="size-4 shrink-0 text-blue" aria-hidden />
+              {label}
+            </dt>
+            <dd className="mt-1 text-sm font-medium break-words text-ink">{value}</dd>
           </div>
         ))}
       </dl>
-      <div className="grid gap-6 lg:grid-cols-[1fr_20rem] [&>*]:min-w-0">
+      <div className="grid gap-6 xl:grid-cols-[1fr_20rem] [&>*]:min-w-0">
         <AttendanceRegister session={session} learners={roster} />
         <SessionNote sessionId={session.id} />
       </div>

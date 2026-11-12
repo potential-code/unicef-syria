@@ -53,7 +53,7 @@ export function ProposalForm({
     <form
       onSubmit={submit}
       noValidate
-      className="space-y-4 rounded-2xl border-2 border-cyan/30 bg-sky-50 p-4 sm:p-5"
+      className="space-y-4 rounded-2xl border border-sky-200 bg-sky-50/70 p-4 shadow-sm sm:p-5"
     >
       <div className="grid gap-4 sm:grid-cols-2">
         {FIELDS.map((k) => (

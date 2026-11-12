@@ -9,6 +9,7 @@ import { formatTime } from '@/i18n'
 import { nowMs } from '@/lib/clock'
 import { useSessions } from '@/store/actions/sessions'
 import { useAllYouth } from '@/store/actions/youth'
+import { MiniStats } from '../components/MiniStats'
 import { TrainerAssignment } from '../components/TrainerAssignment'
 import { useLabels } from '../lib/useLabels'
 import { useScope } from '../lib/useScope'
@@ -32,7 +33,7 @@ export function CentreTrainersPage() {
           body={t('empty.noCohortsBody')}
         />
       )}
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,24rem),1fr))] gap-4">
         {cohorts.map((k) => {
           const ks = sessions.filter((s) => s.cohortId === k.id)
           const next = ks
@@ -41,31 +42,32 @@ export function CentreTrainersPage() {
           const members = Object.values(youth).filter((y) => y.cohortIds.includes(k.id))
           const marked = ks.filter((s) => members.some((m) => m.attendance[s.id])).length
           return (
-            <article key={k.id} className="space-y-4 rounded-3xl border bg-white p-5 shadow-sm">
+            <article key={k.id} className="card space-y-4 p-5">
               <h2 className="text-lg">{l(k.name)}</h2>
               <TrainerAssignment
                 cohortId={k.id}
                 value={assign[k.id] ?? k.trainerId}
                 onChange={(v) => setAssign((a) => ({ ...a, [k.id]: v }))}
               />
-              <dl className="grid grid-cols-3 gap-3 text-sm">
-                <div className="flex flex-col-reverse rounded-2xl bg-sky-50 p-3">
-                  <dt className="text-xs text-ink-soft">{t('trainers.sessions')}</dt>
-                  <dd className="text-xl font-bold tabular-nums">{n(ks.length)}</dd>
-                </div>
-                <div className="flex flex-col-reverse rounded-2xl bg-sky-50 p-3">
-                  <dt className="text-xs text-ink-soft">{t('trainers.marked')}</dt>
-                  <dd className="text-xl font-bold tabular-nums">
-                    {t('kpi.ofShort', { num: n(marked), den: n(ks.length) })}
-                  </dd>
-                </div>
-                <div className="flex flex-col-reverse rounded-2xl bg-sky-50 p-3">
-                  <dt className="text-xs text-ink-soft">{t('trainers.next')}</dt>
-                  <dd className="font-semibold">
-                    {next ? `${d(next.start)} ${formatTime(next.start, lang)}` : t('none')}
-                  </dd>
-                </div>
-              </dl>
+              <MiniStats
+                items={[
+                  { key: 'sessions', label: t('trainers.sessions'), value: n(ks.length) },
+                  {
+                    key: 'marked',
+                    label: t('trainers.marked'),
+                    value: t('kpi.ofShort', { num: n(marked), den: n(ks.length) }),
+                  },
+                  {
+                    key: 'next',
+                    label: t('trainers.next'),
+                    value: (
+                      <span className="block text-sm leading-snug font-bold">
+                        {next ? `${d(next.start)} ${formatTime(next.start, lang)}` : t('none')}
+                      </span>
+                    ),
+                  },
+                ]}
+              />
               {next && (
                 <p className="text-sm text-ink-soft">
                   {t('trainers.nextTitle', { title: l(next.title) })}

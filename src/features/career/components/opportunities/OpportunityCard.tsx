@@ -28,11 +28,11 @@ export function OpportunityCard({
   return (
     <article
       className={cn(
-        'lift relative flex h-full flex-col overflow-hidden rounded-2xl border bg-white shadow-sm',
+        'card card-hover relative flex h-full flex-col overflow-hidden',
         closed && 'opacity-90',
       )}
     >
-      <div className={cn('h-2', accent.bar)} aria-hidden />
+      <div className={cn('h-1.5', accent.bar)} aria-hidden />
       <div className="flex flex-1 flex-col gap-4 p-5">
         <div className="flex flex-wrap items-center gap-2">
           <span className={cn('rounded-full px-3 py-1 text-xs font-bold', accent.tile)}>
@@ -63,7 +63,7 @@ export function OpportunityCard({
             {org ? l(org.name) : opp.orgId}
           </p>
         </div>
-        <dl className="grid grid-cols-2 gap-2 text-sm">
+        <dl className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm">
           <div className="flex items-center gap-1.5">
             <MapPin className="size-4 shrink-0 text-blue" aria-hidden />
             <dt className="sr-only">{t('opps.detail.location')}</dt>

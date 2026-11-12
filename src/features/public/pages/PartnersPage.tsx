@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, Building2, Check, Eye, Handshake, LogIn, ShieldCheck } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion'
 import { SmartImage } from '@/components/shared/SmartImage'
 import { Button } from '@/components/ui/button'
@@ -18,9 +19,9 @@ export function PartnersPage() {
   const { t } = useTranslation('public')
   usePageTitle(t('partners.title'))
   const signIn = (
-    <Button asChild size="lg" className="rounded-full bg-yellow text-ink hover:bg-white">
+    <Button asChild className="rounded-full bg-yellow px-5 text-ink hover:bg-white">
       <Link to="/sign-in">
-        <LogIn className="size-5 rtl-mirror" aria-hidden />
+        <LogIn className="size-4 rtl-mirror" aria-hidden />
         {t('partners.signIn')}
       </Link>
     </Button>
@@ -32,27 +33,26 @@ export function PartnersPage() {
         title={t('partners.title')}
         body={t('partners.body')}
       >
-        <div className="mt-8">{signIn}</div>
+        <div className="mt-6">{signIn}</div>
       </PageBanner>
 
-      <div className="container-page grid gap-8 py-16 lg:grid-cols-2">
+      <div className="container-page grid gap-6 py-12 sm:py-16 lg:grid-cols-2">
         {AUDIENCES.map((a) => {
           const points = t(`partners.${a.id}.points`, { returnObjects: true }) as string[]
           return (
-            <Reveal
-              key={a.id}
-              as="article"
-              className="overflow-hidden rounded-[2rem] border bg-white shadow-sm"
-            >
+            <Reveal key={a.id} as="article" className="card relative overflow-hidden">
               <SmartImage src={a.image} alt="" className="aspect-[16/7] w-full" />
-              <div className="p-6 sm:p-8">
-                <a.icon className="mb-3 size-8 text-blue" aria-hidden />
-                <h2 className="text-3xl">{t(`partners.${a.id}.title`)}</h2>
+              <Motif variant="corner" className="text-blue/[0.08]" />
+              <div className="relative p-6 sm:p-7">
+                <h2 className="flex items-center gap-2 text-2xl">
+                  <a.icon className="size-6 shrink-0 text-blue" aria-hidden />
+                  {t(`partners.${a.id}.title`)}
+                </h2>
                 <p className="mt-2 text-ink-soft">{t(`partners.${a.id}.body`)}</p>
-                <ul className="mt-5 space-y-2.5">
+                <ul className="mt-4 space-y-2">
                   {points.map((p) => (
                     <li key={p} className="flex gap-2">
-                      <Check className="mt-0.5 size-5 shrink-0 text-success" aria-hidden />
+                      <Check className="mt-0.5 size-4 shrink-0 text-success" aria-hidden />
                       {p}
                     </li>
                   ))}
@@ -63,19 +63,20 @@ export function PartnersPage() {
         })}
       </div>
 
-      <section aria-labelledby="views-title" className="bg-sky-50 py-16">
+      <section aria-labelledby="views-title" className="bg-sky-50 py-14 sm:py-16">
         <div className="container-page">
           <Reveal className="max-w-2xl">
-            <h2 id="views-title" className="flex items-center gap-2 text-3xl">
-              <Eye className="size-7 text-blue" aria-hidden />
+            <h2 id="views-title" className="flex items-center gap-2 text-2xl sm:text-3xl">
+              <Eye className="size-6 shrink-0 text-blue" aria-hidden />
               {t('partners.views.title')}
             </h2>
             <p className="mt-3 text-ink-soft">{t('partners.views.body')}</p>
           </Reveal>
           <Stagger className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {ROLE_VIEWS.map((r) => (
-              <StaggerItem key={r} className="rounded-2xl border bg-white p-5 shadow-sm">
-                <h3 className="text-lg">{t(`common:roles.${r}`)}</h3>
+              <StaggerItem key={r} className="card relative overflow-hidden p-5">
+                <span className="absolute inset-y-0 start-0 w-1 bg-grad-unicef-v" aria-hidden />
+                <h3 className="text-base">{t(`common:roles.${r}`)}</h3>
                 <p className="mt-1 text-sm text-ink-soft">{t(`partners.views.${r}`)}</p>
               </StaggerItem>
             ))}
@@ -87,28 +88,30 @@ export function PartnersPage() {
         </div>
       </section>
 
-      <section className="on-dark bg-navy py-14 text-white">
-        <div className="container-page flex flex-wrap items-center justify-between gap-6">
-          <div className="max-w-xl">
-            <h2 className="text-3xl text-white">{t('partners.cta.title')}</h2>
-            <p className="mt-2 text-white/80">{t('partners.cta.body')}</p>
+      <div className="container-page py-14 sm:py-16">
+        <section className="on-dark relative overflow-hidden rounded-3xl bg-grad-unicef px-6 py-10 text-white shadow-lg sm:px-10">
+          <Motif variant="banner" className="text-white/[0.12]" />
+          <div className="relative flex flex-wrap items-center justify-between gap-6">
+            <div className="min-w-0 max-w-xl flex-1">
+              <h2 className="text-2xl text-white sm:text-3xl">{t('partners.cta.title')}</h2>
+              <p className="mt-2 text-white/85">{t('partners.cta.body')}</p>
+            </div>
+            <div className="flex shrink-0 flex-wrap gap-3">
+              {signIn}
+              <Button
+                asChild
+                variant="ghost"
+                className="rounded-full border border-white/60 px-5 text-white hover:bg-white/15 hover:text-white"
+              >
+                <Link to="/opportunities">
+                  {t('partners.cta.opps')}
+                  <ArrowRight className="size-4 rtl-mirror" aria-hidden />
+                </Link>
+              </Button>
+            </div>
           </div>
-          <div className="flex flex-wrap gap-3">
-            {signIn}
-            <Button
-              asChild
-              size="lg"
-              variant="ghost"
-              className="rounded-full border-2 border-white/60 text-white hover:bg-white/15 hover:text-white"
-            >
-              <Link to="/opportunities">
-                {t('partners.cta.opps')}
-                <ArrowRight className="size-5 rtl-mirror" aria-hidden />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </>
   )
 }

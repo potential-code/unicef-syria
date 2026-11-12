@@ -60,24 +60,24 @@ export function ProfilePage() {
         eyebrow={t('profile.eyebrow')}
         title={t('profile.title')}
         body={t('profile.body')}
-        actions={<CompletionMeter value={profileCompletion(p)} complete={valid} />}
       />
-      <div className="grid gap-6 lg:grid-cols-[1fr_22rem]">
+      <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_21rem]">
         <div className="space-y-5">
           <AccountSection {...props} />
           <BackgroundSection {...props} />
           <InterestsSection {...props} />
           <SupportSection {...props} />
           <PermissionsSection {...props} />
-          <div className="sticky bottom-3 z-10 flex flex-wrap items-center gap-3 rounded-2xl border bg-white/95 p-3 shadow-lg backdrop-blur">
-            <Button type="submit" size="lg" className="rounded-full" disabled={busy}>
-              <Save className="size-5" aria-hidden />
+          <div className="sticky bottom-3 z-10 flex flex-wrap items-center gap-3 rounded-2xl border border-border/70 bg-white/95 p-3 shadow-lg backdrop-blur">
+            <Button type="submit" className="shrink-0 rounded-full" disabled={busy}>
+              <Save className="size-4" aria-hidden />
               {t('profile.save')}
             </Button>
-            <p className="text-sm text-ink-soft">{t('profile.saveHint')}</p>
+            <p className="min-w-0 flex-1 text-sm text-ink-soft">{t('profile.saveHint')}</p>
           </div>
         </div>
-        <Reveal className="lg:sticky lg:top-20 lg:self-start">
+        <Reveal className="space-y-5 xl:sticky xl:top-20 xl:order-last xl:self-start">
+          <CompletionMeter value={profileCompletion(p)} complete={valid} />
           <VisibilityPanel employerVisible={p.consentEmployerVisible} />
         </Reveal>
       </div>

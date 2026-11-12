@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { cn } from '@/lib/utils'
 import { STEPS, type StepId } from '../../register-config'
 
-/** Five-step indicator. Completed steps can be revisited. */
+/** Compact five-step indicator. Completed and earlier steps can be revisited. */
 export function Stepper({
   current,
   done,
@@ -16,38 +16,40 @@ export function Stepper({
   const { t } = useTranslation('public')
   const idx = STEPS.indexOf(current)
   return (
-    <ol className="flex gap-1.5 lg:flex-col lg:gap-1">
+    <ol className="grid grid-cols-5 gap-1">
       {STEPS.map((s, i) => {
         const complete = done.includes(s)
         const active = s === current
         const reachable = complete || i <= idx
         return (
-          <li key={s} className="flex-1 lg:flex-none">
+          <li key={s} className="min-w-0">
             <button
               type="button"
               onClick={() => reachable && onGo(s)}
               disabled={!reachable}
               aria-current={active ? 'step' : undefined}
-              className={cn(
-                'flex w-full flex-col items-center gap-1 rounded-xl p-1.5 text-center transition-colors lg:flex-row lg:gap-3 lg:p-2.5 lg:text-start',
-                active ? 'bg-white/20' : 'hover:bg-white/10',
-                !reachable && 'opacity-60',
-              )}
+              className="group flex w-full flex-col items-center gap-1.5 rounded-lg px-0.5 py-1 text-center disabled:cursor-default"
             >
               <span
                 className={cn(
-                  'flex size-9 shrink-0 items-center justify-center rounded-full text-sm font-extrabold',
-                  complete
-                    ? 'bg-yellow text-ink'
-                    : active
-                      ? 'bg-white text-blue'
-                      : 'border-2 border-white/50 text-white',
+                  'h-1.5 w-full rounded-full transition-colors',
+                  complete ? 'bg-blue' : active ? 'bg-yellow' : 'bg-sky-100',
+                )}
+                aria-hidden
+              />
+              <span
+                className={cn(
+                  'flex items-center gap-1 text-[11px] leading-tight font-semibold sm:text-xs',
+                  active ? 'text-ink' : complete ? 'text-blue' : 'text-ink-soft',
+                  reachable && !active && 'group-hover:text-blue',
                 )}
               >
-                {complete ? <Check className="size-4" aria-hidden /> : i + 1}
-              </span>
-              <span className="text-[11px] leading-tight font-semibold text-white sm:text-xs lg:text-base">
-                {t(`register.steps.${s}`)}
+                {complete ? (
+                  <Check className="size-3.5 shrink-0" aria-hidden />
+                ) : (
+                  <span className="hidden sm:inline">{i + 1}.</span>
+                )}
+                <span className="min-w-0">{t(`register.steps.${s}`)}</span>
               </span>
               {complete && <span className="sr-only">{t('register.stepDone')}</span>}
             </button>

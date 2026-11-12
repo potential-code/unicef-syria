@@ -3,6 +3,7 @@ import { Play } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useId, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import { useLocalized } from '@/i18n'
 import { cn } from '@/lib/utils'
 import { PlaceholderLabel } from './PlaceholderLabel'
@@ -25,20 +26,10 @@ export function VideoPreview({ title, transcript }: { title: string; transcript:
   }
 
   return (
-    <section
-      aria-labelledby={`${id}-h`}
-      className="overflow-hidden rounded-3xl border bg-white shadow-sm"
-    >
+    <section aria-labelledby={`${id}-h`} className="card overflow-hidden rounded-3xl">
       <div className="on-dark relative flex aspect-video items-center justify-center overflow-hidden bg-grad-unicef text-white">
-        <span
-          className="pointer-events-none absolute -start-10 -top-10 size-40 rounded-full bg-cyan/50 blur-2xl"
-          aria-hidden
-        />
-        <span
-          className="pointer-events-none absolute -end-6 -bottom-10 size-44 rounded-full border-[18px] border-white/10"
-          aria-hidden
-        />
-        <span className="absolute start-4 top-4 rounded-full bg-white/20 px-3 py-1 text-xs font-bold uppercase tracking-wide">
+        <Motif variant="banner" className="text-white/[0.12]" />
+        <span className="absolute start-4 top-4 rounded-full bg-navy/40 px-3 py-1 text-xs font-bold tracking-wide uppercase">
           {t('player.preview')}
         </span>
         <motion.button

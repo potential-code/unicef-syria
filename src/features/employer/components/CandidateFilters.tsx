@@ -45,13 +45,15 @@ export function CandidateFilters({
   const set = (k: keyof CandidateFilterState, v: string) => onChange({ ...value, [k]: v })
   const any = { value: 'any', label: t('candidates.any') }
   return (
-    <div className="grid grid-cols-1 gap-4 rounded-2xl border bg-white p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-3 sm:p-5">
+    <div className="card grid grid-cols-1 gap-3 p-4 sm:grid-cols-2 xl:grid-cols-3">
       <Field
         id="f-opp"
         label={t('candidates.matchAgainst')}
-        className="sm:col-span-2 lg:col-span-1"
+        className="sm:col-span-2 xl:col-span-1"
+        compact
       >
         <ChoiceSelect
+          size="sm"
           id="f-opp"
           value={value.opp}
           onChange={(v) => set('opp', v)}
@@ -61,7 +63,7 @@ export function CandidateFilters({
           ]}
         />
       </Field>
-      <Field id="f-skill" label={t('candidates.skillFilter')}>
+      <Field id="f-skill" label={t('candidates.skillFilter')} compact>
         <div className="relative">
           <Search
             className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-ink-soft"
@@ -72,12 +74,13 @@ export function CandidateFilters({
             value={value.skill}
             onChange={(e) => set('skill', e.target.value)}
             placeholder={t('candidates.skillPh')}
-            className="ps-9"
+            className="h-9 ps-9"
           />
         </div>
       </Field>
-      <Field id="f-course" label={t('candidates.trainingFilter')}>
+      <Field id="f-course" label={t('candidates.trainingFilter')} compact>
         <ChoiceSelect
+          size="sm"
           id="f-course"
           value={value.course}
           onChange={(v) => set('course', v)}
@@ -87,16 +90,18 @@ export function CandidateFilters({
           ]}
         />
       </Field>
-      <Field id="f-interest" label={t('candidates.interestFilter')}>
+      <Field id="f-interest" label={t('candidates.interestFilter')} compact>
         <ChoiceSelect
+          size="sm"
           id="f-interest"
           value={value.interest}
           onChange={(v) => set('interest', v)}
           options={[any, ...interests.map((i) => ({ value: i, label: i }))]}
         />
       </Field>
-      <Field id="f-location" label={t('candidates.locationFilter')}>
+      <Field id="f-location" label={t('candidates.locationFilter')} compact>
         <ChoiceSelect
+          size="sm"
           id="f-location"
           value={value.location}
           onChange={(v) => set('location', v)}
@@ -109,8 +114,9 @@ export function CandidateFilters({
           ]}
         />
       </Field>
-      <Field id="f-avail" label={t('candidates.availabilityFilter')}>
+      <Field id="f-avail" label={t('candidates.availabilityFilter')} compact>
         <ChoiceSelect
+          size="sm"
           id="f-avail"
           value={value.availability}
           onChange={(v) => set('availability', v)}

@@ -48,12 +48,14 @@ export function OpportunityFilters({
     ],
   }
   return (
-    <div className="flex flex-col gap-3 rounded-2xl border bg-white p-4 shadow-sm sm:flex-row sm:flex-wrap sm:items-end">
+    <div className="card grid grid-cols-2 items-end gap-3 p-4 md:grid-cols-[repeat(auto-fit,minmax(9.5rem,1fr))]">
       {keys.map((k) => (
-        <div key={k} className="flex min-w-40 flex-1 flex-col gap-1.5">
-          <Label htmlFor={`f-${k}`}>{t(`opps.filters.${k}`)}</Label>
+        <div key={k} className="flex min-w-0 flex-col gap-1">
+          <Label htmlFor={`f-${k}`} className="text-xs font-semibold text-ink-soft">
+            {t(`opps.filters.${k}`)}
+          </Label>
           <Select value={value[k]} onValueChange={(v) => onChange({ ...value, [k]: v })}>
-            <SelectTrigger id={`f-${k}`}>
+            <SelectTrigger id={`f-${k}`} size="sm" className="w-full">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -67,14 +69,14 @@ export function OpportunityFilters({
           </Select>
         </div>
       ))}
-      <div className="flex min-h-12 items-center gap-3 rounded-xl bg-sky-50 px-4">
+      <div className="col-span-2 flex h-9 items-center gap-2.5 rounded-lg bg-sky-50 px-3 md:col-span-1">
         <Switch
           id="f-rec"
           checked={value.recommended}
           onCheckedChange={(c) => onChange({ ...value, recommended: c })}
         />
-        <Label htmlFor="f-rec" className="flex items-center gap-1.5">
-          <Sparkles className="size-4 text-blue" aria-hidden />
+        <Label htmlFor="f-rec" className="flex min-w-0 items-center gap-1.5 text-sm">
+          <Sparkles className="size-4 shrink-0 text-blue" aria-hidden />
           {t('opps.filters.recommended')}
         </Label>
       </div>

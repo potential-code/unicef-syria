@@ -96,7 +96,7 @@ export function PartnerProgrammesPage() {
         </div>
       )}
       {!filters.programmeId && (
-        <p className="rounded-2xl bg-sky-50 p-4 text-sm text-ink-soft">
+        <p className="card border-s-4 border-s-blue p-4 text-sm text-ink-soft">
           {t('partner.programmes.pick')}
         </p>
       )}

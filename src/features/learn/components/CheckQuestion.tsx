@@ -20,7 +20,7 @@ export function CheckQuestion({ question, salt }: { question: Q; salt: number })
 
   return (
     <section
-      className="rounded-3xl border-2 border-sky-200 bg-white p-5 sm:p-6"
+      className="card rounded-3xl border-t-4 border-t-cyan p-5 sm:p-6"
       aria-labelledby={`${name}-h`}
     >
       <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-blue">
@@ -45,20 +45,24 @@ export function CheckQuestion({ question, salt }: { question: Q; salt: number })
                 setChecked(false)
               }}
               className={cn(
-                'flex min-h-12 items-center gap-3 rounded-2xl border-2 px-4 py-2 text-start font-medium transition-colors',
+                'flex min-h-12 items-center gap-3 rounded-xl border px-4 py-2.5 text-start text-sm font-medium shadow-sm transition-[background-color,border-color,box-shadow,transform] duration-200',
                 showRight
                   ? 'border-success bg-success-soft'
                   : showWrong
                     ? 'border-danger bg-danger-soft'
                     : on
-                      ? 'border-blue bg-blue-50'
-                      : 'border-border hover:border-sky-200',
+                      ? 'border-blue bg-blue text-white shadow-md'
+                      : 'border-border/70 bg-white hover:-translate-y-0.5 hover:border-cyan/60 hover:shadow-md',
               )}
             >
               <span
                 className={cn(
                   'size-4 shrink-0 rounded-full border-2',
-                  on ? 'border-blue bg-blue' : 'border-input',
+                  on && !checked
+                    ? 'border-white bg-white ring-2 ring-inset ring-blue'
+                    : on
+                      ? 'border-current bg-current'
+                      : 'border-input bg-white',
                 )}
                 aria-hidden
               />
@@ -84,7 +88,7 @@ export function CheckQuestion({ question, salt }: { question: Q; salt: number })
         <p
           role="status"
           className={cn(
-            'mt-4 rounded-2xl p-4 text-sm',
+            'mt-4 rounded-2xl px-4 py-3 text-sm',
             right ? 'bg-success-soft text-success' : 'bg-notice-soft text-notice',
           )}
         >

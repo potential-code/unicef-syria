@@ -22,19 +22,22 @@ export function OutcomeRow({
   const { lang } = useLocalized()
   const confirmed = outcome?.confirmed && outcome.source === 'employer'
   return (
-    <div className="flex gap-3 rounded-xl border bg-white p-4">
-      <span
-        className={
-          outcome
-            ? 'flex size-11 shrink-0 items-center justify-center rounded-xl bg-success text-white'
-            : 'flex size-11 shrink-0 items-center justify-center rounded-xl bg-muted text-ink-soft'
-        }
-      >
-        <Icon className="size-5" aria-hidden />
-      </span>
-      <div className="min-w-0 flex-1 space-y-1">
+    <div
+      className={
+        outcome
+          ? 'rounded-xl border border-border/70 border-s-4 border-s-success bg-white p-4 shadow-sm'
+          : 'rounded-xl border border-border/70 border-s-4 border-s-sky-200 bg-white p-4 shadow-sm'
+      }
+    >
+      <div className="min-w-0 space-y-1">
         <div className="flex flex-wrap items-center gap-2">
-          <h3 className="text-base">{title}</h3>
+          <h3 className="flex min-w-0 items-center gap-2 text-base">
+            <Icon
+              className={outcome ? 'size-4 shrink-0 text-success' : 'size-4 shrink-0 text-ink-soft'}
+              aria-hidden
+            />
+            {title}
+          </h3>
           {!outcome && <StatusBadge tone="neutral">{t('apps.outcomes.notYet')}</StatusBadge>}
           {outcome && confirmed && (
             <StatusBadge tone="success" icon={<BadgeCheck className="size-3" aria-hidden />}>

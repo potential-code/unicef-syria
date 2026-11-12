@@ -54,9 +54,8 @@ export function SessionCard({
     <article
       id={`session-${s.id}`}
       className={cn(
-        'lift relative overflow-hidden rounded-2xl border bg-white p-5 shadow-sm',
+        'card card-hover relative overflow-hidden p-5 ps-6',
         highlight && 'ring-4 ring-cyan/40',
-        timing === 'upcoming' ? 'border-sky-200' : 'border-border',
       )}
     >
       <span
@@ -68,7 +67,7 @@ export function SessionCard({
           <p className="text-xs font-bold uppercase tracking-wide text-blue">
             {s.id} · {s.cohortId ?? t('cohort.publicEvent')}
           </p>
-          <h3 className="mt-1 text-lg">
+          <h3 className="mt-1 text-lg leading-snug">
             <LText value={s.title} />
           </h3>
           <p className="mt-1 text-sm text-ink-soft">

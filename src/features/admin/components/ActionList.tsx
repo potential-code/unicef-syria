@@ -18,7 +18,7 @@ export function ActionList({ title, items }: { title: string; items: ActionItem[
   const { t } = useTranslation('admin')
   const [done, setDone] = useState<string[]>([])
   return (
-    <section aria-labelledby="actions-title" className="rounded-3xl border bg-white p-5 shadow-sm">
+    <section aria-labelledby="actions-title" className="card p-5">
       <h2 id="actions-title" className="mb-1 flex items-center gap-2 text-lg">
         <ListChecks className="size-5 text-blue" aria-hidden />
         {title}
@@ -27,21 +27,21 @@ export function ActionList({ title, items }: { title: string; items: ActionItem[
         {t('actions.body', { done: done.length, total: items.length })}
       </p>
       {items.length === 0 ? (
-        <p className="rounded-2xl bg-sky-50 p-4 text-sm text-ink-soft">{t('actions.none')}</p>
+        <p className="rounded-xl bg-sky-50 p-4 text-sm text-ink-soft">{t('actions.none')}</p>
       ) : (
-        <ul className="space-y-2">
+        <ul className="divide-y divide-border/70 overflow-hidden rounded-xl ring-1 ring-border/70">
           {items.map((a) => {
             const checked = done.includes(a.id)
             const id = `act-${a.id}`
             return (
               <li
                 key={a.id}
-                className="flex flex-wrap items-start gap-3 rounded-2xl border p-3 sm:flex-nowrap"
+                className="flex flex-wrap items-start gap-3 px-3 py-3 transition-colors hover:bg-sky-50/60 sm:flex-nowrap sm:items-center"
               >
                 <Checkbox
                   id={id}
                   checked={checked}
-                  className="mt-1 size-5"
+                  className="mt-0.5 size-5 sm:mt-0"
                   onCheckedChange={(v) => {
                     setDone((d) => (v ? [...d, a.id] : d.filter((x) => x !== a.id)))
                     if (v) toast.success(t('actions.marked'))
@@ -61,7 +61,7 @@ export function ActionList({ title, items }: { title: string; items: ActionItem[
                   <Link
                     to={a.to}
                     search={(a.search ?? {}) as never}
-                    className="inline-flex min-h-11 items-center gap-1 rounded-full px-3 text-sm font-semibold text-blue hover:bg-sky-50"
+                    className="ms-8 inline-flex h-9 shrink-0 items-center gap-1 rounded-full px-3 text-sm font-semibold text-blue ring-1 ring-blue/25 hover:bg-blue hover:text-white sm:ms-0"
                   >
                     {t('actions.open')}
                     <ArrowRight className="size-4 rtl-mirror" aria-hidden />

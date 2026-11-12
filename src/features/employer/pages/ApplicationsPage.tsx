@@ -40,10 +40,11 @@ export function ApplicationsPage() {
         />
       ) : (
         <>
-          <div className="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:max-w-2xl">
-            <Field id="a-opp" label={t('apps.opportunity')}>
+          <div className="card mb-5 grid grid-cols-1 gap-3 p-4 sm:grid-cols-2 xl:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)]">
+            <Field id="a-opp" label={t('apps.opportunity')} compact>
               <ChoiceSelect
                 id="a-opp"
+                size="sm"
                 value={opp}
                 onChange={setOpp}
                 options={[
@@ -52,9 +53,10 @@ export function ApplicationsPage() {
                 ]}
               />
             </Field>
-            <Field id="a-status" label={t('apps.stage')}>
+            <Field id="a-status" label={t('apps.stage')} compact>
               <ChoiceSelect
                 id="a-status"
+                size="sm"
                 value={status}
                 onChange={setStatus}
                 options={(['all', 'active', 'closed'] as const).map((v) => ({

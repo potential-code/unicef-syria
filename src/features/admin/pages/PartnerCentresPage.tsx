@@ -8,6 +8,7 @@ import { ANALYTICS_ROWS } from '@/data/analytics'
 import { COHORTS } from '@/data/orgs'
 import { filterRows, kpis, sumRows } from '@/domain/kpi'
 import { useAllYouth } from '@/store/actions/youth'
+import { MiniStats } from '../components/MiniStats'
 import { ReportContext } from '../components/ReportContext'
 import { toKpiFilters } from '../lib/filters'
 import { useAdminFilters } from '../lib/useAdminFilters'
@@ -32,7 +33,7 @@ export function PartnerCentresPage() {
         ]}
       />
       <ReportContext />
-      <Stagger className="grid gap-4 lg:grid-cols-2">
+      <Stagger className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,22rem),1fr))] gap-4">
         {centres.map((c) => {
           const k = kpis(
             sumRows(filterRows(ANALYTICS_ROWS, { ...toKpiFilters(filters), centreId: c.id })),
@@ -40,31 +41,25 @@ export function PartnerCentresPage() {
           const cohorts = COHORTS.filter((x) => x.centreId === c.id)
           return (
             <StaggerItem key={c.id}>
-              <article className="lift flex h-full flex-col overflow-hidden rounded-3xl border bg-white shadow-sm">
+              <article className="card flex h-full flex-col overflow-hidden">
                 <SmartImage src={c.image} alt="" className="h-32 w-full" />
                 <div className="flex flex-1 flex-col gap-4 p-5">
                   <div>
                     <p className="text-xs font-semibold text-blue">{c.id}</p>
-                    <h2 className="text-xl">{l(c.name)}</h2>
+                    <h2 className="text-lg">{l(c.name)}</h2>
                     <p className="mt-1 inline-flex items-center gap-1 text-sm text-ink-soft">
                       <MapPin className="size-4" aria-hidden />
                       {value('governorate', c.governorate)}
                     </p>
                   </div>
-                  <dl className="grid grid-cols-3 gap-2 text-center">
-                    {[
-                      { k: 'registered', v: n(k.registered) },
-                      { k: 'completion', v: p(k.completionRate.value) },
-                      { k: 'uniquePlaced', v: n(k.uniquePlaced) },
-                    ].map((s) => (
-                      <div key={s.k} className="flex flex-col-reverse rounded-2xl bg-sky-50 p-2">
-                        <dt className="text-[11px] leading-tight text-ink-soft">
-                          {t(`kpi.${s.k}`)}
-                        </dt>
-                        <dd className="text-lg font-bold tabular-nums">{s.v}</dd>
-                      </div>
-                    ))}
-                  </dl>
+                  <MiniStats
+                    tones={['navy', 'sky', 'navy']}
+                    items={[
+                      { key: 'registered', v: n(k.registered) },
+                      { key: 'completion', v: p(k.completionRate.value) },
+                      { key: 'uniquePlaced', v: n(k.uniquePlaced) },
+                    ].map((s) => ({ key: s.key, label: t(`kpi.${s.key}`), value: s.v }))}
+                  />
                   <p className="text-xs text-ink-soft">{t('partner.centres.sampleNote')}</p>
                   <ul className="space-y-2">
                     {cohorts.map((k2) => (
@@ -72,7 +67,7 @@ export function PartnerCentresPage() {
                         <Link
                           to="/partner/programmes"
                           search={linkSearch({ centreId: c.id, programmeId: k2.programmeId })}
-                          className="group flex min-h-11 items-center justify-between gap-2 rounded-2xl border px-4 py-2 hover:border-blue hover:bg-sky-50"
+                          className="group flex min-h-11 items-center justify-between gap-2 rounded-xl bg-white px-3 py-2 shadow-xs ring-1 ring-border/70 transition-colors hover:bg-sky-50 hover:ring-blue/40"
                         >
                           <span className="text-sm">
                             <strong>

@@ -48,11 +48,7 @@ export function ProfileForm({ scope, initial }: { scope: OrgScope; initial: OrgP
   }
 
   return (
-    <form
-      onSubmit={submit}
-      noValidate
-      className="grid gap-5 rounded-2xl border bg-white p-5 shadow-sm sm:grid-cols-2 sm:p-7"
-    >
+    <form onSubmit={submit} noValidate className="card grid gap-5 p-5 sm:grid-cols-2 sm:p-7">
       <Field
         id="org-name"
         label={t('profile.name')}
@@ -119,7 +115,7 @@ export function ProfileForm({ scope, initial }: { scope: OrgScope; initial: OrgP
             <Label
               key={v}
               htmlFor={`org-type-${v}`}
-              className="min-h-12 cursor-pointer rounded-xl border bg-sky-50/60 px-3 py-2 hover:border-blue"
+              className="h-10 cursor-pointer rounded-xl border border-border bg-white px-3 hover:border-blue has-[[data-state=checked]]:border-blue has-[[data-state=checked]]:bg-sky-50"
             >
               <Checkbox
                 id={`org-type-${v}`}
@@ -131,7 +127,7 @@ export function ProfileForm({ scope, initial }: { scope: OrgScope; initial: OrgP
           ))}
         </div>
       </fieldset>
-      <div className="flex justify-end border-t pt-5 sm:col-span-2">
+      <div className="flex justify-end border-t border-border/70 pt-5 sm:col-span-2">
         <Button type="submit" disabled={busy} className="rounded-full">
           {busy ? (
             <Loader2 className="size-4 animate-spin" aria-hidden />

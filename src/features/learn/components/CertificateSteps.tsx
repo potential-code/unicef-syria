@@ -10,7 +10,7 @@ export function CertificateSteps({ state }: { state: CertificateState | undefine
   const { t } = useTranslation()
   const at = state ? STATES.indexOf(state) : -1
   return (
-    <ol className="grid gap-2 sm:grid-cols-4">
+    <ol className="grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
       {STATES.map((s, i) => {
         const done = i <= at
         return (
@@ -18,9 +18,11 @@ export function CertificateSteps({ state }: { state: CertificateState | undefine
             key={s}
             aria-current={i === at ? 'step' : undefined}
             className={cn(
-              'flex items-center gap-2 rounded-2xl p-3 font-semibold',
-              done ? 'bg-blue text-white' : 'bg-sky-50 text-ink-soft',
-              i === at && 'ring-4 ring-yellow',
+              'flex items-center gap-2 rounded-xl border px-3.5 py-3 text-sm font-semibold',
+              done
+                ? 'border-blue bg-blue text-white shadow-md'
+                : 'border-border/70 bg-white text-ink-soft shadow-sm',
+              i === at && 'ring-2 ring-yellow ring-offset-2',
             )}
           >
             {done ? (

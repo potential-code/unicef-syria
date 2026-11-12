@@ -141,7 +141,7 @@ export function SessionFormDialog({
               onValueChange={(v) => setF({ ...f, cohort: v as CohortId })}
               disabled={locked}
             >
-              <SelectTrigger id="s-cohort" className="min-h-11 w-full">
+              <SelectTrigger id="s-cohort" className="w-full">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -167,7 +167,7 @@ export function SessionFormDialog({
                   aria-pressed={f.format === fmt}
                   onClick={() => setF({ ...f, format: fmt })}
                   className={cn(
-                    'flex min-h-12 items-center justify-center gap-2 rounded-xl border-2 text-sm font-semibold transition-colors disabled:opacity-50',
+                    'flex h-10 items-center justify-center gap-2 rounded-xl border-2 text-sm font-semibold transition-colors disabled:opacity-50',
                     f.format === fmt
                       ? 'border-blue bg-sky-50 text-blue'
                       : 'border-border bg-white text-ink-soft hover:bg-sky-50',

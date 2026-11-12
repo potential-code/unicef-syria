@@ -52,8 +52,8 @@ export function FollowUpTable({ items }: { items: FollowUp[] }) {
     )
   return (
     <>
-      <div className="overflow-x-auto rounded-2xl border bg-white shadow-sm">
-        <Table className="min-w-[60rem]">
+      <div className="card overflow-hidden">
+        <Table className="min-w-[60rem] lg:min-w-0 [&_td]:px-3 [&_th]:px-3 [&_th]:whitespace-normal">
           <TableHeader>
             <TableRow>
               <TableHead>{t('table.graduate')}</TableHead>
@@ -73,19 +73,23 @@ export function FollowUpTable({ items }: { items: FollowUp[] }) {
               return (
                 <TableRow key={f.id}>
                   <TableCell>{y ? <LearnerName y={y} /> : f.youthId}</TableCell>
-                  <TableCell>{t('windows.month', { count: f.window })}</TableCell>
-                  <TableCell className="tabular-nums">{d(f.due)}</TableCell>
+                  <TableCell className="whitespace-nowrap">
+                    {t('windows.month', { count: f.window })}
+                  </TableCell>
+                  <TableCell className="whitespace-nowrap tabular-nums">{d(f.due)}</TableCell>
                   <TableCell className="text-sm">
                     {f.centreId} {centre(f.centreId)}
                     <span className="block text-xs text-ink-soft">{partner(c?.partnerId)}</span>
                   </TableCell>
-                  <TableCell className="tabular-nums">{d(f.lastContact)}</TableCell>
+                  <TableCell className="whitespace-nowrap tabular-nums">
+                    {d(f.lastContact)}
+                  </TableCell>
                   <TableCell>
                     <StatusBadge tone={TONE[f.status]}>
                       {t(`followup.status.${f.status}`)}
                     </StatusBadge>
                   </TableCell>
-                  <TableCell className="max-w-56 text-sm">
+                  <TableCell className="min-w-40 text-sm">
                     {t(`followup.next.${f.status}`)}
                     {reminders[f.id] && (
                       <span className="block text-xs text-ink-soft">
@@ -107,7 +111,11 @@ export function FollowUpTable({ items }: { items: FollowUp[] }) {
                       >
                         <BellRing className="size-4" aria-hidden />
                       </Button>
-                      <Button size="sm" className="rounded-full" onClick={() => setOpen(f)}>
+                      <Button
+                        size="sm"
+                        className="rounded-full whitespace-nowrap"
+                        onClick={() => setOpen(f)}
+                      >
                         {t('followup.open')}
                       </Button>
                     </div>

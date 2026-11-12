@@ -25,21 +25,21 @@ export function PlacementsPage() {
   return (
     <div>
       <PageHeader title={t('placements.title')} description={t('placements.body')} />
-      <p className="mb-6 flex items-start gap-2 rounded-xl bg-sky-50 p-3 text-sm text-navy">
+      <p className="mb-8 flex items-start gap-2 rounded-xl bg-sky-50 p-3 text-sm text-navy ring-1 ring-cyan/25">
         <Info className="mt-0.5 size-4 shrink-0" aria-hidden />
         {t('placements.rule', { count: offers })}
       </p>
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-10">
         {hasEmployment && (
           <Reveal as="section">
-            <h2 className="mb-3 text-xl">{t('placements.employmentTitle')}</h2>
+            <h2 className="mb-4 text-xl text-navy">{t('placements.employmentTitle')}</h2>
             <PlacementsTable outcomes={placements} opportunities={opportunities} />
           </Reveal>
         )}
         {hasFreelance && (
           <Reveal as="section">
-            <h2 className="mb-1 text-xl">{t('placements.freelanceTitle')}</h2>
-            <p className="mb-3 text-sm text-ink-soft">{t('placements.freelanceNote')}</p>
+            <h2 className="mb-1 text-xl text-navy">{t('placements.freelanceTitle')}</h2>
+            <p className="mb-4 text-sm text-ink-soft">{t('placements.freelanceNote')}</p>
             <FreelanceAssignments
               apps={applications}
               outcomes={outcomes}
@@ -49,17 +49,17 @@ export function PlacementsPage() {
         )}
         {hasEnterprise && (
           <Reveal as="section">
-            <h2 className="mb-3 text-xl">{t('placements.enterpriseTitle')}</h2>
+            <h2 className="mb-4 text-xl text-navy">{t('placements.enterpriseTitle')}</h2>
             <EnterpriseMilestones apps={applications} />
           </Reveal>
         )}
-        <Reveal as="section" className="grid gap-6 lg:grid-cols-2">
+        <Reveal as="section" className="grid gap-6 xl:grid-cols-2 [&>*]:min-w-0">
           <div>
-            <h2 className="mb-3 text-xl">{t('feedback.title')}</h2>
+            <h2 className="mb-4 text-xl text-navy">{t('feedback.title')}</h2>
             <FeedbackForm orgId={org.id} />
           </div>
           <div>
-            <h2 className="mb-3 text-xl">{t('feedback.previous')}</h2>
+            <h2 className="mb-4 text-xl text-navy">{t('feedback.previous')}</h2>
             <FeedbackList orgId={org.id} />
           </div>
         </Reveal>

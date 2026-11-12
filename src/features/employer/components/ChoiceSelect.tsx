@@ -13,19 +13,22 @@ export function ChoiceSelect<T extends string>({
   onChange,
   options,
   invalid,
+  size = 'default',
 }: {
   id: string
   value: T
   onChange: (v: T) => void
   options: { value: T; label: string }[]
   invalid?: boolean
+  size?: 'sm' | 'default'
 }) {
   return (
     <Select value={value} onValueChange={(v) => onChange(v as T)}>
       <SelectTrigger
         id={id}
         aria-invalid={invalid || undefined}
-        className="min-h-12 w-full bg-white"
+        size={size}
+        className="w-full bg-white"
       >
         <SelectValue />
       </SelectTrigger>

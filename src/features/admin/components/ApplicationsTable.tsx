@@ -43,8 +43,8 @@ export function ApplicationsTable({ youth }: { youth: Youth[] }) {
     }, 450)
   }
   return (
-    <div className="overflow-x-auto rounded-2xl border bg-white shadow-sm">
-      <Table className="min-w-[44rem]">
+    <div className="card overflow-hidden">
+      <Table className="min-w-[44rem] lg:min-w-0 [&_th]:whitespace-normal">
         <TableHeader>
           <TableRow>
             <TableHead>{t('table.learner')}</TableHead>

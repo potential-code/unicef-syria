@@ -1,7 +1,8 @@
-import { CalendarCheck, Coins, HandHeart } from 'lucide-react'
+import { CalendarCheck, Coins, HandHeart, Users } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Stagger, StaggerItem } from '@/components/motion'
 import { EmptyState } from '@/components/shared/EmptyState'
+import { StatCard } from '@/components/shared/StatCard'
 import { MENTORS } from '@/data/mentors'
 import { balance } from '@/domain/points'
 import { useBookings } from '@/store/actions/mentors'
@@ -24,24 +25,39 @@ export function MentorsPage() {
     .reverse()
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-8">
       <CareerHero
         icon={HandHeart}
         eyebrow={t('mentors.eyebrow')}
         title={t('mentors.title')}
         body={t('mentors.intro')}
-        actions={
-          <div className="flex items-center gap-3 rounded-2xl bg-white px-5 py-3 text-navy shadow-sm">
-            <Coins className="size-7 text-orange" aria-hidden />
-            <div>
-              <p className="text-2xl leading-none font-bold tabular-nums">{balance(youth)}</p>
-              <p className="text-xs font-semibold">{t('mentors.balance')}</p>
-            </div>
-          </div>
-        }
       >
-        <p className="text-sm text-white/85">{t('mentors.rules')}</p>
+        <p className="max-w-3xl text-sm text-white/80">{t('mentors.rules')}</p>
       </CareerHero>
+
+      <div className="grid gap-4 sm:grid-cols-3">
+        <StatCard
+          tone="yellow"
+          icon={Coins}
+          label={t('mentors.stats.balance')}
+          value={balance(youth)}
+          hint={t('mentors.stats.balanceHint')}
+        />
+        <StatCard
+          tone="blue"
+          icon={CalendarCheck}
+          label={t('mentors.stats.sessions')}
+          value={mine.length}
+          hint={t('mentors.stats.sessionsHint')}
+        />
+        <StatCard
+          tone="cyan"
+          icon={Users}
+          label={t('mentors.stats.mentors')}
+          value={MENTORS.length}
+          hint={t('mentors.stats.mentorsHint')}
+        />
+      </div>
 
       <Stagger className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {MENTORS.map((m) => (
@@ -56,7 +72,7 @@ export function MentorsPage() {
         aria-labelledby="my-sessions-heading"
         className="scroll-mt-24 space-y-4"
       >
-        <h2 id="my-sessions-heading" className="text-2xl">
+        <h2 id="my-sessions-heading" className="text-xl">
           {t('mentors.mySessions')}
         </h2>
         {mine.length === 0 ? (

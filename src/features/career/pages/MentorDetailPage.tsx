@@ -2,6 +2,7 @@ import type { MentorId } from '@shared/types'
 import { Link } from '@tanstack/react-router'
 import { GraduationCap, HandHeart, Languages, ShieldCheck, Target } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import { Reveal } from '@/components/motion'
 import { Avatar } from '@/components/shared/Avatar'
 import { EmptyState } from '@/components/shared/EmptyState'
@@ -54,16 +55,13 @@ export function MentorDetailPage({ mentorId }: { mentorId: string }) {
           {l(m.name)}
         </span>
       </nav>
-      <div className="grid gap-6 lg:grid-cols-[340px_minmax(0,1fr)]">
-        <Reveal as="section" className="h-fit overflow-hidden rounded-3xl bg-white shadow-md">
-          <div className="relative bg-grad-unicef px-6 pt-8 pb-16 text-center text-white">
-            <div
-              className="pointer-events-none absolute -end-10 -top-10 size-32 rounded-full bg-white/10"
-              aria-hidden
-            />
+      <div className="grid gap-6 xl:grid-cols-[320px_minmax(0,1fr)]">
+        <Reveal as="section" className="card h-fit overflow-hidden rounded-3xl">
+          <div className="relative overflow-hidden bg-grad-unicef px-6 pt-8 pb-16 text-center text-white">
+            <Motif variant="card" className="text-white/15" />
             <SampleProfileTag />
           </div>
-          <div className="-mt-12 px-6 pb-6 text-center">
+          <div className="relative -mt-12 px-6 pb-6 text-center">
             <Avatar
               src={m.image}
               name={l(m.name)}
@@ -94,8 +92,8 @@ export function MentorDetailPage({ mentorId }: { mentorId: string }) {
             </p>
           </div>
         </Reveal>
-        <section className="rounded-3xl border bg-white p-5 shadow-sm sm:p-7">
-          <h2 className="text-2xl">{t('mentors.form.title', { name: l(m.name) })}</h2>
+        <section className="card rounded-3xl p-5 sm:p-7">
+          <h2 className="text-xl">{t('mentors.form.title', { name: l(m.name) })}</h2>
           <p className="mt-1 mb-6 text-sm text-ink-soft">{t('mentors.form.intro')}</p>
           <BookingForm mentor={m} youth={youth} slot={slotState(m, youth, bookings, bookedSlots)} />
         </section>

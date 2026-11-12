@@ -20,7 +20,7 @@ export function InterviewHistory({ items }: { items: Toolkit['interviews'] }) {
   return (
     <ol className="space-y-3">
       {[...items].reverse().map((it) => (
-        <li key={it.at} className="rounded-2xl border bg-white p-4 shadow-sm">
+        <li key={it.at} className="card p-4">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <p className="font-semibold">{it.question}</p>
             <RatingBadge rating={it.rating} />

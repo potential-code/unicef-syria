@@ -10,14 +10,9 @@ export function MatchPanel({ match }: { match: MatchExplanation }) {
   const { t } = useTranslation('career')
   const { matchText, gapText } = useMatchText()
   return (
-    <section
-      aria-labelledby="match-title"
-      className="overflow-hidden rounded-2xl border bg-white shadow-sm"
-    >
-      <div className="flex items-center gap-3 bg-grad-sky px-5 py-4">
-        <span className="flex size-10 items-center justify-center rounded-xl bg-blue text-white">
-          <Sparkles className="size-5" aria-hidden />
-        </span>
+    <section aria-labelledby="match-title" className="card overflow-hidden">
+      <div className="flex items-center gap-2 border-b border-sky-200 bg-grad-sky px-5 py-4">
+        <Sparkles className="size-5 shrink-0 text-blue" aria-hidden />
         <h2 id="match-title" className="text-lg">
           {t('opps.match.title')}
         </h2>
@@ -56,7 +51,7 @@ export function MatchPanel({ match }: { match: MatchExplanation }) {
                 {g.kind === 'course' ? (
                   <a
                     href={courseHref(g.courseId)}
-                    className="ms-6 inline-flex min-h-11 items-center gap-1 font-semibold text-blue hover:underline"
+                    className="ms-6 inline-flex min-h-8 items-center gap-1 font-semibold text-blue hover:underline"
                   >
                     {t('opps.match.openCourse')}
                     <ArrowRight className="size-4 rtl-mirror" aria-hidden />
@@ -64,7 +59,7 @@ export function MatchPanel({ match }: { match: MatchExplanation }) {
                 ) : (
                   <Link
                     to="/youth/toolkit"
-                    className="ms-6 inline-flex min-h-11 items-center gap-1 font-semibold text-blue hover:underline"
+                    className="ms-6 inline-flex min-h-8 items-center gap-1 font-semibold text-blue hover:underline"
                   >
                     {t('opps.match.openToolkit')}
                     <ArrowRight className="size-4 rtl-mirror" aria-hidden />

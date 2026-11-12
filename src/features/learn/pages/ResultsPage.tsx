@@ -4,6 +4,7 @@ import { Compass, Info, RotateCcw } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
+import { Motif } from '@/components/brand'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { PageHeader } from '@/components/shared/PageHeader'
@@ -79,10 +80,7 @@ export function ResultsPage() {
 
       <Reveal className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
         <section className="on-dark relative overflow-hidden rounded-3xl bg-navy p-6 text-white shadow-lg sm:p-8">
-          <span
-            className="pointer-events-none absolute -end-10 -bottom-10 size-48 rounded-full bg-cyan/30 blur-2xl"
-            aria-hidden
-          />
+          <Motif variant="card" className="text-cyan/25" />
           <p className="relative text-sm font-semibold text-yellow">{t('results.profileLabel')}</p>
           <h2 className="relative mt-2 text-3xl text-white sm:text-4xl">
             {profile.balanced ? t('results.balanced') : l(profile.name ?? undefined)}
@@ -98,15 +96,12 @@ export function ResultsPage() {
               })}
             </p>
           )}
-          <p className="relative mt-6 flex items-start gap-2 rounded-2xl bg-white/15 p-3 text-sm font-semibold">
-            <Info className="mt-0.5 size-4 shrink-0" aria-hidden />
+          <p className="relative mt-6 flex items-start gap-2 border-s-4 border-yellow ps-3 text-sm font-semibold text-white/90">
+            <Info className="mt-0.5 size-4 shrink-0 text-yellow" aria-hidden />
             {t('results.startingPoint')}
           </p>
         </section>
-        <section
-          className="rounded-3xl border bg-white p-6 shadow-sm sm:p-8"
-          aria-labelledby="chart-title"
-        >
+        <section className="card rounded-3xl p-6 sm:p-8" aria-labelledby="chart-title">
           <h2 id="chart-title" className="text-xl">
             {t('results.chartTitle')}
           </h2>
@@ -116,7 +111,7 @@ export function ResultsPage() {
       </Reveal>
 
       <section aria-labelledby="prefs-title">
-        <h2 id="prefs-title" className="text-2xl">
+        <h2 id="prefs-title" className="text-xl">
           {t('results.prefsTitle')}
         </h2>
         <p className="mt-1 mb-4 text-ink-soft">{t('results.prefsBody')}</p>
@@ -124,7 +119,7 @@ export function ResultsPage() {
       </section>
 
       <section aria-labelledby="routes-title">
-        <h2 id="routes-title" className="text-2xl">
+        <h2 id="routes-title" className="text-xl">
           {t('results.routesTitle')}
         </h2>
         <p className="mt-1 mb-4 text-ink-soft">
@@ -133,7 +128,7 @@ export function ResultsPage() {
             : t('results.recPending')}
           {!allAnswered && rec && ` ${t('results.recMore')}`}
         </p>
-        <Stagger className="grid gap-4 lg:grid-cols-3">
+        <Stagger className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {ROUTES.map((r) => (
             <StaggerItem key={r} className="h-full [&>article]:h-full">
               <RouteCard
@@ -146,13 +141,13 @@ export function ResultsPage() {
             </StaggerItem>
           ))}
         </Stagger>
-        <div className="mt-6 grid gap-4 rounded-3xl bg-sky-100 p-5 sm:grid-cols-[1fr_auto] sm:items-end">
+        <div className="card mt-6 grid gap-4 p-5 sm:grid-cols-[1fr_auto] sm:items-end">
           <div className="max-w-sm">
-            <Label htmlFor="secondary" className="font-semibold">
+            <Label htmlFor="secondary" className="text-sm font-semibold">
               {t('results.secondary')}
             </Label>
             <Select value={secondary} onValueChange={setSecondary}>
-              <SelectTrigger id="secondary" className="mt-2 min-h-12 w-full bg-white">
+              <SelectTrigger id="secondary" className="mt-2 w-full bg-white">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>

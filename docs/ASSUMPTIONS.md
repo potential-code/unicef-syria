@@ -43,3 +43,4 @@ None of these block the fictional prototype. Nothing here implies a client commi
 ## Interpretations of the brief
 
 - O01 lists "CV, C03 and C13 evidence, short motivation answer". The main walkthrough (§23 step 5) submits the CV and motivation answer after Nour completes one course, so completing either C03 or C13 satisfies the course evidence; the other appears as a gap in the match explanation.
+- Motion follows the presenter's "Reduce motion" toggle (Presenter menu), not the operating-system setting, so animations still play on presentation laptops where system animation effects are turned off. A production build would also respect the system setting.

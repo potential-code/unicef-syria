@@ -10,6 +10,7 @@ export function Field({
   hint,
   children,
   className,
+  compact,
 }: {
   id: string
   label: string
@@ -17,10 +18,12 @@ export function Field({
   hint?: string
   children: ReactNode
   className?: string
+  /** Filter-bar style: small muted label, tighter gap. */
+  compact?: boolean
 }) {
   return (
-    <div className={cn('flex flex-col gap-1.5', className)}>
-      <Label htmlFor={id} className="text-ink">
+    <div className={cn('flex min-w-0 flex-col', compact ? 'gap-1' : 'gap-1.5', className)}>
+      <Label htmlFor={id} className={compact ? 'text-xs font-semibold text-ink-soft' : 'text-ink'}>
         {label}
       </Label>
       {children}

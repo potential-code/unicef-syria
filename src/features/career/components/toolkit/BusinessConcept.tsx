@@ -126,7 +126,7 @@ export function BusinessConcept({ youth }: { youth: Youth }) {
           {outline !== null ? (
             <PitchOutline value={outline} onChange={setOutline} />
           ) : (
-            <p className="rounded-2xl border border-dashed border-orange/40 bg-white p-4 text-sm text-ink-soft">
+            <p className="rounded-2xl border border-dashed border-border bg-muted/40 p-4 text-sm text-ink-soft">
               {t('toolkit.business.outlineEmpty')}
             </p>
           )}

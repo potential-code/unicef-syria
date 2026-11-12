@@ -1,5 +1,5 @@
 import type { QuizQuestion } from '@shared/types'
-import { Send } from 'lucide-react'
+import { Check, Send } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
 import { useLocalized } from '@/i18n'
@@ -33,12 +33,12 @@ export function QuizForm({
     >
       <p className="text-sm font-semibold text-ink-soft">{t('quiz.attempt', { n: attempt })}</p>
       {questions.map((q, qi) => (
-        <fieldset key={q.prompt.en} className="rounded-3xl border bg-white p-5 shadow-sm">
+        <fieldset key={q.prompt.en} className="card p-5 sm:p-6">
           <legend className="sr-only">{l(q.prompt)}</legend>
-          <p aria-hidden className="text-lg font-bold">
-            <span className="me-2 inline-flex size-8 items-center justify-center rounded-xl bg-yellow text-sm text-ink">
-              {qi + 1}
-            </span>
+          <p aria-hidden className="text-xs font-extrabold tracking-wider text-blue uppercase">
+            {t('quiz.questionN', { n: qi + 1, total: questions.length })}
+          </p>
+          <p aria-hidden className="mt-1 text-base font-bold sm:text-lg">
             {l(q.prompt)}
           </p>
           <div className="mt-3 grid gap-2">
@@ -51,17 +51,21 @@ export function QuizForm({
                   checked={on}
                   onChange={() => onAnswer(qi, oi)}
                   className={cn(
-                    'flex min-h-12 items-center gap-3 rounded-2xl border-2 px-4 py-2 text-start font-medium transition-colors',
-                    on ? 'border-blue bg-blue-50' : 'border-border hover:border-sky-200',
+                    'flex min-h-12 items-center gap-3 rounded-xl border px-4 py-2.5 text-start text-sm font-medium shadow-sm transition-[background-color,border-color,box-shadow,transform] duration-200',
+                    on
+                      ? 'border-blue bg-blue text-white shadow-md'
+                      : 'border-border/70 bg-white hover:-translate-y-0.5 hover:border-cyan/60 hover:shadow-md',
                   )}
                 >
                   <span
                     className={cn(
-                      'size-4 shrink-0 rounded-full border-2',
-                      on ? 'border-blue bg-blue' : 'border-input',
+                      'flex size-5 shrink-0 items-center justify-center rounded-full border-2',
+                      on ? 'border-white bg-white text-blue' : 'border-input bg-white',
                     )}
                     aria-hidden
-                  />
+                  >
+                    {on && <Check className="size-3.5" strokeWidth={3} />}
+                  </span>
                   {l(o)}
                 </OptionRadio>
               )
@@ -71,8 +75,8 @@ export function QuizForm({
       ))}
       <div className="flex flex-wrap items-center gap-3">
         {!ready && <p className="text-sm text-ink-soft">{t('quiz.answerAll')}</p>}
-        <Button type="submit" size="lg" className="ms-auto rounded-full" disabled={!ready}>
-          <Send className="size-5 rtl-mirror" aria-hidden />
+        <Button type="submit" className="ms-auto rounded-full" disabled={!ready}>
+          <Send className="size-4 rtl-mirror" aria-hidden />
           {t('quiz.submit')}
         </Button>
       </div>

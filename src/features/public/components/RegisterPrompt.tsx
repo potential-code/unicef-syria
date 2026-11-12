@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, BookmarkCheck, ShieldCheck, Sparkles } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -23,15 +24,13 @@ export function RegisterPrompt({
   return (
     <Dialog open={!!prompt} onOpenChange={(o) => !o && onClose()}>
       <DialogContent className="overflow-hidden p-0 sm:max-w-md">
-        <div className="on-dark relative bg-grad-unicef px-6 pt-7 pb-6 text-white">
-          <span
-            className="pointer-events-none absolute -end-10 -top-10 size-36 rounded-full bg-yellow/30 blur-2xl"
-            aria-hidden
-          />
-          <span className="mb-3 inline-flex size-12 items-center justify-center rounded-2xl bg-white/15">
-            <Sparkles className="size-6" aria-hidden />
-          </span>
-          <DialogHeader className="text-start">
+        <div className="on-dark relative overflow-hidden bg-grad-unicef px-6 pt-7 pb-6 text-white">
+          <Motif variant="card" className="text-white/[0.12]" />
+          <DialogHeader className="relative text-start">
+            <p className="flex items-center gap-1.5 text-xs font-bold tracking-widest text-yellow uppercase">
+              <Sparkles className="size-4" aria-hidden />
+              {t('common:appFullName')}
+            </p>
             <DialogTitle className="text-2xl text-white">{t('prompt.title')}</DialogTitle>
             <DialogDescription className="text-white/85">
               {t('prompt.body', { item: prompt?.item ?? '' })}

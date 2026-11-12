@@ -2,6 +2,7 @@ import { Check, LoaderCircle, Route } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { GlobeGrid, Motif } from '@/components/brand'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { cn } from '@/lib/utils'
 
@@ -28,16 +29,19 @@ export function PathGenerating({ onDone }: { onDone: () => void }) {
       className="on-dark relative mx-auto max-w-xl overflow-hidden rounded-3xl bg-grad-unicef p-8 text-white shadow-lg"
       aria-live="polite"
     >
-      <motion.span
-        className="mx-auto flex size-20 items-center justify-center rounded-full bg-white/15"
-        animate={reduce ? undefined : { rotate: 360 }}
-        transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: 'linear' }}
-        aria-hidden
-      >
-        <Route className="size-10" />
-      </motion.span>
-      <h2 className="mt-5 text-center text-2xl text-white">{t('path.generating')}</h2>
-      <ol className="mt-6 space-y-3">
+      <Motif variant="card" className="text-white/[0.12]" />
+      <div className="relative mx-auto flex size-24 items-center justify-center" aria-hidden>
+        <motion.span
+          className="absolute inset-0 text-white/40"
+          animate={reduce ? undefined : { rotate: 360 }}
+          transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: 'linear' }}
+        >
+          <GlobeGrid className="size-full" strokeWidth={1.6} />
+        </motion.span>
+        <Route className="relative size-9 text-yellow" />
+      </div>
+      <h2 className="relative mt-5 text-center text-2xl text-white">{t('path.generating')}</h2>
+      <ol className="relative mt-6 space-y-3">
         {STEPS.map((s, i) => {
           const done = i < step
           const active = i === step

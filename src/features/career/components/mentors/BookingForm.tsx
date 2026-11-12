@@ -1,9 +1,10 @@
 import type { Mentor, Youth } from '@shared/types'
 import { Link } from '@tanstack/react-router'
-import { CalendarClock, CheckCircle2, Coins, Gift, Info, Loader2 } from 'lucide-react'
+import { CalendarClock, Check, CheckCircle2, Coins, Gift, Info, Loader2 } from 'lucide-react'
 import { type FormEvent, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
+import { Motif } from '@/components/brand'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -88,26 +89,32 @@ export function BookingForm({
     <form onSubmit={submit} noValidate className="space-y-6">
       <section>
         <StepHeading n={1} title={t('mentors.form.step1')} />
-        <div className="grid gap-2 sm:grid-cols-2">
+        <div className="grid gap-2 sm:grid-cols-[repeat(auto-fit,minmax(15rem,1fr))]">
           <button
             type="button"
             disabled={slotTaken}
             aria-pressed={picked}
             onClick={() => setPicked((v) => !v)}
             className={cn(
-              'flex min-h-16 items-center gap-3 rounded-2xl border-2 p-4 text-start transition-colors',
-              picked ? 'border-blue bg-sky-50' : 'border-border bg-white hover:border-blue/50',
+              'relative flex items-center gap-3 rounded-2xl border p-4 text-start shadow-sm transition-colors',
+              picked
+                ? 'border-blue bg-blue text-white shadow-md'
+                : 'border-border bg-white hover:border-blue/50',
               slotTaken && 'cursor-not-allowed opacity-60',
             )}
           >
-            <CalendarClock className="size-5 shrink-0 text-blue" aria-hidden />
-            <span className="text-sm">
+            <CalendarClock
+              className={cn('size-5 shrink-0', picked ? 'text-yellow' : 'text-blue')}
+              aria-hidden
+            />
+            <span className="min-w-0 flex-1 text-sm">
               <span className="block font-semibold">{when(m.slot.start)}</span>
               {slotTaken ? t('mentors.slotState.taken') : t('mentors.form.thirtyMin')}
             </span>
+            {picked && <Check className="size-5 shrink-0" aria-hidden />}
           </button>
           <div
-            className="flex min-h-16 items-center gap-3 rounded-2xl border-2 border-dashed p-4 text-sm text-ink-soft"
+            className="flex items-center gap-3 rounded-2xl border border-dashed bg-muted/40 p-4 text-sm text-ink-soft"
             aria-disabled="true"
           >
             <CalendarClock className="size-5 shrink-0" aria-hidden />
@@ -157,7 +164,7 @@ export function BookingForm({
       <section>
         <StepHeading n={3} title={t('mentors.form.step3')} />
         <div
-          className="grid gap-2 sm:grid-cols-2"
+          className="grid gap-2 sm:grid-cols-[repeat(auto-fit,minmax(15rem,1fr))]"
           role="radiogroup"
           aria-label={t('mentors.form.step3')}
         >
@@ -174,15 +181,21 @@ export function BookingForm({
                 disabled={disabled}
                 onClick={() => setMethod(opt)}
                 className={cn(
-                  'flex min-h-16 items-start gap-3 rounded-2xl border-2 p-4 text-start transition-colors',
+                  'flex items-start gap-3 rounded-2xl border p-4 text-start shadow-sm transition-colors',
                   method === opt
-                    ? 'border-blue bg-sky-50'
+                    ? 'border-blue bg-blue text-white shadow-md'
                     : 'border-border bg-white hover:border-blue/50',
                   disabled && 'cursor-not-allowed opacity-60',
                 )}
               >
-                <Icon className="mt-0.5 size-5 shrink-0 text-blue" aria-hidden />
-                <span className="text-sm">
+                <Icon
+                  className={cn(
+                    'mt-0.5 size-5 shrink-0',
+                    method === opt ? 'text-yellow' : 'text-blue',
+                  )}
+                  aria-hidden
+                />
+                <span className="min-w-0 flex-1 text-sm">
                   <span className="block font-semibold">
                     {opt === 'allocation'
                       ? t('mentors.included')
@@ -196,6 +209,7 @@ export function BookingForm({
                       ? t('mentors.form.pointsShort', { balance: bal })
                       : t('mentors.form.pointsBalance', { balance: bal, after: bal - MENTOR_COST })}
                 </span>
+                {method === opt && <Check className="mt-0.5 size-5 shrink-0" aria-hidden />}
               </button>
             )
           })}
@@ -210,7 +224,8 @@ export function BookingForm({
         </p>
       )}
 
-      <section className="rounded-2xl bg-navy p-5 text-white on-dark">
+      <section className="relative overflow-hidden rounded-2xl bg-[linear-gradient(135deg,var(--unicef-navy),#002a73)] p-5 text-white shadow-lg on-dark [&>*:not(:first-child)]:relative">
+        <Motif variant="corner" className="text-cyan/25" />
         <StepHeading n={4} title={t('mentors.form.step4')} dark />
         <p className="text-sm text-white/85">
           {method === 'points'

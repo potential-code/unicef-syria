@@ -18,8 +18,9 @@ const LINKS = [
 ] as const
 
 /**
- * Public site header. `overHero` starts transparent with the white logo over the dark hero and
- * turns solid white once the page scrolls.
+ * Public site header (h-16). `overHero` is fixed and starts transparent with the white logo over
+ * the dark hero, turning solid white once the page scrolls. Other pages use a sticky header that
+ * takes its own space in the flow, so it never covers the page content.
  */
 export function PublicHeader({ overHero = false }: { overHero?: boolean }) {
   const { t } = useTranslation('public')
@@ -36,27 +37,28 @@ export function PublicHeader({ overHero = false }: { overHero?: boolean }) {
   return (
     <header
       className={cn(
-        'fixed inset-x-0 top-0 z-40 transition-colors duration-300',
+        'inset-x-0 top-0 z-40 transition-[background-color,box-shadow] duration-300',
+        overHero ? 'fixed' : 'sticky',
         dark
           ? 'on-dark bg-transparent text-white'
-          : 'border-b bg-white/90 text-ink shadow-sm backdrop-blur',
+          : 'border-b border-border/60 bg-white/95 text-ink shadow-sm backdrop-blur-md',
       )}
     >
-      <div className="container-page flex h-16 items-center gap-2 sm:h-18 sm:gap-3">
+      <div className="container-page flex h-16 items-center gap-2 sm:gap-3">
         <Link to="/" className="shrink-0" aria-label={t('common:appFullName')}>
-          <Logo variant={dark ? 'white' : 'blue'} className="h-5 sm:h-7" />
+          <Logo variant={dark ? 'white' : 'blue'} className="h-5 sm:h-6" />
         </Link>
-        <nav aria-label={t('common:menu')} className="ms-6 hidden items-center gap-1 lg:flex">
+        <nav aria-label={t('common:menu')} className="ms-8 hidden items-center gap-0.5 lg:flex">
           {LINKS.map((l) => (
             <Link
               key={l.to}
               to={l.to}
               activeOptions={{ exact: true }}
               className={cn(
-                'rounded-full px-3.5 py-2 text-sm font-semibold transition-colors',
+                'rounded-full px-3 py-1.5 text-[13px] font-semibold transition-colors',
                 dark
                   ? 'hover:bg-white/15 data-[status=active]:bg-white/20'
-                  : 'hover:bg-sky-100 data-[status=active]:text-blue',
+                  : 'text-ink-soft hover:bg-sky-50 hover:text-ink data-[status=active]:bg-sky-100 data-[status=active]:text-blue',
               )}
             >
               {t(`nav.${l.key}`)}
@@ -80,16 +82,13 @@ export function PublicHeader({ overHero = false }: { overHero?: boolean }) {
           <Button
             asChild
             size="sm"
-            className={cn(
-              'rounded-full px-3 sm:px-4',
-              dark ? 'bg-yellow text-ink hover:bg-yellow/90' : '',
-            )}
+            className={cn('rounded-full px-3.5', dark ? 'bg-yellow text-ink hover:bg-white' : '')}
           >
             <Link to="/register">{t('nav.start')}</Link>
           </Button>
           <Button
             variant="ghost"
-            size="icon"
+            size="icon-sm"
             className={cn('lg:hidden', dark && 'text-white hover:bg-white/15')}
             aria-label={t('common:menu')}
             onClick={() => setOpen(true)}
@@ -108,8 +107,9 @@ export function PublicHeader({ overHero = false }: { overHero?: boolean }) {
               <Link
                 key={l.to}
                 to={l.to}
+                activeOptions={{ exact: true }}
                 onClick={() => setOpen(false)}
-                className="rounded-xl px-3 py-3 font-semibold hover:bg-sky-100"
+                className="rounded-xl px-3 py-2.5 text-sm font-semibold hover:bg-sky-100 data-[status=active]:bg-sky-100 data-[status=active]:text-blue"
               >
                 {t(`nav.${l.key}`)}
               </Link>
@@ -117,7 +117,7 @@ export function PublicHeader({ overHero = false }: { overHero?: boolean }) {
             <Link
               to="/sign-in"
               onClick={() => setOpen(false)}
-              className="rounded-xl px-3 py-3 font-semibold hover:bg-sky-100"
+              className="rounded-xl px-3 py-2.5 text-sm font-semibold hover:bg-sky-100 data-[status=active]:bg-sky-100 data-[status=active]:text-blue"
             >
               {t('common:signIn')}
             </Link>

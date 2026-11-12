@@ -42,13 +42,13 @@ export function ExplorePage({
         title={t('explore.title')}
         body={t('explore.body')}
       />
-      <div className="container-page relative -mt-8 pb-20">
+      <div className="container-page relative pt-6 pb-20">
         <CatalogueFilters value={search} onChange={onSearch} />
-        <p className="mt-4 flex gap-2 rounded-2xl bg-sky-100 px-4 py-3 text-sm text-navy">
+        <p className="mt-4 flex gap-2 rounded-xl bg-sky-100 px-4 py-2.5 text-sm text-navy">
           <Info className="mt-0.5 size-4 shrink-0" aria-hidden />
           {t('explore.honest')}
         </p>
-        <p className="mt-8 mb-4 font-semibold text-ink-soft" aria-live="polite">
+        <p className="mt-8 mb-4 text-sm font-semibold text-ink-soft" aria-live="polite">
           {t('explore.count', { count: results.length })}
         </p>
         {results.length === 0 ? (
@@ -65,11 +65,11 @@ export function ExplorePage({
         ) : (
           <Stagger
             key={JSON.stringify(search)}
-            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+            className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
           >
             {results.map((c) => (
               <StaggerItem key={c.id} className="h-full">
-                <CourseCard course={c} className="lift" />
+                <CourseCard course={c} />
               </StaggerItem>
             ))}
           </Stagger>

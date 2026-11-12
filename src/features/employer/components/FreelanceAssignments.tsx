@@ -1,6 +1,7 @@
 import type { Application, Opportunity, Outcome } from '@shared/types'
 import { PenTool } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Avatar } from '@/components/shared/Avatar'
 import { EmptyState } from '@/components/shared/EmptyState'
 import {
   Table,
@@ -42,16 +43,15 @@ export function FreelanceAssignments({
     )
   const dash = t('placements.notYet')
   return (
-    <div className="overflow-x-auto rounded-2xl border bg-white shadow-sm">
+    <div className="card overflow-hidden">
       <Table>
-        <TableHeader className="bg-sky-50">
+        <TableHeader>
           <TableRow>
             <TableHead>{t('apps.applicant')}</TableHead>
-            <TableHead>{t('apps.opportunity')}</TableHead>
-            <TableHead>{t('placements.selection')}</TableHead>
-            <TableHead>{t('placements.start')}</TableHead>
-            <TableHead>{t('placements.completion')}</TableHead>
-            <TableHead>{t('placements.fee')}</TableHead>
+            <TableHead className="hidden md:table-cell">{t('placements.selection')}</TableHead>
+            <TableHead className="hidden xl:table-cell">{t('placements.start')}</TableHead>
+            <TableHead className="hidden md:table-cell">{t('placements.completion')}</TableHead>
+            <TableHead className="hidden lg:table-cell">{t('placements.fee')}</TableHead>
             <TableHead>{t('apps.stage')}</TableHead>
           </TableRow>
         </TableHeader>
@@ -60,22 +60,32 @@ export function FreelanceAssignments({
             const sel = outcomes.find((o) => o.id === `OUT-${a.id}-sel`)
             const done = outcomes.find((o) => o.id === `OUT-${a.id}-done`)
             const d = details[a.id] ?? {}
+            const y = youth[a.youthId]
             return (
               <TableRow key={a.id}>
-                <TableCell className="font-semibold">{youth[a.youthId]?.profile.name}</TableCell>
-                <TableCell>
-                  {l(opportunities.find((o) => o.id === a.opportunityId)?.title)}
+                <TableCell className="py-2.5 whitespace-normal">
+                  <span className="flex min-w-0 items-center gap-3">
+                    <Avatar src={y?.image} name={y?.profile.name ?? a.youthId} size={36} />
+                    <span className="min-w-0">
+                      <span className="block font-semibold text-ink">{y?.profile.name}</span>
+                      <span className="block text-xs text-ink-soft">
+                        {l(opportunities.find((o) => o.id === a.opportunityId)?.title)}
+                      </span>
+                    </span>
+                  </span>
                 </TableCell>
-                <TableCell className="tabular-nums">
+                <TableCell className="hidden text-ink-soft tabular-nums md:table-cell">
                   {sel ? formatDate(d.selectionDate ?? sel.date, lang) : dash}
                 </TableCell>
-                <TableCell className="tabular-nums">
+                <TableCell className="hidden text-ink-soft tabular-nums xl:table-cell">
                   {d.startDate ? formatDate(d.startDate, lang) : dash}
                 </TableCell>
-                <TableCell className="tabular-nums">
+                <TableCell className="hidden text-ink-soft tabular-nums md:table-cell">
                   {done ? formatDate(done.date, lang) : dash}
                 </TableCell>
-                <TableCell>{d.sampleFee ?? dash}</TableCell>
+                <TableCell className="hidden text-ink-soft lg:table-cell">
+                  {d.sampleFee ?? dash}
+                </TableCell>
                 <TableCell>
                   <StageBadge stage={a.stage} />
                 </TableCell>

@@ -1,26 +1,54 @@
 import type { CoachId } from '@shared/types'
 import { BookOpenCheck, Compass, FileUser, Lightbulb, type LucideIcon, Palette } from 'lucide-react'
 
-/** Icon avatar and brand colour per AI coach (no photographs: these are scripted demos). */
+/**
+ * Identity per AI coach (no photographs: these are scripted demos). `grad` paints the avatar tile
+ * and the card header; `ink` is the text colour that reads on it; `motif` colours the emblem lines.
+ */
 export const COACH_STYLE: Record<
   CoachId,
-  { icon: LucideIcon; tile: string; soft: string; text: string }
+  { icon: LucideIcon; grad: string; ink: string; motif: string; soft: string; text: string }
 > = {
-  navigator: { icon: Compass, tile: 'bg-blue text-white', soft: 'bg-blue-50', text: 'text-blue' },
+  navigator: {
+    icon: Compass,
+    grad: 'bg-[linear-gradient(140deg,var(--unicef-cyan),var(--unicef-blue)_55%,var(--unicef-navy))]',
+    ink: 'text-white',
+    motif: 'text-white/20',
+    soft: 'bg-blue-50',
+    text: 'text-blue',
+  },
   learning: {
     icon: BookOpenCheck,
-    tile: 'bg-cyan text-ink',
+    grad: 'bg-[linear-gradient(140deg,var(--unicef-cyan),var(--unicef-cyan-600))]',
+    ink: 'text-ink',
+    motif: 'text-white/40',
     soft: 'bg-sky-100',
     text: 'text-navy',
   },
-  cv: { icon: FileUser, tile: 'bg-yellow text-ink', soft: 'bg-yellow/15', text: 'text-ink' },
+  cv: {
+    icon: FileUser,
+    grad: 'bg-[linear-gradient(140deg,#ffd666,var(--unicef-yellow))]',
+    ink: 'text-ink',
+    motif: 'text-white/50',
+    soft: 'bg-yellow/15',
+    text: 'text-ink',
+  },
   enterprise: {
     icon: Lightbulb,
-    tile: 'bg-orange text-white',
+    grad: 'bg-[linear-gradient(140deg,var(--unicef-orange),#a93a06)]',
+    ink: 'text-white',
+    motif: 'text-white/20',
     soft: 'bg-orange/10',
     text: 'text-ink',
   },
-  freelance: { icon: Palette, tile: 'bg-navy text-white', soft: 'bg-blue-50', text: 'text-navy' },
+  freelance: {
+    icon: Palette,
+    grad: 'bg-[linear-gradient(140deg,var(--unicef-navy),#002a73)]',
+    ink: 'text-white',
+    motif: 'text-cyan/30',
+    soft: 'bg-blue-50',
+    text: 'text-navy',
+  },
 }
 
 /** Typing indicator duration before a scripted reply appears. */

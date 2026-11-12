@@ -1,27 +1,33 @@
 import type { Youth } from '@shared/types'
+import { FileSignature, HelpCircle, ListChecks, MessageSquareText } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { STAT_TONES, StatCard } from '@/components/shared/StatCard'
 
-/** Quick progress chips in the toolkit hero. Counts only, no scores. */
+/** Toolkit progress as stat cards. Counts only, no scores. */
 export function ToolkitStats({ youth }: { youth: Youth }) {
   const { t } = useTranslation('career')
   const tk = youth.toolkit
-  const chips = [
-    { label: t('toolkit.stats.bullets'), value: tk.cv?.experience.length ?? 0 },
-    { label: t('toolkit.stats.practice'), value: tk.interviews.length },
-    { label: t('toolkit.stats.questions'), value: tk.business?.questions.length ?? 0 },
-    { label: t('toolkit.stats.proposals'), value: tk.proposals.length },
+  const stats = [
+    { label: t('toolkit.stats.bullets'), value: tk.cv?.experience.length ?? 0, icon: ListChecks },
+    { label: t('toolkit.stats.practice'), value: tk.interviews.length, icon: MessageSquareText },
+    {
+      label: t('toolkit.stats.questions'),
+      value: tk.business?.questions.length ?? 0,
+      icon: HelpCircle,
+    },
+    { label: t('toolkit.stats.proposals'), value: tk.proposals.length, icon: FileSignature },
   ]
   return (
-    <ul className="flex flex-wrap gap-2">
-      {chips.map((c) => (
-        <li
-          key={c.label}
-          className="flex items-center gap-2 rounded-full bg-white/15 px-3 py-1.5 text-sm text-white"
-        >
-          <span className="text-lg font-bold tabular-nums">{c.value}</span>
-          {c.label}
-        </li>
+    <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
+      {stats.map((s, i) => (
+        <StatCard
+          key={s.label}
+          tone={STAT_TONES[i % STAT_TONES.length]}
+          icon={s.icon}
+          label={s.label}
+          value={s.value}
+        />
       ))}
-    </ul>
+    </div>
   )
 }

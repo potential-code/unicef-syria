@@ -1,4 +1,5 @@
 import { Clock, Handshake, Repeat, Rocket, Sparkles, UserCheck, Users } from 'lucide-react'
+import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { KpiTile } from '@/components/charts'
 import { useAdminFilters } from '../lib/useAdminFilters'
@@ -15,7 +16,7 @@ import { MeasureList } from './MeasureList'
  * internships and freelance work are never added into one "unique youth" figure; the only
  * combined figure is the labelled, deduplicated jobs-plus-internships count.
  */
-export function OutcomeSections() {
+export function OutcomeSections({ historicalExtra }: { historicalExtra?: ReactNode } = {}) {
   const { t } = useTranslation('admin')
   const { n } = useLabels()
   const { filters } = useAdminFilters()
@@ -27,8 +28,9 @@ export function OutcomeSections() {
   return (
     <div className="space-y-6">
       <LayerSection layer="current">
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))] gap-3">
           <MeasureList
+            tone="blue"
             icon={Handshake}
             title={t('outcomes.currentEmployment')}
             definition={t('def.jobs')}
@@ -39,6 +41,7 @@ export function OutcomeSections() {
             note={t('outcomes.offerNote')}
           />
           <MeasureList
+            tone="cyan"
             icon={Sparkles}
             title={t('outcomes.currentFreelance')}
             definition={t('def.freelance')}
@@ -53,6 +56,7 @@ export function OutcomeSections() {
             note={t('outcomes.freelanceNote')}
           />
           <MeasureList
+            tone="blue"
             icon={Rocket}
             title={t('outcomes.currentEnterprise')}
             definition={t('def.enterprise')}
@@ -72,8 +76,9 @@ export function OutcomeSections() {
           <HistoricalEmpty availability={h.availability} />
         ) : (
           <div className="space-y-4">
-            <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            <div className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
               <KpiTile
+                tone="navy"
                 icon={Handshake}
                 label={t('kpi.jobs')}
                 value={k.jobStarts}
@@ -83,6 +88,7 @@ export function OutcomeSections() {
                 statusLabel={confirmed}
               />
               <KpiTile
+                tone="sky"
                 icon={UserCheck}
                 label={t('kpi.internships')}
                 value={k.internships}
@@ -92,6 +98,7 @@ export function OutcomeSections() {
                 statusLabel={confirmed}
               />
               <KpiTile
+                tone="navy"
                 icon={Users}
                 label={t('kpi.uniquePlaced')}
                 value={k.uniquePlaced}
@@ -103,9 +110,9 @@ export function OutcomeSections() {
                 definition={t('def.uniquePlaced')}
                 status="confirmed"
                 statusLabel={confirmed}
-                emphasis
               />
               <KpiTile
+                tone="sky"
                 icon={Clock}
                 label={t('kpi.daysToJob')}
                 value={k.avgDaysToJob}
@@ -116,6 +123,7 @@ export function OutcomeSections() {
                 statusLabel={confirmed}
               />
               <KpiTile
+                tone="navy"
                 icon={Repeat}
                 label={t('kpi.retention')}
                 value={k.retention.rate.value}
@@ -126,16 +134,13 @@ export function OutcomeSections() {
                 definition={t('def.retention')}
                 status="confirmed"
                 statusLabel={t('status.followUp')}
-                extra={
-                  <p className="text-xs text-ink-soft">
-                    {t('kpi.unknown', { count: k.retention.unknown })}
-                  </p>
-                }
+                extra={t('kpi.unknown', { count: k.retention.unknown })}
               />
             </div>
             <EmploymentWindows k={k} />
-            <div className="grid gap-3 md:grid-cols-2">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))] gap-3">
               <MeasureList
+                tone="sky"
                 icon={Sparkles}
                 title={t('kpi.freelance')}
                 definition={t('def.freelance')}
@@ -147,6 +152,7 @@ export function OutcomeSections() {
                 note={t('kpi.freelanceNote')}
               />
               <MeasureList
+                tone="navy"
                 icon={Rocket}
                 title={t('kpi.enterprise')}
                 definition={t('def.enterprise')}
@@ -159,6 +165,7 @@ export function OutcomeSections() {
                 note={t('kpi.enterpriseNote')}
               />
             </div>
+            {historicalExtra}
           </div>
         )}
       </LayerSection>

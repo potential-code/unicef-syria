@@ -38,11 +38,7 @@ export function FeedbackForm({ orgId }: { orgId: OrgId }) {
     </Field>
   )
   return (
-    <form
-      onSubmit={submit}
-      noValidate
-      className="flex flex-col gap-4 rounded-2xl border bg-white p-5 shadow-sm"
-    >
+    <form onSubmit={submit} noValidate className="card flex flex-col gap-4 p-5 sm:p-6">
       <p className="text-sm text-ink-soft">{t('feedback.body')}</p>
       {area('strengths')}
       {area('missing')}

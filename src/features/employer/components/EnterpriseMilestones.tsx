@@ -21,11 +21,10 @@ export function EnterpriseMilestones({ apps }: { apps: Application[] }) {
   return (
     <ul className="flex flex-col gap-2">
       {rows.map((a) => (
-        <li
-          key={a.id}
-          className="flex flex-wrap items-center justify-between gap-2 rounded-2xl border bg-white p-4 shadow-sm"
-        >
-          <span className="font-semibold">{youth[a.youthId]?.profile.name}</span>
+        <li key={a.id} className="card flex flex-wrap items-center justify-between gap-2 p-4">
+          <span className="min-w-0 flex-1 font-semibold text-ink">
+            {youth[a.youthId]?.profile.name}
+          </span>
           <StageBadge stage={a.stage} />
         </li>
       ))}

@@ -59,16 +59,12 @@ export function ResourceLinkForm({
   }
 
   return (
-    <form
-      onSubmit={submit}
-      noValidate
-      className="space-y-4 rounded-2xl border bg-card p-5 shadow-sm"
-    >
+    <form onSubmit={submit} noValidate className="card space-y-4 p-5 sm:p-6">
       <h2 className="text-lg">{t('resources.formTitle')}</h2>
       <div className="space-y-1.5">
         <Label htmlFor="r-template">{t('resources.resource')}</Label>
         <Select value={template} onValueChange={(v) => setTemplate(v as TemplateId)}>
-          <SelectTrigger id="r-template" className="min-h-11 w-full">
+          <SelectTrigger id="r-template" className="w-full">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -86,7 +82,7 @@ export function ResourceLinkForm({
       <div className="space-y-1.5">
         <Label htmlFor="r-target">{t('resources.target')}</Label>
         <Select value={target} onValueChange={setTarget}>
-          <SelectTrigger id="r-target" className="min-h-11 w-full">
+          <SelectTrigger id="r-target" className="w-full">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

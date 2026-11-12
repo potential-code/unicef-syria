@@ -57,18 +57,15 @@ export function CatalogueFilters({
     onChange(next)
   }
   return (
-    <div className="rounded-2xl border bg-white p-4 shadow-md sm:p-5">
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
+    <div className="card p-4">
+      <div className="grid grid-cols-2 gap-x-3 gap-y-3 md:grid-cols-3 xl:grid-cols-6">
         {fields.map((f) => (
           <div key={f.key} className="space-y-1">
-            <Label
-              htmlFor={`f-${f.key}`}
-              className="text-xs font-bold tracking-wide text-ink-soft uppercase"
-            >
+            <Label htmlFor={`f-${f.key}`} className="text-xs font-semibold text-ink-soft">
               {t(`explore.filters.${f.key}`)}
             </Label>
             <Select value={value[f.key] ?? ALL} onValueChange={(v) => set(f.key, v)}>
-              <SelectTrigger id={`f-${f.key}`} className="min-h-11 w-full">
+              <SelectTrigger id={`f-${f.key}`} size="sm" className="w-full min-w-0">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -84,7 +81,12 @@ export function CatalogueFilters({
         ))}
       </div>
       {active > 0 && (
-        <Button variant="ghost" size="sm" onClick={() => onChange({})} className="mt-3 text-blue">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => onChange({})}
+          className="mt-3 -ms-2 text-blue"
+        >
           <X className="size-4" aria-hidden />
           {t('common:clearFilters')} ({active})
         </Button>

@@ -12,7 +12,7 @@ export function PermissionsSection({ p, set, errors }: SectionProps) {
   return (
     <FormSection icon={ShieldCheck} title={t('profile.sections.permissions')}>
       <div className="space-y-1 sm:col-span-2">
-        <div className="flex min-h-12 items-start gap-3 rounded-2xl border p-3">
+        <div className="flex items-start gap-3 rounded-xl border border-border/70 p-3">
           <Checkbox
             id="pf-consent"
             checked={p.consentProgramme}
@@ -32,7 +32,7 @@ export function PermissionsSection({ p, set, errors }: SectionProps) {
           </p>
         )}
       </div>
-      <div className="flex min-h-12 items-start gap-3 rounded-2xl border-2 border-cyan/40 bg-sky-50 p-3 sm:col-span-2">
+      <div className="flex items-start gap-3 rounded-xl border border-sky-200 bg-sky-50 p-3 sm:col-span-2">
         <Switch
           id="pf-visible"
           checked={p.consentEmployerVisible}

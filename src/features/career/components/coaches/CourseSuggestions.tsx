@@ -27,12 +27,12 @@ export function CourseSuggestions({
         return (
           <li
             key={courseId}
-            className="flex flex-col gap-2 rounded-xl border bg-white p-3 sm:flex-row sm:items-center"
+            className="flex flex-col gap-2 rounded-xl border border-border/70 border-s-4 border-s-blue bg-white p-3 shadow-sm sm:flex-row sm:items-center"
           >
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-grad-unicef text-xs font-bold text-white">
-              {courseId}
-            </span>
             <div className="min-w-0 flex-1 text-sm">
+              <p className="text-[0.7rem] font-bold uppercase tracking-wide text-ink-soft">
+                {courseId}
+              </p>
               <a href={courseHref(courseId)} className="font-semibold text-blue hover:underline">
                 {l(course.title)}
               </a>

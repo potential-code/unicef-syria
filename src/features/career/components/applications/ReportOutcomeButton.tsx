@@ -9,7 +9,7 @@ import { reportOutcome } from '@/store/actions/career-extra'
 export function ReportOutcomeButton({ app, type }: { app: Application; type: OutcomeType }) {
   const { t } = useTranslation('career')
   return (
-    <div className="flex flex-wrap items-center gap-3 rounded-xl border border-dashed bg-white p-3">
+    <div className="flex flex-wrap items-center gap-3 rounded-xl border border-dashed border-border bg-sky-50/50 p-3">
       <Button
         variant="outline"
         size="sm"

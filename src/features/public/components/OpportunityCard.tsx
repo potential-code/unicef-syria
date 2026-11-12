@@ -35,12 +35,17 @@ export function OpportunityCard({
     <article
       id={`opp-${opp.id}`}
       className={cn(
-        'flex h-full flex-col gap-4 rounded-2xl border bg-white p-6 shadow-sm transition-shadow hover:shadow-lg',
+        'card card-hover flex h-full min-w-0 flex-col gap-3.5 p-5',
         highlighted && 'ring-4 ring-yellow',
       )}
     >
       <div className="flex flex-wrap items-center gap-2">
-        <span className={cn('rounded-full px-3 py-1 text-xs font-bold', TYPE_TONE[opp.type])}>
+        <span
+          className={cn(
+            'shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-bold',
+            TYPE_TONE[opp.type],
+          )}
+        >
           {t(`common:oppTypes.${opp.type}`)}
         </span>
         <StatusBadge tone={closed ? 'neutral' : 'success'}>
@@ -49,24 +54,24 @@ export function OpportunityCard({
         <span className="ms-auto text-xs font-bold text-ink-soft">{opp.id}</span>
       </div>
       <div>
-        <h3 className="text-xl">{l(opp.title)}</h3>
+        <h3 className="text-lg">{l(opp.title)}</h3>
         <p className="mt-1 flex items-center gap-1.5 text-sm font-semibold text-blue">
           <Building2 className="size-4" aria-hidden />
           {l(org?.name)}
         </p>
       </div>
       <p className="text-sm text-ink-soft">{l(opp.description)}</p>
-      <ul className="grid gap-1.5 text-sm">
-        <li className="flex items-center gap-2">
-          <MapPin className="size-4 text-blue" aria-hidden />
+      <ul className="grid gap-1 text-sm text-ink">
+        <li className="flex items-start gap-2">
+          <MapPin className="mt-0.5 size-4 shrink-0 text-blue" aria-hidden />
           {l(opp.location)}
         </li>
-        <li className="flex items-center gap-2">
-          <Laptop className="size-4 text-blue" aria-hidden />
+        <li className="flex items-start gap-2">
+          <Laptop className="mt-0.5 size-4 shrink-0 text-blue" aria-hidden />
           {t(`common:format.${opp.workFormat}`)}
         </li>
-        <li className="flex items-center gap-2">
-          <CalendarClock className="size-4 text-blue" aria-hidden />
+        <li className="flex items-start gap-2">
+          <CalendarClock className="mt-0.5 size-4 shrink-0 text-blue" aria-hidden />
           {t('opps.deadline', { date: formatDate(opp.deadline, lang) })}
         </li>
       </ul>
@@ -74,19 +79,25 @@ export function OpportunityCard({
         {opp.skills.map((s) => (
           <span
             key={s.en}
-            className="rounded-full bg-sky-100 px-2.5 py-1 text-xs font-semibold text-navy"
+            className="rounded-full bg-sky-100 px-2.5 py-0.5 text-xs font-semibold text-navy"
           >
             {l(s)}
           </span>
         ))}
       </div>
-      <div className="mt-auto flex flex-wrap gap-2 border-t pt-4">
-        <Button onClick={() => onAct('apply')} disabled={closed} className="flex-1 rounded-full">
+      <div className="mt-auto flex flex-wrap gap-2 border-t border-border/60 pt-4">
+        <Button
+          size="sm"
+          onClick={() => onAct('apply')}
+          disabled={closed}
+          className="flex-1 rounded-full"
+        >
           <Send className="size-4 rtl-mirror" aria-hidden />
           {t('opps.apply')}
         </Button>
         <Button
           variant="outline"
+          size="sm"
           onClick={() => onAct('save')}
           disabled={closed || saved}
           className="flex-1 rounded-full"

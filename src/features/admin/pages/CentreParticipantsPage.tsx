@@ -70,8 +70,8 @@ export function CentreParticipantsPage() {
         </TabsContent>
       </Tabs>
       {outside && (
-        <aside className="flex flex-col gap-3 rounded-2xl border border-dashed border-orange/40 bg-white p-4 sm:flex-row sm:items-center">
-          <ShieldAlert className="size-6 shrink-0 text-orange" aria-hidden />
+        <aside className="card flex flex-col gap-3 border-s-4 border-s-orange p-4 sm:flex-row sm:items-center">
+          <ShieldAlert className="size-5 shrink-0 text-orange" aria-hidden />
           <div className="flex-1 text-sm">
             <p className="font-semibold">{t('participants.boundaryTitle')}</p>
             <p className="text-ink-soft">{t('participants.boundaryBody')}</p>
@@ -79,7 +79,7 @@ export function CentreParticipantsPage() {
           <Link
             to="/centre/participants/$youthId"
             params={{ youthId: outside.id }}
-            className="inline-flex min-h-11 items-center rounded-full border-2 border-blue px-4 text-sm font-semibold text-blue hover:bg-sky-50"
+            className="inline-flex h-9 shrink-0 items-center rounded-full px-4 text-sm font-semibold text-blue ring-1 ring-blue/30 hover:bg-blue hover:text-white"
           >
             {t('participants.boundaryCta', { id: outside.id })}
           </Link>

@@ -1,4 +1,4 @@
-import { Activity, History } from 'lucide-react'
+import { History } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SNAPSHOT_DATE } from '@/data/analytics'
@@ -6,8 +6,9 @@ import { cn } from '@/lib/utils'
 import { useLabels } from '../lib/useLabels'
 
 /**
- * The two data layers are always visibly separate: live current-cohort activity on white, the
- * synthetic historical sample on a sky panel with its snapshot date in the heading.
+ * The two data layers are always visibly separate. Live current-cohort activity sits on white
+ * under a blue "Live demo records" tag with blue and cyan cards; the synthetic historical sample
+ * sits on a sky panel under a navy tag with navy and sky cards, its snapshot date in the heading.
  */
 export function LayerSection({
   layer,
@@ -23,50 +24,42 @@ export function LayerSection({
   const { t } = useTranslation('admin')
   const { d } = useLabels()
   const current = layer === 'current'
-  const Icon = current ? Activity : History
   const id = `layer-${layer}`
   return (
     <section
       aria-labelledby={id}
       className={cn(
-        'rounded-3xl border p-4 sm:p-6',
-        current ? 'border-blue/15 bg-white shadow-sm' : 'border-cyan/30 bg-sky-50',
+        'rounded-3xl p-4 sm:p-6',
+        current ? 'card' : 'bg-sky-100/70 ring-1 ring-sky-200',
         className,
       )}
     >
-      <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
-        <div className="flex items-start gap-3">
+      <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+        <div className="min-w-0 space-y-1.5">
           <span
             className={cn(
-              'flex size-10 shrink-0 items-center justify-center rounded-2xl',
-              current ? 'bg-blue text-white' : 'bg-white text-blue shadow-sm',
+              'inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-semibold text-white',
+              current ? 'bg-blue' : 'bg-navy',
             )}
           >
-            <Icon className="size-5" aria-hidden />
-          </span>
-          <div>
-            <h2 id={id} className="text-lg sm:text-xl">
-              {current ? t('layer.current') : t('layer.historical', { date: d(SNAPSHOT_DATE) })}
-            </h2>
-            <p className="mt-0.5 max-w-2xl text-sm text-ink-soft">
-              {current ? t('layer.currentBody') : t('layer.historicalBody')}
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <span
-            className={cn(
-              'inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold',
-              current ? 'bg-success-soft text-success' : 'bg-white text-navy',
-            )}
-          >
-            {current && (
-              <span className="size-1.5 animate-pulse rounded-full bg-success" aria-hidden />
+            {current ? (
+              <span className="relative flex size-2" aria-hidden>
+                <span className="absolute inset-0 animate-ping rounded-full bg-cyan opacity-75" />
+                <span className="relative size-2 rounded-full bg-cyan" />
+              </span>
+            ) : (
+              <History className="size-3.5" aria-hidden />
             )}
             {current ? t('layer.liveTag') : t('layer.sampleTag')}
           </span>
-          {actions}
+          <h2 id={id} className="text-xl">
+            {current ? t('layer.current') : t('layer.historical', { date: d(SNAPSHOT_DATE) })}
+          </h2>
+          <p className="max-w-3xl text-sm text-ink-soft">
+            {current ? t('layer.currentBody') : t('layer.historicalBody')}
+          </p>
         </div>
+        {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
       </div>
       {children}
     </section>

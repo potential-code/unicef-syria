@@ -22,18 +22,18 @@ export function InterviewFeedbackCard({
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      className="space-y-4 rounded-2xl border-2 border-cyan/40 bg-sky-50 p-5"
+      className="card relative space-y-4 overflow-hidden p-5 before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-cyan"
       aria-live="polite"
     >
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h3 className="text-lg">{t('toolkit.interview.feedbackTitle')}</h3>
+        <h3 className="min-w-0 text-lg">{t('toolkit.interview.feedbackTitle')}</h3>
         <span className="flex items-center gap-2 text-sm font-semibold">
           {t('toolkit.interview.overall')} <RatingBadge rating={feedback.overall} />
         </span>
       </div>
       <ul className="grid gap-3 sm:grid-cols-3">
         {CRITERIA.map((c) => (
-          <li key={c} className="space-y-2 rounded-xl bg-white p-3 shadow-sm">
+          <li key={c} className="space-y-2 rounded-xl bg-sky-50 p-3">
             <div className="flex items-center justify-between gap-2">
               <span className="font-semibold">{t(`toolkit.criteria.${c}`)}</span>
               <RatingBadge rating={feedback[c]} />
@@ -44,7 +44,7 @@ export function InterviewFeedbackCard({
           </li>
         ))}
       </ul>
-      <div className="rounded-xl bg-white p-3">
+      <div className="rounded-xl border-s-4 border-s-blue bg-sky-50 p-3">
         <p className="text-xs font-bold uppercase tracking-wide text-blue">
           {t('toolkit.interview.nextStep')}
         </p>

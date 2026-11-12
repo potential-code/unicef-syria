@@ -50,7 +50,7 @@ export function CandidatesPage() {
   return (
     <div>
       <PageHeader title={t('candidates.title')} description={t('candidates.body')} />
-      <p className="mb-4 flex items-start gap-2 rounded-xl bg-sky-50 p-3 text-sm text-navy">
+      <p className="mb-4 flex items-start gap-2 rounded-xl bg-sky-50 p-3 text-sm text-navy ring-1 ring-cyan/25">
         <ShieldCheck className="mt-0.5 size-4 shrink-0" aria-hidden />
         {t('candidates.privacy')}
       </p>
@@ -81,9 +81,9 @@ export function CandidatesPage() {
           }
         />
       ) : (
-        <Stagger className="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-3">
+        <Stagger className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,20rem),1fr))] gap-4">
           {shown.map((y) => (
-            <StaggerItem key={y.id}>
+            <StaggerItem key={y.id} className="h-full">
               <CandidateCard youth={y} opp={opp} />
             </StaggerItem>
           ))}

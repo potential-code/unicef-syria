@@ -25,7 +25,7 @@ export function MentorCard({
   const { l, lang } = useLocalized()
   const allocation = hasAllocation(youth, m)
   return (
-    <article className="lift flex h-full flex-col rounded-2xl border bg-white p-5 shadow-sm">
+    <article className="card card-hover flex h-full flex-col p-5">
       <div className="flex items-start gap-4">
         <Avatar src={m.image} name={l(m.name)} size={64} className="ring-4 ring-sky-100" />
         <div className="min-w-0">

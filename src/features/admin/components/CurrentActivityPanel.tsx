@@ -42,8 +42,9 @@ export function CurrentActivityPanel({
   const live = t('status.live')
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      <div className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
         <KpiTile
+          tone="blue"
           icon={Layers}
           label={t('current.places')}
           value={data.cohortPlaces}
@@ -56,6 +57,7 @@ export function CurrentActivityPanel({
           statusLabel={live}
         />
         <KpiTile
+          tone="cyan"
           icon={UserRound}
           label={t('current.learners')}
           value={data.youth.length}
@@ -65,6 +67,7 @@ export function CurrentActivityPanel({
           statusLabel={live}
         />
         <KpiTile
+          tone="blue"
           icon={Users}
           label={t('current.active')}
           value={data.active.length}
@@ -76,6 +79,7 @@ export function CurrentActivityPanel({
           statusLabel={t('status.activity')}
         />
         <KpiTile
+          tone="cyan"
           icon={CalendarCheck}
           label={t('current.attendance')}
           value={data.attendance.present}
@@ -85,15 +89,12 @@ export function CurrentActivityPanel({
           definition={t('def.attendance')}
           status="activity"
           statusLabel={t('status.trainerRecorded')}
-          extra={
-            <p className="text-xs text-ink-soft">
-              {t('current.attendanceRate', {
-                rate: p(pct(data.attendance.present, data.attendance.marked)),
-              })}
-            </p>
-          }
+          extra={t('current.attendanceRate', {
+            rate: p(pct(data.attendance.present, data.attendance.marked)),
+          })}
         />
         <KpiTile
+          tone="blue"
           icon={ClipboardList}
           label={t('current.practicals')}
           value={data.pendingPracticals.length}
@@ -103,15 +104,18 @@ export function CurrentActivityPanel({
           statusLabel={live}
         />
       </div>
-      <div className="grid gap-3 lg:grid-cols-2">
-        <div className="rounded-2xl border bg-card p-5 shadow-sm">
-          <div className="flex items-baseline justify-between gap-2">
-            <p className="font-semibold text-ink">{t('current.applications')}</p>
-            <p className="text-xs text-ink-soft">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,22rem),1fr))] gap-3">
+        <div className="card p-5">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+            <p className="flex items-center gap-2 font-semibold text-ink">
+              <ClipboardList className="size-4 text-blue" aria-hidden />
+              {t('current.applications')}
+            </p>
+            <p className="text-xs font-semibold text-blue">
               {t('current.applicationsTotal', { count: data.applications.length })}
             </p>
           </div>
-          <p className="mb-3 text-xs text-ink-soft">{t('current.applicationsHint')}</p>
+          <p className="mt-1 mb-4 text-xs text-ink-soft">{t('current.applicationsHint')}</p>
           <StackedBar
             segments={groups}
             ariaLabel={groups.map((g) => `${g.label} ${g.value}`).join(', ')}
@@ -127,17 +131,17 @@ export function CurrentActivityPanel({
             />
           </div>
         </div>
-        <div className="rounded-2xl border bg-card p-5 shadow-sm">
+        <div className="card flex flex-col p-5">
           <p className="flex items-center gap-2 font-semibold text-ink">
             <Briefcase className="size-4 text-blue" aria-hidden />
             {t('current.outcomes')}
           </p>
-          <p className="mb-3 text-xs text-ink-soft">{t('current.outcomesHint')}</p>
-          <dl className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+          <p className="mt-1 mb-4 text-xs text-ink-soft">{t('current.outcomesHint')}</p>
+          <dl className="grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-3">
             {OUTCOME_TYPES.map((o) => (
-              <div key={o} className="rounded-xl bg-sky-50 px-3 py-2">
-                <dt className="text-xs text-ink-soft">{t(`outcomeType.${o}`)}</dt>
-                <dd className="text-xl font-bold tabular-nums text-ink">
+              <div key={o} className="flex flex-col-reverse border-s-2 border-cyan ps-3">
+                <dt className="text-xs leading-snug text-ink-soft">{t(`outcomeType.${o}`)}</dt>
+                <dd className="text-2xl leading-tight font-extrabold tabular-nums text-navy">
                   {n(data.outcomesByType[o])}
                 </dd>
               </div>
@@ -147,7 +151,7 @@ export function CurrentActivityPanel({
             <Link
               to={recordsTo}
               search={linkSearch()}
-              className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-blue hover:underline"
+              className="mt-auto inline-flex items-center gap-1 self-start pt-4 text-sm font-semibold text-blue hover:underline"
             >
               {t('current.openRecords')}
             </Link>

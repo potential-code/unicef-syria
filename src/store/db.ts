@@ -23,7 +23,7 @@ import { seedApplications, seedFollowUps, seedOutcomes, seedYouth } from '@/data
  * snapshot (applications, points, course state and attendance together) and keeps the session.
  */
 const KEY = 'unicef-syria-demo-db'
-const VERSION = 1
+const VERSION = 2
 
 export interface InAppNotice {
   id: string

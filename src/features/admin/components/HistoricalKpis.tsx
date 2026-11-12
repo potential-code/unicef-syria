@@ -26,8 +26,9 @@ export function HistoricalKpis({ h, show = 'all' }: { h: Historical; show?: 'all
   const recorded = t('status.recorded')
   return (
     <div className="space-y-3">
-      <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 xl:grid-cols-4">
         <KpiTile
+          tone="navy"
           icon={UserPlus}
           label={t('kpi.registered')}
           value={k.registered}
@@ -37,6 +38,7 @@ export function HistoricalKpis({ h, show = 'all' }: { h: Historical; show?: 'all
           statusLabel={recorded}
         />
         <KpiTile
+          tone="sky"
           icon={Users}
           label={t('kpi.active')}
           value={k.active}
@@ -46,13 +48,10 @@ export function HistoricalKpis({ h, show = 'all' }: { h: Historical; show?: 'all
           definition={t('def.active')}
           status="activity"
           statusLabel={recorded}
-          extra={
-            <p className="text-xs text-ink-soft">
-              {t('kpi.share', { rate: pct(k.active, k.registered) ?? 0 })}
-            </p>
-          }
+          extra={t('kpi.share', { rate: pct(k.active, k.registered) ?? 0 })}
         />
         <KpiTile
+          tone="navy"
           icon={GraduationCap}
           label={t('kpi.completion')}
           value={k.completionRate.value}
@@ -65,6 +64,7 @@ export function HistoricalKpis({ h, show = 'all' }: { h: Historical; show?: 'all
           statusLabel={recorded}
         />
         <KpiTile
+          tone="sky"
           icon={Compass}
           label={t('kpi.guidance')}
           value={k.guidanceCoverage.value}
@@ -79,8 +79,9 @@ export function HistoricalKpis({ h, show = 'all' }: { h: Historical; show?: 'all
       </div>
       {show === 'all' && (
         <>
-          <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 xl:grid-cols-4">
             <KpiTile
+              tone="sky"
               icon={Handshake}
               label={t('kpi.jobs')}
               value={k.jobStarts}
@@ -90,6 +91,7 @@ export function HistoricalKpis({ h, show = 'all' }: { h: Historical; show?: 'all
               statusLabel={confirmed}
             />
             <KpiTile
+              tone="navy"
               icon={UserCheck}
               label={t('kpi.internships')}
               value={k.internships}
@@ -99,6 +101,7 @@ export function HistoricalKpis({ h, show = 'all' }: { h: Historical; show?: 'all
               statusLabel={confirmed}
             />
             <KpiTile
+              tone="sky"
               icon={Users}
               label={t('kpi.uniquePlaced')}
               value={k.uniquePlaced}
@@ -110,9 +113,9 @@ export function HistoricalKpis({ h, show = 'all' }: { h: Historical; show?: 'all
               definition={t('def.uniquePlaced')}
               status="confirmed"
               statusLabel={confirmed}
-              emphasis
             />
             <KpiTile
+              tone="navy"
               icon={Clock}
               label={t('kpi.daysToJob')}
               value={k.avgDaysToJob}
@@ -123,8 +126,9 @@ export function HistoricalKpis({ h, show = 'all' }: { h: Historical; show?: 'all
               statusLabel={confirmed}
             />
           </div>
-          <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))] gap-3">
             <KpiTile
+              tone="navy"
               icon={Repeat}
               label={t('kpi.retention')}
               value={k.retention.rate.value}
@@ -135,13 +139,10 @@ export function HistoricalKpis({ h, show = 'all' }: { h: Historical; show?: 'all
               definition={t('def.retention')}
               status="confirmed"
               statusLabel={t('status.followUp')}
-              extra={
-                <p className="text-xs text-ink-soft">
-                  {t('kpi.unknown', { count: k.retention.unknown })}
-                </p>
-              }
+              extra={t('kpi.unknown', { count: k.retention.unknown })}
             />
             <MeasureList
+              tone="sky"
               icon={Sparkles}
               title={t('kpi.freelance')}
               definition={t('def.freelance')}
@@ -161,6 +162,7 @@ export function HistoricalKpis({ h, show = 'all' }: { h: Historical; show?: 'all
               note={t('kpi.freelanceNote')}
             />
             <MeasureList
+              tone="navy"
               icon={Rocket}
               title={t('kpi.enterprise')}
               definition={t('def.enterprise')}

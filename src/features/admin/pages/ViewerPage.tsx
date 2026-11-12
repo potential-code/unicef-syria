@@ -18,8 +18,8 @@ export function ViewerPage() {
         title={t('viewer.title')}
         body={t('viewer.body')}
         aside={
-          <span className="inline-flex items-center gap-2 rounded-full bg-yellow px-4 py-2 text-sm font-semibold text-ink">
-            <Eye className="size-4" aria-hidden />
+          <span className="inline-flex items-center gap-1.5 self-start rounded-full bg-yellow px-3 py-1 text-xs font-semibold text-ink shadow-xs sm:self-end">
+            <Eye className="size-3.5" aria-hidden />
             {t('viewer.optional')}
           </span>
         }

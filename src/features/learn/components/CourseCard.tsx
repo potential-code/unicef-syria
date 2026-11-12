@@ -28,7 +28,7 @@ export function CourseCard({ course, youth }: { course: Course; youth: Youth }) 
     <Link
       to="/youth/library/$courseId"
       params={{ courseId: course.id }}
-      className="group flex h-full flex-col overflow-hidden rounded-3xl border bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+      className="card card-hover group flex h-full flex-col overflow-hidden focus-visible:ring-4 focus-visible:ring-blue/30"
     >
       <div className="relative aspect-[16/9] overflow-hidden">
         <SmartImage
@@ -38,18 +38,18 @@ export function CourseCard({ course, youth }: { course: Course; youth: Youth }) 
         />
         <span
           className={cn(
-            'absolute start-3 top-3 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-bold',
+            'absolute start-3 top-3 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-bold shadow-sm',
             meta.chip,
           )}
         >
           <meta.icon className="size-3.5" aria-hidden />
           {l(CATEGORY_LABELS[course.category])}
         </span>
-        <span className="absolute end-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-xs font-extrabold text-navy">
+        <span className="absolute end-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-xs font-extrabold text-navy shadow-sm">
           {course.id}
         </span>
       </div>
-      <div className="flex flex-1 flex-col p-4">
+      <div className="flex flex-1 flex-col p-5">
         <div className="flex flex-wrap items-center gap-2">
           <CourseStatusBadge progress={p} />
           {course.showcase && (
@@ -58,27 +58,29 @@ export function CourseCard({ course, youth }: { course: Course; youth: Youth }) 
             </span>
           )}
         </div>
-        <h3 className="mt-2 text-lg leading-snug group-hover:text-blue">{l(course.title)}</h3>
+        <h3 className="mt-2.5 text-base leading-snug font-bold group-hover:text-blue">
+          {l(course.title)}
+        </h3>
         <p className="mt-1 text-xs font-semibold text-blue">{routes.join(' · ')}</p>
-        <ul className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1.5 text-xs text-ink-soft">
+        <ul className="mt-3 grid gap-y-1.5 border-t border-border/70 pt-3 text-xs text-ink-soft">
           <li className="flex items-center gap-1.5">
-            <Clock className="size-3.5 shrink-0" aria-hidden />
+            <Clock className="size-3.5 shrink-0 text-blue" aria-hidden />
             {t('common:minutes', { count: course.minutes })} · {t(`library.level.${course.level}`)}
           </li>
           <li className="flex items-center gap-1.5">
-            <MonitorPlay className="size-3.5 shrink-0" aria-hidden />
+            <MonitorPlay className="size-3.5 shrink-0 text-blue" aria-hidden />
             {t(`library.delivery.${course.delivery}`)}
           </li>
-          <li className="col-span-2 flex items-center gap-1.5">
-            <Globe className="size-3.5 shrink-0" aria-hidden />
+          <li className="flex items-center gap-1.5">
+            <Globe className="size-3.5 shrink-0 text-blue" aria-hidden />
             {t(
               FULL_LESSON_COURSES.includes(course.id)
                 ? 'library.lang.enFull'
                 : 'library.lang.bilingual',
             )}
           </li>
-          <li className="col-span-2 flex items-center gap-1.5">
-            <Award className="size-3.5 shrink-0" aria-hidden />
+          <li className="flex items-center gap-1.5">
+            <Award className="size-3.5 shrink-0 text-blue" aria-hidden />
             {isCohortCourse(youth, course.id) ? t('library.certReviewed') : t('library.certAuto')}
           </li>
         </ul>

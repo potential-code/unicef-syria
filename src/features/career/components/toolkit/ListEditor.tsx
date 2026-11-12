@@ -41,8 +41,8 @@ export function ListEditor({
         {items.map((item, i) => (
           // biome-ignore lint/suspicious/noArrayIndexKey: items are edited in place by position
           <li key={i} className="flex items-center gap-2">
-            <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-sky-100 text-xs font-bold text-navy">
-              {i + 1}
+            <span className="w-5 shrink-0 text-end text-xs font-bold text-blue tabular-nums">
+              {i + 1}.
             </span>
             <Label htmlFor={`${id}-${i}`} className="sr-only">
               {t('toolkit.itemLabel', { label, n: i + 1 })}
@@ -51,7 +51,6 @@ export function ListEditor({
               id={`${id}-${i}`}
               value={item}
               onChange={(e) => onChange(items.map((x, j) => (j === i ? e.target.value : x)))}
-              className="min-h-11"
             />
             <Button
               type="button"
@@ -80,7 +79,6 @@ export function ListEditor({
               add()
             }
           }}
-          className="min-h-11"
         />
         <Button
           type="button"

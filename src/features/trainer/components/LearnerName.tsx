@@ -19,10 +19,10 @@ export function LearnerName({
     <>
       <Avatar src={youth.image} name={youth.profile.name} size={36} />
       <span className="min-w-0">
-        <span className="block truncate font-semibold text-ink group-hover:text-blue">
+        <span className="block font-semibold text-ink group-hover:text-blue">
           {youth.profile.name}
         </span>
-        {sub && <span className="block truncate text-xs text-ink-soft">{sub}</span>}
+        {sub && <span className="block text-xs leading-snug text-ink-soft">{sub}</span>}
       </span>
     </>
   )

@@ -36,7 +36,7 @@ export function UnicefOverviewPage() {
       <ReportContext />
       <ReportBody recordsTo="/unicef/followup" />
       <section aria-labelledby="drill" className="space-y-3">
-        <h2 id="drill" className="text-lg">
+        <h2 id="drill" className="text-xl">
           {t('drill.title')}
         </h2>
         <DrillCards

@@ -12,7 +12,7 @@ export function CvSheet({ cv, profile }: { cv: Cv; profile: YouthProfile }) {
   const { l } = useLocalized()
   const section = (title: string, body: ReactNode) => (
     <section className="space-y-1.5">
-      <h3 className="border-b border-cyan/40 pb-1 text-xs font-bold uppercase tracking-wider text-blue">
+      <h3 className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue after:h-px after:flex-1 after:bg-border">
         {title}
       </h3>
       <div className="text-sm text-ink">{body}</div>
@@ -25,10 +25,11 @@ export function CvSheet({ cv, profile }: { cv: Cv; profile: YouthProfile }) {
       <p className="text-ink-soft italic">{t('toolkit.cv.notAdded')}</p>
     )
   return (
-    <article className="space-y-4 rounded-2xl border bg-white p-6 text-start sm:p-8">
-      <header className="border-b-2 border-blue pb-3">
-        <h2 className="text-2xl text-navy">{profile.name}</h2>
-        <p className="text-sm text-ink-soft">
+    <article className="relative space-y-5 overflow-hidden rounded-2xl border border-border/70 bg-white p-6 pt-8 text-start shadow-md sm:p-9 sm:pt-10">
+      <div className="absolute inset-x-0 top-0 h-2 bg-grad-unicef" aria-hidden />
+      <header className="border-b border-border pb-4">
+        <h2 className="text-3xl tracking-tight text-navy">{profile.name}</h2>
+        <p className="mt-1 text-sm text-ink-soft">
           {[profile.email, profile.phone, profile.governorate].filter(Boolean).join(' · ')}
         </p>
       </header>

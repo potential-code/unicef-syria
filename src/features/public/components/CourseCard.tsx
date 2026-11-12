@@ -2,6 +2,7 @@ import type { Course } from '@shared/types'
 import { Link } from '@tanstack/react-router'
 import { ArrowUpRight, Clock, Signal } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import { SmartImage } from '@/components/shared/SmartImage'
 import { CATEGORY_LABELS } from '@/data/courses'
 import { useLocalized } from '@/i18n'
@@ -23,10 +24,7 @@ export function CourseCard({ course, className }: { course: Course; className?: 
     <Link
       to="/explore/$courseId"
       params={{ courseId: course.id }}
-      className={cn(
-        'group flex h-full flex-col overflow-hidden rounded-2xl border bg-white shadow-sm transition-shadow hover:shadow-lg',
-        className,
-      )}
+      className={cn('card card-hover group flex h-full flex-col overflow-hidden', className)}
     >
       <div className="relative aspect-[16/10] overflow-hidden">
         <SmartImage
@@ -36,26 +34,27 @@ export function CourseCard({ course, className }: { course: Course; className?: 
         />
         <span
           className={cn(
-            'absolute start-3 top-3 rounded-full px-2.5 py-1 text-xs font-bold',
+            'absolute start-3 top-3 rounded-full px-2.5 py-1 text-[11px] font-bold shadow-sm',
             CATEGORY_TONE[course.category],
           )}
         >
           {l(CATEGORY_LABELS[course.category])}
         </span>
-        <span className="absolute end-3 top-3 rounded-full bg-white/95 px-2 py-1 text-xs font-bold text-navy">
+        <span className="absolute end-3 top-3 rounded-full bg-white/95 px-2 py-1 text-[11px] font-bold text-navy shadow-sm">
           {course.id}
         </span>
       </div>
-      <div className="flex flex-1 flex-col gap-3 p-5">
-        <h3 className="text-lg leading-snug group-hover:text-blue">{l(course.title)}</h3>
+      <div className="relative isolate flex min-w-0 flex-1 flex-col gap-2.5 p-5">
+        <Motif variant="corner" className="-z-10 text-blue/[0.07]" />
+        <h3 className="text-base leading-snug group-hover:text-blue">{l(course.title)}</h3>
         <p className="line-clamp-2 text-sm text-ink-soft">{l(course.outcomes[0])}</p>
-        <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-ink-soft">
+        <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-border/60 pt-3 text-xs font-medium text-ink-soft">
           <span className="inline-flex items-center gap-1">
-            <Clock className="size-4" aria-hidden />
+            <Clock className="size-3.5 text-blue" aria-hidden />
             {t('common:minutes', { count: course.minutes })}
           </span>
           <span className="inline-flex items-center gap-1">
-            <Signal className="size-4" aria-hidden />
+            <Signal className="size-3.5 text-blue" aria-hidden />
             {t(`levels.${course.level}`)}
           </span>
           <ArrowUpRight

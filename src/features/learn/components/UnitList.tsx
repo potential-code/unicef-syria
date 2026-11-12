@@ -32,22 +32,23 @@ export function UnitList({
               params={{ courseId: course.id, unit: String(i + 1) }}
               aria-current={here ? 'step' : undefined}
               className={cn(
-                'flex min-h-12 items-start gap-3 rounded-2xl border-2 p-3 transition-colors',
+                'flex min-h-12 items-start gap-3 rounded-2xl border p-3.5 transition-[transform,box-shadow,border-color] duration-200',
                 here
-                  ? 'border-blue bg-blue text-white'
-                  : 'border-transparent bg-sky-50 hover:border-sky-200',
+                  ? 'border-blue bg-blue text-white shadow-md'
+                  : 'border-border/70 bg-white shadow-sm hover:-translate-y-0.5 hover:border-cyan/60 hover:shadow-md',
               )}
             >
               <span
                 className={cn(
-                  'flex size-9 shrink-0 items-center justify-center rounded-xl font-extrabold',
-                  here ? 'bg-white text-blue' : 'bg-white text-navy',
+                  'w-6 shrink-0 pt-px text-sm font-extrabold tabular-nums',
+                  here ? 'text-white/75' : 'text-blue',
                 )}
+                aria-hidden
               >
-                {i + 1}
+                {String(i + 1).padStart(2, '0')}
               </span>
               <span className="min-w-0 flex-1">
-                <span className="block font-semibold leading-snug">{l(u.title)}</span>
+                <span className="block text-sm font-semibold leading-snug">{l(u.title)}</span>
                 {!compact && (
                   <span
                     className={cn('mt-0.5 block text-sm', here ? 'text-white/85' : 'text-ink-soft')}

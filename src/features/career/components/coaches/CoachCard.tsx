@@ -2,6 +2,7 @@ import type { Coach } from '@shared/types'
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, MessageCircle } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import { Button } from '@/components/ui/button'
 import { useLocalized } from '@/i18n'
 import { cn } from '@/lib/utils'
@@ -9,41 +10,49 @@ import { COACH_STYLE } from '../../config/coaches'
 import { AiBadge } from './AiBadge'
 import { CoachAvatar } from './CoachAvatar'
 
-/** Directory card: name, title, purpose and three starter prompts that open the chat. */
+/** Directory card: portrait-style header, title, purpose and three starter prompts. */
 export function CoachCard({ coach }: { coach: Coach }) {
   const { t } = useTranslation('career')
   const { l } = useLocalized()
   const style = COACH_STYLE[coach.id]
   return (
-    <article className="lift flex h-full flex-col overflow-hidden rounded-2xl border bg-white shadow-sm">
-      <div className={cn('relative flex items-start gap-3 p-5', style.soft)}>
-        <div
-          className="pointer-events-none absolute -end-6 -top-6 size-24 rounded-full bg-white/50"
-          aria-hidden
-        />
-        <CoachAvatar coachId={coach.id} className="size-14 rounded-2xl" />
-        <div className="relative min-w-0">
-          <h3 className="text-xl">{l(coach.name)}</h3>
-          <p className={cn('text-sm font-semibold', style.text)}>{l(coach.title)}</p>
-          <AiBadge className="mt-2" />
-        </div>
+    <article className="card card-hover flex h-full flex-col overflow-hidden">
+      <div className={cn('relative h-20 overflow-hidden', style.grad)}>
+        <Motif variant="card" className={style.motif} />
+        <AiBadge className="absolute end-4 top-3 border-transparent shadow-sm" />
       </div>
-      <div className="flex flex-1 flex-col gap-3 p-5">
+      <div className="relative -mt-10 px-5">
+        <CoachAvatar coachId={coach.id} size="lg" />
+        <h3 className="mt-3 text-xl">{l(coach.name)}</h3>
+        <p
+          className={cn(
+            'text-sm font-semibold',
+            style.text === 'text-ink' ? 'text-navy' : style.text,
+          )}
+        >
+          {l(coach.title)}
+        </p>
+      </div>
+      <div className="flex flex-1 flex-col gap-3 p-5 pt-3">
         <p className="text-sm text-ink-soft">{l(coach.purpose)}</p>
-        <p className="text-xs font-bold uppercase tracking-wide text-ink-soft">
+        <p className="mt-1 text-xs font-bold uppercase tracking-wide text-ink-soft">
           {t('coaches.tryAsking')}
         </p>
-        <ul className="space-y-2">
+        <ul className="divide-y divide-border/70 rounded-xl border border-border/70">
           {coach.starters.map((s) => (
             <li key={s.step}>
               <Link
                 to="/youth/coaches/$coachId"
                 params={{ coachId: coach.id }}
                 search={{ start: s.step }}
-                className="flex min-h-11 items-center gap-2 rounded-xl border border-sky-200 bg-sky-50 px-3 py-2 text-sm font-medium text-navy transition-colors hover:border-blue hover:bg-white"
+                className="group flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium text-navy transition-colors first:rounded-t-xl last:rounded-b-xl hover:bg-sky-50"
               >
                 <MessageCircle className="size-4 shrink-0 text-blue" aria-hidden />
-                {l(s.label)}
+                <span className="flex-1">{l(s.label)}</span>
+                <ArrowRight
+                  className="size-3.5 shrink-0 text-blue opacity-0 transition-opacity group-hover:opacity-100 rtl-mirror"
+                  aria-hidden
+                />
               </Link>
             </li>
           ))}

@@ -18,7 +18,7 @@ const TONE: Record<StatTone, { box: string; muted: string; motif: string; link: 
   },
   cyan: {
     box: 'bg-[linear-gradient(140deg,var(--unicef-cyan),var(--unicef-cyan-600))] text-ink',
-    muted: 'text-ink/75',
+    muted: 'text-ink/90',
     motif: 'text-white/35',
     link: 'text-ink',
   },
@@ -30,7 +30,7 @@ const TONE: Record<StatTone, { box: string; muted: string; motif: string; link: 
   },
   yellow: {
     box: 'bg-[linear-gradient(140deg,#ffc53d,var(--unicef-yellow))] text-ink',
-    muted: 'text-ink/75',
+    muted: 'text-ink/85',
     motif: 'text-white/45',
     link: 'text-ink',
   },
@@ -78,24 +78,30 @@ export function StatCard({
   const body = (
     <>
       <Motif variant="corner" className={t.motif} />
-      <p className={cn('relative flex items-center gap-1.5 text-sm font-semibold', t.muted)}>
-        {Icon && <Icon className="size-4 shrink-0" aria-hidden />}
+      <p
+        className={cn(
+          'relative flex items-start gap-1.5 pe-4 text-sm leading-snug font-semibold',
+          t.muted,
+        )}
+      >
+        {Icon && <Icon className="mt-0.5 size-4 shrink-0" aria-hidden />}
         <span className="min-w-0">{label}</span>
       </p>
-      <p className="relative mt-3 text-4xl leading-none font-extrabold tracking-tight tabular-nums">
-        {value}
-      </p>
-      {hint && <p className={cn('relative mt-2 text-xs leading-snug', t.muted)}>{hint}</p>}
-      {footer && (
-        <div
-          className={cn(
-            'relative mt-3 text-sm font-semibold [&_a]:underline-offset-4 hover:[&_a]:underline',
-            t.link,
-          )}
-        >
-          {footer}
-        </div>
-      )}
+      {/* Value block sits at the bottom so numbers align across a row even when labels wrap. */}
+      <div className="relative mt-auto pt-3">
+        <p className="text-4xl leading-none font-extrabold tracking-tight tabular-nums">{value}</p>
+        {hint && <p className={cn('mt-2 pe-12 text-xs leading-snug', t.muted)}>{hint}</p>}
+        {footer && (
+          <div
+            className={cn(
+              'mt-3 pe-12 text-sm font-semibold [&_a]:underline-offset-4 hover:[&_a]:underline',
+              t.link,
+            )}
+          >
+            {footer}
+          </div>
+        )}
+      </div>
     </>
   )
   const cls = cn(

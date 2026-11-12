@@ -1,12 +1,15 @@
 import { CalendarCheck, Clock, Globe, Users } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
+import { GlobeGrid, Motif, Rings } from '@/components/brand'
 import { Reveal } from '@/components/motion'
 import { Button } from '@/components/ui/button'
 import { SESSIONS } from '@/data/sessions'
 import { formatDate, formatTime, useLocalized } from '@/i18n'
 import { registerForEvent, useYouth } from '@/store/actions/youth'
 import type { useGate } from '../../hooks/use-gate'
+import { SectionIntro } from '../SectionIntro'
+import { Drift } from './Drift'
 
 /** Upcoming public events (E01). Registering needs a profile; a signed-in youth registers directly. */
 export function EventsSection({ gate }: { gate: ReturnType<typeof useGate> }) {
@@ -15,17 +18,20 @@ export function EventsSection({ gate }: { gate: ReturnType<typeof useGate> }) {
   const youth = useYouth(gate.youthId)
   const events = SESSIONS.filter((s) => s.public)
   return (
-    <section aria-labelledby="events-title" className="bg-sky-50 py-20 sm:py-28">
-      <div className="container-page">
-        <Reveal className="mb-10 max-w-2xl">
-          <p className="mb-3 text-sm font-bold tracking-wider text-blue uppercase">
-            {t('home.events.eyebrow')}
-          </p>
-          <h2 id="events-title" className="text-4xl sm:text-5xl">
-            {t('home.events.title')}
-          </h2>
-          <p className="mt-3 text-lg text-ink-soft">{t('home.events.body')}</p>
-        </Reveal>
+    <section
+      aria-labelledby="events-title"
+      className="relative overflow-hidden bg-sky-50 py-20 sm:py-24"
+    >
+      <Drift y={12} rotate={-30} className="absolute -start-32 -top-32 text-blue/[0.06]">
+        <Rings className="size-[26rem]" />
+      </Drift>
+      <div className="container-page relative grid gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:items-center lg:gap-14">
+        <SectionIntro
+          id="events-title"
+          eyebrow={t('home.events.eyebrow')}
+          title={t('home.events.title')}
+          body={t('home.events.body')}
+        />
         {events.map((e) => {
           const registered = !!youth?.eventRegistrations.includes(e.id)
           const register = () => {
@@ -36,28 +42,35 @@ export function EventsSection({ gate }: { gate: ReturnType<typeof useGate> }) {
           return (
             <Reveal
               key={e.id}
-              className="grid overflow-hidden rounded-[2rem] bg-white shadow-lg md:grid-cols-[auto_1fr]"
+              as="article"
+              className="relative grid min-w-0 overflow-hidden rounded-3xl border border-border/70 bg-white shadow-lg sm:grid-cols-[11rem_minmax(0,1fr)]"
             >
-              <div className="flex flex-row items-center justify-center gap-4 bg-grad-sunrise p-6 text-ink md:flex-col md:px-12">
-                <span className="text-6xl leading-none font-extrabold">
+              <Motif variant="corner" className="text-blue/[0.08]" />
+              <div className="on-dark relative flex items-center gap-4 overflow-hidden bg-navy px-6 py-5 text-white sm:flex-col sm:justify-center sm:gap-1 sm:py-8 sm:text-center">
+                <GlobeGrid
+                  className="absolute -end-10 -bottom-10 size-36 text-white/[0.1]"
+                  strokeWidth={1}
+                />
+                <span className="relative text-5xl leading-none font-extrabold text-white sm:text-6xl">
                   {formatDate(e.start, lang, { day: 'numeric' })}
                 </span>
-                <span className="text-xl font-bold uppercase">
-                  {formatDate(e.start, lang, { month: 'long', year: 'numeric' })}
+                <span className="relative text-sm font-bold tracking-widest text-cyan uppercase">
+                  {formatDate(e.start, lang, { month: 'long' })}
+                </span>
+                <span className="relative text-xs text-white/80">
+                  {formatDate(e.start, lang, { weekday: 'long' })}
                 </span>
               </div>
-              <div className="flex flex-col gap-4 p-6 sm:p-8">
-                <div className="flex flex-wrap gap-2">
-                  <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-bold text-navy">
+              <div className="relative flex min-w-0 flex-col gap-3 p-6 sm:p-7">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="rounded-full bg-yellow px-2.5 py-0.5 text-[11px] font-bold tracking-wide text-ink uppercase">
                     {t('home.events.public')}
                   </span>
-                  <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-bold text-navy">
-                    {e.id}
-                  </span>
+                  <span className="text-xs font-bold text-ink-soft">{e.id}</span>
                 </div>
-                <h3 className="text-3xl">{l(e.title)}</h3>
-                <p className="text-ink-soft">{l(e.purpose)}</p>
-                <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
+                <h3 className="text-xl sm:text-2xl">{l(e.title)}</h3>
+                <p className="max-w-2xl text-ink-soft">{l(e.purpose)}</p>
+                <ul className="flex flex-wrap gap-x-5 gap-y-1.5 text-sm font-medium text-ink">
                   <li className="inline-flex items-center gap-1.5">
                     <Clock className="size-4 text-blue" aria-hidden />
                     {t('home.events.time', {
@@ -74,12 +87,16 @@ export function EventsSection({ gate }: { gate: ReturnType<typeof useGate> }) {
                     {t('home.events.capacity', { count: e.capacity })}
                   </li>
                 </ul>
-                <div className="flex flex-wrap items-center gap-3">
-                  <Button onClick={register} disabled={registered} className="rounded-full">
+                <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-border/60 pt-4">
+                  <Button
+                    onClick={register}
+                    disabled={registered}
+                    className="shrink-0 rounded-full px-5"
+                  >
                     <CalendarCheck className="size-4" aria-hidden />
                     {registered ? t('home.events.registered') : t('home.events.register')}
                   </Button>
-                  <p className="text-sm text-ink-soft">{t('home.events.note')}</p>
+                  <p className="min-w-0 flex-1 text-sm text-ink-soft">{t('home.events.note')}</p>
                 </div>
               </div>
             </Reveal>

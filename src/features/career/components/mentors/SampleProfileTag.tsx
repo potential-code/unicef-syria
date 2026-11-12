@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 export function SampleProfileTag() {
   const { t } = useTranslation('career')
   return (
-    <span className="inline-flex items-center gap-1 rounded-full bg-yellow/30 px-2.5 py-0.5 text-xs font-bold text-ink">
+    <span className="inline-flex items-center gap-1 rounded-full bg-yellow px-2.5 py-0.5 text-xs font-bold text-ink">
       <BadgeInfo className="size-3.5" aria-hidden />
       {t('mentors.sampleProfile')}
     </span>

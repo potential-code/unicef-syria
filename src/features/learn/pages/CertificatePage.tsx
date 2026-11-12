@@ -59,7 +59,7 @@ export function CertificatePage({ courseId }: { courseId: string }) {
         actions={
           issued && (
             <Button className="rounded-full" onClick={() => window.print()}>
-              <Printer className="size-5" aria-hidden />
+              <Printer className="size-4" aria-hidden />
               {t('cert.print')}
             </Button>
           )
@@ -72,11 +72,11 @@ export function CertificatePage({ courseId }: { courseId: string }) {
           <p className="mt-4 text-center text-sm text-ink-soft">{t('cert.printHint')}</p>
         </Reveal>
       ) : (
-        <section className="space-y-5 rounded-3xl border bg-white p-6 shadow-sm sm:p-8">
-          <h2 className="text-2xl">{t('cert.notIssued')}</h2>
+        <section className="card space-y-5 rounded-3xl p-6 sm:p-8">
+          <h2 className="text-xl">{t('cert.notIssued')}</h2>
           <CertificateSteps state={p?.completedAt ? p.certificate : undefined} />
           {p?.completedAt ? (
-            <p className="rounded-2xl bg-sky-100 p-4 text-navy">
+            <p className="rounded-2xl bg-sky-100 px-4 py-3 text-sm text-navy">
               {t(`cert.waiting.${p.certificate ?? 'pendingReview'}`)}
             </p>
           ) : (
@@ -86,9 +86,9 @@ export function CertificatePage({ courseId }: { courseId: string }) {
                 {missing.map((m) => (
                   <li
                     key={m}
-                    className="flex items-center gap-2 rounded-2xl bg-notice-soft p-3 text-notice"
+                    className="flex items-center gap-2 rounded-xl border border-notice/20 bg-notice-soft px-3.5 py-2.5 text-sm text-notice"
                   >
-                    <CircleDashed className="size-5 shrink-0" aria-hidden />
+                    <CircleDashed className="size-4 shrink-0" aria-hidden />
                     {t(`cert.missing.${m}`)}
                     {m === 'practical' &&
                       reviewed &&

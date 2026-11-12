@@ -2,6 +2,7 @@ import type { Youth } from '@shared/types'
 import { Link } from '@tanstack/react-router'
 import { CalendarDays, MapPin, Video } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Motif } from '@/components/brand'
 import { CENTRES } from '@/data/orgs'
 import { formatDate, formatTime, useLocalized } from '@/i18n'
 import { nowMs } from '@/lib/clock'
@@ -22,14 +23,11 @@ export function NextSessionCard({ youth }: { youth: Youth }) {
 
   return (
     <section
-      className="relative overflow-hidden rounded-3xl bg-navy p-5 text-white shadow-sm on-dark sm:p-6"
+      className="on-dark relative h-full overflow-hidden rounded-3xl bg-navy p-5 text-white shadow-lg sm:p-6"
       aria-labelledby="dash-session"
     >
-      <span
-        className="pointer-events-none absolute -end-8 -bottom-8 size-32 rounded-full border-[14px] border-cyan/30"
-        aria-hidden
-      />
-      <h2 id="dash-session" className="flex items-center gap-2 text-xl text-white">
+      <Motif variant="card" className="text-cyan/20" />
+      <h2 id="dash-session" className="relative flex items-center gap-2 text-lg text-white">
         <CalendarDays className="size-5 text-yellow" aria-hidden />
         {t('dash.nextSession')}
       </h2>
@@ -38,14 +36,14 @@ export function NextSessionCard({ youth }: { youth: Youth }) {
           <p className="text-white/90">{t('dash.noCohort')}</p>
           <Link
             to="/youth/library"
-            className="mt-4 inline-flex min-h-11 items-center rounded-full bg-white px-4 font-semibold text-navy hover:bg-sky-100"
+            className="mt-4 inline-flex h-10 items-center rounded-full bg-white px-4 text-sm font-semibold text-navy shadow-md hover:bg-sky-100"
           >
             {t('dash.browseLibrary')}
           </Link>
         </div>
       ) : next ? (
         <div className="relative mt-4">
-          <p className="text-2xl font-bold">{l(next.title)}</p>
+          <p className="text-xl font-bold">{l(next.title)}</p>
           <p className="mt-1 text-white/85">{l(next.purpose)}</p>
           <dl className="mt-4 grid gap-2 text-sm">
             <div className="flex items-center gap-2">
@@ -68,7 +66,7 @@ export function NextSessionCard({ youth }: { youth: Youth }) {
           </dl>
           <Link
             to={CAREER_LINKS.cohort}
-            className="mt-4 inline-flex min-h-11 items-center rounded-full bg-yellow px-4 font-semibold text-ink hover:bg-white"
+            className="mt-4 inline-flex h-10 items-center rounded-full bg-yellow px-4 text-sm font-semibold text-ink shadow-md hover:bg-white"
           >
             {t('dash.openCohort')}
           </Link>

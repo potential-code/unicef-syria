@@ -66,7 +66,6 @@ export function ChipInput({
             }
           }}
           aria-describedby={hint ? `${id}-hint` : undefined}
-          className="min-h-11"
         />
         <Button
           type="button"

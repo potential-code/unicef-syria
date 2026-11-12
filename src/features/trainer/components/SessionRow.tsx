@@ -14,10 +14,10 @@ export function SessionRow({ session, meta }: { session: Session; meta?: ReactNo
     <Link
       to="/trainer/sessions/$sessionId"
       params={{ sessionId: session.id }}
-      className="group flex min-h-16 items-center gap-4 rounded-xl border bg-white p-3 transition-colors hover:border-cyan/50 hover:bg-sky-50 focus-visible:ring-2 focus-visible:ring-ring outline-none"
+      className="group flex items-center gap-4 rounded-xl border border-border/70 bg-white p-3 shadow-sm transition-[box-shadow,border-color,transform] outline-none hover:-translate-y-px hover:border-cyan/50 hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring"
     >
-      <span className="flex w-14 shrink-0 flex-col items-center rounded-lg bg-sky-100 py-1.5 text-navy">
-        <span className="text-[11px] font-semibold uppercase">
+      <span className="flex min-w-14 shrink-0 flex-col items-center rounded-lg bg-sky-50 px-2 py-1.5 text-navy ring-1 ring-cyan/25">
+        <span className="text-[11px] font-semibold whitespace-nowrap text-blue uppercase">
           {formatDate(session.start, lang, { month: 'short' })}
         </span>
         <span className="text-xl font-bold leading-none tabular-nums">
@@ -25,11 +25,11 @@ export function SessionRow({ session, meta }: { session: Session; meta?: ReactNo
         </span>
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block truncate font-semibold text-ink group-hover:text-blue">
+        <span className="block font-semibold text-ink group-hover:text-blue">
           {session.id} · {l(session.title)}
         </span>
-        <span className="mt-0.5 flex flex-wrap items-center gap-2 text-xs text-ink-soft">
-          <span>
+        <span className="mt-1 flex flex-wrap items-center gap-2 text-xs text-ink-soft">
+          <span className="tabular-nums">
             {formatTime(session.start, lang)}–{formatTime(session.end, lang)} {t('ui.syriaTime')}
           </span>
           <StatusBadge

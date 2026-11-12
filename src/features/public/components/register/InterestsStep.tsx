@@ -10,7 +10,7 @@ export function InterestsStep({ form, set, errors }: StepProps) {
   const { t } = useTranslation('public')
   const sampleName = `${(form.name.trim() || 'Sample').replace(/\s+/g, '_')}_CV_sample.pdf`
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <ChipGroup
         id="interests"
         label={t('register.interests.interests')}
@@ -45,7 +45,7 @@ export function InterestsStep({ form, set, errors }: StepProps) {
           options={optionsFor(t, 'availability')}
         />
       </div>
-      <div className="rounded-2xl border-2 border-dashed border-cyan/50 bg-sky-50 p-5">
+      <div className="rounded-xl border border-dashed border-blue/40 bg-sky-50 p-4">
         <p className="font-semibold">
           {t('register.interests.cv')}{' '}
           <span className="font-normal text-ink-soft">({t('register.optional')})</span>

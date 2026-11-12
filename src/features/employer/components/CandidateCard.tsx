@@ -28,11 +28,11 @@ export function CandidateCard({ youth, opp }: { youth: Youth; opp?: Opportunity 
   )
   const portfolio = youth.toolkit.freelanceProfile?.samples
   return (
-    <article className="flex h-full flex-col gap-4 rounded-2xl border bg-white p-5 shadow-sm">
+    <article className="card flex h-full min-w-0 flex-col gap-4 p-5">
       <header className="flex items-center gap-3">
         <Avatar src={youth.image} name={youth.profile.name} size={48} />
         <div className="min-w-0">
-          <h3 className="text-lg">{youth.profile.name}</h3>
+          <h3 className="text-lg text-navy">{youth.profile.name}</h3>
           <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ink-soft">
             <span className="inline-flex items-center gap-1">
               <MapPin className="size-3.5" aria-hidden />
@@ -93,7 +93,7 @@ export function CandidateCard({ youth, opp }: { youth: Youth; opp?: Opportunity 
       </section>
 
       {opp && (
-        <section className="mt-auto rounded-xl bg-sky-50 p-3">
+        <section className="mt-auto rounded-xl bg-sky-50 p-3 ring-1 ring-cyan/20">
           <h4 className="mb-2 text-sm font-semibold text-navy">
             {t('candidates.whyTitle', { title: l(opp.title) })}
           </h4>

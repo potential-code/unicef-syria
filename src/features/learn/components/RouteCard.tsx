@@ -1,5 +1,5 @@
 import type { CareerRoute, Dimension } from '@shared/types'
-import { ChevronDown, Sparkles } from 'lucide-react'
+import { Check, ChevronDown, Sparkles } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -33,36 +33,39 @@ export function RouteCard({ route, top, recommended, current, onChoose }: Props)
     <motion.article
       whileHover={{ y: -4 }}
       className={cn(
-        'flex flex-col overflow-hidden rounded-3xl border bg-white shadow-sm transition-shadow hover:shadow-lg',
-        recommended && 'ring-4',
-        recommended && meta.ring,
+        'card flex flex-col overflow-hidden transition-shadow hover:shadow-lg',
+        current && 'ring-2 ring-blue ring-offset-2',
+        !current && recommended && 'ring-2 ring-offset-2',
+        !current && recommended && meta.ring,
       )}
     >
-      <div className={cn('relative p-5', meta.block)}>
-        <span
-          className="pointer-events-none absolute -end-6 -top-6 size-24 rounded-full bg-white/20"
+      <div className={cn('relative overflow-hidden p-5', meta.block)}>
+        <meta.icon
+          className="pointer-events-none absolute -end-5 -bottom-8 size-28 opacity-[0.1]"
+          strokeWidth={1.5}
           aria-hidden
         />
-        <div className="relative flex items-center justify-between gap-2">
-          <span className="flex size-12 items-center justify-center rounded-2xl bg-white/25">
-            <meta.icon className="size-6" aria-hidden />
-          </span>
-          <span className="flex flex-wrap justify-end gap-1.5">
-            {recommended && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 text-xs font-bold text-navy">
-                <Sparkles className="size-3.5" aria-hidden />
-                {t('results.recommended')}
-              </span>
-            )}
-            {current && (
-              <span className="rounded-full bg-ink px-2.5 py-1 text-xs font-bold text-white">
-                {t('results.current')}
-              </span>
-            )}
-          </span>
+        <div className="relative flex min-h-7 flex-wrap items-center gap-1.5">
+          {recommended && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 text-xs font-bold text-navy shadow-sm">
+              <Sparkles className="size-3.5 text-blue" aria-hidden />
+              {t('results.recommended')}
+            </span>
+          )}
+          {current && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-ink px-2.5 py-1 text-xs font-bold text-white">
+              <Check className="size-3.5" strokeWidth={3} aria-hidden />
+              {t('results.current')}
+            </span>
+          )}
         </div>
-        <h3 className="relative mt-4 text-2xl text-current">{t(`common:routes.${route}`)}</h3>
-        <p className="relative mt-1 text-sm opacity-90">{t(`results.routeLine.${route}`)}</p>
+        <h3 className="relative mt-3 flex items-center gap-2 text-2xl text-current">
+          <meta.icon className="size-6 shrink-0" aria-hidden />
+          {t(`common:routes.${route}`)}
+        </h3>
+        <p className="relative mt-1 text-sm font-medium opacity-90">
+          {t(`results.routeLine.${route}`)}
+        </p>
       </div>
       <div className="flex flex-1 flex-col p-5">
         <p className="text-xs font-bold uppercase tracking-wide text-ink-soft">
@@ -125,7 +128,12 @@ export function RouteCard({ route, top, recommended, current, onChoose }: Props)
               aria-hidden
             />
           </Button>
-          <Button className="ms-auto rounded-full" onClick={onChoose}>
+          <Button
+            className="ms-auto rounded-full"
+            variant={current ? 'outline' : 'default'}
+            onClick={onChoose}
+          >
+            {current && <Check className="size-4" aria-hidden />}
             {current ? t('results.keep') : t('results.choose')}
           </Button>
         </div>

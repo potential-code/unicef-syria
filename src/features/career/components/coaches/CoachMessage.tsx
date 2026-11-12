@@ -32,10 +32,10 @@ export function CoachMessage({
       animate={{ opacity: 1, y: 0 }}
       className="flex items-start gap-2"
     >
-      <CoachAvatar coachId={coach.id} className="mt-1 size-9 rounded-xl" />
+      <CoachAvatar coachId={coach.id} size="sm" className="mt-1" />
       <div className="min-w-0 max-w-[92%] flex-1 sm:max-w-[85%]">
-        <div className="rounded-2xl rounded-ss-sm bg-white px-4 py-3 shadow-sm">
-          <p className="text-xs font-bold text-blue">{l(coach.name)}</p>
+        <div className="rounded-2xl rounded-ss-sm border border-border/60 bg-white px-4 py-3 shadow-sm">
+          <p className="text-xs font-bold text-navy">{l(coach.name)}</p>
           <p className="mt-0.5 whitespace-pre-line">{step ? <LText value={step.coach} /> : text}</p>
         </div>
         {step?.draft && onUseDraft && (
@@ -53,7 +53,7 @@ export function CoachMessage({
                 key={`${r.next}-${r.label.en}`}
                 type="button"
                 onClick={() => onReply?.(l(r.label), r.next)}
-                className="flex min-h-11 items-center gap-1.5 rounded-2xl border-2 border-blue bg-white px-4 py-2 text-start text-sm font-semibold text-blue transition-colors hover:bg-blue hover:text-white"
+                className="flex min-h-9 items-center gap-1.5 rounded-full border border-blue/40 bg-white px-3.5 py-1.5 text-start text-sm font-semibold text-blue shadow-xs transition-colors hover:border-blue hover:bg-blue hover:text-white"
               >
                 <CornerDownRight className="size-4 shrink-0 rtl-mirror" aria-hidden />
                 {l(r.label)}

@@ -43,19 +43,23 @@ export function PlanCourseNode({
     <div className="relative flex gap-4">
       <span
         className={cn(
-          'z-10 flex size-12 shrink-0 items-center justify-center rounded-2xl text-lg font-extrabold shadow-md',
+          'z-10 mt-6 size-4 shrink-0 rounded-full ring-4 ring-background',
           status === 'completed'
-            ? 'bg-success text-white'
+            ? 'bg-success'
             : status === 'inProgress'
-              ? 'bg-yellow text-ink'
-              : 'bg-white text-navy ring-2 ring-sky-200',
+              ? 'bg-yellow'
+              : 'border-2 border-sky-200 bg-white',
         )}
         aria-hidden
-      >
-        {status === 'completed' ? <CircleCheck className="size-6" /> : step}
-      </span>
-      <article className="lift min-w-0 flex-1 rounded-3xl border bg-white p-5 shadow-sm">
+      />
+      <article className="card card-hover min-w-0 flex-1 p-5">
         <div className="flex flex-wrap items-center gap-2">
+          <span className="flex items-center gap-1 text-xs font-extrabold tracking-wider text-blue uppercase">
+            {status === 'completed' && (
+              <CircleCheck className="size-3.5 text-success" aria-hidden />
+            )}
+            {t('path.stepN', { n: step })}
+          </span>
           <span className={cn('rounded-full px-2.5 py-0.5 text-xs font-bold', meta.chip)}>
             {courseId}
           </span>
@@ -66,7 +70,7 @@ export function PlanCourseNode({
             </span>
           )}
         </div>
-        <h3 className="mt-2 text-xl">
+        <h3 className="mt-2 text-lg">
           <Link
             to="/youth/library/$courseId"
             params={{ courseId }}
@@ -76,7 +80,7 @@ export function PlanCourseNode({
           </Link>
         </h3>
         <p className="mt-1 text-sm">{t(`path.reasons.${courseId}`)}</p>
-        <dl className="mt-3 grid gap-2 text-sm text-ink-soft sm:grid-cols-3">
+        <dl className="mt-3 grid gap-x-6 gap-y-2 text-sm text-ink-soft sm:grid-cols-[auto_1fr]">
           <div className="flex items-start gap-1.5">
             <Clock className="mt-0.5 size-4 shrink-0 text-blue" aria-hidden />
             <div>
@@ -101,7 +105,7 @@ export function PlanCourseNode({
               </dd>
             </div>
           </div>
-          <div className="flex items-start gap-1.5">
+          <div className="flex items-start gap-1.5 sm:col-span-2">
             <Target className="mt-0.5 size-4 shrink-0 text-blue" aria-hidden />
             <div>
               <dt className="font-semibold text-ink">{t('path.capability')}</dt>

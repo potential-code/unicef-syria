@@ -127,7 +127,15 @@
       "body": "Cohort sessions are only visible to their members. A learner outside a cohort cannot see or join its sessions.",
       "badge": "Members only"
     },
-    "eventsTitle": "Open events"
+    "eventsTitle": "Open events",
+    "stats": {
+      "attended": "Sessions attended",
+      "attendedHint": "Confirmed by your trainer, of {{total}} assigned",
+      "upcoming": "Upcoming sessions",
+      "upcomingHint": "Scheduled for your cohort, Syria time",
+      "events": "Open events",
+      "eventsHint": "Public events any learner can join"
+    }
   },
   "event": {
     "eyebrow": "Public sample event",
@@ -278,6 +286,14 @@
       "confirmedBody": "{{when}}, Syria time. You can cancel or simulate the completed session from My mentor sessions.",
       "seeSessions": "Go to My mentor sessions",
       "pointsShort": "Balance {{balance}}. You need more points for this option."
+    },
+    "stats": {
+      "balance": "Points balance",
+      "balanceHint": "Used for mentor sessions, returned if you cancel in time",
+      "sessions": "My mentor sessions",
+      "sessionsHint": "Booked, completed or cancelled",
+      "mentors": "Sample mentors",
+      "mentorsHint": "30 minute sessions, one sample slot each"
     }
   },
   "opps": {
@@ -584,6 +600,14 @@
       "body": "The organisation will see that you withdrew. Your learning, toolkit and points are not affected.",
       "confirm": "Withdraw application",
       "done": "Application withdrawn"
+    },
+    "stats": {
+      "total": "Applications started",
+      "totalHint": "Drafts included",
+      "active": "In progress",
+      "activeHint": "Draft to outcome, still open",
+      "closed": "Closed",
+      "closedHint": "Not selected or withdrawn"
     }
   },
   "toolkit": {
@@ -606,9 +630,9 @@
     },
     "stats": {
       "bullets": "CV bullets",
-      "practice": "practice answers",
-      "questions": "customer questions",
-      "proposals": "proposals"
+      "practice": "Practice answers",
+      "questions": "Customer questions",
+      "proposals": "Proposals"
     },
     "ratings": {
       "developing": "Developing",
@@ -915,6 +939,7 @@
         "sees": "Totals across many learners, such as course completions and outcomes.",
         "never": "Never: your individual support needs in aggregate reports."
       }
-    }
+    },
+    "completionLabel": "Profile completion"
   }
 }

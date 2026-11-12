@@ -3,6 +3,7 @@ import { CircleCheck, ClipboardList, Hourglass, Send } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
+import { Motif } from '@/components/brand'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
@@ -47,27 +48,28 @@ export function PracticalPanel({
 
   return (
     <section
-      className="rounded-3xl bg-yellow p-5 text-ink shadow-sm sm:p-6"
+      className="relative overflow-hidden rounded-3xl bg-yellow p-5 text-ink shadow-md sm:p-6"
       aria-labelledby="practical-h"
     >
-      <h2 id="practical-h" className="flex items-center gap-2 text-xl">
+      <Motif variant="corner" className="text-white/50" />
+      <h2 id="practical-h" className="relative flex items-center gap-2 text-lg">
         <ClipboardList className="size-5" aria-hidden />
         {t('practical.title')}
       </h2>
-      <p className="mt-2">{l(course.practicalTask)}</p>
-      <p className="mt-1 text-sm">{t('course.output', { output: l(course.output) })}</p>
+      <p className="relative mt-2">{l(course.practicalTask)}</p>
+      <p className="relative mt-1 text-sm">{t('course.output', { output: l(course.output) })}</p>
       {done ? (
-        <p className="mt-4 flex items-center gap-2 rounded-2xl bg-white p-3 font-semibold text-success">
+        <p className="relative mt-4 flex items-center gap-2 rounded-2xl bg-white p-3 font-semibold text-success shadow-sm">
           <CircleCheck className="size-5" aria-hidden />
           {state === 'approved' ? t('practical.approved') : t('practical.doneSelf')}
         </p>
       ) : waiting ? (
-        <p className="mt-4 flex items-center gap-2 rounded-2xl bg-white p-3 font-semibold text-notice">
+        <p className="relative mt-4 flex items-center gap-2 rounded-2xl bg-white p-3 font-semibold text-notice shadow-sm">
           <Hourglass className="size-5" aria-hidden />
           {t('practical.waiting')}
         </p>
       ) : (
-        <div className="mt-4 rounded-2xl bg-white p-4">
+        <div className="relative mt-4 rounded-2xl bg-white p-4 shadow-md">
           {state === 'returned' && (
             <p className="mb-3 rounded-xl bg-notice-soft p-3 text-sm text-notice">
               {t('practical.returned')}

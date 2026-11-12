@@ -8,11 +8,11 @@ import { declaredSkills } from '../lib/match'
 export function ApplicantSummary({ youth }: { youth: Youth }) {
   const { t } = useTranslation('employer')
   return (
-    <section className="rounded-2xl border bg-white p-5 shadow-sm">
+    <section className="card p-5">
       <div className="flex items-center gap-3">
         <Avatar src={youth.image} name={youth.profile.name} size={56} />
         <div className="min-w-0">
-          <h2 className="text-lg">{youth.profile.name}</h2>
+          <h2 className="text-lg text-navy">{youth.profile.name}</h2>
           <p className="flex flex-wrap gap-x-3 text-sm text-ink-soft">
             <span className="inline-flex items-center gap-1">
               <MapPin className="size-3.5" aria-hidden />
@@ -29,7 +29,9 @@ export function ApplicantSummary({ youth }: { youth: Youth }) {
         <span className="font-semibold">{t('candidates.skills')}: </span>
         {declaredSkills(youth).join(', ') || t('candidates.none')}
       </p>
-      <p className="mt-3 rounded-xl bg-sky-50 p-3 text-xs text-navy">{t('detail.privacy')}</p>
+      <p className="mt-3 rounded-xl bg-sky-50 p-3 text-xs text-navy ring-1 ring-cyan/20">
+        {t('detail.privacy')}
+      </p>
     </section>
   )
 }

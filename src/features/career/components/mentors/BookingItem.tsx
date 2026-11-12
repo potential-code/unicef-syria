@@ -50,12 +50,12 @@ export function BookingItem({ booking: b }: { booking: MentorBooking }) {
   }
 
   return (
-    <article className="rounded-2xl border bg-white p-5 shadow-sm">
+    <article className="card p-5">
       <div className="flex flex-wrap items-start gap-4">
         <Avatar src={m.image} name={l(m.name)} size={48} />
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className="text-lg">{l(m.name)}</h3>
+            <h3 className="min-w-0 text-lg">{l(m.name)}</h3>
             <StatusBadge tone={STATUS_TONE[b.status]}>
               {t(`mentors.booking.status.${b.status}`)}
             </StatusBadge>
@@ -74,11 +74,11 @@ export function BookingItem({ booking: b }: { booking: MentorBooking }) {
             </span>
           </p>
           <dl className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
-            <div className="rounded-xl bg-sky-50 p-3">
+            <div className="rounded-xl border-s-4 border-s-cyan bg-sky-50 p-3">
               <dt className="font-semibold text-navy">{t('mentors.form.goal')}</dt>
               <dd>{b.goal}</dd>
             </div>
-            <div className="rounded-xl bg-sky-50 p-3">
+            <div className="rounded-xl border-s-4 border-s-cyan bg-sky-50 p-3">
               <dt className="font-semibold text-navy">{t('mentors.form.question')}</dt>
               <dd>{b.question}</dd>
             </div>

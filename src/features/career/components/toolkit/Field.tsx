@@ -70,7 +70,6 @@ export function Field({
           aria-invalid={Boolean(error)}
           aria-describedby={describedBy}
           aria-required={required}
-          className="min-h-11"
         />
       )}
       {hint && !error && (

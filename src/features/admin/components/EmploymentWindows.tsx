@@ -1,5 +1,13 @@
 import { useTranslation } from 'react-i18next'
 import { CHART, ChartLegend, StackedBar } from '@/components/charts'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 import type { Kpis } from '@/domain/kpi'
 import { useLabels } from '../lib/useLabels'
 
@@ -16,16 +24,16 @@ export function EmploymentWindows({ k }: { k: Kpis }) {
     { key: 'unk', label: t('windows.unknown'), color: CHART.neutral },
   ]
   return (
-    <div className="rounded-2xl border bg-card p-5 shadow-sm">
-      <p className="font-semibold text-ink">{t('windows.title')}</p>
-      <p className="mb-3 text-xs text-ink-soft">{t('def.windows')}</p>
+    <div className="card p-5">
+      <p className="text-base font-semibold text-ink">{t('windows.title')}</p>
+      <p className="mt-1 mb-4 max-w-3xl text-xs leading-snug text-ink-soft">{t('def.windows')}</p>
       <ChartLegend items={legend} />
       <div className="mt-4 space-y-4">
         {k.employment.map((w) => {
           const eligible = w.rate.denominator
           const notEmployed = w.coverage.numerator - w.rate.numerator
           return (
-            <div key={w.months} className="grid gap-2 sm:grid-cols-[7rem_1fr] sm:items-center">
+            <div key={w.months} className="grid gap-2 sm:grid-cols-[6rem_1fr] sm:items-center">
               <p className="text-sm font-semibold text-ink">
                 {t('windows.month', { count: w.months })}
               </p>
@@ -63,11 +71,11 @@ export function EmploymentWindows({ k }: { k: Kpis }) {
           )
         })}
       </div>
-      <div className="mt-5 overflow-x-auto">
-        <table className="w-full min-w-[36rem] text-sm">
+      <div className="mt-5 overflow-hidden rounded-xl ring-1 ring-border/70">
+        <Table>
           <caption className="sr-only">{t('windows.title')}</caption>
-          <thead>
-            <tr className="border-b text-xs text-ink-soft">
+          <TableHeader>
+            <TableRow>
               {[
                 'window',
                 'eligible',
@@ -77,28 +85,37 @@ export function EmploymentWindows({ k }: { k: Kpis }) {
                 'rate',
                 'unknownCount',
               ].map((c) => (
-                <th key={c} scope="col" className="py-2 pe-3 text-start font-medium">
+                <TableHead
+                  key={c}
+                  scope="col"
+                  className="h-auto px-2.5 py-2 tracking-normal whitespace-normal"
+                >
                   {t(`windows.col.${c}`)}
-                </th>
+                </TableHead>
               ))}
-            </tr>
-          </thead>
-          <tbody>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
             {k.employment.map((w) => (
-              <tr key={w.months} className="border-b last:border-0 tabular-nums">
-                <th scope="row" className="py-2 pe-3 text-start font-semibold">
+              <TableRow key={w.months} className="tabular-nums">
+                <TableHead
+                  scope="row"
+                  className="h-auto bg-transparent px-2.5 py-2 text-sm font-semibold tracking-normal text-ink normal-case"
+                >
                   {t('windows.month', { count: w.months })}
-                </th>
-                <td className="py-2 pe-3">{n(w.rate.denominator)}</td>
-                <td className="py-2 pe-3">{n(w.coverage.numerator)}</td>
-                <td className="py-2 pe-3">{p(w.coverage.value)}</td>
-                <td className="py-2 pe-3">{n(w.rate.numerator)}</td>
-                <td className="py-2 pe-3 font-semibold text-blue">{p(w.rate.value)}</td>
-                <td className="py-2 pe-3">{n(w.unknown)}</td>
-              </tr>
+                </TableHead>
+                <TableCell className="px-2.5 py-2">{n(w.rate.denominator)}</TableCell>
+                <TableCell className="px-2.5 py-2">{n(w.coverage.numerator)}</TableCell>
+                <TableCell className="px-2.5 py-2">{p(w.coverage.value)}</TableCell>
+                <TableCell className="px-2.5 py-2">{n(w.rate.numerator)}</TableCell>
+                <TableCell className="px-2.5 py-2 font-semibold text-blue">
+                  {p(w.rate.value)}
+                </TableCell>
+                <TableCell className="px-2.5 py-2">{n(w.unknown)}</TableCell>
+              </TableRow>
             ))}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
     </div>
   )

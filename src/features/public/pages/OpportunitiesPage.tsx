@@ -46,15 +46,15 @@ export function OpportunitiesPage({ item }: { item?: string }) {
   return (
     <>
       <PageBanner eyebrow={t('opps.eyebrow')} title={t('opps.title')} body={t('opps.body')} />
-      <div className="container-page pt-10 pb-20">
-        <p className="mb-6 flex gap-2 rounded-2xl bg-sky-100 px-4 py-3 text-sm text-navy">
+      <div className="container-page pt-8 pb-20">
+        <p className="mb-6 flex gap-2 rounded-xl bg-sky-100 px-4 py-2.5 text-sm text-navy">
           <Info className="mt-0.5 size-4 shrink-0" aria-hidden />
           {t('opps.honest')}
         </p>
         <Tabs value={tab} onValueChange={(v) => setTab(v as typeof tab)}>
           <TabsList className="mb-6 h-auto flex-wrap">
             {OPP_TABS.map((x) => (
-              <TabsTrigger key={x.id} value={x.id} className="min-h-11 px-4">
+              <TabsTrigger key={x.id} value={x.id} className="h-9 px-4">
                 {t(`opps.tabs.${x.id}`)} ({opps.filter((o) => x.types.includes(o.type)).length})
               </TabsTrigger>
             ))}
@@ -70,7 +70,7 @@ export function OpportunitiesPage({ item }: { item?: string }) {
                     body={t('opps.emptyBody')}
                   />
                 ) : (
-                  <Stagger className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                  <Stagger className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                     {list.map((o) => (
                       <StaggerItem key={o.id} className="h-full">
                         <OpportunityCard

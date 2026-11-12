@@ -3,6 +3,7 @@ import { CalendarHeart, Check, Clock, Globe2, Ticket } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
+import { Motif } from '@/components/brand'
 import { StatusBadge } from '@/components/shared/StatusBadge'
 import { Button } from '@/components/ui/button'
 import { SESSIONS } from '@/data/sessions'
@@ -30,47 +31,43 @@ export function EventCard({ youth }: { youth: Youth }) {
   }
 
   return (
-    <article className="relative overflow-hidden rounded-3xl bg-grad-sunrise p-6 text-ink shadow-md">
-      <div
-        className="pointer-events-none absolute -end-12 -top-12 size-40 rounded-full bg-white/25"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -bottom-10 end-16 size-24 rounded-full border-8 border-white/30"
-        aria-hidden
-      />
-      <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-start gap-4">
-          <span className="flex size-14 shrink-0 flex-col items-center justify-center rounded-2xl bg-white text-navy shadow-sm">
-            <span className="text-[0.65rem] font-bold uppercase">
+    <article className="on-dark relative overflow-hidden rounded-3xl bg-[linear-gradient(135deg,var(--unicef-navy)_0%,var(--unicef-blue)_100%)] p-6 text-white shadow-lg sm:p-7">
+      <Motif variant="banner" className="text-white/[0.12]" />
+      <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-start gap-4 sm:gap-5">
+          <time
+            dateTime={EVENT.start}
+            className="flex min-w-16 shrink-0 flex-col items-center overflow-hidden rounded-2xl bg-white text-navy shadow-md"
+          >
+            <span className="w-full bg-yellow px-2 py-1 text-center text-[0.65rem] whitespace-nowrap font-extrabold uppercase tracking-wider text-ink">
               {formatDate(EVENT.start, lang, { month: 'short' })}
             </span>
-            <span className="text-xl leading-none font-bold">
+            <span className="py-1.5 text-2xl leading-none font-extrabold tabular-nums">
               {formatDate(EVENT.start, lang, { day: 'numeric' })}
             </span>
-          </span>
+          </time>
           <div className="min-w-0">
-            <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-ink/75">
+            <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-yellow">
               <CalendarHeart className="size-3.5" aria-hidden />
               {t('event.eyebrow')}
             </p>
-            <h3 className="text-xl text-ink">
+            <h3 className="mt-1 text-xl text-white">
               <LText value={EVENT.title} />
             </h3>
-            <p className="mt-1 text-sm text-ink/80">
+            <p className="mt-1 max-w-2xl text-sm text-white/85">
               <LText value={EVENT.purpose} />
             </p>
-            <p className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm font-medium">
-              <span className="flex items-center gap-1">
-                <Clock className="size-4" aria-hidden />
+            <p className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1 text-sm font-medium text-white/90">
+              <span className="flex items-center gap-1.5">
+                <Clock className="size-4 text-cyan" aria-hidden />
                 {t('cohort.timeRange', {
                   start: formatTime(EVENT.start, lang),
                   end: formatTime(EVENT.end, lang),
                 })}{' '}
                 {t('cohort.syriaTime')}
               </span>
-              <span className="flex items-center gap-1">
-                <Globe2 className="size-4" aria-hidden />
+              <span className="flex items-center gap-1.5">
+                <Globe2 className="size-4 text-cyan" aria-hidden />
                 {t('common:format.online')}
               </span>
             </p>
@@ -87,7 +84,7 @@ export function EventCard({ youth }: { youth: Youth }) {
             </StatusBadge>
           ) : (
             <Button
-              className="rounded-full bg-navy hover:bg-blue"
+              className="bg-yellow font-bold text-ink shadow-md hover:bg-yellow/90"
               disabled={busy}
               onClick={register}
             >
@@ -95,7 +92,7 @@ export function EventCard({ youth }: { youth: Youth }) {
               {busy ? t('event.registering') : t('event.register')}
             </Button>
           )}
-          <p className="max-w-56 text-xs text-ink/75 sm:text-end">
+          <p className="max-w-60 text-xs leading-snug text-white/80 sm:text-end">
             {registered ? t('event.registeredNote') : t('event.openToAll')}
           </p>
         </div>

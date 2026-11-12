@@ -1,6 +1,14 @@
 import { BarChart3, Table2 } from 'lucide-react'
 import { type ReactNode, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 import { cn } from '@/lib/utils'
 import { ChartLegend, type LegendItem } from './Legend'
 
@@ -11,7 +19,8 @@ export interface TableView {
 
 /**
  * Card frame for every chart: title, subtitle (what is plotted and its denominator), legend for
- * two or more series, and a table view so no value depends on hover or colour.
+ * two or more series, and a table view so no value depends on hover or colour. The header wraps
+ * so the toggle drops below the title in narrow cards instead of squeezing it.
  */
 export function ChartCard({
   title,
@@ -33,25 +42,23 @@ export function ChartCard({
   const { t } = useTranslation('admin')
   const [asTable, setAsTable] = useState(false)
   return (
-    <figure
-      className={cn('flex flex-col gap-3 rounded-2xl border bg-card p-5 shadow-sm', className)}
-    >
-      <div className="flex items-start justify-between gap-3">
-        <figcaption className="min-w-0">
-          <p className="font-semibold text-ink">{title}</p>
-          {subtitle && <p className="mt-0.5 text-xs text-ink-soft">{subtitle}</p>}
+    <figure className={cn('card flex min-w-0 flex-col gap-4 p-5', className)}>
+      <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-2">
+        <figcaption className="min-w-[9rem] flex-1">
+          <p className="text-base leading-snug font-semibold text-ink">{title}</p>
+          {subtitle && <p className="mt-1 text-xs leading-snug text-ink-soft">{subtitle}</p>}
         </figcaption>
         {table && (
           <button
             type="button"
             onClick={() => setAsTable((v) => !v)}
             aria-pressed={asTable}
-            className="inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-full px-3 text-xs font-medium text-blue hover:bg-sky-50 focus-visible:outline-2"
+            className="-me-2 inline-flex h-8 shrink-0 items-center gap-1.5 rounded-full px-2.5 text-xs font-semibold text-blue hover:bg-sky-50 focus-visible:outline-2"
           >
             {asTable ? (
-              <BarChart3 className="size-4" aria-hidden />
+              <BarChart3 className="size-3.5" aria-hidden />
             ) : (
-              <Table2 className="size-4" aria-hidden />
+              <Table2 className="size-3.5" aria-hidden />
             )}
             {asTable ? t('charts.showChart') : t('charts.showTable')}
           </button>
@@ -59,37 +66,39 @@ export function ChartCard({
       </div>
       {legend && !asTable && <ChartLegend items={legend} />}
       {asTable && table ? (
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b text-start text-xs text-ink-soft">
+        <div className="-mx-1 overflow-hidden rounded-xl ring-1 ring-border/70">
+          <Table>
+            <TableHeader>
+              <TableRow>
                 {table.columns.map((c) => (
-                  <th key={c} scope="col" className="py-2 pe-3 text-start font-medium">
+                  <TableHead key={c} scope="col" className="h-9 px-3 whitespace-normal">
                     {c}
-                  </th>
+                  </TableHead>
                 ))}
-              </tr>
-            </thead>
-            <tbody>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {table.rows.map((r) => (
-                <tr key={String(r[0])} className="border-b last:border-0">
+                <TableRow key={String(r[0])}>
                   {r.map((cell, i) => (
-                    <td
+                    <TableCell
                       key={`${String(r[0])}-${table.columns[i]}`}
-                      className={cn('py-2 pe-3', i > 0 && 'tabular-nums')}
+                      className={cn('px-3 py-2', i > 0 && 'tabular-nums')}
                     >
                       {cell}
-                    </td>
+                    </TableCell>
                   ))}
-                </tr>
+                </TableRow>
               ))}
-            </tbody>
-          </table>
+            </TableBody>
+          </Table>
         </div>
       ) : (
-        children
+        <div className="min-w-0 flex-1">{children}</div>
       )}
-      {footer && <div className="border-t pt-3 text-xs text-ink-soft">{footer}</div>}
+      {footer && (
+        <div className="mt-auto border-t border-border/70 pt-3 text-xs text-ink-soft">{footer}</div>
+      )}
     </figure>
   )
 }

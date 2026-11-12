@@ -44,7 +44,7 @@ export function TrainerCohortsPage({ filter = 'all' }: { filter?: RosterPreset }
       <PageHeader title={t('cohorts.title')} description={t('cohorts.subtitle')} />
       <CohortBanner cohorts={cohorts} named={stats.length} />
       <RosterFilters value={f} onChange={setF} />
-      <p className="text-sm text-ink-soft" aria-live="polite">
+      <p className="text-sm font-medium text-ink-soft" aria-live="polite">
         {t('cohorts.showing', { count: rows.length, total: stats.length })}
       </p>
       {stats.length === 0 ? (

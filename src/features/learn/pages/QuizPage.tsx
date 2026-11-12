@@ -1,9 +1,10 @@
 import type { QuizQuestion } from '@shared/types'
 import { Link } from '@tanstack/react-router'
-import { CircleCheck, LifeBuoy, RotateCcw, SearchX, WandSparkles } from 'lucide-react'
+import { CircleCheck, Info, LifeBuoy, RotateCcw, SearchX, WandSparkles } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
+import { Motif } from '@/components/brand'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { PageHeader } from '@/components/shared/PageHeader'
 import { Button } from '@/components/ui/button'
@@ -85,7 +86,7 @@ export function QuizPage({ courseId }: { courseId: string }) {
       {p?.completedAt ? (
         <CompletionPanel courseId={course.id} progress={p} />
       ) : (
-        <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-dashed border-cyan/50 bg-white p-3">
+        <div className="card flex flex-wrap items-center gap-3 p-3">
           <span className="text-xs font-bold uppercase tracking-wide text-ink-soft">
             {t('presenter')}
           </span>
@@ -96,18 +97,23 @@ export function QuizPage({ courseId }: { courseId: string }) {
         </div>
       )}
 
-      <p className="rounded-2xl bg-sky-100 p-4 text-sm text-navy">
+      <p className="flex items-start gap-2.5 rounded-2xl bg-sky-100 px-4 py-3 text-sm text-navy">
+        <Info className="mt-0.5 size-4 shrink-0 text-blue" aria-hidden />
         {t('quiz.rules', { n: course.quiz.length, pass: QUIZ_PASS, attempts: QUIZ_ATTEMPTS })}
       </p>
       {unitsLeft && !passed && (
-        <p className="rounded-2xl bg-notice-soft p-4 text-sm text-notice">{t('quiz.unitsLeft')}</p>
+        <p className="rounded-2xl border border-notice/20 bg-notice-soft px-4 py-3 text-sm text-notice">
+          {t('quiz.unitsLeft')}
+        </p>
       )}
 
       {result && (
         <section
           className={cn(
-            'rounded-3xl p-5 sm:p-6',
-            result.score >= QUIZ_PASS ? 'bg-success-soft' : 'bg-notice-soft',
+            'rounded-3xl border p-5 shadow-md sm:p-6',
+            result.score >= QUIZ_PASS
+              ? 'border-success/20 bg-success-soft text-success'
+              : 'border-notice/20 bg-notice-soft text-notice',
           )}
           aria-live="polite"
         >
@@ -127,14 +133,17 @@ export function QuizPage({ courseId }: { courseId: string }) {
       )}
 
       {support && (
-        <section className="rounded-3xl bg-navy p-5 text-white on-dark sm:p-6">
-          <h2 className="flex items-center gap-2 text-xl text-white">
+        <section className="on-dark relative overflow-hidden rounded-3xl bg-navy p-5 text-white shadow-lg sm:p-6">
+          <Motif variant="card" className="text-cyan/20" />
+          <h2 className="relative flex items-center gap-2 text-lg text-white">
             <LifeBuoy className="size-5 text-yellow" aria-hidden />
             {t('quiz.supportTitle')}
           </h2>
-          <p className="mt-2 text-white/90">{t('quiz.supportBody', { best: p?.quizBest ?? 0 })}</p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            <Button asChild className="rounded-full bg-white text-navy hover:bg-sky-100">
+          <p className="relative mt-2 text-white/90">
+            {t('quiz.supportBody', { best: p?.quizBest ?? 0 })}
+          </p>
+          <div className="relative mt-4 flex flex-wrap gap-2">
+            <Button asChild className="rounded-full bg-white text-navy shadow-md hover:bg-sky-100">
               <Link to={reviewed ? CAREER_LINKS.cohort : CAREER_LINKS.mentors}>
                 {reviewed ? t('quiz.contactTrainer') : t('quiz.askMentor')}
               </Link>
@@ -165,7 +174,7 @@ export function QuizPage({ courseId }: { courseId: string }) {
       {passed && (
         <>
           {!result && (
-            <p className="flex items-center gap-2 rounded-2xl bg-success-soft p-4 font-semibold text-success">
+            <p className="flex items-center gap-2 rounded-2xl border border-success/20 bg-success-soft px-4 py-3 font-semibold text-success">
               <CircleCheck className="size-5" aria-hidden />
               {t('quiz.passedBest', { score: p?.quizBest ?? 0 })}
             </p>

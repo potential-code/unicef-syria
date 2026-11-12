@@ -13,21 +13,23 @@ export function PlanSessionNode({ session, youth }: { session: Session; youth: Y
   return (
     <div className="relative flex gap-4">
       <span
-        className="z-10 flex size-12 shrink-0 items-center justify-center rounded-full bg-navy text-white shadow-md"
+        className="z-10 mt-5 size-4 shrink-0 rounded-full bg-navy ring-4 ring-background"
         aria-hidden
-      >
-        <Users className="size-5" />
-      </span>
+      />
       <Link
         to={CAREER_LINKS.cohort}
-        className="lift min-w-0 flex-1 rounded-3xl bg-navy p-4 text-white shadow-sm on-dark"
+        className="card-hover on-dark relative min-w-0 flex-1 overflow-hidden rounded-2xl bg-navy p-4 text-white shadow-md"
       >
-        <p className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-wide text-yellow">
+        <Users
+          className="pointer-events-none absolute -end-2 -bottom-4 size-20 text-white/10"
+          aria-hidden
+        />
+        <p className="relative flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-wide text-yellow">
           <CalendarCheck className="size-4" aria-hidden />
           {t('path.cohortSession', { id: session.cohortId })}
         </p>
-        <p className="mt-1 text-lg font-bold">{l(session.title)}</p>
-        <p className="text-sm text-white/85">
+        <p className="relative mt-1 text-base font-bold">{l(session.title)}</p>
+        <p className="relative text-sm text-white/85">
           {formatDate(session.start, lang, { weekday: 'short', day: 'numeric', month: 'short' })} ·{' '}
           {formatTime(session.start, lang)} · {t(`common:format.${session.format}`)}
           {mark && ` · ${t(`common:attendance.${mark}`)}`}

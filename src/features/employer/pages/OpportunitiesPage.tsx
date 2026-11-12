@@ -6,8 +6,8 @@ import { Stagger, StaggerItem } from '@/components/motion'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { PageHeader } from '@/components/shared/PageHeader'
 import { Button } from '@/components/ui/button'
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { OpportunityCard } from '../components/OpportunityCard'
+import { SegmentTabs } from '../components/SegmentTabs'
 import { useOrgScope } from '../hooks/use-org-scope'
 
 type Filter = 'all' | 'open' | 'closed'
@@ -32,15 +32,17 @@ export function OpportunitiesPage() {
           </Button>
         }
       />
-      <Tabs value={filter} onValueChange={(v) => setFilter(v as Filter)} className="mb-5">
-        <TabsList className="group-data-[orientation=horizontal]/tabs:h-auto">
-          {(['all', 'open', 'closed'] as const).map((f) => (
-            <TabsTrigger key={f} value={f} className="min-h-10 px-4">
-              {t(`opps.filter.${f}`)}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-      </Tabs>
+      <div className="mb-5">
+        <SegmentTabs
+          value={filter}
+          onChange={setFilter}
+          items={(['all', 'open', 'closed'] as const).map((f) => ({
+            value: f,
+            label: t(`opps.filter.${f}`),
+            count: opportunities.filter((o) => f === 'all' || o.status === f).length,
+          }))}
+        />
+      </div>
       {opportunities.length === 0 ? (
         <EmptyState
           icon={Briefcase}
@@ -54,9 +56,9 @@ export function OpportunitiesPage() {
           body={t('opps.noneInFilterBody')}
         />
       ) : (
-        <Stagger className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <Stagger className="grid grid-cols-1 gap-4 xl:grid-cols-2">
           {shown.map((o) => (
-            <StaggerItem key={o.id}>
+            <StaggerItem key={o.id} className="h-full">
               <OpportunityCard
                 opp={o}
                 applicants={applications.filter((a) => a.opportunityId === o.id).length}

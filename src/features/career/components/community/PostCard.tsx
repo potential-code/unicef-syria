@@ -33,7 +33,7 @@ export function PostCard({ post, me }: { post: CommunityPost; me: Localized }) {
   }
 
   return (
-    <article className="rounded-2xl border bg-white p-5 shadow-sm">
+    <article className="card p-5">
       <header className="flex items-center gap-3">
         <Avatar name={l(post.author)} size={40} />
         <div className="min-w-0 flex-1">

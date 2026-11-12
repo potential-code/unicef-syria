@@ -1,6 +1,7 @@
 import type { Opportunity, Outcome } from '@shared/types'
 import { Handshake } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Avatar } from '@/components/shared/Avatar'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { StatusBadge } from '@/components/shared/StatusBadge'
 import {
@@ -44,16 +45,14 @@ export function PlacementsTable({
       />
     )
   return (
-    <div className="overflow-x-auto rounded-2xl border bg-white shadow-sm">
+    <div className="card overflow-hidden">
       <Table>
-        <TableHeader className="bg-sky-50">
+        <TableHeader>
           <TableRow>
             <TableHead>{t('apps.applicant')}</TableHead>
             <TableHead>{t('placements.role')}</TableHead>
-            <TableHead>{t('placements.start')}</TableHead>
-            <TableHead>{t('placements.workType')}</TableHead>
-            <TableHead>{t('placements.source')}</TableHead>
-            <TableHead>{t('placements.followUp')}</TableHead>
+            <TableHead className="hidden md:table-cell">{t('placements.source')}</TableHead>
+            <TableHead className="hidden sm:table-cell">{t('placements.followUp')}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -63,24 +62,36 @@ export function PlacementsTable({
             const opp = opportunities.find((x) => x.id === o.opportunityId)
             const start = d.startDate ?? o.date
             const fu = followUps.find((f) => f.youthId === o.youthId)
+            const y = youth[o.youthId]
             return (
               <TableRow key={o.id}>
-                <TableCell className="font-semibold">{youth[o.youthId]?.profile.name}</TableCell>
-                <TableCell>{d.role ?? l(opp?.title)}</TableCell>
-                <TableCell className="tabular-nums">{formatDate(start, lang)}</TableCell>
-                <TableCell>
-                  {t(
-                    `workTypes.${d.workType ?? (o.type === 'internship' ? 'internship' : 'fullTime')}`,
-                  )}
+                <TableCell className="py-2.5">
+                  <span className="flex min-w-0 items-center gap-3">
+                    <Avatar src={y?.image} name={y?.profile.name ?? o.youthId} size={36} />
+                    <span className="min-w-0">
+                      <span className="block font-semibold text-ink">{y?.profile.name}</span>
+                      <span className="block text-xs text-ink-soft">
+                        {t(
+                          `workTypes.${d.workType ?? (o.type === 'internship' ? 'internship' : 'fullTime')}`,
+                        )}
+                      </span>
+                    </span>
+                  </span>
                 </TableCell>
-                <TableCell>
+                <TableCell className="whitespace-normal">
+                  <span className="block font-medium text-navy">{d.role ?? l(opp?.title)}</span>
+                  <span className="block text-xs text-ink-soft tabular-nums">
+                    {t('placements.start')}: {formatDate(start, lang)}
+                  </span>
+                </TableCell>
+                <TableCell className="hidden md:table-cell">
                   <StatusBadge tone="success">
                     {o.source === 'employer' && o.confirmed
                       ? t('placements.confirmedByEmployer')
                       : t('placements.learnerReported')}
                   </StatusBadge>
                 </TableCell>
-                <TableCell className="text-sm">
+                <TableCell className="hidden text-sm whitespace-normal text-ink-soft sm:table-cell">
                   {fu
                     ? t(`placements.fuStatus.${fu.status}`)
                     : t('placements.fuDue', { date: formatDate(addMonths(start, 3), lang) })}

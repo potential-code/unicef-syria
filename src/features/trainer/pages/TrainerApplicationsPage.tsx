@@ -13,11 +13,11 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { PROGRAMMES } from '@/data/orgs'
 import { formatDate, useLocalized } from '@/i18n'
 import { ApplicationDialog } from '../components/ApplicationDialog'
 import { LearnerName } from '../components/LearnerName'
+import { SegmentTabs } from '../components/SegmentTabs'
 import { TrainingStatusBadge } from '../components/TrainingStatusBadge'
 import { useTrainerScope } from '../hooks/useTrainerScope'
 
@@ -44,22 +44,15 @@ export function TrainerApplicationsPage() {
   return (
     <div className="space-y-6">
       <PageHeader title={t('applications.title')} description={t('applications.subtitle')} />
-      <Tabs value={tab} onValueChange={(v) => setTab(v as Tab)}>
-        <TabsList className="no-scrollbar h-auto w-full justify-start overflow-x-auto rounded-xl bg-sky-50 p-1">
-          {TABS.map((s) => (
-            <TabsTrigger
-              key={s}
-              value={s}
-              className="min-h-10 flex-none px-3 data-[state=active]:text-blue"
-            >
-              {s === 'all' ? t('ui.all') : t(`appStatus.${s}`)}
-              <span className="ms-1 rounded-full bg-white px-1.5 text-xs tabular-nums text-ink-soft">
-                {count(s)}
-              </span>
-            </TabsTrigger>
-          ))}
-        </TabsList>
-      </Tabs>
+      <SegmentTabs
+        value={tab}
+        onChange={setTab}
+        items={TABS.map((s) => ({
+          value: s,
+          label: s === 'all' ? t('ui.all') : t(`appStatus.${s}`),
+          count: count(s),
+        }))}
+      />
 
       {applicants.length === 0 ? (
         <EmptyState
@@ -79,16 +72,16 @@ export function TrainerApplicationsPage() {
           }
         />
       ) : (
-        <div className="overflow-hidden rounded-2xl border bg-card shadow-sm">
+        <div className="card overflow-hidden">
           <Table>
-            <TableHeader className="bg-sky-50">
+            <TableHeader>
               <TableRow>
                 <TableHead>{t('ui.learner')}</TableHead>
                 <TableHead className="hidden md:table-cell">
                   {t('applications.programme')}
                 </TableHead>
-                <TableHead className="hidden sm:table-cell">{t('applications.applied')}</TableHead>
-                <TableHead>{t('ui.status')}</TableHead>
+                <TableHead className="hidden lg:table-cell">{t('applications.applied')}</TableHead>
+                <TableHead className="hidden sm:table-cell">{t('ui.status')}</TableHead>
                 <TableHead className="text-end">
                   <span className="sr-only">{t('ui.actions')}</span>
                 </TableHead>
@@ -100,19 +93,25 @@ export function TrainerApplicationsPage() {
                 if (!app) return null
                 return (
                   <TableRow key={y.id}>
-                    <TableCell>
+                    <TableCell className="py-2.5">
                       <LearnerName
                         youth={y}
                         sub={`${y.profile.governorate} · ${y.profile.interests.join(', ') || y.profile.employmentStatus}`}
+                        className="max-w-[14rem] sm:max-w-none"
                       />
+                      <div className="mt-1 ps-12 sm:hidden">
+                        <TrainingStatusBadge status={app.status} />
+                      </div>
                     </TableCell>
-                    <TableCell className="hidden md:table-cell">
-                      {l(PROGRAMMES.find((p) => p.id === app.programmeId)?.name)}
+                    <TableCell className="hidden whitespace-normal md:table-cell">
+                      <span className="font-medium text-ink">
+                        {l(PROGRAMMES.find((p) => p.id === app.programmeId)?.name)}
+                      </span>
                     </TableCell>
-                    <TableCell className="hidden sm:table-cell tabular-nums">
+                    <TableCell className="hidden text-ink-soft tabular-nums lg:table-cell">
                       {formatDate(app.at, lang)}
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="hidden sm:table-cell">
                       <TrainingStatusBadge status={app.status} />
                     </TableCell>
                     <TableCell className="text-end">

@@ -1,41 +1,81 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, Building2, Handshake } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import { Reveal } from '@/components/motion'
+import { LaurelBranch } from '@/components/brand'
+import { SmartImage } from '@/components/shared/SmartImage'
+import { cn } from '@/lib/utils'
+import { ClipReveal } from './ClipReveal'
+import { LaurelDivider } from './LaurelDivider'
 
-/** Split band: links for employers and for programme partners (brief §2 P01). */
+const BLOCKS = [
+  {
+    id: 'employers',
+    icon: Building2,
+    image: 'images/generated/band-employer.webp',
+    accent: 'bg-yellow',
+    eyebrow: 'text-yellow',
+    cta: 'bg-yellow text-ink hover:bg-white',
+  },
+  {
+    id: 'partners',
+    icon: Handshake,
+    image: 'images/generated/band-partner.webp',
+    accent: 'bg-cyan',
+    eyebrow: 'text-white',
+    cta: 'bg-white text-navy hover:bg-yellow hover:text-ink',
+  },
+] as const
+
+/** Two image-led cards: links for employers and for programme partners (brief §2 P01). */
 export function PartnerBand() {
   const { t } = useTranslation('public')
-  const blocks = [
-    { id: 'employers', icon: Building2, cls: 'bg-yellow text-ink' },
-    { id: 'partners', icon: Handshake, cls: 'on-dark bg-blue text-white' },
-  ] as const
   return (
-    <section aria-label={t('home.partnerBand.label')} className="grid md:grid-cols-2">
-      {blocks.map((b, i) => (
-        <Reveal
-          key={b.id}
-          delay={i * 0.1}
-          className={`relative overflow-hidden px-6 py-16 sm:px-12 lg:py-24 ${b.cls}`}
-        >
-          <span
-            className="pointer-events-none absolute -end-16 -bottom-16 size-64 rounded-full border-[24px] border-current opacity-10"
-            aria-hidden
-          />
-          <b.icon className="mb-5 size-10" aria-hidden />
-          <h2 className="max-w-md text-3xl text-current sm:text-4xl">
-            {t(`home.partnerBand.${b.id}.title`)}
-          </h2>
-          <p className="mt-3 max-w-md opacity-90">{t(`home.partnerBand.${b.id}.body`)}</p>
-          <Link
-            to="/partners"
-            className="mt-6 inline-flex min-h-12 items-center gap-2 rounded-full bg-white px-5 font-bold text-navy shadow-md transition-transform hover:-translate-y-0.5"
+    <section aria-label={t('home.partnerBand.label')} className="bg-white pt-14 pb-20 sm:pb-24">
+      <LaurelDivider className="container-page mb-14" />
+      <div className="container-page grid gap-6 md:grid-cols-2">
+        {BLOCKS.map((b, i) => (
+          <ClipReveal
+            key={b.id}
+            as="article"
+            delay={i * 0.12}
+            className="on-dark group relative isolate flex min-h-[22rem] flex-col justify-end overflow-hidden rounded-3xl bg-navy text-white shadow-lg sm:min-h-[26rem]"
           >
-            {t(`home.partnerBand.${b.id}.cta`)}
-            <ArrowRight className="size-4 rtl-mirror" aria-hidden />
-          </Link>
-        </Reveal>
-      ))}
+            <SmartImage
+              src={b.image}
+              alt=""
+              className="absolute inset-0 -z-20 size-full transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 -z-10 bg-linear-to-t from-navy from-25% via-navy/75 via-55% to-navy/0" />
+            <LaurelBranch className="absolute end-4 top-4 h-24 w-auto text-white/[0.18]" mirrored />
+            <span className={cn('absolute inset-x-0 top-0 h-1.5', b.accent)} aria-hidden />
+            <div className="relative p-6 sm:p-8">
+              <p
+                className={cn(
+                  'mb-2 flex items-center gap-1.5 text-xs font-bold tracking-widest uppercase',
+                  b.eyebrow,
+                )}
+              >
+                <b.icon className="size-4" aria-hidden />
+                {t(`home.partnerBand.${b.id}.eyebrow`)}
+              </p>
+              <h2 className="text-2xl text-white sm:text-3xl">
+                {t(`home.partnerBand.${b.id}.title`)}
+              </h2>
+              <p className="mt-2 max-w-md text-white/85">{t(`home.partnerBand.${b.id}.body`)}</p>
+              <Link
+                to="/partners"
+                className={cn(
+                  'mt-5 inline-flex h-10 items-center gap-2 rounded-full px-5 text-sm font-bold shadow-md transition-colors',
+                  b.cta,
+                )}
+              >
+                {t(`home.partnerBand.${b.id}.cta`)}
+                <ArrowRight className="size-4 rtl-mirror" aria-hidden />
+              </Link>
+            </div>
+          </ClipReveal>
+        ))}
+      </div>
     </section>
   )
 }
