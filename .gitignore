@@ -3,3 +3,4 @@ dist
 *.local
 .playwright
 shots
+.tanstack
