@@ -3,13 +3,13 @@ import { ArrowRight, ChevronDown, PlayCircle } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { LaurelBranch } from '@/components/brand'
 import { Magnetic, SplitWords } from '@/components/motion'
 import { DemoTag } from '@/components/shared/DemoTag'
 import { Button } from '@/components/ui/button'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { gsap } from '@/lib/gsap'
 import { scrollToId } from '../../scroll-to'
+import { HeroBackdrop } from './HeroBackdrop'
 import { HeroCollage } from './HeroCollage'
 
 /** Hero (brief §2 P01): exact headline, copy and the two CTAs, with a layered photo collage. */
@@ -33,11 +33,9 @@ export function Hero() {
   return (
     <section
       ref={root}
-      className="on-dark relative isolate flex min-h-[min(100dvh,56rem)] items-center overflow-hidden bg-grad-unicef pt-28 pb-20 text-white lg:pt-32"
+      className="on-dark relative isolate flex min-h-[min(100dvh,56rem)] items-center overflow-hidden bg-grad-unicef pt-28 pb-28 sm:pb-32 text-white lg:pt-32"
     >
-      <div className="pointer-events-none absolute inset-0 -z-10 text-white/[0.09]" aria-hidden>
-        <LaurelBranch className="absolute -start-8 -bottom-10 h-80 w-auto" />
-      </div>
+      <HeroBackdrop />
 
       <div className="container-page relative grid items-center gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-16">
         <div ref={copy} className="max-w-2xl">
@@ -103,7 +101,7 @@ export function Hero() {
       <button
         type="button"
         onClick={() => scrollToId('routes', -64)}
-        className="absolute bottom-5 start-1/2 hidden -translate-x-1/2 flex-col items-center gap-0.5 text-xs font-semibold text-white/80 hover:text-white lg:flex rtl:translate-x-1/2"
+        className="absolute bottom-14 start-1/2 sm:bottom-20 hidden -translate-x-1/2 flex-col items-center gap-0.5 text-xs font-semibold text-white/80 hover:text-white lg:flex rtl:translate-x-1/2"
       >
         {t('home.hero.scroll')}
         <ChevronDown className="size-4 animate-bounce" aria-hidden />

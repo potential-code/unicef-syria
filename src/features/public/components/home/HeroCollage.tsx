@@ -2,7 +2,7 @@ import { Briefcase, Lightbulb, Rocket } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { GlobeGrid } from '@/components/brand'
+import { GlobeGrid, LaurelWreath } from '@/components/brand'
 import { easeOut } from '@/components/motion/variants'
 import { SmartImage } from '@/components/shared/SmartImage'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
@@ -27,6 +27,7 @@ export function HeroCollage() {
       gsap.to('[data-col="main"]', { yPercent: -4, ease: 'none', scrollTrigger })
       gsap.to('[data-col="side"]', { yPercent: -12, ease: 'none', scrollTrigger })
       gsap.to('[data-globe]', { rotate: 20, ease: 'none', scrollTrigger })
+      gsap.to('[data-wreath]', { yPercent: 8, scale: 1.04, ease: 'none', scrollTrigger })
     }, el)
     return () => ctx.revert()
   }, [reduce])
@@ -70,6 +71,17 @@ export function HeroCollage() {
       >
         <GlobeGrid className="size-full" strokeWidth={0.6} />
       </div>
+      {/* The emblem wreath cradles the photo grid, as it cradles the globe in the logo. */}
+      <motion.div
+        data-wreath
+        className="pointer-events-none absolute inset-x-[-16%] -bottom-[12%] text-white/[0.22]"
+        initial={reduce ? false : { opacity: 0, scale: 0.85, y: 40 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 1.3, ease: easeOut }}
+        aria-hidden
+      >
+        <LaurelWreath className="w-full" />
+      </motion.div>
       <div className="relative grid aspect-[5/6] grid-cols-[minmax(0,3fr)_minmax(0,2fr)] gap-3 sm:gap-4">
         <div data-col="main" className="min-h-0">
           <motion.div
