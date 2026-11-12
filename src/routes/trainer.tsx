@@ -4,5 +4,5 @@ import { requireRole } from '@/lib/guard'
 
 export const Route = createFileRoute('/trainer')({
   beforeLoad: requireRole('trainer'),
-  component: () => <AppShell role="trainer" />,
+  component: () => <AppShell area="trainer" />,
 })

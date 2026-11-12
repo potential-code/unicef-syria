@@ -1,6 +1,5 @@
-import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { type ReactNode, useLayoutEffect, useRef } from 'react'
-
+import { gsap, ScrollTrigger } from '@/lib/gsap'
 
 let refreshQueued = false
 /** One ScrollTrigger refresh per frame, however many reveals mount in it. */

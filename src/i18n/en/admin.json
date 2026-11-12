@@ -1,1 +1,687 @@
-{}
+{
+  "none": "None",
+  "processing": "Saving",
+  "ageGroup": "Age {{range}}",
+  "gov": {
+    "Damascus": "Damascus",
+    "Aleppo": "Aleppo",
+    "Homs": "Homs"
+  },
+  "gender": {
+    "female": "Female",
+    "male": "Male"
+  },
+  "disability": {
+    "yes": "Disability disclosed",
+    "no": "No disability",
+    "notDisclosed": "Not disclosed"
+  },
+  "period": {
+    "toDate": "Programme to date",
+    "q4": "Q4 2026 (in progress)"
+  },
+  "severity": {
+    "high": "High priority",
+    "medium": "Medium priority",
+    "low": "Low priority"
+  },
+  "filters": {
+    "title": "Report filters",
+    "locked": "Locked to your scope",
+    "national": "National (all)",
+    "all": "All",
+    "governorate": "Governorate",
+    "partnerId": "Partner",
+    "centreId": "Centre",
+    "programmeId": "Programme",
+    "cohortId": "Cohort",
+    "route": "Career route",
+    "gender": "Gender",
+    "ageGroup": "Age group",
+    "disability": "Disability status",
+    "period": "Period",
+    "show": "Show filters",
+    "hide": "Hide filters"
+  },
+  "context": {
+    "label": "Report context",
+    "sample": "Sample data",
+    "period": "Period",
+    "snapshot": "historical snapshot {{date}}",
+    "national": "No filters: national scope",
+    "remove": "Remove filter {{name}}"
+  },
+  "layer": {
+    "current": "Current cohort activity",
+    "currentBody": "Live demonstration records for cohorts K01 to K03 and the named learners. Changes made in other roles appear here straight away.",
+    "historical": "Historical outcomes (synthetic sample, snapshot {{date}})",
+    "historicalBody": "Aggregate synthetic dataset for longer-term outcomes. It is not derived from the named learners, who have not completed twelve months of follow-up.",
+    "liveTag": "Live demo records",
+    "sampleTag": "Synthetic sample"
+  },
+  "status": {
+    "live": "Live demo record",
+    "activity": "System-recorded activity",
+    "trainerRecorded": "Recorded by trainer",
+    "recorded": "Recorded activity (sample)",
+    "confirmed": "Confirmed records only (sample)",
+    "followUp": "Confirmed at follow-up (sample)"
+  },
+  "kpi": {
+    "ratio": "{{num}} of {{den}} {{what}}",
+    "ofShort": "{{num}} of {{den}}",
+    "definitionFor": "Definition of {{label}}",
+    "noData": "No data",
+    "days": "days",
+    "share": "{{rate}}% of registered youth",
+    "unknown": "Unknown status: {{count}}",
+    "registered": "Registered youth",
+    "registeredHint": "Distinct youth profiles in scope",
+    "active": "Active learners",
+    "activeDen": "registered youth",
+    "completion": "Course completion rate",
+    "completionDen": "course enrolments (not unique people)",
+    "guidance": "Career guidance coverage",
+    "guidanceDen": "graduates with recorded guidance",
+    "jobs": "Employment placements",
+    "jobsHint": "Confirmed job-start records",
+    "internships": "Internship placements",
+    "internshipsHint": "Confirmed internship records",
+    "uniquePlaced": "Unique youth placed (job or internship)",
+    "uniquePlacedHint": "{{jobs}} job starts + {{interns}} internships − {{both}} youth with both",
+    "daysToJob": "Average time to first job",
+    "retention": "3-month role retention",
+    "retentionDen": "eligible placements still in the role",
+    "freelance": "Freelance outcomes",
+    "freelanceCompleted": "Assignments completed",
+    "freelanceEarners": "Unique earners",
+    "freelanceRepeat": "With repeat clients",
+    "freelanceNote": "Separate measures, never added together. Fees not shown.",
+    "enterprise": "Enterprise milestones",
+    "concepts": "Business concepts",
+    "tests": "Customer tests",
+    "acceptances": "Support clinic acceptances",
+    "firstSales": "First sales (self-reported)",
+    "enterpriseNote": "Milestones, not employment placements.",
+    "daysToJobHint": "Population: placed graduates with both dates, n = {{count}}"
+  },
+  "def": {
+    "registered": "Distinct youth profiles registered within the selected scope and registration period.",
+    "active": "Distinct registered youth with at least one learning activity in the last 30 days, as of the displayed snapshot date.",
+    "completion": "Completed course enrolments divided by course enrolments in the selected cohort or enrolment period. Counted as enrolments, not unique people.",
+    "guidance": "Distinct graduates receiving a recorded guidance interaction divided by distinct graduates. Assessment completion alone is counted separately.",
+    "internships": "Distinct confirmed internship placement records. The unique-youth count is shown separately.",
+    "jobs": "Distinct confirmed job-start records. Excludes offers that were not accepted and freelance selection.",
+    "uniquePlaced": "Young people with a confirmed job start or internship, deduplicated: job starts plus internships minus youth with both. Freelance and enterprise outcomes are not included.",
+    "windows": "Confirmed employed graduates divided by all graduates eligible for that follow-up window. Response coverage and unknown status are shown separately.",
+    "daysToJob": "Mean calendar days from graduation to first confirmed job start for placed graduates with both dates.",
+    "retention": "Participants confirmed still in the placed role at the specified interval divided by placements eligible for that interval. Unknowns are shown separately.",
+    "freelance": "Assignments selected, assignments completed, unique earners and repeat clients are separate measures. Fees are shown only if the sample data supports them.",
+    "enterprise": "Business concepts completed, customer tests, support-programme acceptances and first reported sales. These are not counted as employment placements.",
+    "places": "Fictional cohort sizes from the brief: K01 has 24 places, K02 18 and K03 20. The named learners are a subset.",
+    "learners": "Named demonstration learner records in scope, including applicants, cohort members and graduates.",
+    "currentActive": "Named learners with a course in progress or an attended session in the demonstration records.",
+    "attendance": "Present marks divided by all attendance marks recorded by trainers for sessions in scope.",
+    "practicals": "Practical tasks submitted by learners and not yet graded by their trainer."
+  },
+  "current": {
+    "places": "Cohort places",
+    "learners": "Named learner records",
+    "active": "Active named learners",
+    "activeDen": "named learners",
+    "attendance": "Sessions attended",
+    "attendanceDen": "attendance marks",
+    "attendanceRate": "Attendance rate: {{rate}}",
+    "practicals": "Practicals awaiting grading",
+    "practicalsHint": "Submitted, waiting for the trainer",
+    "applications": "Applications by stage",
+    "applicationsHint": "Opportunity applications from named learners in scope. Drafts are not yet submitted.",
+    "outcomes": "Confirmed outcomes in the demo",
+    "outcomesHint": "Separate counts by type. An offer alone is not a placement.",
+    "openRecords": "Open follow-up records",
+    "placesHint": "Cohorts in scope ({{count}}): {{ids}}",
+    "learnersHint": "Assigned to a cohort: {{count}}",
+    "applicationsTotal": "Total: {{count}}"
+  },
+  "stageGroup": {
+    "draft": "Draft",
+    "review": "Submitted or in review",
+    "advanced": "Shortlisted, interview or selected",
+    "outcome": "Hired or completed",
+    "closed": "Not selected or withdrawn"
+  },
+  "outcomeType": {
+    "job": "Job starts",
+    "internship": "Internships",
+    "freelanceSelected": "Freelance selected",
+    "freelanceCompleted": "Freelance completed",
+    "enterpriseAccepted": "Enterprise support accepted"
+  },
+  "metric": {
+    "registered": "Registered youth",
+    "graduates": "Graduates",
+    "active": "Active learners"
+  },
+  "charts": {
+    "showTable": "Table view",
+    "showChart": "Chart view",
+    "group": "Group",
+    "share": "Share",
+    "of": "{{metric}}, total {{total}}",
+    "route": "Career route split",
+    "by": {
+      "ageGroup": "Participation by age group",
+      "gender": "Participation by gender",
+      "disability": "Participation by disability status",
+      "governorate": "Participation by governorate"
+    },
+    "reconciles": "Governorate total {{sum}} equals the scope total {{total}}",
+    "disabilityNote": "Voluntarily provided. Not disclosed is shown as its own group."
+  },
+  "windows": {
+    "title": "Employment at 3, 6 and 12 months",
+    "month": "{{count}} months",
+    "employed": "Confirmed employed",
+    "notEmployed": "Responded, not employed",
+    "unknown": "Unknown (no response)",
+    "aria": "{{months}} months: {{emp}} confirmed employed of {{eligible}} eligible, {{unknown}} unknown",
+    "col": {
+      "window": "Window",
+      "eligible": "Eligible graduates",
+      "responses": "Responses",
+      "coverage": "Coverage",
+      "employedCount": "Confirmed employed",
+      "rate": "Rate of eligible",
+      "unknownCount": "Unknown"
+    }
+  },
+  "empty": {
+    "cohortTitle": "The historical sample has no cohort breakdown",
+    "cohortBody": "Cohorts K01 to K03 are the current demonstration cohorts. The historical sample is aggregated by programme and centre. Clear the cohort filter to see historical outcomes.",
+    "clearCohort": "Clear cohort filter",
+    "periodTitle": "No closed reporting period yet",
+    "periodBody": "The historical sample is one cumulative snapshot taken on 1 Nov 2026. Quarterly figures for Q4 2026 will exist once the quarter closes.",
+    "usePeriod": "Show programme to date",
+    "noRowsTitle": "No sample records match these filters",
+    "noRowsBody": "These filters intersect to an empty group, for example a centre outside the selected partner. Remove a filter to widen the scope.",
+    "currentTitle": "No current cohort activity in this scope",
+    "currentBody": "No current cohort or named learner matches these filters. Remove a filter to see live activity.",
+    "noApplicants": "No training applications",
+    "noApplicantsBody": "New applications to your centre's programmes appear here for screening.",
+    "noRoster": "No learners assigned yet",
+    "noRosterBody": "Assign an accepted applicant to a cohort from the Applications tab.",
+    "noPracticals": "No practical tasks waiting",
+    "noPracticalsBody": "Every submitted practical task has been graded by its trainer.",
+    "noCohorts": "No cohorts in your scope",
+    "noCohortsBody": "Cohorts appear once a programme is scheduled at your centre.",
+    "noSessions": "No sessions scheduled",
+    "noSessionsBody": "Trainers add sessions to their cohort calendar; they will appear here with capacity and attendance.",
+    "noCertificates": "No certificates in the approval flow yet",
+    "noCertificatesBody": "When a learner completes a cohort course and the trainer recommends the certificate, it appears here for approval.",
+    "noFollowUps": "No follow-ups due in this scope",
+    "noFollowUpsBody": "Graduates enter the follow-up list 3, 6 and 12 months after graduation."
+  },
+  "drill": {
+    "title": "Drill down with the same filters",
+    "partners": "Hierarchy from UNICEF to partners and centres.",
+    "programmes": "Per-programme KPIs and filters.",
+    "inclusion": "Reach and inclusion, aggregate only.",
+    "outcomes": "Employment, freelance and enterprise outcomes."
+  },
+  "alerts": {
+    "title": "Operational alerts",
+    "body": "Each alert opens the records behind it.",
+    "noFollowUp": "No graduate follow-up is overdue at this centre.",
+    "vacancyDialogTitle": "Vacancies with an identified skills gap",
+    "vacancyDialogBody": "Sample vacancy records whose requested skill matches a gap identified for the same location.",
+    "gap": "Skills gap: {{skill}}",
+    "course": "Course that builds this skill: {{id}} {{title}}",
+    "completion": {
+      "title": "Low completion in cohort {{cohort}}",
+      "body": "{{completed}} of {{enrolments}} cohort-course enrolments completed ({{rate}}%)."
+    },
+    "followUp": {
+      "title": "Graduate follow-up overdue",
+      "body": "{{count}} graduate follow-up is past its due date."
+    },
+    "vacancies": {
+      "title": "{{count}} vacancies with an identified skills gap",
+      "body": "Sample vacancies {{ids}} ask for skills flagged as gaps in this location."
+    },
+    "practical": {
+      "title": "Practical task awaiting grading",
+      "body": "{{name}} submitted the {{course}} practical task."
+    },
+    "cta": {
+      "completion": "Open cohort records",
+      "followUp": "Open follow-up",
+      "vacancies": "View vacancies",
+      "practical": "Open submissions"
+    }
+  },
+  "appStatus": {
+    "pending": "Pending review",
+    "needsInfo": "More information needed",
+    "accepted": "Accepted",
+    "waitlisted": "Waitlisted",
+    "notSelected": "Not selected"
+  },
+  "table": {
+    "learner": "Learner",
+    "graduate": "Graduate",
+    "programme": "Programme",
+    "applied": "Applied",
+    "status": "Status",
+    "action": "Action",
+    "cohort": "Cohort",
+    "route": "Route",
+    "courses": "Courses completed",
+    "attended": "Sessions attended",
+    "flag": "Support flag",
+    "window": "Window",
+    "due": "Due",
+    "responsible": "Responsible centre and partner",
+    "lastContact": "Last contact",
+    "source": "Outcome source",
+    "next": "Next action",
+    "outcome": "Outcome measure",
+    "outcomeJobs": "{{jobs}} job starts, {{interns}} internships",
+    "outcomeFreelance": "{{count}} assignments completed by {{earners}} earners",
+    "outcomeEnterprise": "{{count}} business concepts, {{accepted}} clinic acceptances"
+  },
+  "centre": {
+    "eyebrow": "Centre administrator · {{id}}",
+    "partnerLine": "Implementing partner: {{partner}}",
+    "openReports": "Centre reports",
+    "fullReport": "Full centre report",
+    "drill": {
+      "courses": "Programme and cohort setup.",
+      "participants": "Applications, roster and assignment to cohorts.",
+      "results": "Approve and issue certificates.",
+      "reports": "Filtered centre reports."
+    },
+    "courses": {
+      "title": "Courses and cohorts",
+      "body": "Programmes and cohorts running at your centre, their trainer and the courses delivered inside each cohort.",
+      "places": "Cohort places",
+      "named": "Named learners",
+      "sessions": "Sessions",
+      "cohortCourses": "Courses delivered in this cohort",
+      "reviewed": "Practical reviewed by the trainer; certificate approved by the centre",
+      "openLibrary": "All 16 courses stay open to every learner in the self-paced library."
+    },
+    "reports": {
+      "title": "Centre reports",
+      "body": "Historical outcomes filtered to your centre, shown separately from the current cohort activity."
+    }
+  },
+  "trainers": {
+    "title": "Trainers",
+    "body": "Trainer assignments for the cohorts at your centre.",
+    "assigned": "Trainer for {{cohort}}",
+    "changed": "{{name}} now shown as trainer for {{cohort}} (demo view only)",
+    "localNote": "Trainer changes stay on this screen for the demonstration and are not saved to the shared records.",
+    "sessions": "Sessions",
+    "marked": "Attendance recorded",
+    "next": "Next session",
+    "nextTitle": "Next: {{title}}"
+  },
+  "sessions": {
+    "title": "Sessions",
+    "body": "Capacity and attendance for every session in your centre's cohorts, in Syria time.",
+    "held": "Held",
+    "upcoming": "Upcoming",
+    "capacity": "Places",
+    "capacityValue": "{{places}} cohort places · capacity {{cap}}",
+    "namedNote": "Attendance bar: named learner records ({{count}})."
+  },
+  "participants": {
+    "title": "Participants",
+    "body": "Training applications and the cohort roster for your centre only.",
+    "tabs": {
+      "applications": "Applications",
+      "roster": "Roster",
+      "completion": "Completion",
+      "practicals": "Practicals awaiting grading"
+    },
+    "accept": "Accept application",
+    "accepted": "{{name}} accepted. You can now assign a cohort.",
+    "assign": "Assign to {{cohort}}",
+    "assigned": "{{name}} assigned to {{cohort}}. Restricted sessions now appear for this learner only.",
+    "inCohort": "In {{cohort}}",
+    "attendanceFlag": "Missed a session",
+    "cohortEnrolments": "cohort-course enrolments",
+    "awaitingGrading": "Awaiting grading",
+    "gradedBy": "Graded by {{name}}",
+    "boundaryTitle": "Role boundary demonstration",
+    "boundaryBody": "Your view is limited to your centre. Try to open a learner record from another centre.",
+    "boundaryCta": "Open record {{id}}"
+  },
+  "record": {
+    "deniedTitle": "Learner record",
+    "back": "Back to participants",
+    "scopeNote": "Learner record within your centre. Private notes and support details stay in authorised support views.",
+    "age": "Age",
+    "learning": "Learning progress",
+    "attendance": "Attendance",
+    "applications": "Applications",
+    "noApplications": "No opportunity applications yet."
+  },
+  "results": {
+    "title": "Results and certificates",
+    "body": "Trainers recommend certificates for cohort courses; the centre approves and issues them.",
+    "flowTitle": "Certificate approval flow",
+    "flowLabel": "Certificate status",
+    "actor": {
+      "pendingReview": "Course completed",
+      "recommended": "Trainer recommends",
+      "approved": "Centre approves",
+      "issued": "Learner receives"
+    },
+    "action": {
+      "approved": "Approve",
+      "issued": "Issue certificate"
+    },
+    "toast": {
+      "approved": "Certificate approved for {{name}} ({{course}})",
+      "issued": "Certificate issued to {{name}} ({{course}}). It now shows in the learner's record."
+    },
+    "awaitingTrainer": "Awaiting trainer recommendation",
+    "sampleBody": "No certificate is waiting for approval. Presenter shortcut: Sami completes C05 and the trainer recommends the certificate.",
+    "sampleCta": "Prepare sample",
+    "sampleReady": "Sample ready: Sami's C05 certificate is recommended",
+    "preview": "Certificate preview",
+    "previewNote": "Sample certificate of completion. Not a professional qualification.",
+    "certHeading": "Certificate of completion",
+    "certBody": "has completed the course"
+  },
+  "partner": {
+    "eyebrow": "Partner administrator · {{id}}",
+    "body": "Your network: {{centres}}.",
+    "drill": {
+      "centres": "Centre directory and drill into programmes.",
+      "programmes": "Programme performance and action list.",
+      "participants": "Graduate follow-up list.",
+      "outcomes": "Outcomes compared across your centres."
+    },
+    "centres": {
+      "title": "Centres",
+      "body": "Centres in your partner network. Open a programme to see its performance and actions.",
+      "sampleNote": "Figures from the historical sample with the active filters.",
+      "cohortLine": "Cohort {{cohort}} · {{trainer}} · {{count}} named learners"
+    },
+    "programmes": {
+      "title": "Programmes",
+      "body": "Programme performance in your network. Select a programme to open its action list.",
+      "pick": "Select a programme in the table to see its headline KPIs and action list."
+    },
+    "participants": {
+      "title": "Participants",
+      "body": "Graduate follow-up and current learners across your centres.",
+      "tabs": {
+        "followup": "Graduate follow-up",
+        "learners": "Current learners"
+      }
+    },
+    "outcomes": {
+      "title": "Outcomes",
+      "body": "Employment, freelance and enterprise outcomes in your network, kept as separate measures."
+    },
+    "reports": {
+      "title": "Partner report",
+      "body": "Two-layer report for your network. Use export preview for a printable version with the filter context."
+    }
+  },
+  "actions": {
+    "title": "Action list: {{programme}}",
+    "body": "{{done}} of {{total}} actions ticked in this session.",
+    "none": "No open actions for this programme.",
+    "marked": "Action marked as done",
+    "open": "Open",
+    "completion": "Review completion in cohort {{cohort}} with the trainer",
+    "completionBody": "{{completed}} of {{enrolments}} cohort-course enrolments completed.",
+    "practical": "Ask the trainer to grade {{name}}'s {{course}} practical",
+    "practicalBody": "Submitted and waiting; the learner's certificate depends on it.",
+    "followUp": "Contact the graduate for the {{months}}-month follow-up",
+    "followUpBody": "Overdue. Record the response as learner-reported or confirm with the employer.",
+    "unknown": "Reach {{count}} graduates with unknown 3-month status",
+    "unknownBody": "Raising response coverage makes the employment rate more reliable.",
+    "skills": "Promote C03 and C14 to current learners",
+    "skillsBody": "Customer communication and spreadsheets are the largest gaps in sample vacancies.",
+    "enterprise": "Move concepts to customer tests ({{tests}} of {{concepts}} tested)",
+    "enterpriseBody": "Offer a customer discovery clinic to learners with a concept but no test.",
+    "freelance": "Build repeat clients ({{repeat}} of {{earners}} earners)",
+    "freelanceBody": "Share the client delivery checklist and follow-up message template."
+  },
+  "print": {
+    "open": "Export preview",
+    "back": "Back to report",
+    "toast": "Opening the print dialog",
+    "generated": "Generated {{date}}",
+    "measure": "Measure",
+    "value": "Value",
+    "basis": "Numerator, denominator and status",
+    "window": "{{emp}} confirmed employed of {{eligible}} eligible; coverage {{coverage}}; unknown {{unknown}}",
+    "days": "{{count}} days",
+    "retention": "{{num}} of {{den}} eligible placements; unknown {{unknown}}",
+    "freelance": "Assignments completed; {{earners}} unique earners; {{repeat}} with repeat clients",
+    "enterprise": "Business concepts; {{tests}} customer tests; {{acc}} clinic acceptances; {{sales}} first sales (self-reported)",
+    "footer": "UNICEF Syria Youth Pathways is a demonstration platform. All figures are sample data and do not describe real people or programmes."
+  },
+  "unicef": {
+    "eyebrow": "UNICEF administrator · national oversight",
+    "overview": {
+      "title": "National overview",
+      "body": "Current cohort activity and historical sample outcomes, kept separate. Filters apply to every card and carry into every drilldown.",
+      "followUpCta": "Graduate follow-up"
+    },
+    "partners": {
+      "title": "Partners and centres",
+      "body": "UNICEF Syria oversees implementing partners and their centres. Governorate is a filter, not the owner of a partner.",
+      "compare": "Centres compared"
+    },
+    "programmes": {
+      "title": "Programmes",
+      "body": "Each programme can run across centres; each cohort belongs to one programme and one centre."
+    },
+    "outcomes": {
+      "title": "Employment outcomes",
+      "body": "Employment, internships, freelance work and enterprise milestones as separate measures, with follow-up coverage and unknowns."
+    }
+  },
+  "tree": {
+    "unicef": "UNICEF Syria",
+    "unicefBody": "Oversight layer",
+    "cohorts": "Current cohorts: {{ids}}",
+    "note": "Each figure is registered youth in the historical sample with the active filters. Centre figures add up to their partner, and partners add up to the national total."
+  },
+  "inclusion": {
+    "title": "Reach and inclusion",
+    "body": "Who the programme reaches, by age group, gender, disability status and governorate.",
+    "privacy": "Aggregate figures only. Individual support needs and accommodation details are never shown in reports. Disability status is voluntarily provided and Not disclosed is reported as its own group. Groups under 5 are suppressed.",
+    "small": "<5",
+    "tableTitle": {
+      "disability": "Learning and guidance by disability status",
+      "gender": "Learning and guidance by gender",
+      "ageGroup": "Learning and guidance by age group"
+    }
+  },
+  "outcomes": {
+    "currentEmployment": "Employment (current cohorts)",
+    "currentFreelance": "Freelance (current cohorts)",
+    "currentEnterprise": "Enterprise (current cohorts)",
+    "offerNote": "Confirmed starts only; an offer alone is excluded.",
+    "freelanceNote": "Being selected and completing work are separate steps; payment is not recorded.",
+    "enterpriseNote": "A support acceptance is a milestone, not employment."
+  },
+  "followup": {
+    "title": "Graduate follow-up",
+    "body": "Graduates due for 3, 6 or 12-month follow-up, who is responsible, the last contact, the outcome source and the next action.",
+    "open": "Open record",
+    "remind": "Record a reminder for {{name}}",
+    "reminderToast": "Reminder recorded in the prototype. No message was sent.",
+    "reminderAt": "Reminder recorded {{date}}",
+    "reminderNote": "Reminders stay inside this prototype. No email, SMS or message is sent.",
+    "status": {
+      "due": "Due",
+      "overdue": "Overdue",
+      "learnerReported": "Learner-reported",
+      "confirmed": "Confirmed by employer"
+    },
+    "next": {
+      "due": "Contact the graduate before the due date",
+      "overdue": "Contact the graduate now and record the response",
+      "learnerReported": "Ask the employer to confirm",
+      "confirmed": "No action until the next window"
+    },
+    "summary": {
+      "unknown": "eligible graduates still with unknown status, of {{eligible}} eligible",
+      "coverage": "Coverage {{coverage}} ({{responses}} responses)"
+    },
+    "form": {
+      "title": "Follow-up: {{name}}",
+      "body": "{{months}}-month follow-up, due {{date}}.",
+      "status": "Employment status",
+      "employed": {
+        "yes": "Employed or working",
+        "no": "Not employed"
+      },
+      "workType": "Work type",
+      "choose": "Choose",
+      "types": {
+        "job": "Job",
+        "internship": "Internship",
+        "partTime": "Part-time role",
+        "freelance": "Freelance work",
+        "ownBusiness": "Own business"
+      },
+      "startDate": "Start date",
+      "stillInRole": "Still in the role",
+      "challenges": "Challenges",
+      "support": "Support requested",
+      "required": "Required",
+      "sourceNote": "Learner-reported answers stay marked as reported until an employer confirms them.",
+      "saveReported": "Save as learner-reported",
+      "confirmEmployer": "Confirm from employer",
+      "reportedToast": "Saved as learner-reported",
+      "confirmedToast": "Confirmed from employer"
+    },
+    "value": {
+      "title": "Useful even without a role yet",
+      "body": "Graduates who have not secured a role keep their learning, evidence and support. A Not selected decision comes with feedback and a next step.",
+      "learning": {
+        "title": "Learning stays open",
+        "body": "All 16 courses and earned certificates remain available."
+      },
+      "coaching": {
+        "title": "AI coaches",
+        "body": "CV, interview and proposal practice at any time."
+      },
+      "mentoring": {
+        "title": "Human mentors",
+        "body": "Points or programme allocation for a mentor session."
+      },
+      "opportunities": {
+        "title": "New opportunities",
+        "body": "Matched jobs, internships, freelance projects and enterprise support."
+      }
+    }
+  },
+  "labour": {
+    "title": "Labour market insights",
+    "body": "Demand signals from sample vacancy records, reviewed candidates and employer feedback.",
+    "insight1": "Sample insight",
+    "insight2": "Second insight",
+    "sentence1": "{{skill}} appears in {{vac}} of {{total}} sample vacancy records, while {{ready}} of {{cand}} reviewed candidates have completed the relevant module.",
+    "sentence2": "Spreadsheets appear in {{vac}} of {{total}} sample vacancy records, while {{ready}} of {{cand}} reviewed candidates have completed C14 Spreadsheet Skills.",
+    "openC03": "Open C03",
+    "openC14": "Open C14",
+    "viewReadiness": "View candidate readiness",
+    "occupations": "Occupation demand",
+    "occupationsSub": "Sample vacancies by occupation, {{total}} records",
+    "occupation": "Occupation",
+    "vacancies": "Vacancies",
+    "skillsTitle": "Requested skills and candidate readiness",
+    "skillsSub": "Share of {{vac}} sample vacancy records and of {{cand}} reviewed candidates",
+    "skill": "Skill",
+    "inVacancies": "In vacancy records",
+    "candidatesReady": "Candidates with the module",
+    "gapsTitle": "Skills gaps by sector and location",
+    "gapsSub": "Identified from sample vacancies and employer feedback.",
+    "col": {
+      "sector": "Sector",
+      "location": "Location",
+      "gap": "Skills gap",
+      "severity": "Priority"
+    },
+    "vacanciesTrend": "Sample vacancies posted over time",
+    "trendSub": "Monthly sample vacancy postings",
+    "placementsTrend": "Confirmed placements over time",
+    "placementsSub": "Monthly confirmed placements in the historical sample",
+    "month": "Month",
+    "placements": "Placements",
+    "readinessTitle": "Candidate readiness",
+    "readinessBody": "{{count}} reviewed sample candidates, by whether they completed the module for each requested skill.",
+    "readinessNote": "Completing a module is readiness evidence; it does not guarantee a job.",
+    "ready": "Completed the module",
+    "notYet": "Not yet",
+    "readyAria": "{{ready}} of {{total}} completed the module",
+    "noFeedback": "No employer feedback recorded yet",
+    "noFeedbackBody": "When an employer records placement feedback, its themes are aggregated here.",
+    "feedbackSub": "Aggregated by sector from feedback recorded in this demo.",
+    "missing": "Skills missing",
+    "c14Live": "Current cohorts: named learners who have started C14: {{count}}.",
+    "feedbackTitle": "Employer feedback (responses: {{count}})",
+    "responses": "responses: {{n}}"
+  },
+  "course": {
+    "outcomes": "Learning outcomes",
+    "units": "Units",
+    "practical": "Practical task:",
+    "youthOnly": "Learners open the full course in their library. This summary is for administrators.",
+    "delivery": {
+      "self-paced": "Self-paced",
+      "blended": "Blended"
+    }
+  },
+  "compare": {
+    "enrolments": "Course enrolments",
+    "enrolmentsSub": "Enrolments, not unique people",
+    "completion": "Completion rate",
+    "completionSub": "Completed of all course enrolments",
+    "placed": "Unique youth placed",
+    "placedSub": "Job or internship, deduplicated"
+  },
+  "admin": {
+    "title": "Administration",
+    "body": "Users, roles and scopes for the demonstration. Production access control would be enforced by backend services.",
+    "invite": "Invite user",
+    "inviteTitle": "Invite a user",
+    "inviteBody": "This is a mock screen. No invitation or email leaves the prototype.",
+    "inviteName": "Full name",
+    "inviteRole": "Role",
+    "inviteSend": "Send invitation",
+    "inviteError": "Enter a name and choose a role.",
+    "inviteToast": "Invitation for {{name}} recorded in the prototype only",
+    "orgsTitle": "Organisations awaiting approval",
+    "orgsBody": "Employers and clients can post opportunities after approval.",
+    "approve": "Approve organisation",
+    "approved": "Approved",
+    "approvedToast": "{{name}} approved. Its opportunities can now be published.",
+    "usersTitle": "Users and roles",
+    "col": {
+      "user": "User",
+      "role": "Role",
+      "scope": "Data scope",
+      "status": "Status"
+    },
+    "active": "Active",
+    "note": "All users are fictional demonstration personas."
+  },
+  "viewer": {
+    "eyebrow": "Reporting viewer · read only",
+    "title": "Aggregate reports",
+    "body": "Read-only aggregate dashboard for government stakeholders. No individual records, contact details or actions.",
+    "optional": "Optional role, not a confirmed UNICEF requirement"
+  }
+}

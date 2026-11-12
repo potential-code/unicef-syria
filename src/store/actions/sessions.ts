@@ -21,11 +21,21 @@ export function markAttendance(youthId: YouthId, sessionId: string, mark: Attend
     let next = withYouth(db, youthId, (y) => {
       let y2 = { ...y, attendance: { ...y.attendance, [sessionId]: mark } }
       if (mark === 'present') {
-        y2 = award(y2, `attendance:${sessionId}`, 'attendance', POINTS.attendance, L('Assigned session attended', 'حضور جلسة مخصصة'), now())
+        y2 = award(
+          y2,
+          `attendance:${sessionId}`,
+          'attendance',
+          POINTS.attendance,
+          L('Assigned session attended', 'حضور جلسة مخصصة'),
+          now(),
+        )
       }
       return refreshBadges(y2)
     })
-    if (mark === 'absent' && !db.reminders.some((r) => r.youthId === youthId && r.sessionId === sessionId)) {
+    if (
+      mark === 'absent' &&
+      !db.reminders.some((r) => r.youthId === youthId && r.sessionId === sessionId)
+    ) {
       next = { ...next, reminders: [...next.reminders, { youthId, sessionId, at: now() }] }
     }
     return next
@@ -37,7 +47,13 @@ export function saveSessionNote(sessionId: string, note: string) {
 }
 
 export function createSession(s: Omit<Session, 'id'>) {
-  update((db) => ({ ...db, newSessions: [...db.newSessions, { ...s, id: `SX${db.newSessions.length + 1}` as Session['id'] }] }))
+  update((db) => ({
+    ...db,
+    newSessions: [
+      ...db.newSessions,
+      { ...s, id: `SX${db.newSessions.length + 1}` as Session['id'] },
+    ],
+  }))
 }
 
 /** Trainer screening (brief §17 T01). */
@@ -47,7 +63,9 @@ export function decideTrainingApplication(
 ) {
   update((db) =>
     withYouth(db, youthId, (y) =>
-      y.trainingApplication ? { ...y, trainingApplication: { ...y.trainingApplication, status } } : y,
+      y.trainingApplication
+        ? { ...y, trainingApplication: { ...y.trainingApplication, status } }
+        : y,
     ),
   )
 }
@@ -55,7 +73,9 @@ export function decideTrainingApplication(
 /** Assign an accepted learner to a cohort: restricted sessions appear for that learner only. */
 export function assignCohort(youthId: YouthId, cohortId: CohortId) {
   update((db) =>
-    withYouth(db, youthId, (y) => (y.cohortIds.includes(cohortId) ? y : { ...y, cohortIds: [...y.cohortIds, cohortId] })),
+    withYouth(db, youthId, (y) =>
+      y.cohortIds.includes(cohortId) ? y : { ...y, cohortIds: [...y.cohortIds, cohortId] },
+    ),
   )
 }
 

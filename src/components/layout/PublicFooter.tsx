@@ -16,16 +16,36 @@ export function PublicFooter() {
         <div>
           <p className="mb-3 text-sm font-bold">{t('footer.youth')}</p>
           <ul className="space-y-2 text-sm text-white/80">
-            <li><Link to="/register" className="hover:text-white hover:underline">{t('nav.start')}</Link></li>
-            <li><Link to="/explore" className="hover:text-white hover:underline">{t('nav.explore')}</Link></li>
-            <li><Link to="/opportunities" className="hover:text-white hover:underline">{t('nav.opportunities')}</Link></li>
+            <li>
+              <Link to="/register" className="hover:text-white hover:underline">
+                {t('nav.start')}
+              </Link>
+            </li>
+            <li>
+              <Link to="/explore" className="hover:text-white hover:underline">
+                {t('nav.explore')}
+              </Link>
+            </li>
+            <li>
+              <Link to="/opportunities" className="hover:text-white hover:underline">
+                {t('nav.opportunities')}
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
           <p className="mb-3 text-sm font-bold">{t('footer.organisations')}</p>
           <ul className="space-y-2 text-sm text-white/80">
-            <li><Link to="/partners" className="hover:text-white hover:underline">{t('nav.partners')}</Link></li>
-            <li><Link to="/sign-in" className="hover:text-white hover:underline">{t('common:signIn')}</Link></li>
+            <li>
+              <Link to="/partners" className="hover:text-white hover:underline">
+                {t('nav.partners')}
+              </Link>
+            </li>
+            <li>
+              <Link to="/sign-in" className="hover:text-white hover:underline">
+                {t('common:signIn')}
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

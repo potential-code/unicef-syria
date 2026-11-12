@@ -13,14 +13,7 @@ export interface Localized {
 
 // ---------------------------------------------------------------- roles and personas
 
-export type Role =
-  | 'youth'
-  | 'trainer'
-  | 'employer'
-  | 'centre'
-  | 'partner'
-  | 'unicef'
-  | 'viewer'
+export type Role = 'youth' | 'trainer' | 'employer' | 'centre' | 'partner' | 'unicef' | 'viewer'
 
 export type PersonaId =
   | 'Y001'
@@ -222,7 +215,17 @@ export type CertificateState = 'pendingReview' | 'recommended' | 'approved' | 'i
 
 // ---------------------------------------------------------------- sessions and mentors
 
-export type SessionId = 'S01' | 'S02' | 'S03' | 'S04' | 'S05' | 'S06' | 'S07' | 'S08' | 'S09' | 'E01'
+export type SessionId =
+  | 'S01'
+  | 'S02'
+  | 'S03'
+  | 'S04'
+  | 'S05'
+  | 'S06'
+  | 'S07'
+  | 'S08'
+  | 'S09'
+  | 'E01'
 export interface Session {
   id: SessionId
   title: Localized
@@ -273,7 +276,13 @@ export interface MentorBooking {
 // ---------------------------------------------------------------- AI coaches
 
 export type CoachId = 'navigator' | 'learning' | 'cv' | 'enterprise' | 'freelance'
-export type ToolkitTarget = 'cv' | 'interview' | 'business' | 'freelanceProfile' | 'proposal' | 'plan'
+export type ToolkitTarget =
+  | 'cv'
+  | 'interview'
+  | 'business'
+  | 'freelanceProfile'
+  | 'proposal'
+  | 'plan'
 export interface CoachStep {
   id: string
   coach: Localized
@@ -373,7 +382,12 @@ export interface Application {
 
 // ---------------------------------------------------------------- outcomes and follow-up
 
-export type OutcomeType = 'job' | 'internship' | 'freelanceSelected' | 'freelanceCompleted' | 'enterpriseAccepted'
+export type OutcomeType =
+  | 'job'
+  | 'internship'
+  | 'freelanceSelected'
+  | 'freelanceCompleted'
+  | 'enterpriseAccepted'
 export interface Outcome {
   id: string
   youthId: YouthId
@@ -403,14 +417,7 @@ export interface FollowUp {
 
 // ---------------------------------------------------------------- youth
 
-export type YouthId =
-  | 'Y001'
-  | 'Y002'
-  | 'Y003'
-  | 'Y004'
-  | 'Y005'
-  | 'Y006'
-  | 'Y007'
+export type YouthId = 'Y001' | 'Y002' | 'Y003' | 'Y004' | 'Y005' | 'Y006' | 'Y007'
 
 export type PointsReason =
   | 'profile'
@@ -430,7 +437,12 @@ export interface PointsEntry {
   label: Localized
 }
 
-export type BadgeId = 'careerExplorer' | 'learningStarter' | 'jobReady' | 'enterpriseExplorer' | 'freelanceStarter'
+export type BadgeId =
+  | 'careerExplorer'
+  | 'learningStarter'
+  | 'jobReady'
+  | 'enterpriseExplorer'
+  | 'freelanceStarter'
 
 export interface YouthProfile {
   name: string
@@ -467,7 +479,13 @@ export interface Toolkit {
     languages: string
     includeCertificates: CourseId[]
   }
-  interviews: { question: string; answer: string; rating: 'developing' | 'clear' | 'strong'; next: string; at: string }[]
+  interviews: {
+    question: string
+    answer: string
+    rating: 'developing' | 'clear' | 'strong'
+    next: string
+    at: string
+  }[]
   business?: {
     customer: string
     problem: string
@@ -478,8 +496,24 @@ export interface Toolkit {
     nextExperiment: string
     questions: string[]
   }
-  freelanceProfile?: { services: string; samples: string; availability: string; assignments: string; pricing: string }
-  proposals: { id: string; client: string; goal: string; experience: string; deliverables: string; timing: string; review: string; assumptions: string; fee: string }[]
+  freelanceProfile?: {
+    services: string
+    samples: string
+    availability: string
+    assignments: string
+    pricing: string
+  }
+  proposals: {
+    id: string
+    client: string
+    goal: string
+    experience: string
+    deliverables: string
+    timing: string
+    review: string
+    assumptions: string
+    fee: string
+  }[]
   plan?: string
 }
 

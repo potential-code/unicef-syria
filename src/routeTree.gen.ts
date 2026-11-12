@@ -13,19 +13,79 @@ import { Route as PublicRouteImport } from './routes/_public'
 import { Route as CentreRouteImport } from './routes/centre'
 import { Route as EmployerRouteImport } from './routes/employer'
 import { Route as PartnerRouteImport } from './routes/partner'
+import { Route as RegisterRouteImport } from './routes/register'
 import { Route as SignInRouteImport } from './routes/sign-in'
 import { Route as TrainerRouteImport } from './routes/trainer'
 import { Route as UnicefRouteImport } from './routes/unicef'
 import { Route as ViewerRouteImport } from './routes/viewer'
 import { Route as YouthRouteImport } from './routes/youth'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
+import { Route as PublicOpportunitiesRouteImport } from './routes/_public/opportunities'
+import { Route as PublicPartnersRouteImport } from './routes/_public/partners'
 import { Route as CentreIndexRouteImport } from './routes/centre/index'
+import { Route as CentreCoursesRouteImport } from './routes/centre/courses'
+import { Route as CentreParticipantsRouteImport } from './routes/centre/participants'
+import { Route as CentreReportsRouteImport } from './routes/centre/reports'
+import { Route as CentreResultsRouteImport } from './routes/centre/results'
+import { Route as CentreSessionsRouteImport } from './routes/centre/sessions'
+import { Route as CentreTrainersRouteImport } from './routes/centre/trainers'
 import { Route as EmployerIndexRouteImport } from './routes/employer/index'
+import { Route as EmployerCandidatesRouteImport } from './routes/employer/candidates'
+import { Route as EmployerPlacementsRouteImport } from './routes/employer/placements'
+import { Route as EmployerProfileRouteImport } from './routes/employer/profile'
 import { Route as PartnerIndexRouteImport } from './routes/partner/index'
+import { Route as PartnerCentresRouteImport } from './routes/partner/centres'
+import { Route as PartnerOutcomesRouteImport } from './routes/partner/outcomes'
+import { Route as PartnerParticipantsRouteImport } from './routes/partner/participants'
+import { Route as PartnerProgrammesRouteImport } from './routes/partner/programmes'
+import { Route as PartnerReportsRouteImport } from './routes/partner/reports'
 import { Route as TrainerIndexRouteImport } from './routes/trainer/index'
+import { Route as TrainerApplicationsRouteImport } from './routes/trainer/applications'
+import { Route as TrainerAssessmentsRouteImport } from './routes/trainer/assessments'
+import { Route as TrainerCohortsRouteImport } from './routes/trainer/cohorts'
+import { Route as TrainerResourcesRouteImport } from './routes/trainer/resources'
+import { Route as TrainerResultsRouteImport } from './routes/trainer/results'
 import { Route as UnicefIndexRouteImport } from './routes/unicef/index'
+import { Route as UnicefAdminRouteImport } from './routes/unicef/admin'
+import { Route as UnicefFollowupRouteImport } from './routes/unicef/followup'
+import { Route as UnicefInclusionRouteImport } from './routes/unicef/inclusion'
+import { Route as UnicefLabourRouteImport } from './routes/unicef/labour'
+import { Route as UnicefOutcomesRouteImport } from './routes/unicef/outcomes'
+import { Route as UnicefPartnersRouteImport } from './routes/unicef/partners'
+import { Route as UnicefProgrammesRouteImport } from './routes/unicef/programmes'
 import { Route as ViewerIndexRouteImport } from './routes/viewer/index'
 import { Route as YouthIndexRouteImport } from './routes/youth/index'
+import { Route as YouthPathRouteImport } from './routes/youth/path'
+import { Route as YouthProgressRouteImport } from './routes/youth/progress'
+import { Route as PublicExploreIndexRouteImport } from './routes/_public/explore/index'
+import { Route as PublicExploreCourseIdRouteImport } from './routes/_public/explore/$courseId'
+import { Route as CentreParticipantsYouthIdRouteImport } from './routes/centre/participants_.$youthId'
+import { Route as EmployerApplicationsIndexRouteImport } from './routes/employer/applications/index'
+import { Route as EmployerApplicationsAppIdRouteImport } from './routes/employer/applications/$appId'
+import { Route as EmployerOpportunitiesIndexRouteImport } from './routes/employer/opportunities/index'
+import { Route as EmployerOpportunitiesNewRouteImport } from './routes/employer/opportunities/new'
+import { Route as TrainerLearnersYouthIdRouteImport } from './routes/trainer/learners/$youthId'
+import { Route as TrainerSessionsIndexRouteImport } from './routes/trainer/sessions/index'
+import { Route as TrainerSessionsSessionIdRouteImport } from './routes/trainer/sessions/$sessionId'
+import { Route as YouthApplicationsIndexRouteImport } from './routes/youth/applications/index'
+import { Route as YouthApplicationsAppIdRouteImport } from './routes/youth/applications/$appId'
+import { Route as YouthCertificateCourseIdRouteImport } from './routes/youth/certificate/$courseId'
+import { Route as YouthCoachesIndexRouteImport } from './routes/youth/coaches/index'
+import { Route as YouthCoachesCoachIdRouteImport } from './routes/youth/coaches/$coachId'
+import { Route as YouthCohortIndexRouteImport } from './routes/youth/cohort/index'
+import { Route as YouthCommunityIndexRouteImport } from './routes/youth/community/index'
+import { Route as YouthDiscoveryIndexRouteImport } from './routes/youth/discovery/index'
+import { Route as YouthDiscoveryResultsRouteImport } from './routes/youth/discovery/results'
+import { Route as YouthLibraryIndexRouteImport } from './routes/youth/library/index'
+import { Route as YouthLibraryCourseIdRouteImport } from './routes/youth/library/$courseId'
+import { Route as YouthMentorsIndexRouteImport } from './routes/youth/mentors/index'
+import { Route as YouthMentorsMentorIdRouteImport } from './routes/youth/mentors/$mentorId'
+import { Route as YouthOpportunitiesIndexRouteImport } from './routes/youth/opportunities/index'
+import { Route as YouthOpportunitiesOppIdRouteImport } from './routes/youth/opportunities/$oppId'
+import { Route as YouthProfileIndexRouteImport } from './routes/youth/profile/index'
+import { Route as YouthToolkitIndexRouteImport } from './routes/youth/toolkit/index'
+import { Route as YouthLearnCourseIdUnitRouteImport } from './routes/youth/learn/$courseId/$unit'
+import { Route as YouthLearnCourseIdQuizRouteImport } from './routes/youth/learn/$courseId/quiz'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
@@ -44,6 +104,11 @@ const EmployerRoute = EmployerRouteImport.update({
 const PartnerRoute = PartnerRouteImport.update({
   id: '/partner',
   path: '/partner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SignInRoute = SignInRouteImport.update({
@@ -76,9 +141,49 @@ const PublicIndexRoute = PublicIndexRouteImport.update({
   path: '/',
   getParentRoute: () => PublicRoute,
 } as any)
+const PublicOpportunitiesRoute = PublicOpportunitiesRouteImport.update({
+  id: '/opportunities',
+  path: '/opportunities',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicPartnersRoute = PublicPartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => PublicRoute,
+} as any)
 const CentreIndexRoute = CentreIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => CentreRoute,
+} as any)
+const CentreCoursesRoute = CentreCoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => CentreRoute,
+} as any)
+const CentreParticipantsRoute = CentreParticipantsRouteImport.update({
+  id: '/participants',
+  path: '/participants',
+  getParentRoute: () => CentreRoute,
+} as any)
+const CentreReportsRoute = CentreReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => CentreRoute,
+} as any)
+const CentreResultsRoute = CentreResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
+  getParentRoute: () => CentreRoute,
+} as any)
+const CentreSessionsRoute = CentreSessionsRouteImport.update({
+  id: '/sessions',
+  path: '/sessions',
+  getParentRoute: () => CentreRoute,
+} as any)
+const CentreTrainersRoute = CentreTrainersRouteImport.update({
+  id: '/trainers',
+  path: '/trainers',
   getParentRoute: () => CentreRoute,
 } as any)
 const EmployerIndexRoute = EmployerIndexRouteImport.update({
@@ -86,9 +191,49 @@ const EmployerIndexRoute = EmployerIndexRouteImport.update({
   path: '/',
   getParentRoute: () => EmployerRoute,
 } as any)
+const EmployerCandidatesRoute = EmployerCandidatesRouteImport.update({
+  id: '/candidates',
+  path: '/candidates',
+  getParentRoute: () => EmployerRoute,
+} as any)
+const EmployerPlacementsRoute = EmployerPlacementsRouteImport.update({
+  id: '/placements',
+  path: '/placements',
+  getParentRoute: () => EmployerRoute,
+} as any)
+const EmployerProfileRoute = EmployerProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => EmployerRoute,
+} as any)
 const PartnerIndexRoute = PartnerIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => PartnerRoute,
+} as any)
+const PartnerCentresRoute = PartnerCentresRouteImport.update({
+  id: '/centres',
+  path: '/centres',
+  getParentRoute: () => PartnerRoute,
+} as any)
+const PartnerOutcomesRoute = PartnerOutcomesRouteImport.update({
+  id: '/outcomes',
+  path: '/outcomes',
+  getParentRoute: () => PartnerRoute,
+} as any)
+const PartnerParticipantsRoute = PartnerParticipantsRouteImport.update({
+  id: '/participants',
+  path: '/participants',
+  getParentRoute: () => PartnerRoute,
+} as any)
+const PartnerProgrammesRoute = PartnerProgrammesRouteImport.update({
+  id: '/programmes',
+  path: '/programmes',
+  getParentRoute: () => PartnerRoute,
+} as any)
+const PartnerReportsRoute = PartnerReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
   getParentRoute: () => PartnerRoute,
 } as any)
 const TrainerIndexRoute = TrainerIndexRouteImport.update({
@@ -96,9 +241,69 @@ const TrainerIndexRoute = TrainerIndexRouteImport.update({
   path: '/',
   getParentRoute: () => TrainerRoute,
 } as any)
+const TrainerApplicationsRoute = TrainerApplicationsRouteImport.update({
+  id: '/applications',
+  path: '/applications',
+  getParentRoute: () => TrainerRoute,
+} as any)
+const TrainerAssessmentsRoute = TrainerAssessmentsRouteImport.update({
+  id: '/assessments',
+  path: '/assessments',
+  getParentRoute: () => TrainerRoute,
+} as any)
+const TrainerCohortsRoute = TrainerCohortsRouteImport.update({
+  id: '/cohorts',
+  path: '/cohorts',
+  getParentRoute: () => TrainerRoute,
+} as any)
+const TrainerResourcesRoute = TrainerResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => TrainerRoute,
+} as any)
+const TrainerResultsRoute = TrainerResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
+  getParentRoute: () => TrainerRoute,
+} as any)
 const UnicefIndexRoute = UnicefIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => UnicefRoute,
+} as any)
+const UnicefAdminRoute = UnicefAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => UnicefRoute,
+} as any)
+const UnicefFollowupRoute = UnicefFollowupRouteImport.update({
+  id: '/followup',
+  path: '/followup',
+  getParentRoute: () => UnicefRoute,
+} as any)
+const UnicefInclusionRoute = UnicefInclusionRouteImport.update({
+  id: '/inclusion',
+  path: '/inclusion',
+  getParentRoute: () => UnicefRoute,
+} as any)
+const UnicefLabourRoute = UnicefLabourRouteImport.update({
+  id: '/labour',
+  path: '/labour',
+  getParentRoute: () => UnicefRoute,
+} as any)
+const UnicefOutcomesRoute = UnicefOutcomesRouteImport.update({
+  id: '/outcomes',
+  path: '/outcomes',
+  getParentRoute: () => UnicefRoute,
+} as any)
+const UnicefPartnersRoute = UnicefPartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => UnicefRoute,
+} as any)
+const UnicefProgrammesRoute = UnicefProgrammesRouteImport.update({
+  id: '/programmes',
+  path: '/programmes',
   getParentRoute: () => UnicefRoute,
 } as any)
 const ViewerIndexRoute = ViewerIndexRouteImport.update({
@@ -111,17 +316,210 @@ const YouthIndexRoute = YouthIndexRouteImport.update({
   path: '/',
   getParentRoute: () => YouthRoute,
 } as any)
+const YouthPathRoute = YouthPathRouteImport.update({
+  id: '/path',
+  path: '/path',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthProgressRoute = YouthProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
+  getParentRoute: () => YouthRoute,
+} as any)
+const PublicExploreIndexRoute = PublicExploreIndexRouteImport.update({
+  id: '/explore/',
+  path: '/explore/',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicExploreCourseIdRoute = PublicExploreCourseIdRouteImport.update({
+  id: '/explore/$courseId',
+  path: '/explore/$courseId',
+  getParentRoute: () => PublicRoute,
+} as any)
+const CentreParticipantsYouthIdRoute =
+  CentreParticipantsYouthIdRouteImport.update({
+    id: '/participants_/$youthId',
+    path: '/participants/$youthId',
+    getParentRoute: () => CentreRoute,
+  } as any)
+const EmployerApplicationsIndexRoute =
+  EmployerApplicationsIndexRouteImport.update({
+    id: '/applications/',
+    path: '/applications/',
+    getParentRoute: () => EmployerRoute,
+  } as any)
+const EmployerApplicationsAppIdRoute =
+  EmployerApplicationsAppIdRouteImport.update({
+    id: '/applications/$appId',
+    path: '/applications/$appId',
+    getParentRoute: () => EmployerRoute,
+  } as any)
+const EmployerOpportunitiesIndexRoute =
+  EmployerOpportunitiesIndexRouteImport.update({
+    id: '/opportunities/',
+    path: '/opportunities/',
+    getParentRoute: () => EmployerRoute,
+  } as any)
+const EmployerOpportunitiesNewRoute =
+  EmployerOpportunitiesNewRouteImport.update({
+    id: '/opportunities/new',
+    path: '/opportunities/new',
+    getParentRoute: () => EmployerRoute,
+  } as any)
+const TrainerLearnersYouthIdRoute = TrainerLearnersYouthIdRouteImport.update({
+  id: '/learners/$youthId',
+  path: '/learners/$youthId',
+  getParentRoute: () => TrainerRoute,
+} as any)
+const TrainerSessionsIndexRoute = TrainerSessionsIndexRouteImport.update({
+  id: '/sessions/',
+  path: '/sessions/',
+  getParentRoute: () => TrainerRoute,
+} as any)
+const TrainerSessionsSessionIdRoute =
+  TrainerSessionsSessionIdRouteImport.update({
+    id: '/sessions/$sessionId',
+    path: '/sessions/$sessionId',
+    getParentRoute: () => TrainerRoute,
+  } as any)
+const YouthApplicationsIndexRoute = YouthApplicationsIndexRouteImport.update({
+  id: '/applications/',
+  path: '/applications/',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthApplicationsAppIdRoute = YouthApplicationsAppIdRouteImport.update({
+  id: '/applications/$appId',
+  path: '/applications/$appId',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthCertificateCourseIdRoute =
+  YouthCertificateCourseIdRouteImport.update({
+    id: '/certificate/$courseId',
+    path: '/certificate/$courseId',
+    getParentRoute: () => YouthRoute,
+  } as any)
+const YouthCoachesIndexRoute = YouthCoachesIndexRouteImport.update({
+  id: '/coaches/',
+  path: '/coaches/',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthCoachesCoachIdRoute = YouthCoachesCoachIdRouteImport.update({
+  id: '/coaches/$coachId',
+  path: '/coaches/$coachId',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthCohortIndexRoute = YouthCohortIndexRouteImport.update({
+  id: '/cohort/',
+  path: '/cohort/',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthCommunityIndexRoute = YouthCommunityIndexRouteImport.update({
+  id: '/community/',
+  path: '/community/',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthDiscoveryIndexRoute = YouthDiscoveryIndexRouteImport.update({
+  id: '/discovery/',
+  path: '/discovery/',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthDiscoveryResultsRoute = YouthDiscoveryResultsRouteImport.update({
+  id: '/discovery/results',
+  path: '/discovery/results',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthLibraryIndexRoute = YouthLibraryIndexRouteImport.update({
+  id: '/library/',
+  path: '/library/',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthLibraryCourseIdRoute = YouthLibraryCourseIdRouteImport.update({
+  id: '/library/$courseId',
+  path: '/library/$courseId',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthMentorsIndexRoute = YouthMentorsIndexRouteImport.update({
+  id: '/mentors/',
+  path: '/mentors/',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthMentorsMentorIdRoute = YouthMentorsMentorIdRouteImport.update({
+  id: '/mentors/$mentorId',
+  path: '/mentors/$mentorId',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthOpportunitiesIndexRoute = YouthOpportunitiesIndexRouteImport.update({
+  id: '/opportunities/',
+  path: '/opportunities/',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthOpportunitiesOppIdRoute = YouthOpportunitiesOppIdRouteImport.update({
+  id: '/opportunities/$oppId',
+  path: '/opportunities/$oppId',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthProfileIndexRoute = YouthProfileIndexRouteImport.update({
+  id: '/profile/',
+  path: '/profile/',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthToolkitIndexRoute = YouthToolkitIndexRouteImport.update({
+  id: '/toolkit/',
+  path: '/toolkit/',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthLearnCourseIdUnitRoute = YouthLearnCourseIdUnitRouteImport.update({
+  id: '/learn/$courseId/$unit',
+  path: '/learn/$courseId/$unit',
+  getParentRoute: () => YouthRoute,
+} as any)
+const YouthLearnCourseIdQuizRoute = YouthLearnCourseIdQuizRouteImport.update({
+  id: '/learn/$courseId/quiz',
+  path: '/learn/$courseId/quiz',
+  getParentRoute: () => YouthRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
   '/centre': typeof CentreRouteWithChildren
   '/employer': typeof EmployerRouteWithChildren
   '/partner': typeof PartnerRouteWithChildren
+  '/register': typeof RegisterRoute
   '/sign-in': typeof SignInRoute
   '/trainer': typeof TrainerRouteWithChildren
   '/unicef': typeof UnicefRouteWithChildren
   '/viewer': typeof ViewerRouteWithChildren
   '/youth': typeof YouthRouteWithChildren
+  '/opportunities': typeof PublicOpportunitiesRoute
+  '/partners': typeof PublicPartnersRoute
+  '/centre/courses': typeof CentreCoursesRoute
+  '/centre/participants': typeof CentreParticipantsRoute
+  '/centre/reports': typeof CentreReportsRoute
+  '/centre/results': typeof CentreResultsRoute
+  '/centre/sessions': typeof CentreSessionsRoute
+  '/centre/trainers': typeof CentreTrainersRoute
+  '/employer/candidates': typeof EmployerCandidatesRoute
+  '/employer/placements': typeof EmployerPlacementsRoute
+  '/employer/profile': typeof EmployerProfileRoute
+  '/partner/centres': typeof PartnerCentresRoute
+  '/partner/outcomes': typeof PartnerOutcomesRoute
+  '/partner/participants': typeof PartnerParticipantsRoute
+  '/partner/programmes': typeof PartnerProgrammesRoute
+  '/partner/reports': typeof PartnerReportsRoute
+  '/trainer/applications': typeof TrainerApplicationsRoute
+  '/trainer/assessments': typeof TrainerAssessmentsRoute
+  '/trainer/cohorts': typeof TrainerCohortsRoute
+  '/trainer/resources': typeof TrainerResourcesRoute
+  '/trainer/results': typeof TrainerResultsRoute
+  '/unicef/admin': typeof UnicefAdminRoute
+  '/unicef/followup': typeof UnicefFollowupRoute
+  '/unicef/inclusion': typeof UnicefInclusionRoute
+  '/unicef/labour': typeof UnicefLabourRoute
+  '/unicef/outcomes': typeof UnicefOutcomesRoute
+  '/unicef/partners': typeof UnicefPartnersRoute
+  '/unicef/programmes': typeof UnicefProgrammesRoute
+  '/youth/path': typeof YouthPathRoute
+  '/youth/progress': typeof YouthProgressRoute
   '/centre/': typeof CentreIndexRoute
   '/employer/': typeof EmployerIndexRoute
   '/partner/': typeof PartnerIndexRoute
@@ -129,9 +527,69 @@ export interface FileRoutesByFullPath {
   '/unicef/': typeof UnicefIndexRoute
   '/viewer/': typeof ViewerIndexRoute
   '/youth/': typeof YouthIndexRoute
+  '/explore/$courseId': typeof PublicExploreCourseIdRoute
+  '/centre/participants/$youthId': typeof CentreParticipantsYouthIdRoute
+  '/employer/applications/$appId': typeof EmployerApplicationsAppIdRoute
+  '/employer/opportunities/new': typeof EmployerOpportunitiesNewRoute
+  '/trainer/learners/$youthId': typeof TrainerLearnersYouthIdRoute
+  '/trainer/sessions/$sessionId': typeof TrainerSessionsSessionIdRoute
+  '/youth/applications/$appId': typeof YouthApplicationsAppIdRoute
+  '/youth/certificate/$courseId': typeof YouthCertificateCourseIdRoute
+  '/youth/coaches/$coachId': typeof YouthCoachesCoachIdRoute
+  '/youth/discovery/results': typeof YouthDiscoveryResultsRoute
+  '/youth/library/$courseId': typeof YouthLibraryCourseIdRoute
+  '/youth/mentors/$mentorId': typeof YouthMentorsMentorIdRoute
+  '/youth/opportunities/$oppId': typeof YouthOpportunitiesOppIdRoute
+  '/explore/': typeof PublicExploreIndexRoute
+  '/employer/applications/': typeof EmployerApplicationsIndexRoute
+  '/employer/opportunities/': typeof EmployerOpportunitiesIndexRoute
+  '/trainer/sessions/': typeof TrainerSessionsIndexRoute
+  '/youth/applications/': typeof YouthApplicationsIndexRoute
+  '/youth/coaches/': typeof YouthCoachesIndexRoute
+  '/youth/cohort/': typeof YouthCohortIndexRoute
+  '/youth/community/': typeof YouthCommunityIndexRoute
+  '/youth/discovery/': typeof YouthDiscoveryIndexRoute
+  '/youth/library/': typeof YouthLibraryIndexRoute
+  '/youth/mentors/': typeof YouthMentorsIndexRoute
+  '/youth/opportunities/': typeof YouthOpportunitiesIndexRoute
+  '/youth/profile/': typeof YouthProfileIndexRoute
+  '/youth/toolkit/': typeof YouthToolkitIndexRoute
+  '/youth/learn/$courseId/$unit': typeof YouthLearnCourseIdUnitRoute
+  '/youth/learn/$courseId/quiz': typeof YouthLearnCourseIdQuizRoute
 }
 export interface FileRoutesByTo {
+  '/register': typeof RegisterRoute
   '/sign-in': typeof SignInRoute
+  '/opportunities': typeof PublicOpportunitiesRoute
+  '/partners': typeof PublicPartnersRoute
+  '/centre/courses': typeof CentreCoursesRoute
+  '/centre/participants': typeof CentreParticipantsRoute
+  '/centre/reports': typeof CentreReportsRoute
+  '/centre/results': typeof CentreResultsRoute
+  '/centre/sessions': typeof CentreSessionsRoute
+  '/centre/trainers': typeof CentreTrainersRoute
+  '/employer/candidates': typeof EmployerCandidatesRoute
+  '/employer/placements': typeof EmployerPlacementsRoute
+  '/employer/profile': typeof EmployerProfileRoute
+  '/partner/centres': typeof PartnerCentresRoute
+  '/partner/outcomes': typeof PartnerOutcomesRoute
+  '/partner/participants': typeof PartnerParticipantsRoute
+  '/partner/programmes': typeof PartnerProgrammesRoute
+  '/partner/reports': typeof PartnerReportsRoute
+  '/trainer/applications': typeof TrainerApplicationsRoute
+  '/trainer/assessments': typeof TrainerAssessmentsRoute
+  '/trainer/cohorts': typeof TrainerCohortsRoute
+  '/trainer/resources': typeof TrainerResourcesRoute
+  '/trainer/results': typeof TrainerResultsRoute
+  '/unicef/admin': typeof UnicefAdminRoute
+  '/unicef/followup': typeof UnicefFollowupRoute
+  '/unicef/inclusion': typeof UnicefInclusionRoute
+  '/unicef/labour': typeof UnicefLabourRoute
+  '/unicef/outcomes': typeof UnicefOutcomesRoute
+  '/unicef/partners': typeof UnicefPartnersRoute
+  '/unicef/programmes': typeof UnicefProgrammesRoute
+  '/youth/path': typeof YouthPathRoute
+  '/youth/progress': typeof YouthProgressRoute
   '/': typeof PublicIndexRoute
   '/centre': typeof CentreIndexRoute
   '/employer': typeof EmployerIndexRoute
@@ -140,6 +598,35 @@ export interface FileRoutesByTo {
   '/unicef': typeof UnicefIndexRoute
   '/viewer': typeof ViewerIndexRoute
   '/youth': typeof YouthIndexRoute
+  '/explore/$courseId': typeof PublicExploreCourseIdRoute
+  '/centre/participants/$youthId': typeof CentreParticipantsYouthIdRoute
+  '/employer/applications/$appId': typeof EmployerApplicationsAppIdRoute
+  '/employer/opportunities/new': typeof EmployerOpportunitiesNewRoute
+  '/trainer/learners/$youthId': typeof TrainerLearnersYouthIdRoute
+  '/trainer/sessions/$sessionId': typeof TrainerSessionsSessionIdRoute
+  '/youth/applications/$appId': typeof YouthApplicationsAppIdRoute
+  '/youth/certificate/$courseId': typeof YouthCertificateCourseIdRoute
+  '/youth/coaches/$coachId': typeof YouthCoachesCoachIdRoute
+  '/youth/discovery/results': typeof YouthDiscoveryResultsRoute
+  '/youth/library/$courseId': typeof YouthLibraryCourseIdRoute
+  '/youth/mentors/$mentorId': typeof YouthMentorsMentorIdRoute
+  '/youth/opportunities/$oppId': typeof YouthOpportunitiesOppIdRoute
+  '/explore': typeof PublicExploreIndexRoute
+  '/employer/applications': typeof EmployerApplicationsIndexRoute
+  '/employer/opportunities': typeof EmployerOpportunitiesIndexRoute
+  '/trainer/sessions': typeof TrainerSessionsIndexRoute
+  '/youth/applications': typeof YouthApplicationsIndexRoute
+  '/youth/coaches': typeof YouthCoachesIndexRoute
+  '/youth/cohort': typeof YouthCohortIndexRoute
+  '/youth/community': typeof YouthCommunityIndexRoute
+  '/youth/discovery': typeof YouthDiscoveryIndexRoute
+  '/youth/library': typeof YouthLibraryIndexRoute
+  '/youth/mentors': typeof YouthMentorsIndexRoute
+  '/youth/opportunities': typeof YouthOpportunitiesIndexRoute
+  '/youth/profile': typeof YouthProfileIndexRoute
+  '/youth/toolkit': typeof YouthToolkitIndexRoute
+  '/youth/learn/$courseId/$unit': typeof YouthLearnCourseIdUnitRoute
+  '/youth/learn/$courseId/quiz': typeof YouthLearnCourseIdQuizRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -147,11 +634,42 @@ export interface FileRoutesById {
   '/centre': typeof CentreRouteWithChildren
   '/employer': typeof EmployerRouteWithChildren
   '/partner': typeof PartnerRouteWithChildren
+  '/register': typeof RegisterRoute
   '/sign-in': typeof SignInRoute
   '/trainer': typeof TrainerRouteWithChildren
   '/unicef': typeof UnicefRouteWithChildren
   '/viewer': typeof ViewerRouteWithChildren
   '/youth': typeof YouthRouteWithChildren
+  '/_public/opportunities': typeof PublicOpportunitiesRoute
+  '/_public/partners': typeof PublicPartnersRoute
+  '/centre/courses': typeof CentreCoursesRoute
+  '/centre/participants': typeof CentreParticipantsRoute
+  '/centre/reports': typeof CentreReportsRoute
+  '/centre/results': typeof CentreResultsRoute
+  '/centre/sessions': typeof CentreSessionsRoute
+  '/centre/trainers': typeof CentreTrainersRoute
+  '/employer/candidates': typeof EmployerCandidatesRoute
+  '/employer/placements': typeof EmployerPlacementsRoute
+  '/employer/profile': typeof EmployerProfileRoute
+  '/partner/centres': typeof PartnerCentresRoute
+  '/partner/outcomes': typeof PartnerOutcomesRoute
+  '/partner/participants': typeof PartnerParticipantsRoute
+  '/partner/programmes': typeof PartnerProgrammesRoute
+  '/partner/reports': typeof PartnerReportsRoute
+  '/trainer/applications': typeof TrainerApplicationsRoute
+  '/trainer/assessments': typeof TrainerAssessmentsRoute
+  '/trainer/cohorts': typeof TrainerCohortsRoute
+  '/trainer/resources': typeof TrainerResourcesRoute
+  '/trainer/results': typeof TrainerResultsRoute
+  '/unicef/admin': typeof UnicefAdminRoute
+  '/unicef/followup': typeof UnicefFollowupRoute
+  '/unicef/inclusion': typeof UnicefInclusionRoute
+  '/unicef/labour': typeof UnicefLabourRoute
+  '/unicef/outcomes': typeof UnicefOutcomesRoute
+  '/unicef/partners': typeof UnicefPartnersRoute
+  '/unicef/programmes': typeof UnicefProgrammesRoute
+  '/youth/path': typeof YouthPathRoute
+  '/youth/progress': typeof YouthProgressRoute
   '/_public/': typeof PublicIndexRoute
   '/centre/': typeof CentreIndexRoute
   '/employer/': typeof EmployerIndexRoute
@@ -160,6 +678,35 @@ export interface FileRoutesById {
   '/unicef/': typeof UnicefIndexRoute
   '/viewer/': typeof ViewerIndexRoute
   '/youth/': typeof YouthIndexRoute
+  '/_public/explore/$courseId': typeof PublicExploreCourseIdRoute
+  '/centre/participants_/$youthId': typeof CentreParticipantsYouthIdRoute
+  '/employer/applications/$appId': typeof EmployerApplicationsAppIdRoute
+  '/employer/opportunities/new': typeof EmployerOpportunitiesNewRoute
+  '/trainer/learners/$youthId': typeof TrainerLearnersYouthIdRoute
+  '/trainer/sessions/$sessionId': typeof TrainerSessionsSessionIdRoute
+  '/youth/applications/$appId': typeof YouthApplicationsAppIdRoute
+  '/youth/certificate/$courseId': typeof YouthCertificateCourseIdRoute
+  '/youth/coaches/$coachId': typeof YouthCoachesCoachIdRoute
+  '/youth/discovery/results': typeof YouthDiscoveryResultsRoute
+  '/youth/library/$courseId': typeof YouthLibraryCourseIdRoute
+  '/youth/mentors/$mentorId': typeof YouthMentorsMentorIdRoute
+  '/youth/opportunities/$oppId': typeof YouthOpportunitiesOppIdRoute
+  '/_public/explore/': typeof PublicExploreIndexRoute
+  '/employer/applications/': typeof EmployerApplicationsIndexRoute
+  '/employer/opportunities/': typeof EmployerOpportunitiesIndexRoute
+  '/trainer/sessions/': typeof TrainerSessionsIndexRoute
+  '/youth/applications/': typeof YouthApplicationsIndexRoute
+  '/youth/coaches/': typeof YouthCoachesIndexRoute
+  '/youth/cohort/': typeof YouthCohortIndexRoute
+  '/youth/community/': typeof YouthCommunityIndexRoute
+  '/youth/discovery/': typeof YouthDiscoveryIndexRoute
+  '/youth/library/': typeof YouthLibraryIndexRoute
+  '/youth/mentors/': typeof YouthMentorsIndexRoute
+  '/youth/opportunities/': typeof YouthOpportunitiesIndexRoute
+  '/youth/profile/': typeof YouthProfileIndexRoute
+  '/youth/toolkit/': typeof YouthToolkitIndexRoute
+  '/youth/learn/$courseId/$unit': typeof YouthLearnCourseIdUnitRoute
+  '/youth/learn/$courseId/quiz': typeof YouthLearnCourseIdQuizRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -168,11 +715,42 @@ export interface FileRouteTypes {
     | '/centre'
     | '/employer'
     | '/partner'
+    | '/register'
     | '/sign-in'
     | '/trainer'
     | '/unicef'
     | '/viewer'
     | '/youth'
+    | '/opportunities'
+    | '/partners'
+    | '/centre/courses'
+    | '/centre/participants'
+    | '/centre/reports'
+    | '/centre/results'
+    | '/centre/sessions'
+    | '/centre/trainers'
+    | '/employer/candidates'
+    | '/employer/placements'
+    | '/employer/profile'
+    | '/partner/centres'
+    | '/partner/outcomes'
+    | '/partner/participants'
+    | '/partner/programmes'
+    | '/partner/reports'
+    | '/trainer/applications'
+    | '/trainer/assessments'
+    | '/trainer/cohorts'
+    | '/trainer/resources'
+    | '/trainer/results'
+    | '/unicef/admin'
+    | '/unicef/followup'
+    | '/unicef/inclusion'
+    | '/unicef/labour'
+    | '/unicef/outcomes'
+    | '/unicef/partners'
+    | '/unicef/programmes'
+    | '/youth/path'
+    | '/youth/progress'
     | '/centre/'
     | '/employer/'
     | '/partner/'
@@ -180,9 +758,69 @@ export interface FileRouteTypes {
     | '/unicef/'
     | '/viewer/'
     | '/youth/'
+    | '/explore/$courseId'
+    | '/centre/participants/$youthId'
+    | '/employer/applications/$appId'
+    | '/employer/opportunities/new'
+    | '/trainer/learners/$youthId'
+    | '/trainer/sessions/$sessionId'
+    | '/youth/applications/$appId'
+    | '/youth/certificate/$courseId'
+    | '/youth/coaches/$coachId'
+    | '/youth/discovery/results'
+    | '/youth/library/$courseId'
+    | '/youth/mentors/$mentorId'
+    | '/youth/opportunities/$oppId'
+    | '/explore/'
+    | '/employer/applications/'
+    | '/employer/opportunities/'
+    | '/trainer/sessions/'
+    | '/youth/applications/'
+    | '/youth/coaches/'
+    | '/youth/cohort/'
+    | '/youth/community/'
+    | '/youth/discovery/'
+    | '/youth/library/'
+    | '/youth/mentors/'
+    | '/youth/opportunities/'
+    | '/youth/profile/'
+    | '/youth/toolkit/'
+    | '/youth/learn/$courseId/$unit'
+    | '/youth/learn/$courseId/quiz'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/register'
     | '/sign-in'
+    | '/opportunities'
+    | '/partners'
+    | '/centre/courses'
+    | '/centre/participants'
+    | '/centre/reports'
+    | '/centre/results'
+    | '/centre/sessions'
+    | '/centre/trainers'
+    | '/employer/candidates'
+    | '/employer/placements'
+    | '/employer/profile'
+    | '/partner/centres'
+    | '/partner/outcomes'
+    | '/partner/participants'
+    | '/partner/programmes'
+    | '/partner/reports'
+    | '/trainer/applications'
+    | '/trainer/assessments'
+    | '/trainer/cohorts'
+    | '/trainer/resources'
+    | '/trainer/results'
+    | '/unicef/admin'
+    | '/unicef/followup'
+    | '/unicef/inclusion'
+    | '/unicef/labour'
+    | '/unicef/outcomes'
+    | '/unicef/partners'
+    | '/unicef/programmes'
+    | '/youth/path'
+    | '/youth/progress'
     | '/'
     | '/centre'
     | '/employer'
@@ -191,17 +829,77 @@ export interface FileRouteTypes {
     | '/unicef'
     | '/viewer'
     | '/youth'
+    | '/explore/$courseId'
+    | '/centre/participants/$youthId'
+    | '/employer/applications/$appId'
+    | '/employer/opportunities/new'
+    | '/trainer/learners/$youthId'
+    | '/trainer/sessions/$sessionId'
+    | '/youth/applications/$appId'
+    | '/youth/certificate/$courseId'
+    | '/youth/coaches/$coachId'
+    | '/youth/discovery/results'
+    | '/youth/library/$courseId'
+    | '/youth/mentors/$mentorId'
+    | '/youth/opportunities/$oppId'
+    | '/explore'
+    | '/employer/applications'
+    | '/employer/opportunities'
+    | '/trainer/sessions'
+    | '/youth/applications'
+    | '/youth/coaches'
+    | '/youth/cohort'
+    | '/youth/community'
+    | '/youth/discovery'
+    | '/youth/library'
+    | '/youth/mentors'
+    | '/youth/opportunities'
+    | '/youth/profile'
+    | '/youth/toolkit'
+    | '/youth/learn/$courseId/$unit'
+    | '/youth/learn/$courseId/quiz'
   id:
     | '__root__'
     | '/_public'
     | '/centre'
     | '/employer'
     | '/partner'
+    | '/register'
     | '/sign-in'
     | '/trainer'
     | '/unicef'
     | '/viewer'
     | '/youth'
+    | '/_public/opportunities'
+    | '/_public/partners'
+    | '/centre/courses'
+    | '/centre/participants'
+    | '/centre/reports'
+    | '/centre/results'
+    | '/centre/sessions'
+    | '/centre/trainers'
+    | '/employer/candidates'
+    | '/employer/placements'
+    | '/employer/profile'
+    | '/partner/centres'
+    | '/partner/outcomes'
+    | '/partner/participants'
+    | '/partner/programmes'
+    | '/partner/reports'
+    | '/trainer/applications'
+    | '/trainer/assessments'
+    | '/trainer/cohorts'
+    | '/trainer/resources'
+    | '/trainer/results'
+    | '/unicef/admin'
+    | '/unicef/followup'
+    | '/unicef/inclusion'
+    | '/unicef/labour'
+    | '/unicef/outcomes'
+    | '/unicef/partners'
+    | '/unicef/programmes'
+    | '/youth/path'
+    | '/youth/progress'
     | '/_public/'
     | '/centre/'
     | '/employer/'
@@ -210,6 +908,35 @@ export interface FileRouteTypes {
     | '/unicef/'
     | '/viewer/'
     | '/youth/'
+    | '/_public/explore/$courseId'
+    | '/centre/participants_/$youthId'
+    | '/employer/applications/$appId'
+    | '/employer/opportunities/new'
+    | '/trainer/learners/$youthId'
+    | '/trainer/sessions/$sessionId'
+    | '/youth/applications/$appId'
+    | '/youth/certificate/$courseId'
+    | '/youth/coaches/$coachId'
+    | '/youth/discovery/results'
+    | '/youth/library/$courseId'
+    | '/youth/mentors/$mentorId'
+    | '/youth/opportunities/$oppId'
+    | '/_public/explore/'
+    | '/employer/applications/'
+    | '/employer/opportunities/'
+    | '/trainer/sessions/'
+    | '/youth/applications/'
+    | '/youth/coaches/'
+    | '/youth/cohort/'
+    | '/youth/community/'
+    | '/youth/discovery/'
+    | '/youth/library/'
+    | '/youth/mentors/'
+    | '/youth/opportunities/'
+    | '/youth/profile/'
+    | '/youth/toolkit/'
+    | '/youth/learn/$courseId/$unit'
+    | '/youth/learn/$courseId/quiz'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -217,6 +944,7 @@ export interface RootRouteChildren {
   CentreRoute: typeof CentreRouteWithChildren
   EmployerRoute: typeof EmployerRouteWithChildren
   PartnerRoute: typeof PartnerRouteWithChildren
+  RegisterRoute: typeof RegisterRoute
   SignInRoute: typeof SignInRoute
   TrainerRoute: typeof TrainerRouteWithChildren
   UnicefRoute: typeof UnicefRouteWithChildren
@@ -252,6 +980,13 @@ declare module '@tanstack/react-router' {
       path: '/partner'
       fullPath: '/partner'
       preLoaderRoute: typeof PartnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sign-in': {
@@ -296,11 +1031,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicIndexRouteImport
       parentRoute: typeof PublicRoute
     }
+    '/_public/opportunities': {
+      id: '/_public/opportunities'
+      path: '/opportunities'
+      fullPath: '/opportunities'
+      preLoaderRoute: typeof PublicOpportunitiesRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/partners': {
+      id: '/_public/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PublicPartnersRouteImport
+      parentRoute: typeof PublicRoute
+    }
     '/centre/': {
       id: '/centre/'
       path: '/'
       fullPath: '/centre/'
       preLoaderRoute: typeof CentreIndexRouteImport
+      parentRoute: typeof CentreRoute
+    }
+    '/centre/courses': {
+      id: '/centre/courses'
+      path: '/courses'
+      fullPath: '/centre/courses'
+      preLoaderRoute: typeof CentreCoursesRouteImport
+      parentRoute: typeof CentreRoute
+    }
+    '/centre/participants': {
+      id: '/centre/participants'
+      path: '/participants'
+      fullPath: '/centre/participants'
+      preLoaderRoute: typeof CentreParticipantsRouteImport
+      parentRoute: typeof CentreRoute
+    }
+    '/centre/reports': {
+      id: '/centre/reports'
+      path: '/reports'
+      fullPath: '/centre/reports'
+      preLoaderRoute: typeof CentreReportsRouteImport
+      parentRoute: typeof CentreRoute
+    }
+    '/centre/results': {
+      id: '/centre/results'
+      path: '/results'
+      fullPath: '/centre/results'
+      preLoaderRoute: typeof CentreResultsRouteImport
+      parentRoute: typeof CentreRoute
+    }
+    '/centre/sessions': {
+      id: '/centre/sessions'
+      path: '/sessions'
+      fullPath: '/centre/sessions'
+      preLoaderRoute: typeof CentreSessionsRouteImport
+      parentRoute: typeof CentreRoute
+    }
+    '/centre/trainers': {
+      id: '/centre/trainers'
+      path: '/trainers'
+      fullPath: '/centre/trainers'
+      preLoaderRoute: typeof CentreTrainersRouteImport
       parentRoute: typeof CentreRoute
     }
     '/employer/': {
@@ -310,11 +1101,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmployerIndexRouteImport
       parentRoute: typeof EmployerRoute
     }
+    '/employer/candidates': {
+      id: '/employer/candidates'
+      path: '/candidates'
+      fullPath: '/employer/candidates'
+      preLoaderRoute: typeof EmployerCandidatesRouteImport
+      parentRoute: typeof EmployerRoute
+    }
+    '/employer/placements': {
+      id: '/employer/placements'
+      path: '/placements'
+      fullPath: '/employer/placements'
+      preLoaderRoute: typeof EmployerPlacementsRouteImport
+      parentRoute: typeof EmployerRoute
+    }
+    '/employer/profile': {
+      id: '/employer/profile'
+      path: '/profile'
+      fullPath: '/employer/profile'
+      preLoaderRoute: typeof EmployerProfileRouteImport
+      parentRoute: typeof EmployerRoute
+    }
     '/partner/': {
       id: '/partner/'
       path: '/'
       fullPath: '/partner/'
       preLoaderRoute: typeof PartnerIndexRouteImport
+      parentRoute: typeof PartnerRoute
+    }
+    '/partner/centres': {
+      id: '/partner/centres'
+      path: '/centres'
+      fullPath: '/partner/centres'
+      preLoaderRoute: typeof PartnerCentresRouteImport
+      parentRoute: typeof PartnerRoute
+    }
+    '/partner/outcomes': {
+      id: '/partner/outcomes'
+      path: '/outcomes'
+      fullPath: '/partner/outcomes'
+      preLoaderRoute: typeof PartnerOutcomesRouteImport
+      parentRoute: typeof PartnerRoute
+    }
+    '/partner/participants': {
+      id: '/partner/participants'
+      path: '/participants'
+      fullPath: '/partner/participants'
+      preLoaderRoute: typeof PartnerParticipantsRouteImport
+      parentRoute: typeof PartnerRoute
+    }
+    '/partner/programmes': {
+      id: '/partner/programmes'
+      path: '/programmes'
+      fullPath: '/partner/programmes'
+      preLoaderRoute: typeof PartnerProgrammesRouteImport
+      parentRoute: typeof PartnerRoute
+    }
+    '/partner/reports': {
+      id: '/partner/reports'
+      path: '/reports'
+      fullPath: '/partner/reports'
+      preLoaderRoute: typeof PartnerReportsRouteImport
       parentRoute: typeof PartnerRoute
     }
     '/trainer/': {
@@ -324,11 +1171,95 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrainerIndexRouteImport
       parentRoute: typeof TrainerRoute
     }
+    '/trainer/applications': {
+      id: '/trainer/applications'
+      path: '/applications'
+      fullPath: '/trainer/applications'
+      preLoaderRoute: typeof TrainerApplicationsRouteImport
+      parentRoute: typeof TrainerRoute
+    }
+    '/trainer/assessments': {
+      id: '/trainer/assessments'
+      path: '/assessments'
+      fullPath: '/trainer/assessments'
+      preLoaderRoute: typeof TrainerAssessmentsRouteImport
+      parentRoute: typeof TrainerRoute
+    }
+    '/trainer/cohorts': {
+      id: '/trainer/cohorts'
+      path: '/cohorts'
+      fullPath: '/trainer/cohorts'
+      preLoaderRoute: typeof TrainerCohortsRouteImport
+      parentRoute: typeof TrainerRoute
+    }
+    '/trainer/resources': {
+      id: '/trainer/resources'
+      path: '/resources'
+      fullPath: '/trainer/resources'
+      preLoaderRoute: typeof TrainerResourcesRouteImport
+      parentRoute: typeof TrainerRoute
+    }
+    '/trainer/results': {
+      id: '/trainer/results'
+      path: '/results'
+      fullPath: '/trainer/results'
+      preLoaderRoute: typeof TrainerResultsRouteImport
+      parentRoute: typeof TrainerRoute
+    }
     '/unicef/': {
       id: '/unicef/'
       path: '/'
       fullPath: '/unicef/'
       preLoaderRoute: typeof UnicefIndexRouteImport
+      parentRoute: typeof UnicefRoute
+    }
+    '/unicef/admin': {
+      id: '/unicef/admin'
+      path: '/admin'
+      fullPath: '/unicef/admin'
+      preLoaderRoute: typeof UnicefAdminRouteImport
+      parentRoute: typeof UnicefRoute
+    }
+    '/unicef/followup': {
+      id: '/unicef/followup'
+      path: '/followup'
+      fullPath: '/unicef/followup'
+      preLoaderRoute: typeof UnicefFollowupRouteImport
+      parentRoute: typeof UnicefRoute
+    }
+    '/unicef/inclusion': {
+      id: '/unicef/inclusion'
+      path: '/inclusion'
+      fullPath: '/unicef/inclusion'
+      preLoaderRoute: typeof UnicefInclusionRouteImport
+      parentRoute: typeof UnicefRoute
+    }
+    '/unicef/labour': {
+      id: '/unicef/labour'
+      path: '/labour'
+      fullPath: '/unicef/labour'
+      preLoaderRoute: typeof UnicefLabourRouteImport
+      parentRoute: typeof UnicefRoute
+    }
+    '/unicef/outcomes': {
+      id: '/unicef/outcomes'
+      path: '/outcomes'
+      fullPath: '/unicef/outcomes'
+      preLoaderRoute: typeof UnicefOutcomesRouteImport
+      parentRoute: typeof UnicefRoute
+    }
+    '/unicef/partners': {
+      id: '/unicef/partners'
+      path: '/partners'
+      fullPath: '/unicef/partners'
+      preLoaderRoute: typeof UnicefPartnersRouteImport
+      parentRoute: typeof UnicefRoute
+    }
+    '/unicef/programmes': {
+      id: '/unicef/programmes'
+      path: '/programmes'
+      fullPath: '/unicef/programmes'
+      preLoaderRoute: typeof UnicefProgrammesRouteImport
       parentRoute: typeof UnicefRoute
     }
     '/viewer/': {
@@ -345,37 +1276,290 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof YouthIndexRouteImport
       parentRoute: typeof YouthRoute
     }
+    '/youth/path': {
+      id: '/youth/path'
+      path: '/path'
+      fullPath: '/youth/path'
+      preLoaderRoute: typeof YouthPathRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/progress': {
+      id: '/youth/progress'
+      path: '/progress'
+      fullPath: '/youth/progress'
+      preLoaderRoute: typeof YouthProgressRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/_public/explore/': {
+      id: '/_public/explore/'
+      path: '/explore'
+      fullPath: '/explore/'
+      preLoaderRoute: typeof PublicExploreIndexRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/explore/$courseId': {
+      id: '/_public/explore/$courseId'
+      path: '/explore/$courseId'
+      fullPath: '/explore/$courseId'
+      preLoaderRoute: typeof PublicExploreCourseIdRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/centre/participants_/$youthId': {
+      id: '/centre/participants_/$youthId'
+      path: '/participants/$youthId'
+      fullPath: '/centre/participants/$youthId'
+      preLoaderRoute: typeof CentreParticipantsYouthIdRouteImport
+      parentRoute: typeof CentreRoute
+    }
+    '/employer/applications/': {
+      id: '/employer/applications/'
+      path: '/applications'
+      fullPath: '/employer/applications/'
+      preLoaderRoute: typeof EmployerApplicationsIndexRouteImport
+      parentRoute: typeof EmployerRoute
+    }
+    '/employer/applications/$appId': {
+      id: '/employer/applications/$appId'
+      path: '/applications/$appId'
+      fullPath: '/employer/applications/$appId'
+      preLoaderRoute: typeof EmployerApplicationsAppIdRouteImport
+      parentRoute: typeof EmployerRoute
+    }
+    '/employer/opportunities/': {
+      id: '/employer/opportunities/'
+      path: '/opportunities'
+      fullPath: '/employer/opportunities/'
+      preLoaderRoute: typeof EmployerOpportunitiesIndexRouteImport
+      parentRoute: typeof EmployerRoute
+    }
+    '/employer/opportunities/new': {
+      id: '/employer/opportunities/new'
+      path: '/opportunities/new'
+      fullPath: '/employer/opportunities/new'
+      preLoaderRoute: typeof EmployerOpportunitiesNewRouteImport
+      parentRoute: typeof EmployerRoute
+    }
+    '/trainer/learners/$youthId': {
+      id: '/trainer/learners/$youthId'
+      path: '/learners/$youthId'
+      fullPath: '/trainer/learners/$youthId'
+      preLoaderRoute: typeof TrainerLearnersYouthIdRouteImport
+      parentRoute: typeof TrainerRoute
+    }
+    '/trainer/sessions/': {
+      id: '/trainer/sessions/'
+      path: '/sessions'
+      fullPath: '/trainer/sessions/'
+      preLoaderRoute: typeof TrainerSessionsIndexRouteImport
+      parentRoute: typeof TrainerRoute
+    }
+    '/trainer/sessions/$sessionId': {
+      id: '/trainer/sessions/$sessionId'
+      path: '/sessions/$sessionId'
+      fullPath: '/trainer/sessions/$sessionId'
+      preLoaderRoute: typeof TrainerSessionsSessionIdRouteImport
+      parentRoute: typeof TrainerRoute
+    }
+    '/youth/applications/': {
+      id: '/youth/applications/'
+      path: '/applications'
+      fullPath: '/youth/applications/'
+      preLoaderRoute: typeof YouthApplicationsIndexRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/applications/$appId': {
+      id: '/youth/applications/$appId'
+      path: '/applications/$appId'
+      fullPath: '/youth/applications/$appId'
+      preLoaderRoute: typeof YouthApplicationsAppIdRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/certificate/$courseId': {
+      id: '/youth/certificate/$courseId'
+      path: '/certificate/$courseId'
+      fullPath: '/youth/certificate/$courseId'
+      preLoaderRoute: typeof YouthCertificateCourseIdRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/coaches/': {
+      id: '/youth/coaches/'
+      path: '/coaches'
+      fullPath: '/youth/coaches/'
+      preLoaderRoute: typeof YouthCoachesIndexRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/coaches/$coachId': {
+      id: '/youth/coaches/$coachId'
+      path: '/coaches/$coachId'
+      fullPath: '/youth/coaches/$coachId'
+      preLoaderRoute: typeof YouthCoachesCoachIdRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/cohort/': {
+      id: '/youth/cohort/'
+      path: '/cohort'
+      fullPath: '/youth/cohort/'
+      preLoaderRoute: typeof YouthCohortIndexRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/community/': {
+      id: '/youth/community/'
+      path: '/community'
+      fullPath: '/youth/community/'
+      preLoaderRoute: typeof YouthCommunityIndexRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/discovery/': {
+      id: '/youth/discovery/'
+      path: '/discovery'
+      fullPath: '/youth/discovery/'
+      preLoaderRoute: typeof YouthDiscoveryIndexRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/discovery/results': {
+      id: '/youth/discovery/results'
+      path: '/discovery/results'
+      fullPath: '/youth/discovery/results'
+      preLoaderRoute: typeof YouthDiscoveryResultsRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/library/': {
+      id: '/youth/library/'
+      path: '/library'
+      fullPath: '/youth/library/'
+      preLoaderRoute: typeof YouthLibraryIndexRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/library/$courseId': {
+      id: '/youth/library/$courseId'
+      path: '/library/$courseId'
+      fullPath: '/youth/library/$courseId'
+      preLoaderRoute: typeof YouthLibraryCourseIdRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/mentors/': {
+      id: '/youth/mentors/'
+      path: '/mentors'
+      fullPath: '/youth/mentors/'
+      preLoaderRoute: typeof YouthMentorsIndexRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/mentors/$mentorId': {
+      id: '/youth/mentors/$mentorId'
+      path: '/mentors/$mentorId'
+      fullPath: '/youth/mentors/$mentorId'
+      preLoaderRoute: typeof YouthMentorsMentorIdRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/opportunities/': {
+      id: '/youth/opportunities/'
+      path: '/opportunities'
+      fullPath: '/youth/opportunities/'
+      preLoaderRoute: typeof YouthOpportunitiesIndexRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/opportunities/$oppId': {
+      id: '/youth/opportunities/$oppId'
+      path: '/opportunities/$oppId'
+      fullPath: '/youth/opportunities/$oppId'
+      preLoaderRoute: typeof YouthOpportunitiesOppIdRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/profile/': {
+      id: '/youth/profile/'
+      path: '/profile'
+      fullPath: '/youth/profile/'
+      preLoaderRoute: typeof YouthProfileIndexRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/toolkit/': {
+      id: '/youth/toolkit/'
+      path: '/toolkit'
+      fullPath: '/youth/toolkit/'
+      preLoaderRoute: typeof YouthToolkitIndexRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/learn/$courseId/$unit': {
+      id: '/youth/learn/$courseId/$unit'
+      path: '/learn/$courseId/$unit'
+      fullPath: '/youth/learn/$courseId/$unit'
+      preLoaderRoute: typeof YouthLearnCourseIdUnitRouteImport
+      parentRoute: typeof YouthRoute
+    }
+    '/youth/learn/$courseId/quiz': {
+      id: '/youth/learn/$courseId/quiz'
+      path: '/learn/$courseId/quiz'
+      fullPath: '/youth/learn/$courseId/quiz'
+      preLoaderRoute: typeof YouthLearnCourseIdQuizRouteImport
+      parentRoute: typeof YouthRoute
+    }
   }
 }
 
 interface PublicRouteChildren {
+  PublicOpportunitiesRoute: typeof PublicOpportunitiesRoute
+  PublicPartnersRoute: typeof PublicPartnersRoute
   PublicIndexRoute: typeof PublicIndexRoute
+  PublicExploreCourseIdRoute: typeof PublicExploreCourseIdRoute
+  PublicExploreIndexRoute: typeof PublicExploreIndexRoute
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
+  PublicOpportunitiesRoute: PublicOpportunitiesRoute,
+  PublicPartnersRoute: PublicPartnersRoute,
   PublicIndexRoute: PublicIndexRoute,
+  PublicExploreCourseIdRoute: PublicExploreCourseIdRoute,
+  PublicExploreIndexRoute: PublicExploreIndexRoute,
 }
 
 const PublicRouteWithChildren =
   PublicRoute._addFileChildren(PublicRouteChildren)
 
 interface CentreRouteChildren {
+  CentreCoursesRoute: typeof CentreCoursesRoute
+  CentreParticipantsRoute: typeof CentreParticipantsRoute
+  CentreReportsRoute: typeof CentreReportsRoute
+  CentreResultsRoute: typeof CentreResultsRoute
+  CentreSessionsRoute: typeof CentreSessionsRoute
+  CentreTrainersRoute: typeof CentreTrainersRoute
   CentreIndexRoute: typeof CentreIndexRoute
+  CentreParticipantsYouthIdRoute: typeof CentreParticipantsYouthIdRoute
 }
 
 const CentreRouteChildren: CentreRouteChildren = {
+  CentreCoursesRoute: CentreCoursesRoute,
+  CentreParticipantsRoute: CentreParticipantsRoute,
+  CentreReportsRoute: CentreReportsRoute,
+  CentreResultsRoute: CentreResultsRoute,
+  CentreSessionsRoute: CentreSessionsRoute,
+  CentreTrainersRoute: CentreTrainersRoute,
   CentreIndexRoute: CentreIndexRoute,
+  CentreParticipantsYouthIdRoute: CentreParticipantsYouthIdRoute,
 }
 
 const CentreRouteWithChildren =
   CentreRoute._addFileChildren(CentreRouteChildren)
 
 interface EmployerRouteChildren {
+  EmployerCandidatesRoute: typeof EmployerCandidatesRoute
+  EmployerPlacementsRoute: typeof EmployerPlacementsRoute
+  EmployerProfileRoute: typeof EmployerProfileRoute
   EmployerIndexRoute: typeof EmployerIndexRoute
+  EmployerApplicationsAppIdRoute: typeof EmployerApplicationsAppIdRoute
+  EmployerOpportunitiesNewRoute: typeof EmployerOpportunitiesNewRoute
+  EmployerApplicationsIndexRoute: typeof EmployerApplicationsIndexRoute
+  EmployerOpportunitiesIndexRoute: typeof EmployerOpportunitiesIndexRoute
 }
 
 const EmployerRouteChildren: EmployerRouteChildren = {
+  EmployerCandidatesRoute: EmployerCandidatesRoute,
+  EmployerPlacementsRoute: EmployerPlacementsRoute,
+  EmployerProfileRoute: EmployerProfileRoute,
   EmployerIndexRoute: EmployerIndexRoute,
+  EmployerApplicationsAppIdRoute: EmployerApplicationsAppIdRoute,
+  EmployerOpportunitiesNewRoute: EmployerOpportunitiesNewRoute,
+  EmployerApplicationsIndexRoute: EmployerApplicationsIndexRoute,
+  EmployerOpportunitiesIndexRoute: EmployerOpportunitiesIndexRoute,
 }
 
 const EmployerRouteWithChildren = EmployerRoute._addFileChildren(
@@ -383,10 +1567,20 @@ const EmployerRouteWithChildren = EmployerRoute._addFileChildren(
 )
 
 interface PartnerRouteChildren {
+  PartnerCentresRoute: typeof PartnerCentresRoute
+  PartnerOutcomesRoute: typeof PartnerOutcomesRoute
+  PartnerParticipantsRoute: typeof PartnerParticipantsRoute
+  PartnerProgrammesRoute: typeof PartnerProgrammesRoute
+  PartnerReportsRoute: typeof PartnerReportsRoute
   PartnerIndexRoute: typeof PartnerIndexRoute
 }
 
 const PartnerRouteChildren: PartnerRouteChildren = {
+  PartnerCentresRoute: PartnerCentresRoute,
+  PartnerOutcomesRoute: PartnerOutcomesRoute,
+  PartnerParticipantsRoute: PartnerParticipantsRoute,
+  PartnerProgrammesRoute: PartnerProgrammesRoute,
+  PartnerReportsRoute: PartnerReportsRoute,
   PartnerIndexRoute: PartnerIndexRoute,
 }
 
@@ -394,21 +1588,51 @@ const PartnerRouteWithChildren =
   PartnerRoute._addFileChildren(PartnerRouteChildren)
 
 interface TrainerRouteChildren {
+  TrainerApplicationsRoute: typeof TrainerApplicationsRoute
+  TrainerAssessmentsRoute: typeof TrainerAssessmentsRoute
+  TrainerCohortsRoute: typeof TrainerCohortsRoute
+  TrainerResourcesRoute: typeof TrainerResourcesRoute
+  TrainerResultsRoute: typeof TrainerResultsRoute
   TrainerIndexRoute: typeof TrainerIndexRoute
+  TrainerLearnersYouthIdRoute: typeof TrainerLearnersYouthIdRoute
+  TrainerSessionsSessionIdRoute: typeof TrainerSessionsSessionIdRoute
+  TrainerSessionsIndexRoute: typeof TrainerSessionsIndexRoute
 }
 
 const TrainerRouteChildren: TrainerRouteChildren = {
+  TrainerApplicationsRoute: TrainerApplicationsRoute,
+  TrainerAssessmentsRoute: TrainerAssessmentsRoute,
+  TrainerCohortsRoute: TrainerCohortsRoute,
+  TrainerResourcesRoute: TrainerResourcesRoute,
+  TrainerResultsRoute: TrainerResultsRoute,
   TrainerIndexRoute: TrainerIndexRoute,
+  TrainerLearnersYouthIdRoute: TrainerLearnersYouthIdRoute,
+  TrainerSessionsSessionIdRoute: TrainerSessionsSessionIdRoute,
+  TrainerSessionsIndexRoute: TrainerSessionsIndexRoute,
 }
 
 const TrainerRouteWithChildren =
   TrainerRoute._addFileChildren(TrainerRouteChildren)
 
 interface UnicefRouteChildren {
+  UnicefAdminRoute: typeof UnicefAdminRoute
+  UnicefFollowupRoute: typeof UnicefFollowupRoute
+  UnicefInclusionRoute: typeof UnicefInclusionRoute
+  UnicefLabourRoute: typeof UnicefLabourRoute
+  UnicefOutcomesRoute: typeof UnicefOutcomesRoute
+  UnicefPartnersRoute: typeof UnicefPartnersRoute
+  UnicefProgrammesRoute: typeof UnicefProgrammesRoute
   UnicefIndexRoute: typeof UnicefIndexRoute
 }
 
 const UnicefRouteChildren: UnicefRouteChildren = {
+  UnicefAdminRoute: UnicefAdminRoute,
+  UnicefFollowupRoute: UnicefFollowupRoute,
+  UnicefInclusionRoute: UnicefInclusionRoute,
+  UnicefLabourRoute: UnicefLabourRoute,
+  UnicefOutcomesRoute: UnicefOutcomesRoute,
+  UnicefPartnersRoute: UnicefPartnersRoute,
+  UnicefProgrammesRoute: UnicefProgrammesRoute,
   UnicefIndexRoute: UnicefIndexRoute,
 }
 
@@ -427,11 +1651,53 @@ const ViewerRouteWithChildren =
   ViewerRoute._addFileChildren(ViewerRouteChildren)
 
 interface YouthRouteChildren {
+  YouthPathRoute: typeof YouthPathRoute
+  YouthProgressRoute: typeof YouthProgressRoute
   YouthIndexRoute: typeof YouthIndexRoute
+  YouthApplicationsAppIdRoute: typeof YouthApplicationsAppIdRoute
+  YouthCertificateCourseIdRoute: typeof YouthCertificateCourseIdRoute
+  YouthCoachesCoachIdRoute: typeof YouthCoachesCoachIdRoute
+  YouthDiscoveryResultsRoute: typeof YouthDiscoveryResultsRoute
+  YouthLibraryCourseIdRoute: typeof YouthLibraryCourseIdRoute
+  YouthMentorsMentorIdRoute: typeof YouthMentorsMentorIdRoute
+  YouthOpportunitiesOppIdRoute: typeof YouthOpportunitiesOppIdRoute
+  YouthApplicationsIndexRoute: typeof YouthApplicationsIndexRoute
+  YouthCoachesIndexRoute: typeof YouthCoachesIndexRoute
+  YouthCohortIndexRoute: typeof YouthCohortIndexRoute
+  YouthCommunityIndexRoute: typeof YouthCommunityIndexRoute
+  YouthDiscoveryIndexRoute: typeof YouthDiscoveryIndexRoute
+  YouthLibraryIndexRoute: typeof YouthLibraryIndexRoute
+  YouthMentorsIndexRoute: typeof YouthMentorsIndexRoute
+  YouthOpportunitiesIndexRoute: typeof YouthOpportunitiesIndexRoute
+  YouthProfileIndexRoute: typeof YouthProfileIndexRoute
+  YouthToolkitIndexRoute: typeof YouthToolkitIndexRoute
+  YouthLearnCourseIdUnitRoute: typeof YouthLearnCourseIdUnitRoute
+  YouthLearnCourseIdQuizRoute: typeof YouthLearnCourseIdQuizRoute
 }
 
 const YouthRouteChildren: YouthRouteChildren = {
+  YouthPathRoute: YouthPathRoute,
+  YouthProgressRoute: YouthProgressRoute,
   YouthIndexRoute: YouthIndexRoute,
+  YouthApplicationsAppIdRoute: YouthApplicationsAppIdRoute,
+  YouthCertificateCourseIdRoute: YouthCertificateCourseIdRoute,
+  YouthCoachesCoachIdRoute: YouthCoachesCoachIdRoute,
+  YouthDiscoveryResultsRoute: YouthDiscoveryResultsRoute,
+  YouthLibraryCourseIdRoute: YouthLibraryCourseIdRoute,
+  YouthMentorsMentorIdRoute: YouthMentorsMentorIdRoute,
+  YouthOpportunitiesOppIdRoute: YouthOpportunitiesOppIdRoute,
+  YouthApplicationsIndexRoute: YouthApplicationsIndexRoute,
+  YouthCoachesIndexRoute: YouthCoachesIndexRoute,
+  YouthCohortIndexRoute: YouthCohortIndexRoute,
+  YouthCommunityIndexRoute: YouthCommunityIndexRoute,
+  YouthDiscoveryIndexRoute: YouthDiscoveryIndexRoute,
+  YouthLibraryIndexRoute: YouthLibraryIndexRoute,
+  YouthMentorsIndexRoute: YouthMentorsIndexRoute,
+  YouthOpportunitiesIndexRoute: YouthOpportunitiesIndexRoute,
+  YouthProfileIndexRoute: YouthProfileIndexRoute,
+  YouthToolkitIndexRoute: YouthToolkitIndexRoute,
+  YouthLearnCourseIdUnitRoute: YouthLearnCourseIdUnitRoute,
+  YouthLearnCourseIdQuizRoute: YouthLearnCourseIdQuizRoute,
 }
 
 const YouthRouteWithChildren = YouthRoute._addFileChildren(YouthRouteChildren)
@@ -441,6 +1707,7 @@ const rootRouteChildren: RootRouteChildren = {
   CentreRoute: CentreRouteWithChildren,
   EmployerRoute: EmployerRouteWithChildren,
   PartnerRoute: PartnerRouteWithChildren,
+  RegisterRoute: RegisterRoute,
   SignInRoute: SignInRoute,
   TrainerRoute: TrainerRouteWithChildren,
   UnicefRoute: UnicefRouteWithChildren,

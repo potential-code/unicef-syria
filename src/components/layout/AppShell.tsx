@@ -9,7 +9,7 @@ import { LangToggle } from '@/components/shared/LangToggle'
 import { Logo } from '@/components/shared/Logo'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
-import { usePrefs } from '@/store/actions/session'
+import { usePersona, usePrefs } from '@/store/actions/session'
 import { DemoControls } from './DemoControls'
 import { SideNav } from './SideNav'
 import { UserMenu } from './UserMenu'
@@ -19,18 +19,23 @@ import { UserMenu } from './UserMenu'
  * top bar with the demo label, language toggle, presenter controls and user. Calm by design;
  * youth screens add their own colour inside the content.
  */
-export function AppShell({ role }: { role: Role }) {
+export function AppShell({ area: role }: { area: Role }) {
   const { t } = useTranslation()
   const { lang } = usePrefs()
   const [open, setOpen] = useState(false)
   const pathname = useRouterState({ select: (s) => s.location.pathname })
+  const persona = usePersona()
+  // While the presenter switches role, the old layout can render once with the new persona.
+  if (!persona || persona.role !== role) return null
   return (
     <div className="min-h-dvh bg-background">
       <aside className="fixed inset-y-0 start-0 z-30 hidden w-64 flex-col border-e bg-white lg:flex">
         <Link to="/" className="flex h-16 items-center gap-2 border-b px-5">
           <Logo className="h-6" />
         </Link>
-        <p className="px-5 pt-4 pb-2 text-xs font-semibold uppercase tracking-wide text-ink-soft">{t(`roles.${role}`)}</p>
+        <p className="px-5 pt-4 pb-2 text-xs font-semibold uppercase tracking-wide text-ink-soft">
+          {t(`roles.${role}`)}
+        </p>
         <div className="flex-1 overflow-y-auto px-3 pb-6">
           <SideNav role={role} />
         </div>
@@ -39,7 +44,13 @@ export function AppShell({ role }: { role: Role }) {
 
       <div className="lg:ps-64">
         <header className="sticky top-0 z-20 flex h-16 items-center gap-2 border-b bg-white/90 px-4 backdrop-blur sm:px-6">
-          <Button variant="ghost" size="icon" className="lg:hidden" aria-label={t('menu')} onClick={() => setOpen(true)}>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="lg:hidden"
+            aria-label={t('menu')}
+            onClick={() => setOpen(true)}
+          >
             <Menu className="size-5" aria-hidden />
           </Button>
           <Link to="/" className="lg:hidden">

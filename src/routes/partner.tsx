@@ -4,5 +4,5 @@ import { requireRole } from '@/lib/guard'
 
 export const Route = createFileRoute('/partner')({
   beforeLoad: requireRole('partner'),
-  component: () => <AppShell role="partner" />,
+  component: () => <AppShell area="partner" />,
 })

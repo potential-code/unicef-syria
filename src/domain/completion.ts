@@ -4,7 +4,12 @@ export const QUIZ_PASS = 80
 export const QUIZ_ATTEMPTS = 2
 
 export function emptyProgress(course: Course): CourseProgress {
-  return { courseId: course.id, units: course.units.map(() => 'todo' as UnitStatus), quizAttempts: [], practical: 'none' }
+  return {
+    courseId: course.id,
+    units: course.units.map(() => 'todo' as UnitStatus),
+    quizAttempts: [],
+    practical: 'none',
+  }
 }
 
 export function unitsDone(p: CourseProgress | undefined): number {
@@ -26,7 +31,10 @@ export function practicalDone(p: CourseProgress | undefined, reviewed = false): 
 }
 
 /** What is still missing before the course counts as complete (brief §5 progress rules). */
-export function missingRequirements(p: CourseProgress | undefined, reviewed = false): ('units' | 'quiz' | 'practical')[] {
+export function missingRequirements(
+  p: CourseProgress | undefined,
+  reviewed = false,
+): ('units' | 'quiz' | 'practical')[] {
   const out: ('units' | 'quiz' | 'practical')[] = []
   if (!p || p.units.some((u) => u !== 'done')) out.push('units')
   if (!quizPassed(p)) out.push('quiz')

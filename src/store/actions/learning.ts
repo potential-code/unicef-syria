@@ -1,4 +1,11 @@
-import type { CertificateState, CourseId, CourseProgress, UnitStatus, Youth, YouthId } from '@shared/types'
+import type {
+  CertificateState,
+  CourseId,
+  CourseProgress,
+  UnitStatus,
+  Youth,
+  YouthId,
+} from '@shared/types'
 import { COURSE_BY_ID } from '@/data/courses'
 import { L } from '@/data/l'
 import { COHORT_COURSES } from '@/data/orgs'
@@ -27,11 +34,22 @@ function settle(y: Youth, courseId: CourseId): Youth {
   const title = COURSE_BY_ID[courseId].title
   const next = { ...y, progress: { ...y.progress, [courseId]: done } }
   return refreshBadges(
-    award(next, `course:${courseId}`, 'course', POINTS.course, { en: `Course completed: ${title.en}`, ar: `إكمال الدورة: ${title.ar}` }, now()),
+    award(
+      next,
+      `course:${courseId}`,
+      'course',
+      POINTS.course,
+      { en: `Course completed: ${title.en}`, ar: `إكمال الدورة: ${title.ar}` },
+      now(),
+    ),
   )
 }
 
-function patch(id: YouthId, courseId: CourseId, fn: (p: CourseProgress, y: Youth) => CourseProgress) {
+function patch(
+  id: YouthId,
+  courseId: CourseId,
+  fn: (p: CourseProgress, y: Youth) => CourseProgress,
+) {
   update((db) =>
     withYouth(db, id, (y) => {
       const p = fn(progressOf(y, courseId), y)
@@ -41,7 +59,11 @@ function patch(id: YouthId, courseId: CourseId, fn: (p: CourseProgress, y: Youth
 }
 
 export function startCourse(id: YouthId, courseId: CourseId) {
-  patch(id, courseId, (p) => (p.units.every((u) => u === 'todo') ? { ...p, units: p.units.map((u, i) => (i === 0 ? 'inProgress' : u)) } : p))
+  patch(id, courseId, (p) =>
+    p.units.every((u) => u === 'todo')
+      ? { ...p, units: p.units.map((u, i) => (i === 0 ? 'inProgress' : u)) }
+      : p,
+  )
 }
 
 export function setUnitStatus(id: YouthId, courseId: CourseId, index: number, status: UnitStatus) {
@@ -57,7 +79,11 @@ export function setUnitStatus(id: YouthId, courseId: CourseId, index: number, st
 export function submitQuiz(id: YouthId, courseId: CourseId, score: number) {
   patch(id, courseId, (p) => {
     if (p.quizAttempts.length >= QUIZ_ATTEMPTS && (p.quizBest ?? 0) < 80) return p
-    return { ...p, quizAttempts: [...p.quizAttempts, score], quizBest: Math.max(p.quizBest ?? 0, score) }
+    return {
+      ...p,
+      quizAttempts: [...p.quizAttempts, score],
+      quizBest: Math.max(p.quizBest ?? 0, score),
+    }
   })
 }
 
@@ -71,9 +97,22 @@ export function reviewPractical(id: YouthId, courseId: CourseId, approved: boole
   update((db) =>
     withYouth(db, id, (y) => {
       const p = progressOf(y, courseId)
-      let next: Youth = { ...y, progress: { ...y.progress, [courseId]: { ...p, practical: approved ? 'approved' : 'returned' } } }
+      let next: Youth = {
+        ...y,
+        progress: {
+          ...y.progress,
+          [courseId]: { ...p, practical: approved ? 'approved' : 'returned' },
+        },
+      }
       if (approved) {
-        next = award(next, `practical:${courseId}`, 'practical', POINTS.practical, L('Practical output approved', 'اعتماد المهمة العملية'), now())
+        next = award(
+          next,
+          `practical:${courseId}`,
+          'practical',
+          POINTS.practical,
+          L('Practical output approved', 'اعتماد المهمة العملية'),
+          now(),
+        )
       }
       return settle(next, courseId)
     }),
@@ -85,7 +124,9 @@ export function setCertificate(id: YouthId, courseId: CourseId, state: Certifica
   update((db) =>
     withYouth(db, id, (y) => {
       const p = y.progress[courseId]
-      return p?.completedAt ? { ...y, progress: { ...y.progress, [courseId]: { ...p, certificate: state } } } : y
+      return p?.completedAt
+        ? { ...y, progress: { ...y.progress, [courseId]: { ...p, certificate: state } } }
+        : y
     }),
   )
 }

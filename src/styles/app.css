@@ -153,7 +153,12 @@
   }
   /* Signature gradients (cyan → blue → navy). */
   .bg-grad-unicef {
-    background-image: linear-gradient(135deg, var(--unicef-cyan) 0%, var(--unicef-blue) 55%, var(--unicef-navy) 100%);
+    background-image: linear-gradient(
+      135deg,
+      var(--unicef-cyan) 0%,
+      var(--unicef-blue) 55%,
+      var(--unicef-navy) 100%
+    );
   }
   .bg-grad-sky {
     background-image: linear-gradient(180deg, var(--unicef-sky-100) 0%, #ffffff 100%);
@@ -168,7 +173,9 @@
     color: transparent;
   }
   .lift {
-    transition: transform 200ms ease, box-shadow 200ms ease;
+    transition:
+      transform 200ms ease,
+      box-shadow 200ms ease;
   }
   .lift:hover {
     transform: translateY(-3px);

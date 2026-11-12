@@ -227,4 +227,7 @@ Next sample I want to create:`,
   },
 ]
 
-export const TEMPLATE_BY_ID = Object.fromEntries(TEMPLATES.map((t) => [t.id, t])) as Record<TemplateId, Template>
+export const TEMPLATE_BY_ID = Object.fromEntries(TEMPLATES.map((t) => [t.id, t])) as Record<
+  TemplateId,
+  Template
+>

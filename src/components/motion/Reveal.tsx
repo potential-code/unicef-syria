@@ -1,6 +1,6 @@
-import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { motion, type Variants } from 'motion/react'
 import type { ReactNode } from 'react'
+import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { fadeUp, staggerContainer } from './variants'
 
 interface RevealProps {

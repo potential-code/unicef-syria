@@ -8,7 +8,9 @@ import { usePrefs } from '@/store/actions/session'
 export function useReducedMotion(): boolean {
   const { reducedMotion } = usePrefs()
   const [system, setSystem] = useState(
-    () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    () =>
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches,
   )
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')

@@ -7,9 +7,11 @@ import { CENTRES, COHORTS, PARTNERS, TRAINERS } from '@/data/orgs'
  */
 export function centresInScope(p: Persona): CentreId[] {
   if (p.role === 'centre' && p.centreId) return [p.centreId]
-  if (p.role === 'partner' && p.partnerId) return PARTNERS.find((x) => x.id === p.partnerId)?.centreIds ?? []
+  if (p.role === 'partner' && p.partnerId)
+    return PARTNERS.find((x) => x.id === p.partnerId)?.centreIds ?? []
   if (p.role === 'unicef' || p.role === 'viewer') return CENTRES.map((c) => c.id)
-  if (p.role === 'trainer') return COHORTS.filter((c) => cohortsInScope(p).includes(c.id)).map((c) => c.centreId)
+  if (p.role === 'trainer')
+    return COHORTS.filter((c) => cohortsInScope(p).includes(c.id)).map((c) => c.centreId)
   return []
 }
 
@@ -32,7 +34,12 @@ export function canSeeYouth(p: Persona, y: Youth): boolean {
 }
 
 /** Fields an employer may see: applicant-approved career evidence only (brief §16 E02, §22). */
-export const EMPLOYER_HIDDEN_FIELDS = ['assessment', 'disability', 'support', 'coachingNotes'] as const
+export const EMPLOYER_HIDDEN_FIELDS = [
+  'assessment',
+  'disability',
+  'support',
+  'coachingNotes',
+] as const
 
 export const ROLE_HOME: Record<Role, string> = {
   youth: '/youth',

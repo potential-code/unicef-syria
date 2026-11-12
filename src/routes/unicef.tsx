@@ -4,5 +4,5 @@ import { requireRole } from '@/lib/guard'
 
 export const Route = createFileRoute('/unicef')({
   beforeLoad: requireRole('unicef'),
-  component: () => <AppShell role="unicef" />,
+  component: () => <AppShell area="unicef" />,
 })

@@ -1,6 +1,6 @@
-import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { motion, useInView } from 'motion/react'
 import { useRef } from 'react'
+import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { easeOut } from './variants'
 
 /**

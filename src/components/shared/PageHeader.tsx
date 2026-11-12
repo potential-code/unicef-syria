@@ -10,7 +10,19 @@ export interface Crumb {
 }
 
 /** Page title, optional breadcrumbs (detail pages) and actions. Sets the document title. */
-export function PageHeader({ title, description, crumbs, actions, eyebrow }: { title: string; description?: ReactNode; crumbs?: Crumb[]; actions?: ReactNode; eyebrow?: ReactNode }) {
+export function PageHeader({
+  title,
+  description,
+  crumbs,
+  actions,
+  eyebrow,
+}: {
+  title: string
+  description?: ReactNode
+  crumbs?: Crumb[]
+  actions?: ReactNode
+  eyebrow?: ReactNode
+}) {
   const { t } = useTranslation()
   usePageTitle(title)
   return (
@@ -19,9 +31,19 @@ export function PageHeader({ title, description, crumbs, actions, eyebrow }: { t
         <nav aria-label={t('breadcrumb')}>
           <ol className="flex flex-wrap items-center gap-1 text-sm text-ink-soft">
             {crumbs.map((c, i) => (
-              <li key={`${c.label}-${i}`} className="flex items-center gap-1">
-                {c.to ? <Link to={c.to} className="hover:text-blue hover:underline">{c.label}</Link> : <span aria-current="page" className="text-ink">{c.label}</span>}
-                {i < crumbs.length - 1 && <ChevronRight className="size-3.5 rtl-mirror" aria-hidden />}
+              <li key={c.to ?? c.label} className="flex items-center gap-1">
+                {c.to ? (
+                  <Link to={c.to} className="hover:text-blue hover:underline">
+                    {c.label}
+                  </Link>
+                ) : (
+                  <span aria-current="page" className="text-ink">
+                    {c.label}
+                  </span>
+                )}
+                {i < crumbs.length - 1 && (
+                  <ChevronRight className="size-3.5 rtl-mirror" aria-hidden />
+                )}
               </li>
             ))}
           </ol>

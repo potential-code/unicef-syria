@@ -17,7 +17,15 @@ const ROLE_TONE: Record<Persona['role'], string> = {
 }
 
 /** One click signs in as this demo profile and opens its home screen. */
-export function PersonaCard({ persona, onSelect, featured }: { persona: Persona; onSelect: () => void; featured?: boolean }) {
+export function PersonaCard({
+  persona,
+  onSelect,
+  featured,
+}: {
+  persona: Persona
+  onSelect: () => void
+  featured?: boolean
+}) {
   const { t } = useTranslation()
   const { l } = useLocalized()
   return (
@@ -34,8 +42,19 @@ export function PersonaCard({ persona, onSelect, featured }: { persona: Persona;
       {featured ? (
         <>
           <div className="relative aspect-[4/3] w-full overflow-hidden">
-            <SmartImage src={persona.image} alt="" className="size-full transition-transform duration-500 group-hover:scale-105" />
-            <span className={cn('absolute start-3 top-3 rounded-full px-2.5 py-1 text-xs font-bold', ROLE_TONE[persona.role])}>{t(`roles.${persona.role}`)}</span>
+            <SmartImage
+              src={persona.image}
+              alt=""
+              className="size-full transition-transform duration-500 group-hover:scale-105"
+            />
+            <span
+              className={cn(
+                'absolute start-3 top-3 rounded-full px-2.5 py-1 text-xs font-bold',
+                ROLE_TONE[persona.role],
+              )}
+            >
+              {t(`roles.${persona.role}`)}
+            </span>
           </div>
           <div className="flex items-end justify-between gap-2 p-4">
             <div className="min-w-0">
@@ -56,7 +75,10 @@ export function PersonaCard({ persona, onSelect, featured }: { persona: Persona;
             <p className="truncate text-sm text-ink-soft">{l(persona.title)}</p>
             <p className="truncate text-xs text-ink-soft">{l(persona.scope)}</p>
           </div>
-          <ArrowRight className="me-1 size-5 shrink-0 text-blue opacity-60 transition-opacity group-hover:opacity-100 rtl-mirror" aria-hidden />
+          <ArrowRight
+            className="me-1 size-5 shrink-0 text-blue opacity-60 transition-opacity group-hover:opacity-100 rtl-mirror"
+            aria-hidden
+          />
         </>
       )}
     </motion.button>

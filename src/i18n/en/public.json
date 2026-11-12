@@ -1,1 +1,450 @@
-{}
+{
+  "nav": {
+    "home": "Home",
+    "explore": "Explore",
+    "opportunities": "Opportunities",
+    "partners": "Partners",
+    "start": "Start my journey"
+  },
+  "footer": {
+    "tagline": "Discover your strengths, build your skills and take your next step: learning, career guidance and opportunities in one journey.",
+    "youth": "For young people",
+    "organisations": "For organisations",
+    "disclaimer": "This is a demonstration platform with fictional sample data. UNICEF Syria Youth Pathways is a proposed working name, not an approved programme. People, organisations, centres, vacancies and figures shown are illustrative."
+  },
+  "levels": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate"
+  },
+  "governorates": {
+    "Damascus": "Damascus",
+    "Aleppo": "Aleppo",
+    "Homs": "Homs"
+  },
+  "home": {
+    "title": "Discover, learn and take your next step",
+    "hero": {
+      "line1": "Discover your strengths.",
+      "line2": "Build your skills.",
+      "line3": "Take your next step.",
+      "body": "Explore learning, career guidance and opportunities to work, freelance or build a business.",
+      "primary": "Start my journey",
+      "secondary": "Explore training",
+      "imageAlt": "Young people working together in a bright training space",
+      "scroll": "See the routes"
+    },
+    "routes": {
+      "eyebrow": "Three career routes",
+      "title": "One journey,",
+      "titleAccent": "three ways to earn.",
+      "body": "Whether you want a steady job, your own business or flexible project work, you get a learning path built for that route, and you can change your mind at any time.",
+      "hint": "Keep scrolling to move through the routes",
+      "starter": "Starter courses",
+      "cta": "See courses for this route",
+      "employment": {
+        "title": "Get ready for a job you want",
+        "body": "Understand what employers ask for, build an honest CV and practise interviews until you feel confident.",
+        "points": [
+          "Read job adverts and match your skills",
+          "Build a one-page CV with real evidence",
+          "Practise interviews with feedback"
+        ],
+        "alt": "A young woman at a customer service desk"
+      },
+      "enterprise": {
+        "title": "Test and grow a business idea",
+        "body": "Talk to real customers, shape a simple business model and plan your first small experiment, step by step.",
+        "points": [
+          "Find a customer problem worth solving",
+          "Sketch a business model and cash plan",
+          "Pitch your idea and get feedback"
+        ],
+        "alt": "A young man repairing a phone at a small workshop"
+      },
+      "freelance": {
+        "title": "Find flexible and project work",
+        "body": "Package what you are good at into a clear service, build sample work and write proposals clients understand.",
+        "points": [
+          "Define a service you can deliver",
+          "Create original portfolio samples",
+          "Write a scoped proposal and timeline"
+        ],
+        "alt": "A young woman designing social media content on a laptop"
+      }
+    },
+    "journey": {
+      "eyebrow": "How the journey works",
+      "title": "Five steps from curious to earning.",
+      "body": "Every step gives you something useful to keep, even before you find work.",
+      "imageAlt": "A mentor talking with a young learner",
+      "caption": "Trainers, mentors and AI coaches support you all the way.",
+      "steps": {
+        "discover": {
+          "title": "Discover",
+          "body": "A short scenario exercise shows how you like to work. There is no pass or fail."
+        },
+        "choose": {
+          "title": "Choose your route",
+          "body": "Pick employment, entrepreneurship or freelancing, with clear reasons for each suggestion."
+        },
+        "learn": {
+          "title": "Learn",
+          "body": "Follow a personal path of short online courses with practical tasks and certificates of completion."
+        },
+        "support": {
+          "title": "Get support",
+          "body": "Join centre sessions, book a mentor and practise with five AI coaches."
+        },
+        "earn": {
+          "title": "Earn",
+          "body": "Apply to sample jobs, internships, freelance projects and enterprise support with your evidence ready."
+        }
+      }
+    },
+    "featured": {
+      "eyebrow": "Featured courses",
+      "title": "Short courses, real practice.",
+      "body": "Every course has four units, a practical task and a quick knowledge check. Start with these.",
+      "cta": "Browse all 16 courses"
+    },
+    "stats": {
+      "title": "What is inside the demo",
+      "label": "Sample catalogue, not programme results",
+      "courses": "sample courses",
+      "routes": "career routes",
+      "coaches": "AI coaches (scripted)",
+      "mentors": "sample mentors"
+    },
+    "centres": {
+      "eyebrow": "Sample centres",
+      "title": "Learn online, practise at a centre.",
+      "body": "Courses run online. Three sample training centres add in-person sessions for their cohorts.",
+      "imageAlt": "Learners in a training centre classroom",
+      "badgeTitle": "Blended learning",
+      "badgeBody": "Online courses plus centre sessions with a trainer.",
+      "hosts": "Hosts {{programme}} with {{partner}}"
+    },
+    "events": {
+      "eyebrow": "Upcoming public events",
+      "title": "Meet employers and clients.",
+      "body": "Open events anyone with a profile can join.",
+      "public": "Open to all",
+      "time": "{{start}} to {{end}}, Syria time",
+      "capacity": "Up to {{count}} places",
+      "register": "Register for this event",
+      "registered": "You are registered",
+      "done": "You are registered for this event",
+      "note": "Sample event. No live meeting is created."
+    },
+    "partnerBand": {
+      "label": "Employers and programme partners",
+      "employers": {
+        "title": "Hiring young talent?",
+        "body": "Post opportunities, see skills evidence and give feedback that improves training.",
+        "cta": "For employers"
+      },
+      "partners": {
+        "title": "Running a programme?",
+        "body": "Follow participation, learning and outcomes across your centres in one place.",
+        "cta": "For programme partners"
+      }
+    },
+    "final": {
+      "title": "Your next step starts here.",
+      "body": "Create a profile in a few minutes and discover the career directions that may suit you."
+    }
+  },
+  "prompt": {
+    "title": "Create your profile first",
+    "body": "To enrol, save or apply for \"{{item}}\" you need a free profile. We will bring you straight back here afterwards.",
+    "point1": "Your saved courses and applications stay in one place.",
+    "point2": "You choose what employers can see.",
+    "create": "Create my profile",
+    "signIn": "I have a profile"
+  },
+  "explore": {
+    "eyebrow": "Catalogue preview",
+    "title": "Explore training",
+    "body": "Browse short courses for every career route. No profile needed to look around.",
+    "honest": "All 16 sample courses are available online at your own pace. The governorate and centre filters show where a sample centre adds blended, in-person sessions to a course for its cohort.",
+    "count": "{{count}} courses",
+    "count_one": "{{count}} course",
+    "empty": "Try removing a filter. Only a few courses have centre sessions in this sample.",
+    "delivery": {
+      "online": "Online, self-paced",
+      "blended": "Blended with centre sessions"
+    },
+    "filters": {
+      "route": "Career route",
+      "category": "Skill area",
+      "delivery": "Delivery format",
+      "governorate": "Governorate",
+      "centre": "Centre",
+      "level": "Level",
+      "any": "Any"
+    }
+  },
+  "course": {
+    "missing": "Course not found",
+    "missingBody": "This course is not in the sample catalogue. Browse the full list instead.",
+    "unit": "Unit {{n}}",
+    "enrol": "Enrol",
+    "save": "Save",
+    "inPlan": "In your learning path",
+    "enrolled": "Enrolled. The course is now in your learning path.",
+    "saved": "Saved to your learning path",
+    "duration": "Duration",
+    "level": "Level",
+    "language": "Language",
+    "languages": "English and Arabic",
+    "format": "Format",
+    "allRoutes": "Useful for all three career routes",
+    "outcomes": "What you will be able to do",
+    "units": "Four units",
+    "practical": "Practical task",
+    "output": "What you produce:",
+    "prerequisites": "Before you start",
+    "noPrereq": "No prerequisites. Anyone can start.",
+    "where": "Where you can take it",
+    "online": "Online, at your own pace, on phone or computer.",
+    "blendedAt": "Blended sessions at {{centre}}"
+  },
+  "opps": {
+    "eyebrow": "Opportunity preview",
+    "title": "Sample opportunities",
+    "body": "See the kinds of jobs, internships, flexible work and enterprise support you could prepare for.",
+    "honest": "All organisations and opportunities are fictional samples. Applying in this demo does not send anything to a real employer.",
+    "tabs": {
+      "jobs": "Jobs and Internships",
+      "flexible": "Part Time and Freelance",
+      "enterprise": "Enterprise Support"
+    },
+    "open": "Open",
+    "closed": "Closed",
+    "deadline": "Apply by {{date}}",
+    "apply": "Apply",
+    "save": "Save",
+    "saved": "Saved",
+    "drafted": "Started a draft application. Finish it from your Opportunities page.",
+    "savedToast": "Saved to your applications as a draft",
+    "emptyTitle": "No opportunities in this group yet",
+    "emptyBody": "Check another tab, or create a profile to be told when new sample opportunities appear."
+  },
+  "partners": {
+    "eyebrow": "Employers and partners",
+    "title": "Work with young people on their way up.",
+    "body": "One shared platform connects training centres, employers and programme partners around each learner's journey.",
+    "signIn": "Sign in to a demo workspace",
+    "employers": {
+      "title": "For employers and clients",
+      "body": "Find motivated young people with evidence of what they can do.",
+      "points": [
+        "Post jobs, internships and short freelance projects",
+        "Search candidates who chose to share their profile",
+        "See course evidence and practical work, never assessment scores or disability information",
+        "Move applications through clear stages and record confirmed starts",
+        "Share feedback that helps centres improve training"
+      ]
+    },
+    "partners": {
+      "title": "For programme partners and centres",
+      "body": "Follow participation, learning and outcomes across your network.",
+      "points": [
+        "Manage courses, cohorts, trainers and sessions",
+        "Track attendance, completion and certificates",
+        "See outcomes reported by employers separately from learner reports",
+        "Plan 3, 6 and 12 month follow-up",
+        "Filter reports by centre, programme, route and governorate"
+      ]
+    },
+    "views": {
+      "title": "Each role sees only what it needs",
+      "body": "Every sign-in opens a view scoped to that role. Nobody sees records outside their own centre, organisation or partner network.",
+      "trainer": "Assigned cohorts only: applications, sessions, attendance and practical reviews.",
+      "employer": "Own organisation only: its opportunities, applicants and placements.",
+      "centre": "Own centre only: courses, participants, trainers and results.",
+      "partner": "Own partner network: centres, programmes and outcomes.",
+      "unicef": "National overview across partners, centres and governorates.",
+      "viewer": "Optional read-only aggregate reports. Not a confirmed requirement.",
+      "privacy": "Personal support needs, disability information and coaching notes are never shown to employers."
+    },
+    "cta": {
+      "title": "See it from your side",
+      "body": "Open a demo workspace for a trainer, employer, centre, partner or UNICEF administrator.",
+      "opps": "View sample opportunities"
+    }
+  },
+  "register": {
+    "eyebrow": "Create your profile",
+    "title": "Let's start your",
+    "titleAccent": "journey.",
+    "returnNote": "When you finish, we will take you back to the item you chose.",
+    "restored": "We restored your saved draft. Passwords are never kept in a draft.",
+    "demoNote": "This demo registration creates the sample learner Nour Hassan. Anything you enter stays on this device.",
+    "sample": "Use Nour's sample details",
+    "sampleDone": "Nour's sample details added. Check each step, then create the profile.",
+    "completion": "Profile {{value}} percent complete",
+    "completionLabel": "profile complete",
+    "stepOf": "Step {{n}} of {{total}}",
+    "stepDone": "completed",
+    "steps": {
+      "account": "Account",
+      "background": "Background",
+      "interests": "Interests",
+      "support": "Support",
+      "permissions": "Permissions"
+    },
+    "intro": {
+      "account": "Your name, how we reach you and your preferred language.",
+      "background": "A little about you, so we can suggest the right learning.",
+      "interests": "What you enjoy and what you can already do.",
+      "support": "Optional. Tell us anything that helps you learn well.",
+      "permissions": "You decide how your profile is used and shared."
+    },
+    "optional": "optional",
+    "choose": "Choose",
+    "saveDraft": "Save draft",
+    "draftSaved": "Draft saved on this device",
+    "savedAt": "Draft saved at {{time}}",
+    "fixErrors": "Please check the highlighted fields",
+    "create": "Create my profile",
+    "creating": "Creating your profile",
+    "errors": {
+      "name": "Enter your name.",
+      "contact": "Enter a valid email address or mobile number.",
+      "password": "Use at least 6 characters.",
+      "verify": "Select Verify (demo) to confirm your contact details.",
+      "age": "Enter your age in years.",
+      "required": "Choose an option.",
+      "interests": "Choose at least one career interest.",
+      "consent": "Please confirm programme participation to continue."
+    },
+    "account": {
+      "name": "Full name",
+      "contact": "Email or mobile number",
+      "contactHint": "We use this to sign you in and send programme updates.",
+      "verify": "Verify (demo)",
+      "verifying": "Verifying",
+      "verified": "Verified (demo)",
+      "verifiedToast": "Contact details marked as verified for the demo",
+      "noOtp": "Demonstration only: no code or message is sent.",
+      "password": "Password",
+      "passwordHint": "At least 6 characters.",
+      "lang": "Preferred language"
+    },
+    "background": {
+      "age": "Age",
+      "ageHint": "Sample learners are aged 18 to 24.",
+      "ageNote": "Age eligibility for the programme is to be confirmed.",
+      "gender": "Gender",
+      "governorate": "Governorate",
+      "education": "Highest education",
+      "employment": "Current employment status",
+      "digital": "Digital access",
+      "format": "Preferred learning format",
+      "experience": "Experience",
+      "experienceHint": "Paid work, volunteering, family business or projects all count."
+    },
+    "interests": {
+      "interests": "Career interests",
+      "skills": "Skills you already have",
+      "sectors": "Preferred sectors",
+      "availability": "Work availability",
+      "cv": "CV upload",
+      "cvNote": "Simulation: no file is opened or uploaded. A sample file name is attached to show how it works.",
+      "cvAttach": "Attach a sample CV",
+      "cvAdded": "Sample CV attached",
+      "cvRemove": "Remove {{file}}"
+    },
+    "support": {
+      "whoTitle": "Who can see this",
+      "who": "Only you, your assigned trainer and centre support staff can see support preferences. They are never shown to employers or clients, and you can change them at any time.",
+      "prefs": "Accessibility and learning support",
+      "note": "Anything else that would help you learn",
+      "noteHint": "For example, a time of day that suits you, or a support need.",
+      "disability": "Do you have a disability?",
+      "disabilityHint": "Optional. Used only for inclusion reporting and support. Never shared with employers."
+    },
+    "permissions": {
+      "programme": "I agree to take part in the programme",
+      "programmeBody": "My trainer and centre can see my profile, learning progress, attendance and practical work to support me. Reports use combined numbers only.",
+      "employer": "Show my profile to employers and clients",
+      "employerBody": "You can switch this off at any time. Applying to an opportunity always shares your application with that organisation.",
+      "on": "On: approved employers can find your profile in candidate search.",
+      "off": "Off: employers only see what you send when you apply.",
+      "sharedTitle": "Employers can see",
+      "shared": [
+        "Your name and governorate",
+        "Skills and career interests",
+        "Completed courses and certificates",
+        "Your CV, if you choose to attach it"
+      ],
+      "hiddenTitle": "Employers never see",
+      "hidden": [
+        "Disability and support information",
+        "Career discovery scores",
+        "Coaching notes and private messages",
+        "Your contact details until you apply"
+      ],
+      "sample": "Use sample information only. This demonstration does not store real personal data."
+    },
+    "success": {
+      "title": "Your profile is ready. Discover the career directions that may suit you.",
+      "body": "A short scenario exercise of about 8 to 10 minutes. It supports exploration, has no pass or fail and does not decide admission or employment eligibility.",
+      "discover": "Start career discovery",
+      "later": "Do this later",
+      "library": "You can use the general course library at any time."
+    },
+    "options": {
+      "basic": "Basic education",
+      "secondary": "Secondary school certificate",
+      "vocational": "Vocational diploma",
+      "university": "University studies",
+      "looking": "Looking for work",
+      "informal": "Informal part-time work",
+      "studying": "Studying",
+      "employed": "Employed and looking to grow",
+      "smartphone": "Smartphone only",
+      "shared": "Smartphone and shared laptop",
+      "own": "Own laptop and internet",
+      "limited": "Limited or occasional access",
+      "online": "Online",
+      "centre": "At a centre",
+      "blended": "Blended (online and centre)",
+      "weekdays": "Weekdays",
+      "evenings": "Evenings",
+      "weekends": "Weekends",
+      "flexible": "Flexible",
+      "customerService": "Customer service",
+      "office": "Office coordination",
+      "business": "Small business",
+      "digitalContent": "Digital content",
+      "repair": "Repair and maintenance",
+      "tech": "Mobile apps",
+      "registration": "Event registration",
+      "languages": "Arabic and English",
+      "spreadsheets": "Basic spreadsheets",
+      "social": "Social media",
+      "repairBasics": "Phone repair basics",
+      "conversations": "Customer conversations",
+      "services": "Services",
+      "retail": "Retail",
+      "education": "Education and training",
+      "technology": "Technology",
+      "repairServices": "Repair services",
+      "community": "Community services",
+      "captions": "Captions on videos",
+      "largeText": "Larger text",
+      "extraTime": "Extra time for activities",
+      "screenReader": "Screen reader friendly content",
+      "quietSpace": "Quiet space at the centre",
+      "stepAccess": "Step-free access at the centre",
+      "female": "Female",
+      "male": "Male",
+      "notDisclosed": "Prefer not to say",
+      "d_notDisclosed": "Prefer not to say",
+      "d_yes": "Yes",
+      "d_no": "No"
+    }
+  }
+}

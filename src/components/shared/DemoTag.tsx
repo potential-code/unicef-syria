@@ -6,7 +6,13 @@ import { cn } from '@/lib/utils'
 export function DemoTag({ className, onDark }: { className?: string; onDark?: boolean }) {
   const { t } = useTranslation()
   return (
-    <span className={cn('inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium', onDark ? 'bg-white/15 text-white' : 'bg-sky-100 text-navy', className)}>
+    <span
+      className={cn(
+        'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium',
+        onDark ? 'bg-white/15 text-white' : 'bg-sky-100 text-navy',
+        className,
+      )}
+    >
       <FlaskConical className="size-3.5" aria-hidden />
       {t('demoLabel')}
     </span>

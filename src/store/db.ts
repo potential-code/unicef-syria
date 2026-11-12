@@ -53,7 +53,13 @@ export interface DemoDb {
   reminders: { youthId: YouthId; sessionId: string; at: string }[]
   posts: CommunityPost[]
   notices: InAppNotice[]
-  employerFeedback: { orgId: OrgId; strengths: string; missing: string; needs: string; at: string }[]
+  employerFeedback: {
+    orgId: OrgId
+    strengths: string
+    missing: string
+    needs: string
+    at: string
+  }[]
   /** Booked mentor slots (one booking per slot). */
   bookedSlots: string[]
 }
@@ -122,7 +128,11 @@ function subscribe(listener: () => void) {
 
 /** Select a slice. Keep selectors returning stable references (no new arrays/objects). */
 export function useDb<T>(selector: (db: DemoDb) => T): T {
-  return useSyncExternalStore(subscribe, () => selector(state), () => selector(state))
+  return useSyncExternalStore(
+    subscribe,
+    () => selector(state),
+    () => selector(state),
+  )
 }
 
 /** Reset demo: every connected record returns to the seeded baseline. */

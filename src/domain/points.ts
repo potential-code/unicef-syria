@@ -21,7 +21,14 @@ export function hasAwarded(y: Youth, key: string): boolean {
 }
 
 /** Returns the youth with the entry added, or unchanged if the key was already used. */
-export function award(y: Youth, key: string, reason: PointsReason, amount: number, label: Localized, at: string): Youth {
+export function award(
+  y: Youth,
+  key: string,
+  reason: PointsReason,
+  amount: number,
+  label: Localized,
+  at: string,
+): Youth {
   if (hasAwarded(y, key)) return y
   const entry: PointsEntry = { key, reason, amount, at, label }
   return { ...y, points: [...y.points, entry] }

@@ -9,17 +9,34 @@ export function usePosts() {
 export function addPost(groupId: CommunityPost['groupId'], author: Localized, body: string) {
   update((db) => ({
     ...db,
-    posts: [{ id: `CP${db.posts.length + 1}`, groupId, author, body: { en: body, ar: body }, at: now(), replies: [] }, ...db.posts],
+    posts: [
+      {
+        id: `CP${db.posts.length + 1}`,
+        groupId,
+        author,
+        body: { en: body, ar: body },
+        at: now(),
+        replies: [],
+      },
+      ...db.posts,
+    ],
   }))
 }
 
 export function addReply(postId: string, author: Localized, body: string) {
   update((db) => ({
     ...db,
-    posts: db.posts.map((p) => (p.id === postId ? { ...p, replies: [...p.replies, { author, body: { en: body, ar: body }, at: now() }] } : p)),
+    posts: db.posts.map((p) =>
+      p.id === postId
+        ? { ...p, replies: [...p.replies, { author, body: { en: body, ar: body }, at: now() }] }
+        : p,
+    ),
   }))
 }
 
 export function reportPost(postId: string) {
-  update((db) => ({ ...db, posts: db.posts.map((p) => (p.id === postId ? { ...p, reported: true } : p)) }))
+  update((db) => ({
+    ...db,
+    posts: db.posts.map((p) => (p.id === postId ? { ...p, reported: true } : p)),
+  }))
 }

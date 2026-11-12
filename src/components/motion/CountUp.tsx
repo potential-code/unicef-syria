@@ -1,13 +1,6 @@
-import { useReducedMotion } from '@/hooks/use-reduced-motion'
-import {
-  animate,
-  motion,
-  useInView,
-  useMotionValue,
-  
-  useTransform,
-} from 'motion/react'
+import { animate, motion, useInView, useMotionValue, useTransform } from 'motion/react'
 import { useEffect, useRef } from 'react'
+import { useReducedMotion } from '@/hooks/use-reduced-motion'
 
 interface CountUpProps {
   value: number

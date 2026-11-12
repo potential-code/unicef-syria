@@ -22,7 +22,10 @@ function fallback(starters: Starter[]): CoachStep {
 // ---------------------------------------------------------------- Nour AI, Career Navigator
 
 const navigatorStarters: Starter[] = [
-  { label: L('Help me understand my career profile', 'ساعدني على فهم ملفي المهني'), step: 'profile' },
+  {
+    label: L('Help me understand my career profile', 'ساعدني على فهم ملفي المهني'),
+    step: 'profile',
+  },
   { label: L('Compare my three routes', 'قارن بين مساراتي الثلاثة'), step: 'compare' },
   { label: L('What should I do next?', 'ما الخطوة التالية التي عليّ القيام بها؟'), step: 'next' },
 ]
@@ -109,7 +112,10 @@ const navigator: Coach = {
         },
       ],
       replies: [
-        { label: L('Explore employment instead', 'استكشف التوظيف بدلًا من ذلك'), next: 'employment' },
+        {
+          label: L('Explore employment instead', 'استكشف التوظيف بدلًا من ذلك'),
+          next: 'employment',
+        },
         { label: L('Explore freelance work', 'استكشف العمل الحر'), next: 'freelance' },
       ],
     },
@@ -136,7 +142,10 @@ const navigator: Coach = {
         },
       ],
       replies: [
-        { label: L('Explore employment instead', 'استكشف التوظيف بدلًا من ذلك'), next: 'employment' },
+        {
+          label: L('Explore employment instead', 'استكشف التوظيف بدلًا من ذلك'),
+          next: 'employment',
+        },
         { label: L('Explore building a business', 'استكشف بناء مشروع تجاري'), next: 'business' },
       ],
     },
@@ -192,8 +201,20 @@ const learning: Coach = {
       id: 'explain',
       coach: L('Which lesson would you like me to explain?', 'أي درس تود أن أشرحه لك؟'),
       replies: [
-        { label: L('C05 Unit 3: Show evidence of skills', 'C05 الوحدة 3: إظهار الأدلة على المهارات'), next: 'explainC05' },
-        { label: L('C03 Unit 1: Listen and ask clear questions', 'C03 الوحدة 1: الإصغاء وطرح أسئلة واضحة'), next: 'explainC03' },
+        {
+          label: L(
+            'C05 Unit 3: Show evidence of skills',
+            'C05 الوحدة 3: إظهار الأدلة على المهارات',
+          ),
+          next: 'explainC05',
+        },
+        {
+          label: L(
+            'C03 Unit 1: Listen and ask clear questions',
+            'C03 الوحدة 1: الإصغاء وطرح أسئلة واضحة',
+          ),
+          next: 'explainC03',
+        },
       ],
     },
     {
@@ -237,7 +258,10 @@ const learning: Coach = {
       ),
       replies: [
         { label: L('Explain a lesson', 'اشرح درسًا'), next: 'explain' },
-        { label: L('Which course helps my goal?', 'أي دورة تساعدني على تحقيق هدفي؟'), next: 'goal' },
+        {
+          label: L('Which course helps my goal?', 'أي دورة تساعدني على تحقيق هدفي؟'),
+          next: 'goal',
+        },
       ],
     },
     {
@@ -262,28 +286,73 @@ const learning: Coach = {
     },
     {
       id: 'goalJob',
-      coach: L('These library courses support a job search.', 'تدعم هذه الدورات من المكتبة البحث عن وظيفة.'),
+      coach: L(
+        'These library courses support a job search.',
+        'تدعم هذه الدورات من المكتبة البحث عن وظيفة.',
+      ),
       courses: [
-        { courseId: 'C05', reason: L('Build an honest CV linked to a sample vacancy.', 'إعداد سيرة ذاتية صادقة مرتبطة بوظيفة نموذجية.') },
-        { courseId: 'C06', reason: L('Practise answering common interview questions.', 'التدرب على الإجابة عن أسئلة المقابلات الشائعة.') },
+        {
+          courseId: 'C05',
+          reason: L(
+            'Build an honest CV linked to a sample vacancy.',
+            'إعداد سيرة ذاتية صادقة مرتبطة بوظيفة نموذجية.',
+          ),
+        },
+        {
+          courseId: 'C06',
+          reason: L(
+            'Practise answering common interview questions.',
+            'التدرب على الإجابة عن أسئلة المقابلات الشائعة.',
+          ),
+        },
       ],
       replies: [{ label: L('Choose another goal', 'اختر هدفًا آخر'), next: 'goal' }],
     },
     {
       id: 'goalBusiness',
-      coach: L('These library courses support a new business idea.', 'تدعم هذه الدورات من المكتبة فكرة مشروع جديد.'),
+      coach: L(
+        'These library courses support a new business idea.',
+        'تدعم هذه الدورات من المكتبة فكرة مشروع جديد.',
+      ),
       courses: [
-        { courseId: 'C07', reason: L('Test your idea by talking to potential customers.', 'اختبار فكرتك بالتحدث مع عملاء محتملين.') },
-        { courseId: 'C09', reason: L('Explain your offer and choose practical sales channels.', 'شرح عرضك واختيار قنوات بيع عملية.') },
+        {
+          courseId: 'C07',
+          reason: L(
+            'Test your idea by talking to potential customers.',
+            'اختبار فكرتك بالتحدث مع عملاء محتملين.',
+          ),
+        },
+        {
+          courseId: 'C09',
+          reason: L(
+            'Explain your offer and choose practical sales channels.',
+            'شرح عرضك واختيار قنوات بيع عملية.',
+          ),
+        },
       ],
       replies: [{ label: L('Choose another goal', 'اختر هدفًا آخر'), next: 'goal' }],
     },
     {
       id: 'goalFreelance',
-      coach: L('These library courses support freelance work.', 'تدعم هذه الدورات من المكتبة العمل الحر.'),
+      coach: L(
+        'These library courses support freelance work.',
+        'تدعم هذه الدورات من المكتبة العمل الحر.',
+      ),
       courses: [
-        { courseId: 'C11', reason: L('Create a portfolio card and a proposal draft.', 'إنشاء بطاقة لملف أعمالك ومسودة مقترح.') },
-        { courseId: 'C12', reason: L('Plan milestones and handle client changes.', 'تخطيط المراحل والتعامل مع تغييرات العميل.') },
+        {
+          courseId: 'C11',
+          reason: L(
+            'Create a portfolio card and a proposal draft.',
+            'إنشاء بطاقة لملف أعمالك ومسودة مقترح.',
+          ),
+        },
+        {
+          courseId: 'C12',
+          reason: L(
+            'Plan milestones and handle client changes.',
+            'تخطيط المراحل والتعامل مع تغييرات العميل.',
+          ),
+        },
       ],
       replies: [{ label: L('Choose another goal', 'اختر هدفًا آخر'), next: 'goal' }],
     },
@@ -295,7 +364,10 @@ const learning: Coach = {
 
 const cvStarters: Starter[] = [
   { label: L('Improve this CV bullet', 'حسّن هذه النقطة في سيرتي الذاتية'), step: 'bullet' },
-  { label: L('Practise a customer-service interview', 'تدرّب على مقابلة لوظيفة خدمة العملاء'), step: 'interview' },
+  {
+    label: L('Practise a customer-service interview', 'تدرّب على مقابلة لوظيفة خدمة العملاء'),
+    step: 'interview',
+  },
   { label: L('Help me explain my strengths', 'ساعدني على شرح نقاط قوتي'), step: 'strengths' },
 ]
 
@@ -316,7 +388,9 @@ const cv: Coach = {
         'Tell me what you actually did during your training project.',
         'أخبرني بما قمت به فعلًا خلال مشروعك التدريبي.',
       ),
-      replies: [{ label: L('I helped register people.', 'ساعدت في تسجيل الأشخاص.'), next: 'bulletDraft' }],
+      replies: [
+        { label: L('I helped register people.', 'ساعدت في تسجيل الأشخاص.'), next: 'bulletDraft' },
+      ],
     },
     {
       id: 'bulletDraft',
@@ -447,7 +521,10 @@ const enterprise: Coach = {
   steps: [
     {
       id: 'idea',
-      coach: L('Who experiences the problem you want to solve?', 'من يواجه المشكلة التي تريد حلها؟'),
+      coach: L(
+        'Who experiences the problem you want to solve?',
+        'من يواجه المشكلة التي تريد حلها؟',
+      ),
       replies: [
         { label: L('Local repair businesses', 'محلات التصليح المحلية'), next: 'ideaEnquiries' },
         { label: L('I am not sure yet', 'لست متأكدًا بعد'), next: 'ideaUnsure' },
@@ -460,9 +537,17 @@ const enterprise: Coach = {
         'لا بأس. فكّر في أشخاص تراهم يوميًا يواجهون صعوبة في المهمة نفسها. ابدأ بفئة واحدة يمكنك التحدث إليها فعلًا. يمكن أن يساعدك الدرس الأول من الدورة C07.',
       ),
       courses: [
-        { courseId: 'C07', reason: L('Shows how to describe a customer and problem before a product.', 'توضح كيفية وصف العميل والمشكلة قبل التفكير في المنتج.') },
+        {
+          courseId: 'C07',
+          reason: L(
+            'Shows how to describe a customer and problem before a product.',
+            'توضح كيفية وصف العميل والمشكلة قبل التفكير في المنتج.',
+          ),
+        },
       ],
-      replies: [{ label: L('I have a customer group now', 'حددت فئة من العملاء الآن'), next: 'idea' }],
+      replies: [
+        { label: L('I have a customer group now', 'حددت فئة من العملاء الآن'), next: 'idea' },
+      ],
     },
     {
       id: 'ideaEnquiries',
@@ -471,7 +556,13 @@ const enterprise: Coach = {
         'جيد. قبل اقتراح حل، اكتشف كيف يعملون اليوم. كيف تتعامل محلات التصليح المحلية حاليًا مع استفسارات العملاء ومواعيدهم؟',
       ),
       replies: [
-        { label: L('Mostly by phone, and some appointments are missed', 'غالبًا عبر الهاتف، وتفوتهم بعض المواعيد'), next: 'ideaQuestions' },
+        {
+          label: L(
+            'Mostly by phone, and some appointments are missed',
+            'غالبًا عبر الهاتف، وتفوتهم بعض المواعيد',
+          ),
+          next: 'ideaQuestions',
+        },
         { label: L('I do not know yet', 'لا أعرف بعد'), next: 'ideaQuestions' },
       ],
     },
@@ -498,7 +589,9 @@ const enterprise: Coach = {
         'Here is a question many people start with: "Would you use an app that books your appointments?" It is a leading question, because it suggests your solution and invites a polite yes.',
         'إليك سؤالًا يبدأ به كثيرون: "هل ستستخدم تطبيقًا يحجز لك المواعيد؟" هذا سؤال موجّه، لأنه يقترح حلك ويدفع إلى إجابة مجاملة بـ"نعم".',
       ),
-      replies: [{ label: L('Show me a better version', 'أرني صيغة أفضل'), next: 'questionsBetter' }],
+      replies: [
+        { label: L('Show me a better version', 'أرني صيغة أفضل'), next: 'questionsBetter' },
+      ],
     },
     {
       id: 'questionsBetter',
@@ -557,9 +650,17 @@ const enterprise: Coach = {
         ),
       },
       courses: [
-        { courseId: 'C16', reason: L('Practise and improve your pitch, and learn how to find support.', 'التدرب على عرضك وتحسينه، وتعلّم كيفية إيجاد الدعم.') },
+        {
+          courseId: 'C16',
+          reason: L(
+            'Practise and improve your pitch, and learn how to find support.',
+            'التدرب على عرضك وتحسينه، وتعلّم كيفية إيجاد الدعم.',
+          ),
+        },
       ],
-      replies: [{ label: L('Review my customer questions', 'راجع أسئلتي للعملاء'), next: 'questions' }],
+      replies: [
+        { label: L('Review my customer questions', 'راجع أسئلتي للعملاء'), next: 'questions' },
+      ],
     },
     fallback(enterpriseStarters),
   ],
@@ -591,7 +692,10 @@ const freelance: Coach = {
         'الخدمة الواضحة تربط مهارة تملكها بالفعل بحاجة حقيقية لدى العميل. أي مهارة تود أن تقدمها؟',
       ),
       replies: [
-        { label: L('Writing social media posts', 'كتابة منشورات لوسائل التواصل الاجتماعي'), next: 'serviceContent' },
+        {
+          label: L('Writing social media posts', 'كتابة منشورات لوسائل التواصل الاجتماعي'),
+          next: 'serviceContent',
+        },
         { label: L('Organising spreadsheets', 'تنظيم جداول البيانات'), next: 'serviceSheets' },
       ],
     },
@@ -625,7 +729,13 @@ const freelance: Coach = {
         ),
       },
       courses: [
-        { courseId: 'C14', reason: L('Strengthens the spreadsheet skills behind this service.', 'تعزز مهارات جداول البيانات التي تقوم عليها هذه الخدمة.') },
+        {
+          courseId: 'C14',
+          reason: L(
+            'Strengthens the spreadsheet skills behind this service.',
+            'تعزز مهارات جداول البيانات التي تقوم عليها هذه الخدمة.',
+          ),
+        },
       ],
       replies: [
         { label: L('Review my proposal', 'راجع مقترحي'), next: 'proposal' },
@@ -637,7 +747,10 @@ const freelance: Coach = {
       coach: L('Choose a sample client brief to work from.', 'اختر طلب عميل نموذجيًا للعمل عليه.'),
       replies: [
         {
-          label: L('Sample content brief: five social media posts for a local retailer', 'طلب محتوى نموذجي: خمسة منشورات لوسائل التواصل لمتجر محلي'),
+          label: L(
+            'Sample content brief: five social media posts for a local retailer',
+            'طلب محتوى نموذجي: خمسة منشورات لوسائل التواصل لمتجر محلي',
+          ),
           next: 'proposalStructure',
         },
       ],
@@ -655,8 +768,14 @@ const freelance: Coach = {
         ),
       },
       replies: [
-        { label: L('What should I check before sending?', 'ما الذي عليّ التحقق منه قبل الإرسال؟'), next: 'proposalCheck' },
-        { label: L('How do I respond to a change request?', 'كيف أرد على طلب تغيير؟'), next: 'change' },
+        {
+          label: L('What should I check before sending?', 'ما الذي عليّ التحقق منه قبل الإرسال؟'),
+          next: 'proposalCheck',
+        },
+        {
+          label: L('How do I respond to a change request?', 'كيف أرد على طلب تغيير؟'),
+          next: 'change',
+        },
       ],
     },
     {
@@ -666,16 +785,30 @@ const freelance: Coach = {
         'قبل الإرسال، تحقق من أن نطاق العمل يطابق الطلب، وأن التوقيت واقعي بحسب أوقات توفرك، وأن رابط ملف أعمالك يعمل، وأن أي عمل نموذجي موصوف بوضوح.',
       ),
       courses: [
-        { courseId: 'C11', reason: L('Unit 4 covers reviewing a proposal before submitting.', 'يتناول الدرس الرابع مراجعة المقترح قبل تقديمه.') },
+        {
+          courseId: 'C11',
+          reason: L(
+            'Unit 4 covers reviewing a proposal before submitting.',
+            'يتناول الدرس الرابع مراجعة المقترح قبل تقديمه.',
+          ),
+        },
       ],
-      replies: [{ label: L('Help me define my service', 'ساعدني على تحديد خدمتي'), next: 'service' }],
+      replies: [
+        { label: L('Help me define my service', 'ساعدني على تحديد خدمتي'), next: 'service' },
+      ],
     },
     {
       id: 'change',
       coach: L('What has the client asked for?', 'ما الذي طلبه العميل؟'),
       replies: [
-        { label: L('The client wants two extra posts', 'يريد العميل منشورين إضافيين'), next: 'changeResponse' },
-        { label: L('The client wants a different colour scheme', 'يريد العميل ألوانًا مختلفة'), next: 'changeRevision' },
+        {
+          label: L('The client wants two extra posts', 'يريد العميل منشورين إضافيين'),
+          next: 'changeResponse',
+        },
+        {
+          label: L('The client wants a different colour scheme', 'يريد العميل ألوانًا مختلفة'),
+          next: 'changeRevision',
+        },
       ],
     },
     {
@@ -699,7 +832,13 @@ const freelance: Coach = {
         'إذا كان التغيير ضمن جولة المراجعة المتفق عليها، فسجّله ونفّذ التعديل. وإذا تجاوز ما اتُّفق عليه، فوضّح ذلك بلطف واقترح طريقة لإضافته.',
       ),
       courses: [
-        { courseId: 'C12', reason: L('Unit 3 covers recording revisions and discussing scope changes.', 'يتناول الدرس الثالث تسجيل التعديلات ومناقشة تغييرات النطاق.') },
+        {
+          courseId: 'C12',
+          reason: L(
+            'Unit 3 covers recording revisions and discussing scope changes.',
+            'يتناول الدرس الثالث تسجيل التعديلات ومناقشة تغييرات النطاق.',
+          ),
+        },
       ],
       replies: [{ label: L('Another change request', 'طلب تغيير آخر'), next: 'change' }],
     },

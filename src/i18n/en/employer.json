@@ -1,1 +1,387 @@
-{}
+{
+  "governorates": {
+    "Damascus": "Damascus",
+    "Aleppo": "Aleppo",
+    "Homs": "Homs",
+    "Remote": "Remote"
+  },
+  "tracks": {
+    "employment": "Employment",
+    "freelance": "Freelance",
+    "enterprise": "Enterprise support"
+  },
+  "workTypes": {
+    "fullTime": "Full-time",
+    "partTime": "Part-time",
+    "internship": "Internship",
+    "contract": "Fixed-term contract"
+  },
+  "approval": {
+    "title": "Approval and publication",
+    "approved": "Approved organisation",
+    "pending": "Pending centre or UNICEF approval",
+    "approvedBody": "A centre or UNICEF administrator has approved this organisation. New opportunities publish straight away.",
+    "pendingBody": "New organisations are reviewed by a centre or UNICEF administrator before their opportunities are published.",
+    "steps": {
+      "submitted": "Profile submitted",
+      "review": "Centre or UNICEF review",
+      "published": "Approved and publishing"
+    },
+    "done": "completed",
+    "notYet": "not yet completed",
+    "submit": "Submit for approval",
+    "simulate": "Simulate approval",
+    "submittedOn": "Submitted on {{date}}",
+    "submittedToast": "Profile submitted for approval",
+    "approvedToast": "Organisation approved (simulated)",
+    "note": "Approval and publication are simulated in this demonstration. No real organisation is verified."
+  },
+  "dashboard": {
+    "title": "Employer dashboard",
+    "body": "Your opportunities, applicants and confirmed placements, for your organisation only.",
+    "stats": {
+      "open": "Open opportunities",
+      "applicants": "Applicants",
+      "shortlisted": "Shortlisted",
+      "interviews": "Pending interviews or discussions",
+      "placements": "Confirmed placements"
+    },
+    "hints": {
+      "open": "Accepting new applications",
+      "applicants": "Submitted applications; drafts are not shown",
+      "shortlisted": "Reached shortlist, client discussion or acceptance",
+      "interviews": "Interview or client discussion in progress",
+      "placements": "Confirmed job starts only; offers are excluded"
+    },
+    "freelanceNote": "Completed freelance assignments: {{count}}. These are tracked separately and never counted as placements.",
+    "needsAction": "Applications needing your decision",
+    "yourOpps": "Your opportunities",
+    "allClear": {
+      "title": "No decisions waiting",
+      "body": "Every application has an outcome. New applications will appear here as soon as learners submit them."
+    }
+  },
+  "empty": {
+    "noApplicants": {
+      "title": "No applicants yet",
+      "body": "Publish a clear opportunity: a specific title, the main tasks, required skills, location and a realistic deadline help learners decide whether to apply."
+    },
+    "noMatch": {
+      "title": "No matching candidates",
+      "body": "Try adjusting the requirements or filters, or review the skills gap: learners may still be completing the relevant courses."
+    },
+    "noOpps": {
+      "title": "No opportunities yet",
+      "body": "Create your first opportunity to start receiving applications from trained learners."
+    }
+  },
+  "opps": {
+    "title": "Opportunities",
+    "body": "Create, review and close your organisation's opportunities.",
+    "create": "Create opportunity",
+    "statusOpen": "Open",
+    "statusClosed": "Closed",
+    "deadline": "Deadline",
+    "location": "Location",
+    "skills": "Required skills",
+    "viewApplicants": "View applicants",
+    "close": "Close opportunity",
+    "closeTitle": "Close {{title}}?",
+    "closeBody": "Existing applications and outcomes stay available to you and to the learners. New applications will be disabled.",
+    "closed": "Opportunity closed. Applications are retained.",
+    "reopen": "Reopen",
+    "reopened": "Opportunity reopened for new applications",
+    "closedNote": "Opportunity closed: applications and outcomes are retained, and new applications are disabled.",
+    "filter": {
+      "all": "All",
+      "open": "Open",
+      "closed": "Closed"
+    },
+    "noneInFilter": "No opportunities in this view",
+    "noneInFilterBody": "Choose another filter to see the rest of your opportunities.",
+    "applicantCount": "Applicants: {{count}}"
+  },
+  "form": {
+    "pageTitle": "Create an opportunity",
+    "pageBody": "Describe the role or project clearly. Title, scope, deadline and contact are checked before publishing.",
+    "type": "Opportunity type",
+    "title": "Title",
+    "titlePh": "For example: Front desk assistant",
+    "description": "Description and scope",
+    "descriptionHint": "Main tasks, who the learner will work with and what success looks like.",
+    "location": "Location",
+    "workFormat": "On-site, hybrid or remote",
+    "hours": "Hours",
+    "hoursOptions": {
+      "fullTime": "Full-time",
+      "partTime": "Part-time"
+    },
+    "skills": "Required skills",
+    "skillsHint": "Separate skills with commas.",
+    "skillsPh": "Customer communication, digital records",
+    "qualifications": "Qualifications (where relevant)",
+    "qualificationsPh": "For example: secondary school certificate",
+    "startDate": "Start date",
+    "deadline": "Application deadline",
+    "questions": "Application questions",
+    "questionsHint": "Keep questions short and relevant to the role.",
+    "questionsPh": "Why are you interested in this role?",
+    "compensation": "Compensation or fee information",
+    "compensationHint": "Optional. Add only what you can confirm.",
+    "contact": "Contact for applicants",
+    "contactPh": "Email or phone",
+    "freelanceLegend": "Freelance project details",
+    "deliverables": "Deliverables",
+    "deliverablesPh": "For example: five original posts with short copy",
+    "timeline": "Timeline",
+    "timelinePh": "For example: two weeks",
+    "review": "Review expectations",
+    "reviewPh": "For example: one round of review",
+    "feeFormat": "Project fee format",
+    "feeOptions": {
+      "fixed": "Fixed project fee",
+      "perDeliverable": "Per deliverable",
+      "toAgree": "To be agreed with the selected freelancer"
+    },
+    "defaultEvidence": "CV or profile and a short motivation answer",
+    "publish": "Publish opportunity",
+    "publishNote": "Publication is simulated. The opportunity appears for learners in this demo only.",
+    "approvalNote": "Your organisation is pending approval. The opportunity will publish once a centre or UNICEF administrator approves it.",
+    "fixErrors": "Please correct the highlighted fields",
+    "published": "Opportunity published",
+    "queued": "Opportunity saved and waiting for approval",
+    "errors": {
+      "title": "Enter a title of at least 4 characters.",
+      "description": "Describe the scope in at least 20 characters.",
+      "deadline": "Choose an application deadline.",
+      "deadlinePast": "The deadline must be after today.",
+      "contact": "Enter a valid email address or phone number.",
+      "deliverables": "List the deliverables for this freelance project."
+    }
+  },
+  "profile": {
+    "title": "Organisation profile",
+    "body": "Fictional organisation details shown to learners on your opportunities.",
+    "name": "Organisation name",
+    "nameHint": "Use a fictional name in this demonstration.",
+    "sector": "Sector",
+    "governorate": "Governorate",
+    "description": "Description",
+    "contactName": "Contact person",
+    "contactEmail": "Contact email",
+    "emailHint": "Sample address only. No messages are sent.",
+    "types": "Opportunity types you offer",
+    "save": "Save profile",
+    "saved": "Organisation profile saved",
+    "errors": {
+      "name": "Enter the organisation name.",
+      "description": "Add a description of at least 20 characters.",
+      "email": "Enter a valid email address."
+    }
+  },
+  "candidates": {
+    "title": "Candidate search",
+    "body": "Learners who chose to make their career profile visible to employers.",
+    "privacy": "Only opted-in profiles are shown. Assessment answers, disability information, support preferences and private coaching notes are never visible here.",
+    "matchAgainst": "Explain matches for",
+    "noOpp": "No opportunity selected",
+    "skillFilter": "Skills",
+    "skillPh": "Search declared skills",
+    "trainingFilter": "Completed training",
+    "interestFilter": "Career interest",
+    "locationFilter": "Location",
+    "availabilityFilter": "Availability",
+    "any": "Any",
+    "count": "{{count}} of {{total}} opted-in candidates",
+    "experience": "Relevant experience",
+    "portfolio": "Portfolio",
+    "courses": "Course evidence",
+    "noCourses": "No completed courses yet",
+    "skills": "Declared skills",
+    "none": "None listed",
+    "whyTitle": "Why suggested for {{title}}",
+    "skillMatch": "Declared skill \"{{declared}}\" supports {{requirement}}",
+    "evidenceMatch": "Completed {{course}}",
+    "gap": "Not yet completed: {{course}}",
+    "noSignals": "No declared skills or evidence linked to this opportunity yet."
+  },
+  "apps": {
+    "title": "Applications",
+    "body": "Review submitted applications and record each decision. Every change updates the learner's own timeline.",
+    "applicant": "Applicant",
+    "opportunity": "Opportunity",
+    "stage": "Stage",
+    "updated": "Last update",
+    "open": "Open",
+    "review": "Review",
+    "allOpps": "All opportunities",
+    "status": {
+      "all": "All stages",
+      "active": "Awaiting a decision",
+      "closed": "Outcome recorded"
+    },
+    "noneInFilter": "Change the opportunity or stage filter to see other applications."
+  },
+  "detail": {
+    "deniedTitle": "Application not available",
+    "progress": "Application progress",
+    "evidence": "Application evidence",
+    "feedback": "Feedback shared with the applicant",
+    "timeline": "Timeline (shared with the learner)",
+    "privacy": "Shown: applicant-approved career evidence only. Assessment answers, disability information, support and coaching notes stay private.",
+    "placed": "Confirmed job start recorded. It now appears under Placements and on the learner's timeline.",
+    "completed": {
+      "employment": "Completed.",
+      "freelance": "Delivery completed. Recorded as a freelance assignment, not as employment.",
+      "enterprise": "Clinic completed. Recorded as an enterprise milestone, not as a placement."
+    },
+    "by": {
+      "youth": "Learner",
+      "employer": "Your organisation",
+      "system": "System"
+    }
+  },
+  "actions": {
+    "underReview": "Start review",
+    "shortlisted": "Shortlist",
+    "interview": "Record interview",
+    "offer": "Record offer",
+    "hired": "Confirm job start",
+    "clientDiscussion": "Record client discussion",
+    "selected": "Select for assignment",
+    "inDelivery": "Confirm delivery started",
+    "completed": "Mark completed",
+    "review": "Start review",
+    "accepted": "Accept into programme",
+    "participating": "Confirm participation",
+    "notSelected": "Not selected"
+  },
+  "hints": {
+    "submitted": "New application. Start a review when you are ready.",
+    "underReview": "Review the evidence, then shortlist or record a respectful Not selected decision.",
+    "shortlisted": "Next step: record an interview.",
+    "interview": "After the interview, record an offer or a Not selected decision.",
+    "offer": "An offer is not a placement. Confirm the job start once the start date is agreed.",
+    "clientDiscussion": "After the discussion, select the freelancer or record a Not selected decision.",
+    "selected": "Selection is not completed work. Confirm when delivery starts.",
+    "inDelivery": "Mark the assignment completed when the agreed deliverables are received.",
+    "review": "Review the business concept, then accept or record a Not selected decision.",
+    "accepted": "Confirm when the learner starts participating. No funding is offered.",
+    "participating": "Mark completed when the clinic ends."
+  },
+  "move": {
+    "date": "Date",
+    "startDate": "Confirmed start date",
+    "dateLabel": {
+      "interview": "Interview date",
+      "clientDiscussion": "Discussion date",
+      "selected": "Selection date",
+      "inDelivery": "Delivery start date",
+      "completed": "Completion date"
+    },
+    "role": "Role",
+    "workType": "Work type",
+    "fee": "Sample fee (optional)",
+    "feeHint": "Illustrative only. No payment is processed.",
+    "note": "Note for the learner's timeline (optional)",
+    "dateRequired": "Choose a date.",
+    "roleRequired": "Enter the role.",
+    "bodyGeneric": "Record this step. The learner sees it on their application timeline.",
+    "body": {
+      "interview": "Record the interview date. The learner is notified in the app only.",
+      "clientDiscussion": "Record the client discussion. The learner is notified in the app only.",
+      "hired": "Confirm the job start with start date, role and work type. This creates a confirmed placement.",
+      "selected": "Record the selection. Selection is tracked separately from completed work.",
+      "inDelivery": "Record when delivery started.",
+      "completed": "Record completion. This is tracked separately from employment."
+    },
+    "noteHired": "Confirmed job start {{date}}, {{role}}, {{workType}}",
+    "noteDate": {
+      "interview": "Interview on {{date}}",
+      "clientDiscussion": "Client discussion on {{date}}",
+      "selected": "Selected on {{date}}",
+      "inDelivery": "Delivery started {{date}}",
+      "completed": "Completed on {{date}}"
+    },
+    "noteFee": "Sample fee {{fee}}",
+    "doneGeneric": "Stage updated on the learner's timeline",
+    "done": {
+      "underReview": "Review started",
+      "shortlisted": "Applicant shortlisted",
+      "interview": "Interview recorded",
+      "offer": "Offer recorded. Not counted as a placement yet",
+      "hired": "Job start confirmed and added to placements",
+      "clientDiscussion": "Client discussion recorded",
+      "selected": "Freelancer selected",
+      "inDelivery": "Delivery start recorded",
+      "completed": "Completion recorded",
+      "review": "Review started",
+      "accepted": "Applicant accepted",
+      "participating": "Participation confirmed"
+    }
+  },
+  "notSelected": {
+    "title": "Record Not selected",
+    "body": "Your feedback goes only to this applicant. No other applicants are named or compared.",
+    "label": "Feedback for the applicant",
+    "hint": "Be specific and kind. Mention one strength and one area to develop.",
+    "template": "Thank you, {{name}}, for applying and for the time you gave to this process. We are not able to offer you this opportunity on this occasion. Your application showed clear motivation. To strengthen future applications, we suggest adding one specific example of your work to your CV or portfolio. We encourage you to keep applying.",
+    "error": "Add feedback of at least 20 characters.",
+    "confirm": "Save decision and feedback",
+    "done": "Decision recorded with feedback. The learner keeps access to learning and career support."
+  },
+  "placements": {
+    "title": "Placements and feedback",
+    "body": "Confirmed outcomes for your opportunities and your feedback on workforce needs.",
+    "rule": "Only confirmed job starts count as placements. Offers awaiting a confirmed start: {{count}}. Freelance selection and enterprise acceptance are tracked separately.",
+    "employmentTitle": "Confirmed placements",
+    "freelanceTitle": "Freelance assignments",
+    "freelanceNote": "Selection, completed work and any sample fee are recorded separately. No payment is processed.",
+    "enterpriseTitle": "Enterprise support milestones",
+    "role": "Role",
+    "start": "Start date",
+    "workType": "Work type",
+    "source": "Confirmation source",
+    "followUp": "Follow-up status",
+    "selection": "Selected",
+    "completion": "Completed",
+    "fee": "Sample fee",
+    "notYet": "Not yet",
+    "confirmedByEmployer": "Confirmed by employer",
+    "learnerReported": "Learner-reported, pending confirmation",
+    "fuDue": "3-month follow-up due {{date}}",
+    "fuStatus": {
+      "due": "Follow-up due",
+      "overdue": "Follow-up overdue",
+      "learnerReported": "Learner-reported",
+      "confirmed": "Confirmed"
+    },
+    "empty": {
+      "title": "No confirmed placements yet",
+      "body": "When you confirm a job start on an application, it appears here. Offers alone are not placements."
+    },
+    "freelanceEmpty": {
+      "title": "No freelance assignments yet",
+      "body": "Select a freelancer from a client discussion to start tracking the assignment."
+    },
+    "enterpriseEmpty": {
+      "title": "No enterprise milestones yet",
+      "body": "Accept an applicant into the clinic to begin tracking participation and completion."
+    }
+  },
+  "feedback": {
+    "title": "Workforce feedback",
+    "body": "Your answers are combined with other employers' feedback in aggregate reports. Do not include names.",
+    "strengths": "Observed strengths",
+    "strengthsPh": "For example: punctual, friendly with customers",
+    "missing": "Missing skills",
+    "missingPh": "For example: spreadsheet basics",
+    "needs": "Future role needs",
+    "needsPh": "For example: two customer service roles in spring",
+    "error": "Add at least one answer before submitting.",
+    "submit": "Submit feedback",
+    "saved": "Feedback saved for aggregate reporting",
+    "previous": "Feedback you have shared",
+    "none": "No feedback submitted yet."
+  }
+}

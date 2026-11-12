@@ -232,7 +232,10 @@ export const COMMUNITY_POSTS: CommunityPost[] = [
     replies: [
       {
         author: L('Lamar', 'لمار'),
-        body: L('Thanks. I will bring mine and the job advert for O01.', 'شكرًا. سأحضر سيرتي وإعلان الوظيفة O01.'),
+        body: L(
+          'Thanks. I will bring mine and the job advert for O01.',
+          'شكرًا. سأحضر سيرتي وإعلان الوظيفة O01.',
+        ),
         at: at(11, '20:05'),
       },
     ],

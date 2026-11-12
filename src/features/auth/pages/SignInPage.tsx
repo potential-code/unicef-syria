@@ -1,8 +1,8 @@
 import type { PersonaId } from '@shared/types'
 import { Link, useNavigate } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next'
-import { Reveal, Stagger, StaggerItem } from '@/components/motion'
 import { DemoControls } from '@/components/layout/DemoControls'
+import { Reveal, Stagger, StaggerItem } from '@/components/motion'
 import { DemoTag } from '@/components/shared/DemoTag'
 import { LangToggle } from '@/components/shared/LangToggle'
 import { Logo } from '@/components/shared/Logo'
@@ -31,8 +31,14 @@ export function SignInPage() {
   return (
     <div className="min-h-dvh bg-grad-sky">
       <div className="relative overflow-hidden bg-grad-unicef pb-28 text-white on-dark">
-        <div className="pointer-events-none absolute -end-24 -top-24 size-96 rounded-full bg-cyan/40 blur-3xl" aria-hidden />
-        <div className="pointer-events-none absolute -bottom-32 start-10 size-80 rounded-full bg-yellow/25 blur-3xl" aria-hidden />
+        <div
+          className="pointer-events-none absolute -end-24 -top-24 size-96 rounded-full bg-cyan/40 blur-3xl"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute -bottom-32 start-10 size-80 rounded-full bg-yellow/25 blur-3xl"
+          aria-hidden
+        />
         <header className="container-page relative flex h-16 items-center gap-2">
           <Link to="/" aria-label={t('home')}>
             <Logo variant="white" className="h-7" />
@@ -56,11 +62,15 @@ export function SignInPage() {
 
         <section aria-labelledby="demo-profiles" className="mt-14">
           <div className="mb-6 text-center">
-            <h2 id="demo-profiles" className="text-2xl">{t('signInPage.demoTitle')}</h2>
+            <h2 id="demo-profiles" className="text-2xl">
+              {t('signInPage.demoTitle')}
+            </h2>
             <p className="mt-1 text-ink-soft">{t('signInPage.demoBody')}</p>
           </div>
 
-          <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-ink-soft">{t('signInPage.youthStories')}</h3>
+          <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-ink-soft">
+            {t('signInPage.youthStories')}
+          </h3>
           <Stagger className="grid gap-4 sm:grid-cols-3">
             {youth.map((p) => (
               <StaggerItem key={p.id}>
@@ -69,7 +79,9 @@ export function SignInPage() {
             ))}
           </Stagger>
 
-          <h3 className="mt-10 mb-3 text-sm font-bold uppercase tracking-wide text-ink-soft">{t('signInPage.staff')}</h3>
+          <h3 className="mt-10 mb-3 text-sm font-bold uppercase tracking-wide text-ink-soft">
+            {t('signInPage.staff')}
+          </h3>
           <Stagger className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[...staff, ...branch].map((p) => (
               <StaggerItem key={p.id}>

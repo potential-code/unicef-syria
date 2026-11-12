@@ -1,7 +1,6 @@
-import { gsap } from '@/lib/gsap'
 import { type ReactNode, useEffect, useRef } from 'react'
+import { gsap } from '@/lib/gsap'
 import { cn } from '@/lib/utils'
-
 
 /**
  * Drifts its content vertically while it crosses the viewport (GSAP scrub). `speed` is the

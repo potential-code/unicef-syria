@@ -21,21 +21,81 @@ export const OCCUPATION_DEMAND: { occupation: Localized; vacancies: number }[] =
 ]
 
 /** Skill appearances in the 30 sample vacancy records vs reviewed candidates with the module. */
-export const SKILL_DEMAND: { skill: Localized; vacancies: number; candidatesReady: number; courseId: string }[] = [
-  { skill: L('Customer communication', 'التواصل مع العملاء'), vacancies: 18, candidatesReady: 11, courseId: 'C03' },
-  { skill: L('Spreadsheets', 'جداول البيانات'), vacancies: 12, candidatesReady: 6, courseId: 'C14' },
-  { skill: L('Digital records', 'السجلات الرقمية'), vacancies: 10, candidatesReady: 9, courseId: 'C13' },
+export const SKILL_DEMAND: {
+  skill: Localized
+  vacancies: number
+  candidatesReady: number
+  courseId: string
+}[] = [
+  {
+    skill: L('Customer communication', 'التواصل مع العملاء'),
+    vacancies: 18,
+    candidatesReady: 11,
+    courseId: 'C03',
+  },
+  {
+    skill: L('Spreadsheets', 'جداول البيانات'),
+    vacancies: 12,
+    candidatesReady: 6,
+    courseId: 'C14',
+  },
+  {
+    skill: L('Digital records', 'السجلات الرقمية'),
+    vacancies: 10,
+    candidatesReady: 9,
+    courseId: 'C13',
+  },
   { skill: L('Teamwork', 'العمل الجماعي'), vacancies: 9, candidatesReady: 14, courseId: 'C03' },
-  { skill: L('Social media content', 'محتوى التواصل الاجتماعي'), vacancies: 5, candidatesReady: 4, courseId: 'C15' },
-  { skill: L('Basic pricing and cash planning', 'التسعير والتخطيط النقدي'), vacancies: 3, candidatesReady: 2, courseId: 'C08' },
+  {
+    skill: L('Social media content', 'محتوى التواصل الاجتماعي'),
+    vacancies: 5,
+    candidatesReady: 4,
+    courseId: 'C15',
+  },
+  {
+    skill: L('Basic pricing and cash planning', 'التسعير والتخطيط النقدي'),
+    vacancies: 3,
+    candidatesReady: 2,
+    courseId: 'C08',
+  },
 ]
 
-export const SKILL_GAPS: { sector: Localized; governorate: Governorate; gap: Localized; severity: 'high' | 'medium' | 'low' }[] = [
-  { sector: L('Services', 'الخدمات'), governorate: 'Damascus', gap: L('Customer communication', 'التواصل مع العملاء'), severity: 'high' },
-  { sector: L('Office and administration', 'المكاتب والإدارة'), governorate: 'Damascus', gap: L('Spreadsheets', 'جداول البيانات'), severity: 'high' },
-  { sector: L('Retail', 'التجزئة'), governorate: 'Homs', gap: L('Digital content', 'المحتوى الرقمي'), severity: 'medium' },
-  { sector: L('Repair services', 'خدمات الإصلاح'), governorate: 'Aleppo', gap: L('Booking and records', 'الحجوزات والسجلات'), severity: 'medium' },
-  { sector: L('Education and training', 'التعليم والتدريب'), governorate: 'Homs', gap: L('Scheduling', 'الجدولة'), severity: 'low' },
+export const SKILL_GAPS: {
+  sector: Localized
+  governorate: Governorate
+  gap: Localized
+  severity: 'high' | 'medium' | 'low'
+}[] = [
+  {
+    sector: L('Services', 'الخدمات'),
+    governorate: 'Damascus',
+    gap: L('Customer communication', 'التواصل مع العملاء'),
+    severity: 'high',
+  },
+  {
+    sector: L('Office and administration', 'المكاتب والإدارة'),
+    governorate: 'Damascus',
+    gap: L('Spreadsheets', 'جداول البيانات'),
+    severity: 'high',
+  },
+  {
+    sector: L('Retail', 'التجزئة'),
+    governorate: 'Homs',
+    gap: L('Digital content', 'المحتوى الرقمي'),
+    severity: 'medium',
+  },
+  {
+    sector: L('Repair services', 'خدمات الإصلاح'),
+    governorate: 'Aleppo',
+    gap: L('Booking and records', 'الحجوزات والسجلات'),
+    severity: 'medium',
+  },
+  {
+    sector: L('Education and training', 'التعليم والتدريب'),
+    governorate: 'Homs',
+    gap: L('Scheduling', 'الجدولة'),
+    severity: 'low',
+  },
 ]
 
 /** Monthly sample vacancy postings and confirmed placements (historical dataset). */

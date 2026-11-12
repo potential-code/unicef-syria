@@ -15,7 +15,11 @@ export function LangToggle({ className, onDark }: { className?: string; onDark?:
       size="sm"
       onClick={() => setLang(next)}
       lang={next}
-      className={cn('gap-1.5', onDark && 'text-white hover:bg-white/15 hover:text-white', className)}
+      className={cn(
+        'gap-1.5',
+        onDark && 'text-white hover:bg-white/15 hover:text-white',
+        className,
+      )}
       aria-label={`${t('language')}: ${next === 'ar' ? t('switchToArabic') : t('switchToEnglish')}`}
     >
       <Languages className="size-4" aria-hidden />

@@ -1,4 +1,11 @@
-import type { AnalyticsRow, CareerRoute, CentreId, Governorate, PartnerId, ProgrammeId } from '@shared/types'
+import type {
+  AnalyticsRow,
+  CareerRoute,
+  CentreId,
+  Governorate,
+  PartnerId,
+  ProgrammeId,
+} from '@shared/types'
 
 export interface KpiFilters {
   governorate?: Governorate
@@ -82,7 +89,11 @@ export function kpis(t: Totals) {
 export type Kpis = ReturnType<typeof kpis>
 
 /** Group distinct registered youth by one dimension (for participation charts). */
-export function breakdown<K extends FilterKey>(rows: AnalyticsRow[], key: K, metric: Num = 'registered') {
+export function breakdown<K extends FilterKey>(
+  rows: AnalyticsRow[],
+  key: K,
+  metric: Num = 'registered',
+) {
   const out = new Map<AnalyticsRow[K], number>()
   for (const r of rows) out.set(r[key], (out.get(r[key]) ?? 0) + r[metric])
   return [...out.entries()].map(([k, v]) => ({ key: k, value: v }))

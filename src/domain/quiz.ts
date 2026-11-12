@@ -7,7 +7,9 @@ export function arrangeOptions<Q extends CheckQuestion>(q: Q, salt = 0): Q {
   let h = salt
   for (const ch of q.prompt.en) h = (h * 31 + ch.charCodeAt(0)) >>> 0
   const shift = h % n
-  const options = q.options.map((_, i) => q.options[(i + shift) % n]!)
+  const options = q.options
+    .map((_, i) => q.options[(i + shift) % n] ?? q.options[i] ?? q.options[0])
+    .filter((o): o is NonNullable<typeof o> => o !== undefined)
   const correct = (q.correct - shift + n) % n
   return { ...q, options, correct }
 }

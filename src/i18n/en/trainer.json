@@ -1,1 +1,342 @@
-{}
+{
+  "ui": {
+    "syriaTime": "Syria time",
+    "all": "All",
+    "showAll": "Show all",
+    "learner": "Learner",
+    "status": "Status",
+    "actions": "Actions",
+    "none": "None",
+    "inProgress": "in progress",
+    "saving": "Saving"
+  },
+  "banner": {
+    "assigned": "Your assigned cohort",
+    "size": "{{size}} learners ({{named}} named in this demo)",
+    "next": "Next session"
+  },
+  "dashboard": {
+    "title": "Welcome back, {{name}}",
+    "subtitle": "Your assigned cohorts at a glance. Each figure opens the matching roster.",
+    "recordAttendance": "Record attendance",
+    "panel": "Performance panel",
+    "panelNote": "Named demo learners only. Excused sessions are not counted as absences.",
+    "viewRoster": "View roster",
+    "followUpTitle": "Learners requiring follow-up",
+    "followUpBody": "Missed sessions, support reminders and quiz support requests.",
+    "followUpGeneric": "Check in about recent progress",
+    "noFollowUp": "No follow-up needed",
+    "noFollowUpBody": "Everyone is on track. Absences and reminders will appear here.",
+    "gradingTitle": "Pending grading",
+    "gradingBody": "Practical submissions waiting for your rubric review.",
+    "openQueue": "Open assessment queue",
+    "upcoming": "Upcoming sessions",
+    "appsTitle": "Training applications",
+    "appsBody": "Applications waiting for a decision: {{count}}. Review profiles and assign accepted learners to your cohort.",
+    "openApps": "Review applications"
+  },
+  "metrics": {
+    "participants": "Assigned participants",
+    "participantsHint": "Learners in your cohorts",
+    "attendance": "Attendance rate",
+    "attendanceHint": "Present {{present}}, absent {{absent}}; excused {{excused}} tracked separately",
+    "completion": "Course completion",
+    "completionHint": "{{done}} of {{total}} cohort course places completed",
+    "grading": "Pending grading",
+    "gradingHint": "Practical tasks awaiting review",
+    "followUp": "Requiring follow-up",
+    "followUpHint": "Absences, reminders or support flags"
+  },
+  "reasons": {
+    "missed": "Missed sessions: {{count}}",
+    "reminder": "Reminders: {{count}}",
+    "quiz": "Quiz support"
+  },
+  "appStatus": {
+    "pending": "Pending",
+    "needsInfo": "Needs information",
+    "accepted": "Accepted",
+    "waitlisted": "Waitlisted",
+    "notSelected": "Not selected"
+  },
+  "decide": {
+    "accepted": "Accept",
+    "needsInfo": "Needs information",
+    "waitlisted": "Waitlist",
+    "notSelected": "Not selected"
+  },
+  "applications": {
+    "title": "Training applications",
+    "subtitle": "Applications to the programmes your cohorts run. Review each profile, record a decision and assign accepted learners.",
+    "programme": "Programme",
+    "applied": "Applied",
+    "review": "Review",
+    "empty": "No applications yet",
+    "emptyBody": "New registrations that apply to your programme will appear here for screening.",
+    "noneInTab": "No applications with this status",
+    "noneInTabBody": "Choose another status or show all applications.",
+    "reviewTitle": "Review training application",
+    "reviewBody": "{{programme}} · applied {{date}}",
+    "summary": "Profile summary",
+    "interests": "Interests",
+    "learning": "Current learning",
+    "completedCount": "Completed courses: {{count}}",
+    "support": "Support requests",
+    "noSupport": "No access arrangements requested",
+    "generalLearning": "General self-paced learning stays available while an application is pending or waitlisted. Cohort sessions open only after assignment.",
+    "decision": "Decision",
+    "decided": "{{name}}: {{status}}",
+    "assignPrompt": "Accepted. Assign to {{cohort}} to open its restricted sessions.",
+    "inCohort": "Assigned to {{cohort}}. Cohort sessions are now visible to this learner.",
+    "assign": "Assign to {{cohort}}",
+    "assigned": "{{name}} assigned to {{cohort}}"
+  },
+  "cohorts": {
+    "title": "My cohorts",
+    "subtitle": "Roster, progress, attendance, assessment status and practical submissions for your assigned cohorts only.",
+    "showing": "Showing {{count}} of {{total}} learners",
+    "empty": "No learners assigned yet",
+    "emptyBody": "Accept a training application and assign the learner to your cohort to see them here.",
+    "noMatchBody": "Clear or change a filter to see more learners.",
+    "note": "Progress covers the cohort courses. Attendance rate counts Present against Present plus Absent; Excused is shown separately."
+  },
+  "filters": {
+    "progress": "Progress",
+    "attendance": "Attendance",
+    "assessment": "Assessment status",
+    "practical": "Practical submissions",
+    "followUp": "Support follow-up only",
+    "progressOpt": {
+      "all": "All",
+      "notStarted": "Not started",
+      "incomplete": "Not yet complete",
+      "complete": "Complete"
+    },
+    "attendanceOpt": { "all": "All", "below": "Has an absence", "full": "Full attendance" },
+    "assessmentOpt": {
+      "all": "All",
+      "passed": "Quiz passed",
+      "pending": "In progress",
+      "needsSupport": "Needs quiz support",
+      "notStarted": "Not started"
+    },
+    "practicalOpt": { "all": "All", "submitted": "Awaiting review" }
+  },
+  "roster": {
+    "progress": "Progress",
+    "attendance": "Attendance",
+    "assessment": "Assessment",
+    "practical": "Practicals",
+    "followUp": "Follow-up",
+    "noMarks": "No marks yet",
+    "marks": "P {{p}} · A {{a}} · E {{e}}",
+    "toReview": "To review: {{list}}",
+    "needsFollowUp": "Follow up",
+    "onTrack": "On track"
+  },
+  "learner": {
+    "subtitle": "Chronological training record and the next support action.",
+    "deniedTitle": "Learner record",
+    "cohort": "Cohort",
+    "notAssigned": "Not assigned",
+    "record": "Training record",
+    "noRecord": "No activity recorded yet",
+    "noRecordBody": "Attendance, completed courses and reviews will appear here in date order.",
+    "nextAction": "Next support action"
+  },
+  "nextAction": {
+    "missed": {
+      "title": "Follow up on a missed session",
+      "body": "Contact the learner, share the session materials and agree how to catch up.",
+      "cta": "Open the session"
+    },
+    "review": {
+      "title": "Review the submitted practical",
+      "body": "A practical task is waiting for your rubric review and feedback.",
+      "cta": "Open assessments"
+    },
+    "quiz": {
+      "title": "Offer quiz support",
+      "body": "Both demo quiz attempts were used without a pass. Suggest a unit to revisit.",
+      "cta": "View results"
+    },
+    "recommend": {
+      "title": "Recommend for certification",
+      "body": "All requirements are met. Recommend the certificate for centre approval.",
+      "cta": "Open results"
+    },
+    "assign": {
+      "title": "Assign to a cohort",
+      "body": "The learner is not in a cohort yet. Review the training application.",
+      "cta": "Open applications"
+    },
+    "continue": {
+      "title": "Encourage the next unit",
+      "body": "The learner is on track. Check the next course requirement together.",
+      "cta": "View results"
+    }
+  },
+  "sessions": {
+    "title": "Sessions and attendance",
+    "subtitle": "Sessions for your cohorts only. Open a session to record attendance and add a follow-up note.",
+    "new": "New session",
+    "upcoming": "Upcoming",
+    "past": "Completed sample sessions",
+    "marked": "{{marked}} of {{total}} marked",
+    "noneInGroup": "No sessions in this group.",
+    "empty": "No sessions scheduled",
+    "emptyBody": "Create a sample session for your cohort to start recording attendance.",
+    "sampleNote": "All schedules are sample data, not booked sessions. Online sessions open a demo room; no live meeting is created.",
+    "deniedTitle": "Session"
+  },
+  "detail": {
+    "when": "Date and time",
+    "where": "Location",
+    "cohort": "Cohort and trainer",
+    "capacity": "capacity {{count}}",
+    "resources": "Resources",
+    "noResources": "No resources attached yet",
+    "assignment": "Assignment",
+    "demoRoom": "Demo online room (placeholder link)",
+    "edit": "Edit session"
+  },
+  "form": {
+    "newTitle": "Create a sample session",
+    "editTitle": "Edit session",
+    "body": "Sessions are saved in this demonstration only. Times are Syria time.",
+    "lockedNote": "This is a scheduled sample session: its title, cohort and time are fixed. You can update the room or joining placeholder, resources and assignment.",
+    "title": "Session title",
+    "cohort": "Cohort",
+    "trainer": "Trainer",
+    "format": "Format",
+    "fmt": { "online": "Online", "centre": "In person at the centre" },
+    "date": "Date",
+    "start": "Start",
+    "end": "End",
+    "timezone": "Times are in Syria time (UTC+3).",
+    "link": "Joining placeholder",
+    "linkPlaceholder": "Demo room link, e.g. demo-room/K01",
+    "room": "Centre room",
+    "roomPlaceholder": "e.g. Training room 2",
+    "resources": "Resources",
+    "resourcesPlaceholder": "e.g. STAR worksheet",
+    "assignment": "Assignment",
+    "assignmentPlaceholder": "e.g. Practise two interview answers",
+    "errTitle": "Enter a session title.",
+    "errDate": "Choose a date.",
+    "errTime": "The end time must be after the start time.",
+    "create": "Create session",
+    "saveChanges": "Save changes",
+    "created": "Session created: {{title}}",
+    "updated": "Session updated"
+  },
+  "register": {
+    "title": "Attendance register",
+    "body": "Mark each learner individually or mark everyone present. Present earns attendance points once.",
+    "allPresent": "Mark all present",
+    "allDone": "Attendance saved for {{count}} learners",
+    "presentHint": "Counted",
+    "absentHint": "Support reminder created",
+    "excusedHint": "Tracked separately",
+    "unmarkedHint": "Awaiting a mark",
+    "markFor": "Attendance for {{name}}",
+    "empty": "No learners in this cohort yet",
+    "emptyBody": "Assign accepted applicants to the cohort to build the register.",
+    "toast": {
+      "present": "{{name}} marked present",
+      "absent": "{{name}} marked absent. A support reminder was created.",
+      "excused": "{{name}} marked excused"
+    }
+  },
+  "note": {
+    "title": "Follow-up note",
+    "label": "Brief note for the cohort record",
+    "placeholder": "e.g. Share the slides with absent learners and check in before the next session.",
+    "saved": "Follow-up note saved"
+  },
+  "practical": {
+    "none": "Not submitted",
+    "submitted": "Awaiting review",
+    "returned": "Returned for revision",
+    "approved": "Approved"
+  },
+  "assessments": {
+    "title": "Assessments",
+    "subtitle": "Practical submissions from your learners. Score each with the sample rubric and give feedback.",
+    "open": "Open submission",
+    "empty": "No submissions waiting",
+    "emptyTab": "Nothing here yet",
+    "emptyBody": "When a learner submits a practical task it appears here for review.",
+    "rubricNote": "The rubric is proposed sample content: three criteria scored 0 to 2. A score of at least 4 out of 6 meets the demo task threshold."
+  },
+  "rubric": {
+    "understands": {
+      "label": "Understands the request",
+      "hint": "Identifies what the customer or client needs"
+    },
+    "clear": { "label": "Clear response", "hint": "Polite, concise and easy to follow" },
+    "nextStep": { "label": "Appropriate next step", "hint": "Offers a specific, realistic action" }
+  },
+  "review": {
+    "title": "Review: {{course}}",
+    "submittedBy": "Submitted practical task",
+    "response": "Learner response (sample)",
+    "rubric": "Rubric",
+    "total": "Score {{total}} / {{max}}",
+    "meets": "Meets the threshold ({{pass}}/6)",
+    "below": "Below the threshold ({{pass}}/6)",
+    "scoreAll": "Score all three criteria",
+    "feedback": "Feedback to the learner",
+    "feedbackPlaceholder": "What worked well, and one thing to improve.",
+    "errScores": "Score all three criteria first.",
+    "errFeedback": "Add feedback so the learner knows what to revise.",
+    "return": "Return for revision",
+    "approve": "Approve",
+    "approvedToast": "Approved with {{total}}/6. {{name}} received practical points.",
+    "returnedToast": "Returned to {{name}} for revision"
+  },
+  "resources": {
+    "title": "Learning resources",
+    "subtitle": "Course materials for your cohorts. Link a resource and a task to a course or to the whole cohort.",
+    "courseMaterials": "Cohort course materials",
+    "noMaterials": "No template attached",
+    "practicalTask": "Practical task",
+    "linkedTitle": "Resources you linked",
+    "empty": "No resources linked yet",
+    "emptyBody": "Use the form to attach a template and a task to a course or cohort.",
+    "formTitle": "Link a resource",
+    "resource": "Resource template",
+    "target": "Course or cohort",
+    "task": "Task for learners",
+    "taskPlaceholder": "e.g. Complete the worksheet before S03",
+    "errTask": "Describe the task for learners.",
+    "associate": "Link resource",
+    "linked": "{{resource}} linked to {{target}}",
+    "remove": "Remove link"
+  },
+  "results": {
+    "title": "Results and certificates",
+    "subtitle": "Quiz score, practical review and completion prerequisites for each cohort course.",
+    "flow": "Certificate flow",
+    "flowNote": "You recommend; the centre administrator approves and issues.",
+    "course": "Course",
+    "quiz": "Quiz",
+    "practical": "Practical",
+    "prerequisites": "Prerequisites",
+    "certificate": "Certificate",
+    "notAttempted": "Not attempted",
+    "allMet": "All requirements met",
+    "missingUnits": "Units: {{done}} of {{total}} completed",
+    "missingQuiz": "Final quiz not passed yet (80% needed)",
+    "missingQuizScore": "Final quiz: best {{score}}%, 80% needed",
+    "missingPractical": "Practical task not submitted",
+    "missingReview": "Practical awaiting your review",
+    "missingRevision": "Practical returned for revision",
+    "notEligible": "Not yet eligible. Complete the missing items first.",
+    "recommend": "Recommend for certification",
+    "recommendedToast": "{{name}} recommended for the {{course}} certificate",
+    "awaitingCentre": "Awaiting centre approval",
+    "empty": "No results yet",
+    "emptyBody": "Results appear once learners are assigned to your cohort."
+  }
+}

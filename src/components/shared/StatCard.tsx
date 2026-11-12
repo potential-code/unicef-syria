@@ -3,8 +3,29 @@ import type { ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
 /** Metric tile. `hint` holds the denominator or definition (brief §19). */
-export function StatCard({ label, value, hint, icon: Icon, tone = 'brand', footer, className }: { label: string; value: ReactNode; hint?: ReactNode; icon?: LucideIcon; tone?: 'brand' | 'yellow' | 'navy' | 'plain'; footer?: ReactNode; className?: string }) {
-  const iconTone = { brand: 'bg-sky-100 text-blue', yellow: 'bg-yellow/20 text-notice', navy: 'bg-blue-50 text-navy', plain: 'bg-muted text-ink-soft' }[tone]
+export function StatCard({
+  label,
+  value,
+  hint,
+  icon: Icon,
+  tone = 'brand',
+  footer,
+  className,
+}: {
+  label: string
+  value: ReactNode
+  hint?: ReactNode
+  icon?: LucideIcon
+  tone?: 'brand' | 'yellow' | 'navy' | 'plain'
+  footer?: ReactNode
+  className?: string
+}) {
+  const iconTone = {
+    brand: 'bg-sky-100 text-blue',
+    yellow: 'bg-yellow/20 text-notice',
+    navy: 'bg-blue-50 text-navy',
+    plain: 'bg-muted text-ink-soft',
+  }[tone]
   return (
     <div className={cn('flex flex-col gap-2 rounded-2xl border bg-card p-5 shadow-sm', className)}>
       <div className="flex items-start justify-between gap-3">

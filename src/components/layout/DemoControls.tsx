@@ -27,8 +27,8 @@ import { PERSONAS } from '@/data/personas'
 import { ROLE_HOME } from '@/domain/access'
 import { useLocalized } from '@/i18n'
 import { cn } from '@/lib/utils'
-import { resetDemo } from '@/store/db'
 import { setReducedMotion, signInAs, usePersona, usePrefs } from '@/store/actions/session'
+import { resetDemo } from '@/store/db'
 
 /** Presenter-only role switcher and "Reset demo" (brief §1). */
 export function DemoControls({ onDark, className }: { onDark?: boolean; className?: string }) {
@@ -43,7 +43,15 @@ export function DemoControls({ onDark, className }: { onDark?: boolean; classNam
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="sm" className={cn('gap-1.5', onDark && 'border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white', className)}>
+          <Button
+            variant="outline"
+            size="sm"
+            className={cn(
+              'gap-1.5',
+              onDark && 'border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white',
+              className,
+            )}
+          >
             <MonitorPlay className="size-4" aria-hidden />
             <span className="hidden sm:inline">{t('demo.presenter')}</span>
           </Button>
@@ -67,7 +75,10 @@ export function DemoControls({ onDark, className }: { onDark?: boolean; classNam
             </DropdownMenuItem>
           ))}
           <DropdownMenuSeparator />
-          <DropdownMenuCheckboxItem checked={prefs.reducedMotion} onCheckedChange={(v) => setReducedMotion(Boolean(v))}>
+          <DropdownMenuCheckboxItem
+            checked={prefs.reducedMotion}
+            onCheckedChange={(v) => setReducedMotion(Boolean(v))}
+          >
             {t('demo.motion')}
           </DropdownMenuCheckboxItem>
           <DropdownMenuItem onSelect={() => setConfirm(true)} className="gap-2 text-danger">

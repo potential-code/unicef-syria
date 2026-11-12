@@ -1,7 +1,7 @@
 import { createFileRoute, Outlet, useRouterState } from '@tanstack/react-router'
-import { LenisProvider } from '@/components/motion'
 import { PublicFooter } from '@/components/layout/PublicFooter'
 import { PublicHeader } from '@/components/layout/PublicHeader'
+import { LenisProvider } from '@/components/motion'
 
 /** Public site: smooth scrolling (Lenis) and heavy motion live here only. */
 function PublicLayout() {

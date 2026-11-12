@@ -1,1 +1,920 @@
-{}
+{
+  "coaches": {
+    "eyebrow": "Career support",
+    "title": "AI Coaches",
+    "intro": "Five scripted coaches help you explore routes, learn, write an honest CV, test a business idea and shape freelance work. Every answer comes from a prepared script linked to your profile and the course library.",
+    "chips": {
+      "scripted": "Scripted demo answers only",
+      "review": "You review every draft",
+      "human": "Human mentors available"
+    },
+    "aiLabel": "AI coach (scripted demo)",
+    "tryAsking": "Try asking",
+    "open": "Chat with {{name}}",
+    "notFound": "This coach is not part of the demonstration.",
+    "backToCoaches": "Back to AI coaches",
+    "restart": "Start again",
+    "chatLabel": "Conversation with {{name}}",
+    "greeting": "Hello {{name}}, I am {{coach}}. Choose a question below or type your own. I answer from a prepared script, so if I do not recognise a question I will suggest sample questions or a human mentor.",
+    "typing": "{{name}} is typing",
+    "starters": "Suggested questions",
+    "inputLabel": "Type a question for the coach",
+    "inputPlaceholder": "Type a question",
+    "send": "Send",
+    "scriptedNote": "Scripted demonstration. The coach does not create new answers and does not predict hiring decisions.",
+    "humanHelp": "Prefer to talk to a person?",
+    "bookMentor": "Book a human mentor",
+    "sampleClient": "Sample client brief: Demo Local Retailer",
+    "practiceQuestion": "Tell me about a time you helped a customer with a problem.",
+    "addToPlan": "Add to my plan",
+    "inPlan": "In my plan",
+    "addedToPlan": "{{course}} added to your learning plan",
+    "targets": {
+      "cv": "CV builder",
+      "interview": "Interview practice",
+      "business": "Business concept",
+      "freelanceProfile": "Freelance profile",
+      "proposal": "Proposal builder",
+      "plan": "My action plan"
+    },
+    "draft": {
+      "title": "Draft for your {{target}}",
+      "editable": "Edit before you save",
+      "empty": "Add some text before saving this draft.",
+      "review": "I have reviewed this draft. It is accurate and describes only what I actually did. AI drafts can contain mistakes.",
+      "use": "Use this draft",
+      "saved": "Saved to your toolkit",
+      "savedToast": "Draft saved to your {{target}}. You can keep editing it in the toolkit.",
+      "openToolkit": "Open my toolkit"
+    },
+    "rules": {
+      "title": "How these coaches work",
+      "scripted": "Answers follow prepared scripts. Unrecognised questions get sample questions or a human mentor, never invented answers.",
+      "grounded": "Suggestions point to your profile, your route and courses already in the library.",
+      "review": "Drafts are starting points. Review and edit them before you use them anywhere."
+    },
+    "mentorCard": {
+      "title": "Want human support?",
+      "body": "Book a 30 minute session with a sample mentor using points or your programme allocation."
+    }
+  },
+  "cohort": {
+    "eyebrow": "Your training cohort",
+    "title": "My Cohort and Sessions",
+    "intro": "Only the training activities assigned to your cohort appear here. Enrolling in a general course never unlocks restricted sessions.",
+    "learners": "{{count}} fictional learners",
+    "attendedCount": "Attended {{attended}} of {{total}} sessions",
+    "publicEvent": "Public event",
+    "sampleScenario": "Sample scenario",
+    "timing": {
+      "past": "Took place",
+      "upcoming": "Upcoming"
+    },
+    "onlineRoom": "Online demo room",
+    "panelHosts": "Illustrative employer panel",
+    "syriaTime": "Syria time (UTC+3)",
+    "timeRange": "{{start}} to {{end}}",
+    "capacity": "{{count}} places",
+    "attendanceLater": "Recorded by your trainer after the session",
+    "attendancePending": "Awaiting trainer confirmation",
+    "fields": {
+      "where": "Location",
+      "trainer": "Trainer",
+      "date": "Date",
+      "time": "Time",
+      "capacity": "Capacity",
+      "attendance": "Attendance",
+      "materials": "Materials",
+      "assignment": "Linked assignment"
+    },
+    "practical": {
+      "none": "Practical task not started",
+      "submitted": "Submitted, waiting for trainer review",
+      "approved": "Approved by your trainer",
+      "returned": "Returned with feedback"
+    },
+    "join": "Join online session",
+    "joinEnded": "This session has ended.",
+    "room": {
+      "note": "Demo room: video tiles are illustrations. No live meeting is created and nothing leaves the prototype.",
+      "speaking": "Speaking",
+      "you": "{{name}} (you)",
+      "mute": "Mute",
+      "unmute": "Unmute",
+      "cameraOff": "Turn camera off",
+      "cameraOn": "Turn camera on",
+      "leave": "Leave room"
+    },
+    "none": {
+      "title": "You are not assigned to a training cohort yet",
+      "body": "You are not assigned to a training cohort yet. Explore self-paced courses while you wait. Your trainer will add your sessions here once you join a cohort.",
+      "cta": "Explore the course library"
+    },
+    "noSessions": {
+      "title": "No sessions scheduled yet",
+      "body": "Your trainer has not added sessions to this cohort yet. Check back soon."
+    },
+    "sessionsTitle": "Assigned sessions",
+    "sessionsBody": "Sample schedule for November 2026. All times are Syria time.",
+    "viewLabel": "Choose a view",
+    "list": "List",
+    "calendar": "Calendar",
+    "calendarHint": "Select a session in the calendar to see its details.",
+    "calendarSelected": "Showing the selected session below.",
+    "showAll": "Show all sessions",
+    "restricted": {
+      "title": "{{count}} restricted sessions from other cohorts ({{cohorts}}) are not listed",
+      "body": "Cohort sessions are only visible to their members. A learner outside a cohort cannot see or join its sessions.",
+      "badge": "Members only"
+    },
+    "eventsTitle": "Open events"
+  },
+  "event": {
+    "eyebrow": "Public sample event",
+    "register": "Register for this event",
+    "registering": "Registering",
+    "registered": "You are registered",
+    "registeredToast": "You are registered for Meet employers and clients",
+    "registeredNote": "Demo registration only. No invitation is sent.",
+    "openToAll": "Open to all demo learners. No invitation leaves the prototype."
+  },
+  "community": {
+    "eyebrow": "Learn together",
+    "title": "Community and Events",
+    "intro": "Moderated groups where you can ask questions, practise and share ideas with other learners and trainers. All posts are sample content.",
+    "groupsLabel": "Community groups",
+    "posts": "{{count}} posts",
+    "membersOnly": "Members only",
+    "cohortGroup": "Cohort group: {{cohort}}",
+    "cohortGroupBody": "Private to members of your cohort and its trainer.",
+    "restricted": "Cohort groups for {{cohorts}} are restricted to their members and are not shown.",
+    "newPost": "Write a post in {{group}}",
+    "newPostPlaceholder": "Ask a question or share a tip",
+    "postHint": "Be kind and constructive. Do not share personal, health or contact details.",
+    "postError": "Write at least a few words before posting.",
+    "publish": "Post",
+    "postToast": "Your post is live in {{group}}",
+    "reply": "Reply ({{count}})",
+    "replyLabel": "Your reply",
+    "replyError": "Write a reply before sending.",
+    "sendReply": "Send reply",
+    "replyToast": "Reply posted",
+    "report": "Report",
+    "reportToast": "Thank you. The post has been reported.",
+    "reportToastBody": "A moderator will review it. Reports are confidential.",
+    "reported": "You reported this post. It is hidden while a moderator reviews it.",
+    "empty": {
+      "title": "No posts in this group yet",
+      "body": "Start the conversation: ask a question or share something you learned this week."
+    },
+    "rules": {
+      "title": "Community guidelines",
+      "moderated": "Every group is moderated by trained staff. Report anything unkind or unsafe.",
+      "privacy": "Personal support, disability and assessment information is never shown in the community.",
+      "noRanking": "There is no public leaderboard or competitive ranking. Progress is personal."
+    }
+  },
+  "mentors": {
+    "eyebrow": "Human support",
+    "title": "Mentorship",
+    "intro": "Book a 30 minute session with a sample mentor. Use your points or, when your programme includes it, your programme allocation.",
+    "balance": "points balance",
+    "rules": "Points are deducted once on a successful booking and returned if you cancel before the session. Essential learning and applications never require points.",
+    "mySessions": "My mentor sessions",
+    "noSessions": {
+      "title": "No mentor sessions yet",
+      "body": "Choose a mentor above, pick the sample slot and tell them your goal. Your booking will appear here."
+    },
+    "sampleProfile": "Sample mentor profile",
+    "alsoTrainer": "Also a cohort trainer",
+    "focus": "Focus",
+    "languages": "Languages",
+    "slot": "Sample slot",
+    "access": "Access",
+    "slotState": {
+      "available": "Available",
+      "mine": "Booked by you",
+      "taken": "Unavailable"
+    },
+    "costOrAllocation": "{{count}} points or programme allocation",
+    "costPoints": "{{count}} points",
+    "included": "Included in your programme",
+    "viewAndBook": "View profile and book",
+    "viewProfile": "View profile",
+    "notFound": "This mentor is not part of the demonstration.",
+    "back": "Back to mentors",
+    "trainerOf": "Also trainer for cohort {{cohorts}}",
+    "privacy": "Mentors see your goal and question only. They never see disability or support information, assessment answers or other unrelated records.",
+    "booking": {
+      "status": {
+        "booked": "Booked",
+        "cancelled": "Cancelled",
+        "completed": "Completed"
+      },
+      "paidPoints": "{{count}} points used",
+      "simulate": "Simulate completed session",
+      "completing": "Completing session",
+      "completedToast": "Session marked as completed. Your mentor's feedback is ready.",
+      "cancel": "Cancel booking",
+      "cancelTitle": "Cancel this mentor session?",
+      "cancelBodyPoints": "The slot becomes free again and {{count}} points return to your balance once.",
+      "cancelBodyAllocation": "The slot becomes free again and your programme allocation can be used for another session.",
+      "keep": "Keep booking",
+      "confirmCancel": "Cancel session",
+      "cancelledRefund": "Booking cancelled. {{count}} points returned to your balance.",
+      "cancelled": "Booking cancelled.",
+      "refunded": "{{count}} points returned to your balance."
+    },
+    "feedback": {
+      "title": "Mentor feedback",
+      "actions": "Two agreed actions",
+      "rate": "Rate this session",
+      "star": "{{count}} out of 5",
+      "thanks": "Thank you. Your rating is saved.",
+      "rated": "You rated this session {{count}} out of 5.",
+      "notRated": "Your rating helps the programme improve mentoring."
+    },
+    "locked": {
+      "title": "Not enough points yet",
+      "body": "Your balance is {{balance}} points. A session costs {{cost}} points, so you need {{missing}} more. These activities earn points:",
+      "activities": {
+        "profile": "Complete your profile (once)",
+        "assessment": "Complete career discovery (once)",
+        "course": "Complete a course",
+        "practical": "Get a practical output approved",
+        "attendance": "Attend an assigned session"
+      },
+      "done": "Done",
+      "essential": "Essential learning and applying for opportunities never require points."
+    },
+    "form": {
+      "title": "Book a session with {{name}}",
+      "intro": "Four short steps. No invitations or notifications leave the prototype.",
+      "step1": "Select the sample slot",
+      "thirtyMin": "30 minutes, online, Syria time",
+      "unavailable": "Unavailable",
+      "slotTakenHelp": "This slot is already booked. Choose another mentor or check again later.",
+      "errSlot": "Select the sample slot to continue.",
+      "step2": "Your goal and question",
+      "goal": "Goal for the session",
+      "goalPlaceholder": "For example: prepare for a customer-service interview",
+      "errGoal": "Describe your goal in a few words.",
+      "question": "Question for the mentor",
+      "questionPlaceholder": "What would you like to ask?",
+      "errQuestion": "Add one question for the mentor.",
+      "step3": "How would you like to book?",
+      "allocationYes": "Your cohort trainer offers this session as part of your programme. No points are used.",
+      "allocationNo": "Available when this mentor is also a trainer in your cohort.",
+      "pointsBalance": "Balance {{balance}}, after booking {{after}}.",
+      "alreadyBooked": "You already have a booked session with this mentor. See My mentor sessions.",
+      "step4": "Confirm",
+      "summaryPoints": "{{count}} points will be deducted once. Cancel before the session to get them back.",
+      "summaryAllocation": "This session uses your programme allocation. No points are deducted.",
+      "confirm": "Confirm booking",
+      "booking": "Booking",
+      "noInvites": "Demo booking: no email, invitation or calendar event is sent.",
+      "bookedToast": "Mentor session booked",
+      "confirmedTitle": "Your session is booked",
+      "confirmedBody": "{{when}}, Syria time. You can cancel or simulate the completed session from My mentor sessions.",
+      "seeSessions": "Go to My mentor sessions",
+      "pointsShort": "Balance {{balance}}. You need more points for this option."
+    }
+  },
+  "opps": {
+    "eyebrow": "Work, freelance and enterprise",
+    "title": "Opportunity hub",
+    "body": "Sample jobs, internships, freelance projects and enterprise support. Each card explains how your learning and toolkit match, and what is still missing.",
+    "myApplications": "My applications ({{count}})",
+    "tabsLabel": "Opportunity types",
+    "tabs": {
+      "jobs": "Jobs and Internships",
+      "flex": "Part Time and Freelance",
+      "enterprise": "Enterprise Support"
+    },
+    "tabHint": {
+      "jobs": "Salaried roles and internships with fictional employers. Filter by type, location and work format.",
+      "flex": "Part-time roles and short client projects. Filter by type, remote or in person, and how soon the deadline is.",
+      "enterprise": "Mentoring and customer-validation support for early business ideas. No funding is offered."
+    },
+    "filters": {
+      "type": "Opportunity type",
+      "location": "Location",
+      "format": "Work format",
+      "deadline": "Deadline",
+      "all": "All",
+      "inPerson": "On-site or hybrid",
+      "soon": "Closing within 14 days",
+      "later": "Closing later",
+      "recommended": "Recommended for me"
+    },
+    "count": "Opportunities shown: {{count}}",
+    "empty": {
+      "title": "No opportunities match these filters",
+      "body": "Clear the filters or try another tab. New sample opportunities appear here when employers publish them."
+    },
+    "open": "Open",
+    "closed": "Closed",
+    "closedNote": "Opportunity closed: applications are no longer accepted",
+    "recommended": "Recommended for you",
+    "yourStage": "Your application: {{stage}}",
+    "deadline": "Deadline {{date}}",
+    "view": "View and apply",
+    "viewApplication": "View my application",
+    "applyButton": "Apply",
+    "match": {
+      "title": "Why this may suit you",
+      "short": "Why it matches",
+      "matchesTitle": "Matching evidence",
+      "gapsTitle": "Gaps to close",
+      "route": "Fits the career route you chose",
+      "course": "You completed {{course}}",
+      "skill": "Your skill or interest \"{{mine}}\" relates to {{skill}}",
+      "gapCourse": "Complete {{course}}",
+      "toolkit": {
+        "cv": "Your CV is saved in the career toolkit",
+        "serviceProfile": "Your service profile is saved",
+        "proposal": "You have a saved proposal draft",
+        "businessConcept": "Your business concept is saved"
+      },
+      "gapToolkit": {
+        "cv": "Build your CV in the toolkit",
+        "serviceProfile": "Create a freelance service profile",
+        "proposal": "Draft a proposal in the proposal builder",
+        "businessConcept": "Save a business concept"
+      },
+      "none": "No matching evidence yet. The gaps show where to start.",
+      "noGaps": "No gaps found in the listed requirements.",
+      "openCourse": "Open course",
+      "openToolkit": "Open career toolkit",
+      "disclaimer": "Based on your demo profile and sample opportunity data; not live labour-market evidence. Matches explain your evidence and never predict a hiring decision."
+    },
+    "detail": {
+      "about": "About this opportunity",
+      "skills": "Required skills",
+      "evidence": "Application evidence",
+      "organisation": "Organisation",
+      "location": "Location",
+      "format": "Work format",
+      "deadline": "Deadline",
+      "back": "Back to opportunities",
+      "notFoundTitle": "Opportunity not found",
+      "notFoundBody": "This opportunity is not part of the demonstration. Browse the hub to find open sample opportunities.",
+      "note": {
+        "freelance": "Being selected for a project is not the same as completing the work. Both are tracked separately.",
+        "enterprise": "This is mentoring and customer-validation support. No cash funding is promised."
+      }
+    },
+    "apply": {
+      "title": "Your application",
+      "intro": {
+        "job": "Attach your CV, show your course evidence and add a short motivation answer.",
+        "internship": "Attach your CV, confirm your availability and show your course evidence.",
+        "partTime": "Attach your CV, confirm your availability and add a work sample.",
+        "freelance": "Share your service profile, a portfolio sample and a proposal.",
+        "enterprise": "Attach your business concept and explain your motivation."
+      },
+      "existingTitle": "You have applied",
+      "existingBody": "Current stage:",
+      "openApplication": "Track my application",
+      "closedBody": "Keep building your evidence. Similar sample opportunities may open later in the hub.",
+      "draftExists": "Draft saved earlier",
+      "attachCv": "Attach my CV from the toolkit",
+      "attachBusiness": "Attach my business concept from the toolkit",
+      "noCv": "You have not saved a CV yet.",
+      "noBusiness": "You have not saved a business concept yet.",
+      "noServiceProfile": "You have not saved a service profile yet.",
+      "noProposals": "No saved proposals yet.",
+      "proposalNone": "Choose a saved proposal",
+      "proposalAttached": "Proposal attached earlier",
+      "proposalReview": "Review the proposal in your toolkit before you submit. AI drafts must be checked by you.",
+      "coursesRule": {
+        "all": "Course evidence: all of these courses",
+        "any": "Course evidence: at least one of these courses"
+      },
+      "completed": "Completed",
+      "availabilityValue": "Availability from your profile: {{value}}",
+      "notSet": "not set",
+      "upload": "Add sample file",
+      "remove": "Remove",
+      "removeFile": "Remove {{file}}",
+      "uploadNote": "Simulated upload: a sample filename is attached and no file leaves the prototype. Never upload real personal documents.",
+      "motivationPlaceholder": "Why does this opportunity interest you, and what have you done that is relevant?",
+      "motivationHint": "Between {{min}} and {{max}} characters. Be honest and specific.",
+      "motivationError": "Write between {{min}} and {{max}} characters.",
+      "motivationCount": "{{count}} of {{max}}",
+      "checkTitle": "Before you submit",
+      "checklist": "Required evidence",
+      "ready": "Ready",
+      "missing": "Missing",
+      "req": {
+        "cv": "CV",
+        "courses": "Course evidence",
+        "motivation": "Short motivation answer",
+        "availability": "Availability",
+        "workSample": "Work sample",
+        "serviceProfile": "Service profile",
+        "portfolio": "Portfolio sample",
+        "proposal": "Proposal",
+        "businessConcept": "Business concept"
+      },
+      "fix": {
+        "toolkit": "Open toolkit",
+        "courses": "Open course",
+        "profile": "Edit profile"
+      },
+      "fixFirst": "Complete the missing items before you submit ({{count}}).",
+      "reviewNote": "Check every document before you submit. The organisation sees only the evidence you attach, never your assessment answers or support information.",
+      "saveDraft": "Save draft",
+      "submit": "Submit application",
+      "submitting": "Submitting",
+      "draftSaved": "Draft saved",
+      "submitted": "Application submitted",
+      "submittedBody": "It now shows as Submitted in your timeline and in the organisation's view."
+    }
+  },
+  "apps": {
+    "eyebrow": "Application tracking",
+    "title": "My applications",
+    "body": "Follow each application from draft to outcome. Status changes recorded by employers, clients and support hosts appear here.",
+    "browse": "Browse opportunities",
+    "empty": {
+      "title": "No applications yet",
+      "body": "Open the opportunity hub, check the match explanation and save your first draft."
+    },
+    "activeTitle": "In progress ({{count}})",
+    "closedTitle": "Closed ({{count}})",
+    "noActive": "No applications in progress. Explore the hub for your next step.",
+    "track": {
+      "employment": "Employment application",
+      "freelance": "Freelance project",
+      "enterprise": "Enterprise support"
+    },
+    "updated": "Updated {{date}}",
+    "open": "Open",
+    "nextTitle": "Next action",
+    "next": {
+      "employment": {
+        "draft": "Complete the required evidence and submit before the deadline.",
+        "submitted": "Wait for the employer review. Practise interview answers meanwhile.",
+        "underReview": "The employer is reviewing your evidence. Prepare with interview practice.",
+        "shortlisted": "You are shortlisted. Prepare for an interview with Lina AI or a mentor.",
+        "interview": "Prepare examples for the interview and check the time with the employer.",
+        "offer": "Review the offer. A start is confirmed only when the employer records it.",
+        "hired": "Your start is confirmed. Follow-up check-ins will ask how the role is going.",
+        "notSelected": "Read the feedback, try the recommended learning and keep applying.",
+        "withdrawn": "You withdrew this application. Explore other opportunities when you are ready."
+      },
+      "freelance": {
+        "draft": "Attach your service profile, portfolio sample and proposal, then submit.",
+        "submitted": "Wait for the client to review your proposal.",
+        "clientDiscussion": "Agree scope, timing and the review round with the client.",
+        "selected": "You are selected. Start delivery as agreed and record progress.",
+        "inDelivery": "Deliver the work and handle the agreed review round.",
+        "completed": "Work completed. Add the sample to your portfolio with the client's permission.",
+        "notSelected": "Read the feedback, refine your proposal and try another project.",
+        "withdrawn": "You withdrew this proposal. Explore other projects when you are ready."
+      },
+      "enterprise": {
+        "draft": "Attach your business concept and motivation, then submit.",
+        "submitted": "Wait for the support host to review your concept.",
+        "review": "The host is reviewing your concept. Keep testing with customers.",
+        "accepted": "You are accepted to the clinic. Prepare your next customer experiment.",
+        "participating": "Attend clinic sessions and record what you learn.",
+        "completed": "Clinic completed. Update your business concept with the evidence you gathered.",
+        "notSelected": "Read the feedback, strengthen your customer evidence and try again later.",
+        "withdrawn": "You withdrew this application. Keep developing your concept."
+      }
+    },
+    "detail": {
+      "timeline": "Your progress",
+      "currentStage": "Current stage:",
+      "current": "Current stage",
+      "reached": "Reached",
+      "upcoming": "Not yet",
+      "branch": {
+        "notSelected": "This application ended here",
+        "withdrawn": "You withdrew"
+      },
+      "events": "History",
+      "by": {
+        "youth": "Recorded by you",
+        "system": "Recorded by the platform",
+        "employer": {
+          "employment": "Recorded by the employer",
+          "freelance": "Recorded by the client",
+          "enterprise": "Recorded by the support host"
+        }
+      },
+      "documents": "Required documents",
+      "deadline": "Deadline",
+      "noDeadline": "No deadline recorded",
+      "oppClosed": "This opportunity is now closed. Your application and its outcome are kept.",
+      "feedback": "Feedback",
+      "noFeedback": "No feedback yet. Feedback from the organisation appears here.",
+      "continueDraft": "Continue your application",
+      "viewOpportunity": "View the opportunity",
+      "notFoundTitle": "Application not found",
+      "notFoundBody": "This application does not belong to your profile. Open your applications list to continue."
+    },
+    "docs": {
+      "cv": "CV",
+      "course": "Course evidence: {{course}}",
+      "motivation": "Motivation answer",
+      "workSample": "Work sample",
+      "serviceProfile": "Service profile",
+      "portfolio": "Portfolio sample",
+      "proposal": "Proposal",
+      "businessConcept": "Business concept",
+      "attached": "Attached",
+      "notAttached": "Not attached"
+    },
+    "outcomes": {
+      "title": "Outcomes",
+      "notYet": "Not yet",
+      "pending": "Pending confirmation",
+      "learnerReported": "Reported by you",
+      "recordedOn": "Recorded {{date}}",
+      "confirmedBy": {
+        "employment": "Confirmed by the employer",
+        "freelance": "Confirmed by the client",
+        "enterprise": "Confirmed by the support host"
+      },
+      "job": "Confirmed job start",
+      "internship": "Confirmed internship start",
+      "jobBody": "A start appears here once the employer records it. An outcome you report yourself is shown separately as pending confirmation.",
+      "offerNote": "An offer is not yet a confirmed start. It counts as a placement only after the employer confirms your start.",
+      "freelance": {
+        "selected": "Selected for the assignment",
+        "selectedBody": "The client chose your proposal.",
+        "completed": "Work completed",
+        "completedBody": "The client confirmed the agreed deliverables.",
+        "explain": "Being selected is not the same as completing the work, so both are tracked. Payment is agreed between you and the client and is not tracked in this demo."
+      },
+      "enterprise": {
+        "accepted": "Accepted to the support programme",
+        "body": "A milestone in your enterprise journey.",
+        "explain": "Acceptance means mentoring and customer-validation support. It is not funding and is not counted as an employment placement."
+      },
+      "reportToast": "Thank you. Your outcome is saved as pending confirmation.",
+      "reportHint": "Something happened outside the platform? Report it here. It stays pending until the organisation confirms it.",
+      "report": {
+        "job": "I have started this job",
+        "internship": "I have started this internship",
+        "freelanceCompleted": "I have completed the work",
+        "enterpriseAccepted": "I have been accepted",
+        "freelanceSelected": "I have been selected"
+      }
+    },
+    "notSelected": {
+      "eyebrow": "Your support continues",
+      "title": "Not selected this time, and that is part of the journey",
+      "reassurance": "Your learning, points, toolkit and mentor access all stay with you. Use the feedback to make your next application stronger.",
+      "feedbackTitle": "Constructive feedback",
+      "defaultFeedback": "Thank you for applying. Your answers were polite and clear. To strengthen your next application, add one specific example from your training and complete the recommended course.",
+      "learnTitle": "Recommended learning",
+      "learnBody": "This course builds the evidence this kind of opportunity asks for.",
+      "openCourse": "Open the course",
+      "keepGoing": "Explore other opportunities",
+      "mentor": "Book a mentor",
+      "coach": "Practise with an AI coach"
+    },
+    "withdraw": {
+      "button": "Withdraw",
+      "title": "Withdraw this application?",
+      "body": "The organisation will see that you withdrew. Your learning, toolkit and points are not affected.",
+      "confirm": "Withdraw application",
+      "done": "Application withdrawn"
+    }
+  },
+  "toolkit": {
+    "eyebrow": "Career toolkit · {{route}}",
+    "title": "Build your career evidence",
+    "body": "Your CV, interview practice, business concept, freelance profile and proposals in one place. Tools for your route come first, and every tool stays open to you.",
+    "noRoute": "No route chosen yet",
+    "forYou": "Your route",
+    "optional": "optional",
+    "coachNote": "Drafts you save from the AI coaches appear here. They stay editable: review every draft before you use it.",
+    "openCoaches": "Open AI coaches",
+    "itemLabel": "{{label}}, item {{n}}",
+    "removeItem": "Remove item {{n}}",
+    "tabs": {
+      "cv": "CV builder",
+      "interview": "Interview practice",
+      "business": "Business concept",
+      "freelance": "Freelance profile",
+      "proposal": "Proposal builder"
+    },
+    "stats": {
+      "bullets": "CV bullets",
+      "practice": "practice answers",
+      "questions": "customer questions",
+      "proposals": "proposals"
+    },
+    "ratings": {
+      "developing": "Developing",
+      "clear": "Clear",
+      "strong": "Strong"
+    },
+    "criteria": {
+      "relevance": "Relevance",
+      "clarity": "Clarity",
+      "evidence": "Evidence"
+    },
+    "cv": {
+      "intro": "Write what you actually did. Save your changes, preview the CV and print or save a sample copy.",
+      "contact": "Contact details",
+      "contactHint": "Contact details come from your profile.",
+      "editProfile": "Edit profile",
+      "summary": "Summary",
+      "summaryHint": "Two or three sentences about who you are and the work you are looking for.",
+      "experience": "Experience",
+      "addBullet": "Add bullet",
+      "noBullets": "No experience bullets yet. Add one, or improve one with Lina AI.",
+      "bulletPlaceholder": "Start with an action, for example: Organised...",
+      "honestHint": "Add numbers only if you can verify them.",
+      "education": "Education",
+      "training": "Training",
+      "projects": "Projects",
+      "skills": "Skills",
+      "languages": "Languages",
+      "commaHint": "Separate skills with commas.",
+      "suggestedTitle": "Certificates from completed courses",
+      "suggestedBody": "Suggested from your learning record. Review each one and tick only the courses you want on your CV.",
+      "suggestedEmpty": "Complete a course and it will be suggested here.",
+      "openLibrary": "Open the course library",
+      "review": "Review",
+      "platformCourse": "Youth Pathways course",
+      "notAdded": "Not added yet",
+      "preview": "Preview",
+      "previewTitle": "CV preview",
+      "previewBody": "This is how your CV looks with your current changes. Print it or save it as a PDF from the print window.",
+      "print": "Print or save sample",
+      "sampleFooter": "Sample CV created in a demonstration platform.",
+      "save": "Save CV",
+      "saved": "CV saved"
+    },
+    "interview": {
+      "intro": "Choose an opportunity and a question, type your answer and get feedback on relevance, clarity and evidence.",
+      "opportunity": "Opportunity",
+      "question": "Question",
+      "questionN": "Question {{n}}",
+      "answer": "Your answer",
+      "answerHint": "Try: the situation, what you did and the result.",
+      "tooShort": "Write at least one full sentence before asking for feedback.",
+      "getFeedback": "Get feedback",
+      "feedbackTitle": "Practice feedback",
+      "overall": "Overall",
+      "nextStep": "Next step",
+      "disclaimer": "This is practice feedback from a simple demo check. It is not a score and not a prediction of any hiring decision.",
+      "save": "Save to practice history",
+      "savedBtn": "Saved",
+      "saved": "Practice and next step saved",
+      "history": "Practice history",
+      "historyEmpty": "No practice saved yet",
+      "historyEmptyBody": "Answer a question and save the feedback to build your history.",
+      "tips": {
+        "relevance": {
+          "developing": "Link your answer to the question and the role.",
+          "clear": "Your answer is on topic. Name one skill the role asks for.",
+          "strong": "Your answer fits the question and the role well."
+        },
+        "clarity": {
+          "developing": "Add more detail in two or three full sentences.",
+          "clear": "Easy to follow. Finish with the result.",
+          "strong": "Well structured, with a clear result at the end."
+        },
+        "evidence": {
+          "developing": "Describe what you did yourself, step by step.",
+          "clear": "You named actions. Add what changed because of them.",
+          "strong": "Specific actions and a result you can stand behind."
+        }
+      },
+      "next": {
+        "relevance": "Answer the same question again and connect it to one skill in the opportunity.",
+        "clarity": "Answer again using situation, action and result, and finish with one sentence about the result.",
+        "evidence": "Answer again with two specific things you did yourself. Use the STAR worksheet to plan it."
+      }
+    },
+    "business": {
+      "intro": "Describe your idea and what you have learned from customers. Save a draft and generate a pitch outline you can edit.",
+      "fields": {
+        "customer": "Customer",
+        "problem": "Problem",
+        "solution": "Proposed solution",
+        "evidence": "Interview evidence",
+        "model": "Business model",
+        "costs": "Costs",
+        "nextExperiment": "Next experiment"
+      },
+      "hints": {
+        "customer": "Who experiences the problem?",
+        "problem": "What happens today, in their words?",
+        "solution": "What will you test first?",
+        "evidence": "What did customers actually tell you?",
+        "model": "How could the idea sustain itself?",
+        "costs": "Main costs to start and to run.",
+        "nextExperiment": "One small test you can run soon."
+      },
+      "required": "Add at least the customer and the problem before saving.",
+      "questions": "Customer interview questions",
+      "addQuestion": "Add question",
+      "noQuestions": "No questions yet. Draft some with Amal AI or add your own.",
+      "questionPlaceholder": "Ask about what they do today",
+      "questionsHint": "Open questions about past behaviour give more honest answers than questions about your idea.",
+      "save": "Save draft",
+      "saved": "Business concept saved",
+      "generate": "Generate pitch outline",
+      "outlineEmpty": "Generate a pitch outline to turn your fields into a two-minute pitch structure.",
+      "outlineTitle": "Your pitch outline",
+      "outlineLabel": "Pitch outline (editable)",
+      "outlineHint": "Edit freely. Generate again after you update the fields.",
+      "outlineHeading": "Two-minute pitch outline",
+      "addThis": "(add this)",
+      "pitch": {
+        "customer": "Customer",
+        "problem": "Problem",
+        "evidence": "What customers told me",
+        "solution": "Proposed solution to test",
+        "model": "How it could sustain itself",
+        "costs": "Main costs",
+        "nextExperiment": "Next experiment",
+        "ask": "Support I am looking for: mentoring and feedback"
+      },
+      "noFunding": "Support programmes set their own criteria. This outline does not imply acceptance or funding.",
+      "copy": "Copy outline",
+      "copied": "Outline copied",
+      "copyFailed": "Copying is not available here. Select the text instead."
+    },
+    "freelance": {
+      "intro": "Describe the service you offer and preview what a client sees.",
+      "fields": {
+        "services": "Services",
+        "samples": "Work samples",
+        "availability": "Availability",
+        "assignments": "Preferred assignments",
+        "pricing": "Illustrative pricing"
+      },
+      "hints": {
+        "services": "One clear service linked to a skill you have.",
+        "samples": "Label sample work as sample work.",
+        "availability": "Hours you can realistically commit.",
+        "assignments": "The kind of project you want.",
+        "pricing": "Optional and illustrative only."
+      },
+      "required": "Describe at least one service before saving.",
+      "save": "Save profile",
+      "saved": "Freelance profile saved",
+      "preview": "Preview what a client sees",
+      "hidePreview": "Hide client preview",
+      "previewHint": "See your profile the way a client would.",
+      "clientView": "Client view",
+      "noService": "Service not described yet",
+      "privacy": "Clients never see your contact details, assessment answers or support information."
+    },
+    "proposal": {
+      "intro": "Scope a proposal for a client brief, save it and attach it to a freelance application.",
+      "new": "New proposal",
+      "fields": {
+        "client": "Client",
+        "goal": "Client goal",
+        "experience": "Relevant experience",
+        "deliverables": "Deliverables",
+        "timing": "Timing",
+        "review": "Review stage",
+        "assumptions": "Assumptions",
+        "fee": "Proposed fee"
+      },
+      "feeOptional": "where appropriate",
+      "requiredField": "This field is required.",
+      "save": "Save proposal",
+      "saved": "Proposal saved",
+      "untitled": "Untitled proposal",
+      "editN": "Edit proposal {{id}}",
+      "emptyTitle": "No proposals yet",
+      "emptyBody": "Start a new proposal, or ask Ziad AI to draft one from a sample client brief.",
+      "attachTitle": "Attach to an application",
+      "noApps": "You have no freelance applications yet.",
+      "browse": "Browse opportunities",
+      "chooseApp": "Draft application",
+      "attach": "Attach proposal",
+      "attached": "Proposal attached to {{title}}",
+      "isAttached": "Proposal attached",
+      "noDrafts": "Proposals can be attached to draft applications only.",
+      "reviewFirst": "Review the proposal before you submit the application."
+    }
+  },
+  "profile": {
+    "eyebrow": "My profile",
+    "title": "Your profile and privacy",
+    "body": "Keep your details up to date and decide what employers can see.",
+    "completion": "Profile {{value}}% complete",
+    "requiredDone": "All required details are in",
+    "requiredMissing": "Some required details are missing",
+    "save": "Save profile",
+    "saveHint": "Fields marked * are required.",
+    "saved": "Profile saved",
+    "fixErrors": "Check the highlighted fields.",
+    "sections": {
+      "account": "Account",
+      "accountIntro": "Email or mobile is enough. No messages are sent in this demo.",
+      "background": "Background",
+      "interests": "Interests and skills",
+      "support": "Support preferences",
+      "supportIntro": "Optional. These help arrange access to learning and sessions. They never affect recommendations or rankings.",
+      "permissions": "Permissions and CV"
+    },
+    "fields": {
+      "name": "Full name",
+      "email": "Email",
+      "phone": "Mobile",
+      "lang": "Preferred language",
+      "age": "Age",
+      "gender": "Gender",
+      "governorate": "Governorate",
+      "education": "Education",
+      "employmentStatus": "Employment status",
+      "experience": "Experience",
+      "digitalAccess": "Digital access",
+      "learningFormat": "Preferred learning format",
+      "interests": "Career interests",
+      "skills": "Existing skills",
+      "sectors": "Preferred sectors",
+      "availability": "Work availability",
+      "support": "Accessibility and learning support",
+      "disability": "Disability information",
+      "consentProgramme": "I agree to take part in the programme",
+      "consentEmployerVisible": "Show my career profile to employers and clients",
+      "cvFile": "CV file"
+    },
+    "hints": {
+      "contact": "Add an email or a mobile number.",
+      "password": "Password changes are not part of this demonstration.",
+      "age": "Demo profiles are adults aged 18 to 24. Production age eligibility is still to be confirmed.",
+      "chips": "Type and press Enter, or separate with commas.",
+      "support": "Use general wording. Do not add medical details.",
+      "consentProgramme": "Your trainer and centre use your record to deliver training and support.",
+      "upload": "Simulated upload. Never upload a real personal document in this demo."
+    },
+    "supportPrivate": "Support and disability information is never visible to employers, clients or mentors.",
+    "visibleOn": "On: employers and clients can find your career evidence in candidate search.",
+    "visibleOff": "Off: employers only see what you send with an application.",
+    "attachSample": "Attach sample CV",
+    "removeFile": "Remove",
+    "cvAdded": "{{file}} attached",
+    "cvRemoved": "CV file removed",
+    "addChip": "Add to {{label}}",
+    "removeChip": "Remove {{value}}",
+    "gender": {
+      "female": "Female",
+      "male": "Male",
+      "notDisclosed": "Prefer not to say"
+    },
+    "governorates": {
+      "Damascus": "Damascus",
+      "Aleppo": "Aleppo",
+      "Homs": "Homs"
+    },
+    "formats": {
+      "online": "Online",
+      "centre": "At a centre",
+      "blended": "Blended"
+    },
+    "disability": {
+      "notDisclosed": "Prefer not to say",
+      "no": "No",
+      "yes": "Yes"
+    },
+    "errors": {
+      "required": "This field is required.",
+      "contact": "Add an email or a mobile number.",
+      "email": "Enter a valid email address.",
+      "age": "Enter an age between 15 and 35.",
+      "consent": "Programme participation consent is required."
+    },
+    "who": {
+      "title": "Who sees what",
+      "body": "You stay in control. This is what each group can see in the platform.",
+      "employers": {
+        "title": "Employers and clients",
+        "sees": "Your name, skills, completed courses, CV and portfolio, as career evidence you approve.",
+        "off": "Hidden from candidate search. They only see what you send with an application.",
+        "never": "Never: assessment answers, support or disability information, coaching notes."
+      },
+      "trainers": {
+        "title": "Your trainer and centre team",
+        "sees": "Your programme record: profile, learning progress, attendance and support preferences you share, for access arrangements only.",
+        "never": "Never: other centres' staff, or your private coach conversations."
+      },
+      "mentors": {
+        "title": "Mentors",
+        "sees": "The goal and question you add when you book a session.",
+        "never": "Never: disability or support information, or unrelated records."
+      },
+      "reports": {
+        "title": "UNICEF and partner reports",
+        "sees": "Totals across many learners, such as course completions and outcomes.",
+        "never": "Never: your individual support needs in aggregate reports."
+      }
+    }
+  }
+}

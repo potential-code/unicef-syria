@@ -21,12 +21,36 @@ import enTrainer from './en/trainer.json'
  * learn (youth discovery and learning), career (youth support and earning), trainer, employer,
  * admin (centre, partner, UNICEF, viewer). Seed content uses Localized { en, ar } objects.
  */
-export const NAMESPACES = ['common', 'public', 'learn', 'career', 'trainer', 'employer', 'admin'] as const
+export const NAMESPACES = [
+  'common',
+  'public',
+  'learn',
+  'career',
+  'trainer',
+  'employer',
+  'admin',
+] as const
 
 void i18n.use(initReactI18next).init({
   resources: {
-    en: { common: enCommon, public: enPublic, learn: enLearn, career: enCareer, trainer: enTrainer, employer: enEmployer, admin: enAdmin },
-    ar: { common: arCommon, public: arPublic, learn: arLearn, career: arCareer, trainer: arTrainer, employer: arEmployer, admin: arAdmin },
+    en: {
+      common: enCommon,
+      public: enPublic,
+      learn: enLearn,
+      career: enCareer,
+      trainer: enTrainer,
+      employer: enEmployer,
+      admin: enAdmin,
+    },
+    ar: {
+      common: arCommon,
+      public: arPublic,
+      learn: arLearn,
+      career: arCareer,
+      trainer: arTrainer,
+      employer: arEmployer,
+      admin: arAdmin,
+    },
   },
   lng: 'en',
   fallbackLng: 'en',
@@ -50,11 +74,22 @@ export function useLocalized() {
   return { l, lang, isPlaceholder, dir: lang === 'ar' ? ('rtl' as const) : ('ltr' as const) }
 }
 
-export function formatDate(iso: string, lang: Lang, opts: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', year: 'numeric' }) {
-  return new Intl.DateTimeFormat(lang === 'ar' ? 'ar-SY' : 'en-GB', { timeZone: 'Asia/Damascus', ...opts }).format(new Date(iso))
+export function formatDate(
+  iso: string,
+  lang: Lang,
+  opts: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', year: 'numeric' },
+) {
+  return new Intl.DateTimeFormat(lang === 'ar' ? 'ar-SY' : 'en-GB', {
+    timeZone: 'Asia/Damascus',
+    ...opts,
+  }).format(new Date(iso))
 }
 export function formatTime(iso: string, lang: Lang) {
-  return new Intl.DateTimeFormat(lang === 'ar' ? 'ar-SY' : 'en-GB', { timeZone: 'Asia/Damascus', hour: '2-digit', minute: '2-digit' }).format(new Date(iso))
+  return new Intl.DateTimeFormat(lang === 'ar' ? 'ar-SY' : 'en-GB', {
+    timeZone: 'Asia/Damascus',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(new Date(iso))
 }
 export function formatNumber(n: number, lang: Lang) {
   return new Intl.NumberFormat(lang === 'ar' ? 'ar-SY' : 'en-GB').format(n)

@@ -12,7 +12,10 @@ function Root() {
   const { lang } = usePrefs()
   return (
     <MotionConfig reducedMotion={reduce ? 'always' : 'never'}>
-      <a href="#main" className="sr-only z-50 rounded-lg bg-white px-4 py-2 focus:not-sr-only focus:fixed focus:start-4 focus:top-4">
+      <a
+        href="#main"
+        className="sr-only z-50 rounded-lg bg-white px-4 py-2 focus:not-sr-only focus:fixed focus:start-4 focus:top-4"
+      >
         {t('skip')}
       </a>
       <Outlet />
@@ -24,7 +27,11 @@ function Root() {
 function NotFound() {
   const { t } = useTranslation()
   return (
-    <main id="main" tabIndex={-1} className="container-page flex min-h-dvh flex-col items-start justify-center gap-4 py-16">
+    <main
+      id="main"
+      tabIndex={-1}
+      className="container-page flex min-h-dvh flex-col items-start justify-center gap-4 py-16"
+    >
       <h1 className="text-3xl">{t('notFound.title')}</h1>
       <p>{t('notFound.body')}</p>
       <Button asChild>

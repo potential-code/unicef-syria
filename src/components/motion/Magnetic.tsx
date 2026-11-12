@@ -1,6 +1,6 @@
-import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { motion, useMotionValue, useSpring } from 'motion/react'
 import { type PointerEvent, type ReactNode, useRef } from 'react'
+import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { cn } from '@/lib/utils'
 
 /**

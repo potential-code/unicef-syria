@@ -18,9 +18,29 @@ import { C15 } from './C15'
 import { C16 } from './C16'
 
 // Brief §6–10. Sixteen seeded courses, in catalogue order.
-export const COURSES: Course[] = [C01, C02, C03, C04, C05, C06, C07, C08, C09, C10, C11, C12, C13, C14, C15, C16]
+export const COURSES: Course[] = [
+  C01,
+  C02,
+  C03,
+  C04,
+  C05,
+  C06,
+  C07,
+  C08,
+  C09,
+  C10,
+  C11,
+  C12,
+  C13,
+  C14,
+  C15,
+  C16,
+]
 
-export const COURSE_BY_ID = Object.fromEntries(COURSES.map((c) => [c.id, c])) as Record<CourseId, Course>
+export const COURSE_BY_ID = Object.fromEntries(COURSES.map((c) => [c.id, c])) as Record<
+  CourseId,
+  Course
+>
 
 export const CATEGORY_LABELS: Record<CourseCategory, Localized> = {
   foundations: L('Career Foundations', 'أساسيات المسار المهني'),

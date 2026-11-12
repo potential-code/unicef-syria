@@ -1,6 +1,6 @@
-import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { motion } from 'motion/react'
 import type { ReactNode } from 'react'
+import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { easeOut } from './variants'
 
 /** Wraps a routed page so it fades and rises in on navigation. */

@@ -12,9 +12,25 @@ const TONE: Record<Tone, string> = {
 }
 
 /** Status label: always text (plus optional icon), never colour alone. */
-export function StatusBadge({ tone = 'neutral', icon, children, className }: { tone?: Tone; icon?: ReactNode; children: ReactNode; className?: string }) {
+export function StatusBadge({
+  tone = 'neutral',
+  icon,
+  children,
+  className,
+}: {
+  tone?: Tone
+  icon?: ReactNode
+  children: ReactNode
+  className?: string
+}) {
   return (
-    <span className={cn('inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-semibold whitespace-nowrap', TONE[tone], className)}>
+    <span
+      className={cn(
+        'inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-semibold whitespace-nowrap',
+        TONE[tone],
+        className,
+      )}
+    >
       {icon}
       {children}
     </span>

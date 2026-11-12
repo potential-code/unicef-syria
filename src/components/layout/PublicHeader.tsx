@@ -34,28 +34,66 @@ export function PublicHeader({ overHero = false }: { overHero?: boolean }) {
   }, [])
   const dark = overHero && !scrolled
   return (
-    <header className={cn('fixed inset-x-0 top-0 z-40 transition-colors duration-300', dark ? 'on-dark bg-transparent text-white' : 'border-b bg-white/90 text-ink shadow-sm backdrop-blur')}>
-      <div className="container-page flex h-16 items-center gap-3 sm:h-18">
+    <header
+      className={cn(
+        'fixed inset-x-0 top-0 z-40 transition-colors duration-300',
+        dark
+          ? 'on-dark bg-transparent text-white'
+          : 'border-b bg-white/90 text-ink shadow-sm backdrop-blur',
+      )}
+    >
+      <div className="container-page flex h-16 items-center gap-2 sm:h-18 sm:gap-3">
         <Link to="/" className="shrink-0" aria-label={t('common:appFullName')}>
-          <Logo variant={dark ? 'white' : 'blue'} className="h-6 sm:h-7" />
+          <Logo variant={dark ? 'white' : 'blue'} className="h-5 sm:h-7" />
         </Link>
         <nav aria-label={t('common:menu')} className="ms-6 hidden items-center gap-1 lg:flex">
           {LINKS.map((l) => (
-            <Link key={l.to} to={l.to} activeOptions={{ exact: true }} className={cn('rounded-full px-3.5 py-2 text-sm font-semibold transition-colors', dark ? 'hover:bg-white/15 data-[status=active]:bg-white/20' : 'hover:bg-sky-100 data-[status=active]:text-blue')}>
+            <Link
+              key={l.to}
+              to={l.to}
+              activeOptions={{ exact: true }}
+              className={cn(
+                'rounded-full px-3.5 py-2 text-sm font-semibold transition-colors',
+                dark
+                  ? 'hover:bg-white/15 data-[status=active]:bg-white/20'
+                  : 'hover:bg-sky-100 data-[status=active]:text-blue',
+              )}
+            >
               {t(`nav.${l.key}`)}
             </Link>
           ))}
         </nav>
-        <div className="ms-auto flex items-center gap-1.5">
-          <LangToggle onDark={dark} />
+        <div className="ms-auto flex min-w-0 items-center gap-1 sm:gap-1.5">
+          <LangToggle onDark={dark} className="hidden sm:inline-flex" />
           <DemoControls onDark={dark} className="hidden sm:inline-flex" />
-          <Button asChild size="sm" variant="ghost" className={cn('hidden sm:inline-flex', dark && 'text-white hover:bg-white/15 hover:text-white')}>
+          <Button
+            asChild
+            size="sm"
+            variant="ghost"
+            className={cn(
+              'hidden sm:inline-flex',
+              dark && 'text-white hover:bg-white/15 hover:text-white',
+            )}
+          >
             <Link to="/sign-in">{t('common:signIn')}</Link>
           </Button>
-          <Button asChild size="sm" className={cn('rounded-full', dark ? 'bg-yellow text-ink hover:bg-yellow/90' : '')}>
+          <Button
+            asChild
+            size="sm"
+            className={cn(
+              'rounded-full px-3 sm:px-4',
+              dark ? 'bg-yellow text-ink hover:bg-yellow/90' : '',
+            )}
+          >
             <Link to="/register">{t('nav.start')}</Link>
           </Button>
-          <Button variant="ghost" size="icon" className={cn('lg:hidden', dark && 'text-white hover:bg-white/15')} aria-label={t('common:menu')} onClick={() => setOpen(true)}>
+          <Button
+            variant="ghost"
+            size="icon"
+            className={cn('lg:hidden', dark && 'text-white hover:bg-white/15')}
+            aria-label={t('common:menu')}
+            onClick={() => setOpen(true)}
+          >
             <Menu className="size-5" aria-hidden />
           </Button>
         </div>
@@ -67,14 +105,24 @@ export function PublicHeader({ overHero = false }: { overHero?: boolean }) {
           </SheetTitle>
           <nav className="mt-4 flex flex-col gap-1 text-ink">
             {LINKS.map((l) => (
-              <Link key={l.to} to={l.to} onClick={() => setOpen(false)} className="rounded-xl px-3 py-3 font-semibold hover:bg-sky-100">
+              <Link
+                key={l.to}
+                to={l.to}
+                onClick={() => setOpen(false)}
+                className="rounded-xl px-3 py-3 font-semibold hover:bg-sky-100"
+              >
                 {t(`nav.${l.key}`)}
               </Link>
             ))}
-            <Link to="/sign-in" onClick={() => setOpen(false)} className="rounded-xl px-3 py-3 font-semibold hover:bg-sky-100">
+            <Link
+              to="/sign-in"
+              onClick={() => setOpen(false)}
+              className="rounded-xl px-3 py-3 font-semibold hover:bg-sky-100"
+            >
               {t('common:signIn')}
             </Link>
-            <div className="px-3 pt-2">
+            <div className="flex flex-wrap gap-2 px-3 pt-2">
+              <LangToggle />
               <DemoControls />
             </div>
           </nav>

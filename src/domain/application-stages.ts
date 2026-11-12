@@ -15,7 +15,10 @@ export function trackFor(type: OpportunityType): ApplicationTrack {
 }
 
 /** The next forward stage, or null at the end or on a closed branch. */
-export function nextStage(track: ApplicationTrack, stage: ApplicationStage): ApplicationStage | null {
+export function nextStage(
+  track: ApplicationTrack,
+  stage: ApplicationStage,
+): ApplicationStage | null {
   const list = STAGES[track]
   const i = list.indexOf(stage)
   if (i < 0 || i === list.length - 1) return null

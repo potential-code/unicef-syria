@@ -21,7 +21,9 @@ export interface ProfileResult {
 
 /** Strongest two dimensions. Ties for the second place show "Balanced preferences". */
 export function profileFor(scores: DimensionScores): ProfileResult {
-  const sorted = [...DIMS].sort((a, b) => scores[b] - scores[a] || DIMS.indexOf(a) - DIMS.indexOf(b))
+  const sorted = [...DIMS].sort(
+    (a, b) => scores[b] - scores[a] || DIMS.indexOf(a) - DIMS.indexOf(b),
+  )
   const [first, second, third] = sorted as [Dimension, Dimension, Dimension, Dimension]
   const balanced = scores[second] === scores[third]
   const key = [first, second].sort().join('')

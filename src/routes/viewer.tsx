@@ -4,5 +4,5 @@ import { requireRole } from '@/lib/guard'
 
 export const Route = createFileRoute('/viewer')({
   beforeLoad: requireRole('viewer'),
-  component: () => <AppShell role="viewer" />,
+  component: () => <AppShell area="viewer" />,
 })
