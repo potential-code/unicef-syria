@@ -47,3 +47,4 @@ All people shown in generated images are fictional. Youth subjects are adults ag
 | `public/brand/unicef-logo-white.webp`           | UNICEF logo, white                                                                                                                                                                                 | Downloaded from the unicef.org/syria public site; not formally cleared for use | 2026-11-12 |
 
 Portraits (`youth-*`, `mentor-*`, `persona-*`) are 800x800 WebP. Scenes, centres and course covers are 1600x900 WebP. All files were exported from Canva at native resolution and converted with ffmpeg (libwebp, quality 80).
+| `public/brand/favicon.png`, `public/brand/apple-touch-icon.png` | UNICEF emblem favicon | Cut from the transparent emblem provided by Aliya (not formally cleared) | 2026-11-12 |
