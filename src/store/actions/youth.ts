@@ -29,22 +29,19 @@ export function useAllYouth() {
 
 /** Main walkthrough step 1: replace Nour with a freshly registered profile. */
 export function startFreshRegistration() {
+  // A newly registered learner starts with nothing: no training application, no job drafts,
+  // no bookings, notices or follow-ups. She applies to a centre programme herself.
   update((db) => ({
     ...db,
     youth: { ...db.youth, Y001: freshNour() },
-    applications: db.applications
-      .filter((a) => a.youthId !== 'Y001' || a.opportunityId === 'O01')
-      .map((a) =>
-        a.youthId === 'Y001'
-          ? {
-              ...a,
-              stage: 'draft',
-              timeline: [{ stage: 'draft', at: now(), by: 'youth' }],
-              documents: {},
-            }
-          : a,
-      ),
+    applications: db.applications.filter((a) => a.youthId !== 'Y001'),
     bookings: db.bookings.filter((b) => b.youthId !== 'Y001'),
+    bookedSlots: db.bookedSlots.filter(
+      (m) => !db.bookings.some((b) => b.youthId === 'Y001' && b.mentorId === m),
+    ),
+    notices: db.notices.filter((n) => n.to !== 'Y001'),
+    followUps: db.followUps.filter((f) => f.youthId !== 'Y001'),
+    outcomes: db.outcomes.filter((o) => o.youthId !== 'Y001'),
   }))
 }
 

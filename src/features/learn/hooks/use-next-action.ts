@@ -39,6 +39,15 @@ export function useNextAction(y: Youth): NextStep {
       cta: t('next.pathCta'),
     }
 
+  // Next: apply to a trainer-led centre programme (general courses stay open meanwhile).
+  if (!y.trainingApplication)
+    return {
+      title: t('next.programme'),
+      body: t('next.programmeBody'),
+      to: '/youth/programmes',
+      cta: t('next.programmeCta'),
+    }
+
   const active = y.plan.find((id) => courseStatus(y.progress[id]) === 'inProgress')
   const target = active ?? y.plan.find((id) => courseStatus(y.progress[id]) === 'todo')
   if (!target)

@@ -139,7 +139,8 @@
       "toolkit": "أدوات المسار المهني",
       "opportunities": "الفرص",
       "community": "المجتمع والفعاليات",
-      "progress": "التقدم والمكافآت"
+      "progress": "التقدم والمكافآت",
+      "programmes": "البرامج التدريبية"
     },
     "trainer": {
       "dashboard": "لوحة التحكم",
@@ -209,5 +210,30 @@
     "point3": "صِل إلى الوظائف والعمل الحر ودعم المشاريع",
     "golden": "العرض الأساسي بالترتيب",
     "more": "ملفات إضافية (مسارات وحالات أخرى)"
+  },
+  "notices": {
+    "heading": "الإشعارات",
+    "title_one": "الإشعارات، {{count}} غير مقروء",
+    "title_other": "الإشعارات، {{count}} غير مقروءة",
+    "markAll": "تعليم الكل كمقروء",
+    "empty": "لا توجد إشعارات بعد.",
+    "demoNote": "داخل التطبيق فقط. لا يُرسل أي شيء خارج العرض.",
+    "approved": "اعتمد",
+    "returned": "أعاد للمراجعة",
+    "status": {
+      "pending": "قيد الانتظار",
+      "needsInfo": "بحاجة إلى معلومات إضافية",
+      "accepted": "مقبول",
+      "waitlisted": "على قائمة الانتظار",
+      "notSelected": "لم يتم الاختيار"
+    },
+    "programmeApplied": "قدّم {{name}} على {{programme}}.",
+    "programmeDecision": "طلبك إلى {{programme}}: {{status}}.",
+    "cohortAssigned": "انضممت إلى الصف {{cohort}}. جلساتك المباشرة الآن في مجموعتي وجلساتي.",
+    "practicalReviewed": "مدربك {{result}} مهمتك العملية في {{course}}.",
+    "certificateIssued": "صدرت شهادتك في {{course}}.",
+    "graduated": "تهانينا، تخرّجت من {{programme}}.",
+    "applicationStage": "{{opp}}: أصبح طلبك {{stage}}.",
+    "applicationSubmitted": "قدّم {{name}} على {{opp}}."
   }
 }

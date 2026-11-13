@@ -537,6 +537,8 @@ export interface Youth {
     programmeId: ProgrammeId
     status: 'pending' | 'needsInfo' | 'accepted' | 'waitlisted' | 'notSelected'
     at: string
+    motivation?: string
+    availability?: string
   }
   progress: Partial<Record<CourseId, CourseProgress>>
   attendance: Partial<Record<SessionId, AttendanceMark>>

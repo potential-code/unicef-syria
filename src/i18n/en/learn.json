@@ -19,7 +19,10 @@
     "quizCta": "Open the knowledge check",
     "apply": "Your path is complete. Explore opportunities",
     "applyBody": "Use your course evidence when you apply.",
-    "applyCta": "Explore opportunities"
+    "applyCta": "Explore opportunities",
+    "programme": "Apply to a centre programme",
+    "programmeBody": "Join a trainer-led class at a training centre near you. Online courses stay open while you wait.",
+    "programmeCta": "See training programmes"
   },
   "dash": {
     "hello": "Welcome back",
@@ -293,7 +296,7 @@
     "allRoutes": "All routes",
     "showcase": "Full sample lessons",
     "certAuto": "Demonstration certificate on completion",
-    "certReviewed": "Certificate after trainer review",
+    "certReviewed": "Certificate after your trainer's review (centre class)",
     "progress": "Progress",
     "count": "{{n}} courses",
     "noResults": "No courses match these filters",
@@ -315,7 +318,7 @@
     "inPlan": "In my plan",
     "certificate": "Certificate",
     "accessOpen": "This general course is open to all learners. Trainer-led cohort sessions remain restricted to assigned learners.",
-    "accessCohort": "This course is part of your cohort programme. Your trainer reviews the practical task and the centre approves the certificate.",
+    "accessCohort": "This course is part of your centre class. Your trainer reviews the practical task and the centre approves the certificate.",
     "outcomes": "What you will be able to do",
     "units": "Four units",
     "practical": "Practical task",

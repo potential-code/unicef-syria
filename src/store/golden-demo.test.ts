@@ -8,6 +8,7 @@ import { requirementsFor } from '@/features/career/lib/match'
 import {
   addCvBullet,
   addInterviewPractice,
+  applyToProgramme,
   assignCohort,
   bookMentor,
   chooseRoute,
@@ -45,12 +46,21 @@ describe('golden demo runs end to end', () => {
     expect(nour().toolkit.cv?.experience.length).toBe(1)
   })
 
-  test('Rania sees pending Nour, accepts and assigns K01', () => {
+  test('Nour applies to Employment Readiness; Rania is notified, accepts and assigns K01', () => {
+    expect(nour().trainingApplication).toBeUndefined()
+    expect(getDb().applications.filter((a) => a.youthId === 'Y001')).toEqual([])
+    applyToProgramme('Y001', 'PR01', 'I want to work in customer service.', 'Weekday mornings')
     expect(nour().trainingApplication?.status).toBe('pending')
+    expect(getDb().notices.some((n) => n.to === 'TR01' && n.kind === 'programmeApplied')).toBe(true)
     expect(canSeeYouth(PERSONA_BY_ID.TR01, nour())).toBe(true)
     decideTrainingApplication('Y001', 'accepted')
     assignCohort('Y001', 'K01')
     expect(nour().cohortIds).toEqual(['K01'])
+    expect(
+      getDb()
+        .notices.filter((n) => n.to === 'Y001')
+        .map((n) => n.kind),
+    ).toEqual(['cohortAssigned', 'programmeDecision'])
   })
 
   test('Nour completes C03 (auto) and C05 (waits for review); Rania approves; Salma issues', () => {
@@ -65,6 +75,8 @@ describe('golden demo runs end to end', () => {
     setCertificate('Y001', 'C05', 'approved')
     setCertificate('Y001', 'C05', 'issued')
     expect(nour().progress.C05?.certificate).toBe('issued')
+    expect(nour().graduated).toBeDefined()
+    expect(getDb().followUps.find((f) => f.youthId === 'Y001')?.status).toBe('due')
     // profile 20 + assessment 30 + C03 40 + C05 practical 20 + C05 40 + attendance 20
     expect(balance(nour())).toBe(170)
   })

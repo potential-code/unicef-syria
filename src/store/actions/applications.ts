@@ -8,9 +8,11 @@ import type {
   YouthId,
 } from '@shared/types'
 import { OPPORTUNITIES } from '@/data/opportunities'
+import { ORG_CONTACT } from '@/data/orgs'
 import { isPlacement, trackFor } from '@/domain/application-stages'
 import { now } from '@/lib/clock'
 import { type DemoDb, getDb, update, useDb } from '../db'
+import { notify } from '../notify'
 
 export function allOpportunities(db: DemoDb): Opportunity[] {
   return [...OPPORTUNITIES, ...db.newOpportunities].map((o) => ({
@@ -62,15 +64,34 @@ export function saveDraft(
 }
 
 export function submitApplication(id: string) {
-  setApp(id, (a) =>
-    a.stage === 'draft'
-      ? {
-          ...a,
-          stage: 'submitted',
-          timeline: [...a.timeline, { stage: 'submitted', at: now(), by: 'youth' }],
-        }
-      : a,
-  )
+  update((db) => {
+    const app = db.applications.find((a) => a.id === id)
+    if (!app || app.stage !== 'draft') return db
+    const applications = db.applications.map((a) =>
+      a.id === id
+        ? {
+            ...a,
+            stage: 'submitted' as const,
+            timeline: [
+              ...a.timeline,
+              { stage: 'submitted' as const, at: now(), by: 'youth' as const },
+            ],
+          }
+        : a,
+    )
+    const opp = allOpportunities(db).find((o) => o.id === app.opportunityId)
+    const contact = opp ? ORG_CONTACT[opp.orgId] : undefined
+    const next = { ...db, applications }
+    return contact
+      ? notify(
+          next,
+          contact,
+          'applicationSubmitted',
+          { name: db.youth[app.youthId]?.profile.name ?? '', opp: app.opportunityId },
+          `/employer/applications/${id}`,
+        )
+      : next
+  })
 }
 
 export function withdrawApplication(id: string) {
@@ -152,17 +173,35 @@ export function moveApplication(
       outcome && !db.outcomes.some((o) => o.id === outcome.id)
         ? [...db.outcomes, outcome]
         : db.outcomes
-    const notices = [
-      ...db.notices,
-      {
-        id: `N${db.notices.length + 1}`,
-        to: app.youthId,
-        text: `application:${stage}:${app.opportunityId}`,
-        at,
-        read: false,
-      },
-    ]
-    return { ...db, applications, outcomes, notices }
+    let next: DemoDb = { ...db, applications, outcomes }
+    // A confirmed job start fills in the graduate's open follow-up with the employer-confirmed record.
+    if (isPlacement(stage)) {
+      next = {
+        ...next,
+        followUps: next.followUps.map((f) =>
+          f.youthId === app.youthId && f.status !== 'confirmed'
+            ? {
+                ...f,
+                status: 'confirmed',
+                lastContact: at.slice(0, 10),
+                record: {
+                  employed: true,
+                  workType: opp?.title.en ?? 'Job',
+                  startDate: at.slice(0, 10),
+                  stillInRole: true,
+                },
+              }
+            : f,
+        ),
+      }
+    }
+    return notify(
+      next,
+      app.youthId,
+      'applicationStage',
+      { stage, opp: app.opportunityId },
+      `/youth/applications/${id}`,
+    )
   })
 }
 

@@ -8,11 +8,12 @@ import type {
 } from '@shared/types'
 import { COURSE_BY_ID } from '@/data/courses'
 import { L } from '@/data/l'
-import { COHORT_COURSES } from '@/data/orgs'
+import { COHORT_COURSES, COHORTS } from '@/data/orgs'
 import { emptyProgress, isComplete, QUIZ_ATTEMPTS } from '@/domain/completion'
 import { award, POINTS } from '@/domain/points'
 import { now } from '@/lib/clock'
 import { update, withYouth } from '../db'
+import { notify } from '../notify'
 import { refreshBadges } from './youth'
 
 /** True when this course is delivered inside one of the youth's cohorts (reviewed + approved). */
@@ -94,10 +95,10 @@ export function submitPractical(id: YouthId, courseId: CourseId) {
 
 /** Trainer rubric review (brief §17 T04). Approval awards practical points once. */
 export function reviewPractical(id: YouthId, courseId: CourseId, approved: boolean) {
-  update((db) =>
-    withYouth(db, id, (y) => {
+  update((db) => {
+    const next = withYouth(db, id, (y) => {
       const p = progressOf(y, courseId)
-      let next: Youth = {
+      let yy: Youth = {
         ...y,
         progress: {
           ...y.progress,
@@ -105,8 +106,8 @@ export function reviewPractical(id: YouthId, courseId: CourseId, approved: boole
         },
       }
       if (approved) {
-        next = award(
-          next,
+        yy = award(
+          yy,
           `practical:${courseId}`,
           'practical',
           POINTS.practical,
@@ -114,21 +115,55 @@ export function reviewPractical(id: YouthId, courseId: CourseId, approved: boole
           now(),
         )
       }
-      return settle(next, courseId)
-    }),
-  )
+      return settle(yy, courseId)
+    })
+    return notify(
+      next,
+      id,
+      'practicalReviewed',
+      { course: courseId, approved: String(approved) },
+      `/youth/library/${courseId}`,
+    )
+  })
 }
 
-/** Trainer recommends → centre approves → issued (brief §17 T05). */
+/**
+ * Trainer recommends → centre approves → issued (brief §17 T05). When the certificate for the
+ * learner's cohort course is issued, the learner graduates from that programme: a graduation
+ * date is recorded and a 3-month follow-up is scheduled for the centre (brief §18).
+ */
 export function setCertificate(id: YouthId, courseId: CourseId, state: CertificateState) {
-  update((db) =>
-    withYouth(db, id, (y) => {
-      const p = y.progress[courseId]
-      return p?.completedAt
-        ? { ...y, progress: { ...y.progress, [courseId]: { ...p, certificate: state } } }
-        : y
-    }),
-  )
+  update((db) => {
+    const y = db.youth[id]
+    const p = y?.progress[courseId]
+    if (!y || !p?.completedAt) return db
+    let next = withYouth(db, id, (yy) => ({
+      ...yy,
+      progress: { ...yy.progress, [courseId]: { ...p, certificate: state } },
+    }))
+    if (state !== 'issued') return next
+    next = notify(
+      next,
+      id,
+      'certificateIssued',
+      { course: courseId },
+      `/youth/certificate/${courseId}`,
+    )
+    const cohortId = y.cohortIds.find((k) => COHORT_COURSES[k].includes(courseId))
+    const cohort = COHORTS.find((c) => c.id === cohortId)
+    if (!cohort || y.graduated) return next
+    const at = now()
+    const due = new Date(Date.parse(at) + 90 * 86_400_000).toISOString().slice(0, 10)
+    next = withYouth(next, id, (yy) => ({ ...yy, graduated: at.slice(0, 10) }))
+    next = {
+      ...next,
+      followUps: [
+        ...next.followUps,
+        { id: `F-${id}-3`, youthId: id, window: 3, due, centreId: cohort.centreId, status: 'due' },
+      ],
+    }
+    return notify(next, id, 'graduated', { programme: cohort.programmeId }, '/youth/programmes')
+  })
 }
 
 /** Presenter shortcut: finish every remaining unit, pass the quiz and submit the practical. */

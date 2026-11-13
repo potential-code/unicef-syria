@@ -89,7 +89,9 @@
     "assignPrompt": "Accepted. Assign to {{cohort}} to open its restricted sessions.",
     "inCohort": "Assigned to {{cohort}}. Cohort sessions are now visible to this learner.",
     "assign": "Assign to {{cohort}}",
-    "assigned": "{{name}} assigned to {{cohort}}"
+    "assigned": "{{name}} assigned to {{cohort}}",
+    "motivation": "In their words",
+    "availability": "Availability"
   },
   "cohorts": {
     "title": "My cohorts",
@@ -112,7 +114,11 @@
       "incomplete": "Not yet complete",
       "complete": "Complete"
     },
-    "attendanceOpt": { "all": "All", "below": "Has an absence", "full": "Full attendance" },
+    "attendanceOpt": {
+      "all": "All",
+      "below": "Has an absence",
+      "full": "Full attendance"
+    },
     "assessmentOpt": {
       "all": "All",
       "passed": "Quiz passed",
@@ -120,7 +126,10 @@
       "needsSupport": "Needs quiz support",
       "notStarted": "Not started"
     },
-    "practicalOpt": { "all": "All", "submitted": "Awaiting review" }
+    "practicalOpt": {
+      "all": "All",
+      "submitted": "Awaiting review"
+    }
   },
   "roster": {
     "progress": "Progress",
@@ -209,7 +218,10 @@
     "cohort": "Cohort",
     "trainer": "Trainer",
     "format": "Format",
-    "fmt": { "online": "Online", "centre": "In person at the centre" },
+    "fmt": {
+      "online": "Online",
+      "centre": "In person at the centre"
+    },
     "date": "Date",
     "start": "Start",
     "end": "End",
@@ -274,8 +286,14 @@
       "label": "Understands the request",
       "hint": "Identifies what the customer or client needs"
     },
-    "clear": { "label": "Clear response", "hint": "Polite, concise and easy to follow" },
-    "nextStep": { "label": "Appropriate next step", "hint": "Offers a specific, realistic action" }
+    "clear": {
+      "label": "Clear response",
+      "hint": "Polite, concise and easy to follow"
+    },
+    "nextStep": {
+      "label": "Appropriate next step",
+      "hint": "Offers a specific, realistic action"
+    }
   },
   "review": {
     "title": "Review: {{course}}",

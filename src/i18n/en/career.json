@@ -107,8 +107,9 @@
     },
     "none": {
       "title": "You are not assigned to a training cohort yet",
-      "body": "You are not assigned to a training cohort yet. Explore self-paced courses while you wait. Your trainer will add your sessions here once you join a cohort.",
-      "cta": "Explore the course library"
+      "body": "You are not in a centre class yet. Apply to a training programme to join one; self-paced courses stay open while you wait.",
+      "cta": "Explore the course library",
+      "programmes": "See training programmes"
     },
     "noSessions": {
       "title": "No sessions scheduled yet",
@@ -271,8 +272,8 @@
       "questionPlaceholder": "What would you like to ask?",
       "errQuestion": "Add one question for the mentor.",
       "step3": "How would you like to book?",
-      "allocationYes": "Your cohort trainer offers this session as part of your programme. No points are used.",
-      "allocationNo": "Available when this mentor is also a trainer in your cohort.",
+      "allocationYes": "Unlocked because you are in this mentor's training class at your centre. No points are used.",
+      "allocationNo": "Unlocks when you join a centre programme taught by this mentor. You can still book with points.",
       "pointsBalance": "Balance {{balance}}, after booking {{after}}.",
       "alreadyBooked": "You already have a booked session with this mentor. See My mentor sessions.",
       "step4": "Confirm",
@@ -941,5 +942,52 @@
       }
     },
     "completionLabel": "Profile completion"
+  },
+  "programmes": {
+    "title": "Training programmes",
+    "body": "Trainer-led classes at training centres, with live sessions and a certificate approved by the centre. Apply to one; the centre's trainer reviews your application.",
+    "how": "Online courses are open to everyone and do not need an application. A centre programme adds a trainer, a class and live sessions.",
+    "library": "Browse the course library",
+    "recommended": "Recommended for you",
+    "starts": "Starts {{date}}",
+    "sessions_one": "{{count}} live session",
+    "sessions_other": "{{count}} live sessions",
+    "places": "{{left}} of {{total}} places left",
+    "trainer": "Programme trainer",
+    "apply": "Apply",
+    "openClass": "Open my class",
+    "oneAtATime": "You have an application with another programme. In this demo you can apply to one programme at a time.",
+    "status": {
+      "pending": "Application sent",
+      "needsInfo": "More information needed",
+      "accepted": "Accepted",
+      "waitlisted": "Waitlisted",
+      "notSelected": "Not selected",
+      "inClass": "You are in class {{cohort}}",
+      "graduated": "Graduated"
+    },
+    "statusHint": {
+      "pending": "Waiting for the trainer to review it. Keep learning online meanwhile.",
+      "needsInfo": "The trainer asked for more information. Check your notifications.",
+      "accepted": "Accepted. The centre is placing you in a class.",
+      "waitlisted": "You are on the waiting list. General learning stays open.",
+      "notSelected": "Not selected this time. You can keep learning online and apply again later."
+    },
+    "form": {
+      "title": "Apply to {{title}}",
+      "body": "A short application to the centre. The programme trainer reviews it.",
+      "why": "Why do you want to join?",
+      "whyPlaceholder": "For example: I want to work in customer service and practise with a trainer.",
+      "whyError": "Write at least one short sentence about why you want to join.",
+      "availability": "When can you attend?",
+      "slots": {
+        "mornings": "Weekday mornings",
+        "afternoons": "Weekday afternoons",
+        "flexible": "Flexible"
+      },
+      "note": "Sample data. No message leaves the demonstration.",
+      "submit": "Send application",
+      "sent": "Application sent to the centre"
+    }
   }
 }

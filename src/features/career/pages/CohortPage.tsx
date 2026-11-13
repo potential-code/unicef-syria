@@ -7,6 +7,7 @@ import {
   CheckCircle2,
   List,
   MapPin,
+  School,
   Ticket,
   UserRound,
   Users,
@@ -138,12 +139,20 @@ export function CohortPage() {
           title={t('cohort.none.title')}
           body={t('cohort.none.body')}
           action={
-            <Button asChild className="rounded-full">
-              <a href={hashHref('/youth/library')}>
-                <BookOpen className="size-4" aria-hidden />
-                {t('cohort.none.cta')}
-              </a>
-            </Button>
+            <div className="flex flex-wrap justify-center gap-2">
+              <Button asChild className="rounded-full">
+                <a href={hashHref('/youth/programmes')}>
+                  <School className="size-4" aria-hidden />
+                  {t('cohort.none.programmes')}
+                </a>
+              </Button>
+              <Button asChild variant="outline" className="rounded-full">
+                <a href={hashHref('/youth/library')}>
+                  <BookOpen className="size-4" aria-hidden />
+                  {t('cohort.none.cta')}
+                </a>
+              </Button>
+            </div>
           }
         />
       ) : (

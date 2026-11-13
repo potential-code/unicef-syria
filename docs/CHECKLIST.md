@@ -16,12 +16,13 @@
 | Reset restores a consistent demo; nothing leaves the prototype                                                    | Done   | Presenter → Reset demo; no network calls at runtime                                               |
 
 ## Golden demo (recommended walkthrough)
-Presenter menu → **Start golden demo**. It resets the data and opens the demo guide (bottom corner). Each step's **Go here** signs in as the right profile and opens the exact page; **Next** moves on. There are 17 steps in `src/data/golden-demo.ts`.
+
+Presenter menu → **Start golden demo**. It resets the data and opens the demo guide (bottom corner). Each step's **Go here** signs in as the right profile and opens the exact page; **Next** moves on. There are 18 steps in `src/data/golden-demo.ts`.
 
 1. Homepage, then Nour registers ("Use Nour's sample details").
 2. Career discovery ("Use preset answers"), results, choose Full-time employment, learning path.
 3. AI CV coach saves an honest CV bullet.
-4. **Rania (trainer):** accepts Nour and assigns her to K01.
+4. **Nour** applies to "Employment Readiness, Damascus" on Training Programmes. **Rania (trainer)** gets a notification, accepts her and assigns her to K01.
 5. **Nour:** "Complete this course (demo)" on C03, then on C05. Points rise; C05 waits for review.
 6. **Rania:** approves the C05 practical, marks S02 attendance, recommends the certificate.
 7. **Salma (centre admin):** approves and issues the certificate.

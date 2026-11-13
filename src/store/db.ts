@@ -23,12 +23,27 @@ import { seedApplications, seedFollowUps, seedOutcomes, seedYouth } from '@/data
  * snapshot (applications, points, course state and attendance together) and keeps the session.
  */
 const KEY = 'unicef-syria-demo-db'
-const VERSION = 2
+const VERSION = 3
 
+export type NoticeKind =
+  | 'programmeApplied'
+  | 'programmeDecision'
+  | 'cohortAssigned'
+  | 'practicalReviewed'
+  | 'certificateIssued'
+  | 'graduated'
+  | 'applicationStage'
+  | 'applicationSubmitted'
+
+/** In-app notification (brief §16: notifications are simulated in-app only). */
 export interface InAppNotice {
   id: string
+  /** A persona id (staff) or youth id (learner). */
   to: PersonaId | YouthId
-  text: string
+  kind: NoticeKind
+  params: Record<string, string>
+  /** Where clicking the notice goes. */
+  link?: string
   at: string
   read: boolean
 }

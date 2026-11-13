@@ -139,7 +139,8 @@
       "toolkit": "Career Toolkit",
       "opportunities": "Opportunities",
       "community": "Community and Events",
-      "progress": "Progress and Rewards"
+      "progress": "Progress and Rewards",
+      "programmes": "Training Programmes"
     },
     "trainer": {
       "dashboard": "Dashboard",
@@ -209,5 +210,30 @@
     "point3": "Reach jobs, freelance work and enterprise support",
     "golden": "Golden demo, in order",
     "more": "More profiles (other routes and branches)"
+  },
+  "notices": {
+    "heading": "Notifications",
+    "title_one": "Notifications, {{count}} unread",
+    "title_other": "Notifications, {{count}} unread",
+    "markAll": "Mark all as read",
+    "empty": "No notifications yet.",
+    "demoNote": "In-app only. Nothing is sent outside the demonstration.",
+    "approved": "approved",
+    "returned": "returned for revision",
+    "status": {
+      "pending": "pending",
+      "needsInfo": "needs more information",
+      "accepted": "accepted",
+      "waitlisted": "waitlisted",
+      "notSelected": "not selected"
+    },
+    "programmeApplied": "{{name}} applied to {{programme}}.",
+    "programmeDecision": "Your application to {{programme}}: {{status}}.",
+    "cohortAssigned": "You have joined class {{cohort}}. Your live sessions are now in My Cohort and Sessions.",
+    "practicalReviewed": "Your trainer {{result}} your practical task for {{course}}.",
+    "certificateIssued": "Your certificate for {{course}} has been issued.",
+    "graduated": "Congratulations, you have graduated from {{programme}}.",
+    "applicationStage": "{{opp}}: your application is now {{stage}}.",
+    "applicationSubmitted": "{{name}} applied to {{opp}}."
   }
 }

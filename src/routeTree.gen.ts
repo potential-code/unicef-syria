@@ -56,6 +56,7 @@ import { Route as UnicefProgrammesRouteImport } from './routes/unicef/programmes
 import { Route as ViewerIndexRouteImport } from './routes/viewer/index'
 import { Route as YouthIndexRouteImport } from './routes/youth/index'
 import { Route as YouthPathRouteImport } from './routes/youth/path'
+import { Route as YouthProgrammesRouteImport } from './routes/youth/programmes'
 import { Route as YouthProgressRouteImport } from './routes/youth/progress'
 import { Route as PublicExploreIndexRouteImport } from './routes/_public/explore/index'
 import { Route as PublicExploreCourseIdRouteImport } from './routes/_public/explore/$courseId'
@@ -321,6 +322,11 @@ const YouthPathRoute = YouthPathRouteImport.update({
   path: '/path',
   getParentRoute: () => YouthRoute,
 } as any)
+const YouthProgrammesRoute = YouthProgrammesRouteImport.update({
+  id: '/programmes',
+  path: '/programmes',
+  getParentRoute: () => YouthRoute,
+} as any)
 const YouthProgressRoute = YouthProgressRouteImport.update({
   id: '/progress',
   path: '/progress',
@@ -519,6 +525,7 @@ export interface FileRoutesByFullPath {
   '/unicef/partners': typeof UnicefPartnersRoute
   '/unicef/programmes': typeof UnicefProgrammesRoute
   '/youth/path': typeof YouthPathRoute
+  '/youth/programmes': typeof YouthProgrammesRoute
   '/youth/progress': typeof YouthProgressRoute
   '/centre/': typeof CentreIndexRoute
   '/employer/': typeof EmployerIndexRoute
@@ -589,6 +596,7 @@ export interface FileRoutesByTo {
   '/unicef/partners': typeof UnicefPartnersRoute
   '/unicef/programmes': typeof UnicefProgrammesRoute
   '/youth/path': typeof YouthPathRoute
+  '/youth/programmes': typeof YouthProgrammesRoute
   '/youth/progress': typeof YouthProgressRoute
   '/': typeof PublicIndexRoute
   '/centre': typeof CentreIndexRoute
@@ -669,6 +677,7 @@ export interface FileRoutesById {
   '/unicef/partners': typeof UnicefPartnersRoute
   '/unicef/programmes': typeof UnicefProgrammesRoute
   '/youth/path': typeof YouthPathRoute
+  '/youth/programmes': typeof YouthProgrammesRoute
   '/youth/progress': typeof YouthProgressRoute
   '/_public/': typeof PublicIndexRoute
   '/centre/': typeof CentreIndexRoute
@@ -750,6 +759,7 @@ export interface FileRouteTypes {
     | '/unicef/partners'
     | '/unicef/programmes'
     | '/youth/path'
+    | '/youth/programmes'
     | '/youth/progress'
     | '/centre/'
     | '/employer/'
@@ -820,6 +830,7 @@ export interface FileRouteTypes {
     | '/unicef/partners'
     | '/unicef/programmes'
     | '/youth/path'
+    | '/youth/programmes'
     | '/youth/progress'
     | '/'
     | '/centre'
@@ -899,6 +910,7 @@ export interface FileRouteTypes {
     | '/unicef/partners'
     | '/unicef/programmes'
     | '/youth/path'
+    | '/youth/programmes'
     | '/youth/progress'
     | '/_public/'
     | '/centre/'
@@ -1283,6 +1295,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof YouthPathRouteImport
       parentRoute: typeof YouthRoute
     }
+    '/youth/programmes': {
+      id: '/youth/programmes'
+      path: '/programmes'
+      fullPath: '/youth/programmes'
+      preLoaderRoute: typeof YouthProgrammesRouteImport
+      parentRoute: typeof YouthRoute
+    }
     '/youth/progress': {
       id: '/youth/progress'
       path: '/progress'
@@ -1652,6 +1671,7 @@ const ViewerRouteWithChildren =
 
 interface YouthRouteChildren {
   YouthPathRoute: typeof YouthPathRoute
+  YouthProgrammesRoute: typeof YouthProgrammesRoute
   YouthProgressRoute: typeof YouthProgressRoute
   YouthIndexRoute: typeof YouthIndexRoute
   YouthApplicationsAppIdRoute: typeof YouthApplicationsAppIdRoute
@@ -1677,6 +1697,7 @@ interface YouthRouteChildren {
 
 const YouthRouteChildren: YouthRouteChildren = {
   YouthPathRoute: YouthPathRoute,
+  YouthProgrammesRoute: YouthProgrammesRoute,
   YouthProgressRoute: YouthProgressRoute,
   YouthIndexRoute: YouthIndexRoute,
   YouthApplicationsAppIdRoute: YouthApplicationsAppIdRoute,

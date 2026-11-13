@@ -74,7 +74,10 @@ const seedPoints = (amount: number) => [
     reason: 'seed' as const,
     amount,
     at: '2026-11-17T09:00:00+03:00',
-    label: L('Points earned before this demo (sample)', 'نقاط مكتسبة قبل هذا العرض (عينة)'),
+    label: L(
+      'Earlier activity: profile, career discovery and first courses',
+      'نشاط سابق: الملف الشخصي واستكشاف المسار والدورات الأولى',
+    ),
   },
 ]
 
@@ -380,14 +383,13 @@ export function seedYouth(): Record<YouthId, Youth> {
 
 /**
  * A freshly registered Nour (main walkthrough step 1): profile prefilled for the presenter,
- * no assessment, no cohort; a pending training application for Employment Readiness.
+ * no assessment, no cohort and no training application (she applies to a programme herself).
  */
 export function freshNour(): Youth {
   const n = nour()
   return {
     ...empty('Y001', n.image, { ...n.profile }),
     profileComplete: false,
-    trainingApplication: { programmeId: 'PR01', status: 'pending', at: DEMO_NOW },
     toolkit: { interviews: [], proposals: [] },
   }
 }

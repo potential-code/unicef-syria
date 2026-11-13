@@ -388,8 +388,8 @@
       "issued": "Certificate issued to {{name}} ({{course}}). It now shows in the learner's record."
     },
     "awaitingTrainer": "Awaiting trainer recommendation",
-    "sampleBody": "No certificate is waiting for approval. Presenter shortcut: Sami completes C05 and the trainer recommends the certificate.",
-    "sampleCta": "Prepare sample",
+    "sampleBody": "No certificate is waiting for approval yet. In the golden demo, Rania recommends Nour's C05 certificate first. To show the flow without it, use the presenter shortcut.",
+    "sampleCta": "Presenter shortcut: prepare a sample",
     "sampleReady": "Sample ready: Sami's C05 certificate is recommended",
     "preview": "Certificate preview",
     "previewNote": "Sample certificate of completion. Not a professional qualification.",

@@ -5,6 +5,7 @@ import { SESSIONS } from '@/data/sessions'
 import { award, POINTS } from '@/domain/points'
 import { now } from '@/lib/clock'
 import { update, useDb, withYouth } from '../db'
+import { notify } from '../notify'
 import { refreshBadges } from './youth'
 
 export function useSessions(): Session[] {
@@ -56,27 +57,59 @@ export function createSession(s: Omit<Session, 'id'>) {
   }))
 }
 
-/** Trainer screening (brief §17 T01). */
+/** Trainer screening (brief §17 T01). The learner is notified in-app. */
 export function decideTrainingApplication(
   youthId: YouthId,
   status: 'needsInfo' | 'accepted' | 'waitlisted' | 'notSelected',
 ) {
-  update((db) =>
-    withYouth(db, youthId, (y) =>
-      y.trainingApplication
-        ? { ...y, trainingApplication: { ...y.trainingApplication, status } }
-        : y,
-    ),
-  )
+  update((db) => {
+    const app = db.youth[youthId]?.trainingApplication
+    if (!app) return db
+    const next = withYouth(db, youthId, (y) => ({ ...y, trainingApplication: { ...app, status } }))
+    return notify(
+      next,
+      youthId,
+      'programmeDecision',
+      { status, programme: app.programmeId },
+      '/youth/programmes',
+    )
+  })
+}
+
+/** Learner applies to a centre programme (brief §17 T01; UNICEF: online application process). */
+export function applyToProgramme(
+  youthId: YouthId,
+  programmeId: ProgrammeId,
+  motivation: string,
+  availability: string,
+) {
+  update((db) => {
+    const y = db.youth[youthId]
+    if (!y) return db
+    const next = withYouth(db, youthId, (yy) => ({
+      ...yy,
+      trainingApplication: { programmeId, status: 'pending', at: now(), motivation, availability },
+    }))
+    const trainer = COHORTS.find((c) => c.programmeId === programmeId)?.trainerId
+    return trainer
+      ? notify(
+          next,
+          trainer,
+          'programmeApplied',
+          { name: y.profile.name, programme: programmeId },
+          '/trainer/applications',
+        )
+      : next
+  })
 }
 
 /** Assign an accepted learner to a cohort: restricted sessions appear for that learner only. */
 export function assignCohort(youthId: YouthId, cohortId: CohortId) {
-  update((db) =>
-    withYouth(db, youthId, (y) =>
-      y.cohortIds.includes(cohortId) ? y : { ...y, cohortIds: [...y.cohortIds, cohortId] },
-    ),
-  )
+  update((db) => {
+    if (db.youth[youthId]?.cohortIds.includes(cohortId)) return db
+    const next = withYouth(db, youthId, (y) => ({ ...y, cohortIds: [...y.cohortIds, cohortId] }))
+    return notify(next, youthId, 'cohortAssigned', { cohort: cohortId }, '/youth/cohort')
+  })
 }
 
 export function cohortForProgramme(programmeId: ProgrammeId): CohortId | undefined {

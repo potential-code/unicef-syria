@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
 import { usePersona, usePrefs } from '@/store/actions/session'
 import { DemoControls } from './DemoControls'
+import { NotificationBell } from './NotificationBell'
 import { SideNav } from './SideNav'
 import { UserMenu } from './UserMenu'
 
@@ -64,6 +65,7 @@ export function AppShell({ area: role }: { area: Role }) {
           <div className="ms-auto flex items-center gap-1.5 sm:gap-2">
             <LangToggle />
             <DemoControls />
+            <NotificationBell />
             <UserMenu />
           </div>
         </header>

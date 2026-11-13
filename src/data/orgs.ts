@@ -146,7 +146,21 @@ export const ORGANISATIONS = [
 /** Courses delivered inside each cohort programme: practical reviewed by the trainer and
  * certificate approved by the centre (brief §17 T05). Other courses issue automatically. */
 export const COHORT_COURSES: Record<CohortId, CourseId[]> = {
-  K01: ['C05', 'C13'],
-  K02: ['C07', 'C08'],
-  K03: ['C11', 'C15'],
+  K01: ['C05'],
+  K02: ['C07'],
+  K03: ['C11'],
+}
+
+/** Open intakes shown on the youth "Training programmes" page (sample data). */
+export const INTAKES: { cohortId: CohortId; start: string; places: number; placesLeft: number }[] =
+  [
+    { cohortId: 'K01', start: '2026-11-17', places: 24, placesLeft: 3 },
+    { cohortId: 'K02', start: '2026-11-18', places: 18, placesLeft: 5 },
+    { cohortId: 'K03', start: '2026-11-18', places: 20, placesLeft: 4 },
+  ]
+
+/** Employer persona that receives notices for each organisation (demo only). */
+export const ORG_CONTACT: Partial<Record<string, 'EM01' | 'EM02'>> = {
+  ORG01: 'EM01',
+  ORG04: 'EM02',
 }

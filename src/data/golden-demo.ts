@@ -71,12 +71,21 @@ export const GOLDEN_DEMO: GuideStep[] = [
     ),
   },
   {
+    persona: 'Y001',
+    to: '/youth/programmes',
+    title: L('Nour applies to a centre programme', 'نور تقدّم على برنامج في مركز'),
+    hint: L(
+      'Show the open programmes. On "Employment Readiness, Damascus" (recommended) click Apply, write why, send.',
+      'اعرض البرامج المتاحة. في "الجاهزية للتوظيف، دمشق" (موصى به) انقر قدّم الآن، اكتب السبب، وأرسل.',
+    ),
+  },
+  {
     persona: 'TR01',
     to: '/trainer/applications',
     title: L('Rania accepts Nour', 'رانيا تقبل نور'),
     hint: L(
-      "Open Nour's pending application, Accept, then assign to K01.",
-      'افتح طلب نور المعلّق، اقبله، ثم عيّنها في المجموعة K01.',
+      "Bell shows Nour's new application. Open it, read her answer, Accept, then Assign to K01.",
+      'يظهر الجرس طلب نور الجديد. افتحه، اقرأ إجابتها، اقبله، ثم عيّنها في K01.',
     ),
   },
   {

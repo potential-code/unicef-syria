@@ -90,6 +90,19 @@ export function ApplicationDialog({
           />
           <TrainingStatusBadge status={app.status} />
         </div>
+        {app.motivation && (
+          <figure className="rounded-xl border border-sky-200 bg-white p-4 text-sm shadow-xs">
+            <figcaption className="mb-1 text-xs font-bold tracking-wide text-ink-soft uppercase">
+              {t('applications.motivation')}
+            </figcaption>
+            <blockquote className="text-ink">“{app.motivation}”</blockquote>
+            {app.availability && (
+              <p className="mt-2 text-xs text-ink-soft">
+                {t('applications.availability')}: {app.availability}
+              </p>
+            )}
+          </figure>
+        )}
         <dl className="grid gap-4 text-sm sm:grid-cols-2">
           <Field label={t('applications.summary')}>
             {p.employmentStatus}. {p.experience}.
