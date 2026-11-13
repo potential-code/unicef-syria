@@ -56,7 +56,13 @@ export function DonutChart({
               <Cell key={s.key} fill={s.color} />
             ))}
           </Pie>
-          <Tooltip content={tooltip} />
+          {/* Above the centre total, and free to leave the small chart box so it never squeezes. */}
+          <Tooltip
+            content={tooltip}
+            wrapperStyle={{ zIndex: 10 }}
+            allowEscapeViewBox={{ x: true, y: true }}
+            offset={16}
+          />
         </PieChart>
       </ResponsiveContainer>
       <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center">

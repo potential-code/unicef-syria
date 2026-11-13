@@ -22,7 +22,7 @@ export function ChartTooltipBody({ title, rows }: { title?: ReactNode; rows: Too
               aria-hidden
             />
             <span className="font-semibold tabular-nums text-ink">{r.value}</span>
-            <span className="text-ink-soft">{r.label}</span>
+            <span className="whitespace-nowrap text-ink-soft">{r.label}</span>
           </li>
         ))}
       </ul>
