@@ -68,7 +68,11 @@ export function RegisterPage({ next }: { next?: string }) {
   const go = (s: StepId) => {
     setErrors({})
     setStep(s)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    // Keep the scroll position so Continue stays under the pointer; move focus to the new step
+    // title for screen readers without jumping the page.
+    window.requestAnimationFrame(() =>
+      document.getElementById('step-title')?.focus({ preventScroll: true }),
+    )
   }
   const nextStep = () => {
     const e = validate(step, form)
@@ -143,7 +147,7 @@ export function RegisterPage({ next }: { next?: string }) {
             <p className="text-xs font-bold tracking-widest text-blue uppercase">
               {t('register.stepOf', { n: idx + 1, total: STEPS.length })}
             </p>
-            <h2 id="step-title" className="mt-1 text-xl">
+            <h2 id="step-title" tabIndex={-1} className="mt-1 text-xl outline-none">
               {t(`register.steps.${step}`)}
             </h2>
             <p className="mt-1 mb-5 text-sm text-ink-soft">{t(`register.intro.${step}`)}</p>
