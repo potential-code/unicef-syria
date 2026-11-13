@@ -33,10 +33,16 @@ export function PersonaCard({ persona, onSelect }: { persona: Persona; onSelect:
       />
       <span className="min-w-0 flex-1">
         <span className="flex items-center gap-1.5">
-          <span
-            className={cn('size-1.5 shrink-0 rounded-full', ROLE_DOT[persona.role])}
-            aria-hidden
-          />
+          {persona.golden ? (
+            <span className="flex size-4 shrink-0 items-center justify-center rounded-full bg-blue text-[10px] font-bold text-white">
+              {persona.golden}
+            </span>
+          ) : (
+            <span
+              className={cn('size-1.5 shrink-0 rounded-full', ROLE_DOT[persona.role])}
+              aria-hidden
+            />
+          )}
           <span className="truncate text-sm font-bold text-ink">{l(persona.name)}</span>
         </span>
         <span className="block truncate text-xs text-ink-soft">{l(persona.title)}</span>

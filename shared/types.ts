@@ -38,6 +38,8 @@ export interface Persona {
   /** What this persona is allowed to see, in plain words for the sign-in card. */
   scope: Localized
   image: string
+  /** Position in the golden demo (1 = first). Profiles without it are extras. */
+  golden?: number
   /** Scope keys used by domain/access.ts. */
   youthId?: YouthId
   trainerId?: TrainerId
@@ -613,4 +615,7 @@ export interface AnalyticsRow {
 export interface Prefs {
   lang: Lang
   reducedMotion: boolean
+  /** Presenter demo guide panel visibility and current step (optional for older saved data). */
+  demoGuide?: boolean
+  guideStep?: number
 }

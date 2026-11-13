@@ -1,6 +1,7 @@
 import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
 import { MotionConfig } from 'motion/react'
 import { useTranslation } from 'react-i18next'
+import { DemoGuide } from '@/components/layout/DemoGuide'
 import { Button } from '@/components/ui/button'
 import { Toaster } from '@/components/ui/sonner'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
@@ -19,6 +20,7 @@ function Root() {
         {t('skip')}
       </a>
       <Outlet />
+      <DemoGuide />
       <Toaster position="top-center" closeButton dir={lang === 'ar' ? 'rtl' : 'ltr'} />
     </MotionConfig>
   )

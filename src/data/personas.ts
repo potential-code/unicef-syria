@@ -5,6 +5,7 @@ import { L } from './l'
 export const PERSONAS: Persona[] = [
   {
     id: 'Y001',
+    golden: 1,
     role: 'youth',
     youthId: 'Y001',
     name: L('Nour Hassan', 'نور حسن'),
@@ -41,6 +42,7 @@ export const PERSONAS: Persona[] = [
   },
   {
     id: 'TR01',
+    golden: 2,
     role: 'trainer',
     trainerId: 'TR01',
     name: L('Rania Haddad', 'رانيا حداد'),
@@ -68,6 +70,7 @@ export const PERSONAS: Persona[] = [
   },
   {
     id: 'EM01',
+    golden: 3,
     role: 'employer',
     orgId: 'ORG01',
     name: L('Karim Aziz', 'كريم عزيز'),
@@ -86,6 +89,7 @@ export const PERSONAS: Persona[] = [
   },
   {
     id: 'CA01',
+    golden: 4,
     role: 'centre',
     centreId: 'T01',
     name: L('Salma Ibrahim', 'سلمى إبراهيم'),
@@ -95,6 +99,7 @@ export const PERSONAS: Persona[] = [
   },
   {
     id: 'PA01',
+    golden: 5,
     role: 'partner',
     partnerId: 'P01',
     name: L('Fadi Mourad', 'فادي مراد'),
@@ -107,6 +112,7 @@ export const PERSONAS: Persona[] = [
   },
   {
     id: 'UA01',
+    golden: 6,
     role: 'unicef',
     name: L('Leila Najjar', 'ليلى نجار'),
     title: L('UNICEF administrator', 'مسؤولة في اليونيسف'),
@@ -115,6 +121,7 @@ export const PERSONAS: Persona[] = [
   },
   {
     id: 'RV01',
+    golden: 7,
     role: 'viewer',
     name: L('Bassam Haddad', 'بسام حداد'),
     title: L('Reporting viewer (optional role)', 'مطّلع على التقارير (دور اختياري)'),

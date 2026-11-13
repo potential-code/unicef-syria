@@ -1,6 +1,7 @@
 export * from './applications'
 export * from './community'
 export * from './followups'
+export * from './guide'
 export * from './learning'
 export * from './mentors'
 export * from './session'

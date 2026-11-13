@@ -49,7 +49,15 @@
     "resetBody": "Applications, points, course progress, attendance and reports return to the seeded snapshot. Your language stays the same.",
     "resetDone": "Demo reset to the seeded snapshot",
     "motion": "Reduce motion",
-    "signedInAs": "Signed in as {{name}}"
+    "signedInAs": "Signed in as {{name}}",
+    "guide": "Golden demo",
+    "guideSteps": "All demo steps",
+    "guideGo": "Go here",
+    "guideVisitor": "Visitor",
+    "startGolden": "Start golden demo",
+    "showGuide": "Show demo guide",
+    "goldenProfiles": "Golden demo profiles",
+    "moreProfiles": "More profiles (other routes)"
   },
   "roles": {
     "youth": "Youth",
@@ -198,6 +206,8 @@
     "panelTitle": "From learning to earning, one connected journey.",
     "point1": "Discover a career direction that suits you",
     "point2": "Learn with courses, cohorts, AI coaches and mentors",
-    "point3": "Reach jobs, freelance work and enterprise support"
+    "point3": "Reach jobs, freelance work and enterprise support",
+    "golden": "Golden demo, in order",
+    "more": "More profiles (other routes and branches)"
   }
 }

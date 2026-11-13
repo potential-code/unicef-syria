@@ -15,17 +15,21 @@
 | English and Arabic key screens, mobile layout, keyboard navigation, empty and error states                        | Done   | Language toggle on every screen; checked at 390px in Arabic with no sideways scroll               |
 | Reset restores a consistent demo; nothing leaves the prototype                                                    | Done   | Presenter → Reset demo; no network calls at runtime                                               |
 
-## Recommended walkthrough order
+## Golden demo (recommended walkthrough)
+Presenter menu → **Start golden demo**. It resets the data and opens the demo guide (bottom corner). Each step's **Go here** signs in as the right profile and opens the exact page; **Next** moves on. There are 17 steps in `src/data/golden-demo.ts`.
 
-1. **Nour (main story).** Homepage → Start my journey → "Use Nour's sample details" → career discovery (Use preset answers) → choose Full-time employment → path → C05 Unit 3 → Lina AI CV bullet.
-   Switch to Rania: accept and assign K01, mark attendance, review the C05 practical.
-   Back to Nour: course complete and points up → book a mentor → interview practice → O01 apply.
-   Switch to Karim: shortlist, interview, offer, hired. Back to Nour: timeline.
-   Switch to Leila (UNICEF): current activity vs historical outcomes → follow-up.
-2. **Omar.** Enterprise route → C07 → Amal AI questions → business concept → book Samer → O06 application.
-3. **Lina.** Freelance route → C11 → Ziad AI proposal → O04.
-   Switch to Hala: client discussion, then selected, then completed.
-4. **Not selected branch.** Karim marks Sami's O01 application Not selected → sign in as Sami to see the feedback and next steps.
+1. Homepage, then Nour registers ("Use Nour's sample details").
+2. Career discovery ("Use preset answers"), results, choose Full-time employment, learning path.
+3. AI CV coach saves an honest CV bullet.
+4. **Rania (trainer):** accepts Nour and assigns her to K01.
+5. **Nour:** "Complete this course (demo)" on C03, then on C05. Points rise; C05 waits for review.
+6. **Rania:** approves the C05 practical, marks S02 attendance, recommends the certificate.
+7. **Salma (centre admin):** approves and issues the certificate.
+8. **Nour:** books mentor Rania (programme allocation), practises an interview, applies to O01.
+9. **Karim (employer):** shortlist, interview, offer, confirm job start. **Nour** sees "Hired".
+10. **Fadi (partner):** compares the two centres. **Leila (UNICEF):** live activity vs historical outcomes, then follow-up. **Bassam (viewer):** read-only reports.
+
+The extra profiles (Omar, Lina, Hala, Sami, Samer, Maya) sit under "More profiles" on the sign-in page and in the Presenter menu. Use them for the enterprise and freelance routes and for the Not selected branch.
 
 ## Known limitations
 

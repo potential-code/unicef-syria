@@ -1,5 +1,6 @@
+import type { Persona } from '@shared/types'
 import { useNavigate } from '@tanstack/react-router'
-import { MonitorPlay, RotateCcw } from 'lucide-react'
+import { MonitorPlay, Play, RotateCcw } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
@@ -21,23 +22,32 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { PERSONAS } from '@/data/personas'
 import { ROLE_HOME } from '@/domain/access'
 import { useLocalized } from '@/i18n'
 import { cn } from '@/lib/utils'
-import { setReducedMotion, signInAs, usePersona, usePrefs } from '@/store/actions/session'
+import { setDemoGuide, setGuideStep } from '@/store/actions/guide'
+import { setReducedMotion, signInAs, signOut, usePersona, usePrefs } from '@/store/actions/session'
 import { resetDemo } from '@/store/db'
 
 /** Presenter-only role switcher and "Reset demo" (brief §1). */
 export function DemoControls({ onDark, className }: { onDark?: boolean; className?: string }) {
   const { t } = useTranslation()
-  const { l } = useLocalized()
   const navigate = useNavigate()
   const persona = usePersona()
   const prefs = usePrefs()
   const [confirm, setConfirm] = useState(false)
+  const golden = PERSONAS.filter((p) => p.golden).sort((a, b) => (a.golden ?? 0) - (b.golden ?? 0))
+  const extras = PERSONAS.filter((p) => !p.golden)
+  const open = (p: Persona) => {
+    signInAs(p.id)
+    void navigate({ to: ROLE_HOME[p.role] })
+  }
 
   return (
     <>
@@ -57,23 +67,44 @@ export function DemoControls({ onDark, className }: { onDark?: boolean; classNam
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="max-h-[80vh] w-72 overflow-y-auto">
-          <DropdownMenuLabel>{t('demo.switchRole')}</DropdownMenuLabel>
-          {PERSONAS.map((p) => (
-            <DropdownMenuItem
-              key={p.id}
-              onSelect={() => {
-                signInAs(p.id)
-                void navigate({ to: ROLE_HOME[p.role] })
-              }}
-              className={cn('gap-2.5', persona?.id === p.id && 'bg-sky-100')}
-            >
-              <Avatar src={p.image} name={l(p.name)} size={28} />
-              <span className="min-w-0">
-                <span className="block truncate font-medium">{l(p.name)}</span>
-                <span className="block truncate text-xs text-ink-soft">{l(p.title)}</span>
-              </span>
-            </DropdownMenuItem>
+          <DropdownMenuItem
+            onSelect={() => {
+              resetDemo()
+              signOut()
+              setGuideStep(0)
+              void navigate({ to: '/' })
+            }}
+            className="gap-2 font-semibold text-blue"
+          >
+            <Play className="size-4" aria-hidden />
+            {t('demo.startGolden')}
+          </DropdownMenuItem>
+          <DropdownMenuCheckboxItem
+            checked={!!prefs.demoGuide}
+            onCheckedChange={(v) => setDemoGuide(Boolean(v))}
+          >
+            {t('demo.showGuide')}
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuLabel>{t('demo.goldenProfiles')}</DropdownMenuLabel>
+          {golden.map((p) => (
+            <PersonaItem key={p.id} p={p} active={persona?.id === p.id} onSelect={() => open(p)} />
           ))}
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger className="text-sm">
+              {t('demo.moreProfiles')}
+            </DropdownMenuSubTrigger>
+            <DropdownMenuSubContent className="w-64">
+              {extras.map((p) => (
+                <PersonaItem
+                  key={p.id}
+                  p={p}
+                  active={persona?.id === p.id}
+                  onSelect={() => open(p)}
+                />
+              ))}
+            </DropdownMenuSubContent>
+          </DropdownMenuSub>
           <DropdownMenuSeparator />
           <DropdownMenuCheckboxItem
             checked={prefs.reducedMotion}
@@ -105,5 +136,29 @@ export function DemoControls({ onDark, className }: { onDark?: boolean; classNam
         </AlertDialogContent>
       </AlertDialog>
     </>
+  )
+}
+
+function PersonaItem({
+  p,
+  active,
+  onSelect,
+}: {
+  p: Persona
+  active: boolean
+  onSelect: () => void
+}) {
+  const { l } = useLocalized()
+  return (
+    <DropdownMenuItem onSelect={onSelect} className={cn('gap-2.5', active && 'bg-sky-100')}>
+      <Avatar src={p.image} name={l(p.name)} size={28} />
+      <span className="min-w-0">
+        <span className="block truncate font-medium">
+          {p.golden ? <span className="me-1 text-xs font-bold text-blue">{p.golden}.</span> : null}
+          {l(p.name)}
+        </span>
+        <span className="block truncate text-xs text-ink-soft">{l(p.title)}</span>
+      </span>
+    </DropdownMenuItem>
   )
 }

@@ -1,5 +1,6 @@
 import type { PersonaId } from '@shared/types'
 import { useNavigate } from '@tanstack/react-router'
+import { ChevronDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { AuthLayout } from '@/components/layout/AuthLayout'
 import { Stagger, StaggerItem } from '@/components/motion'
@@ -19,8 +20,8 @@ export function SignInPage() {
     signInAs(id)
     void navigate({ to: ROLE_HOME[PERSONA_BY_ID[id].role] })
   }
-  const youth = PERSONAS.filter((p) => p.role === 'youth')
-  const staff = PERSONAS.filter((p) => p.role !== 'youth')
+  const golden = PERSONAS.filter((p) => p.golden).sort((a, b) => (a.golden ?? 0) - (b.golden ?? 0))
+  const extras = PERSONAS.filter((p) => !p.golden)
 
   return (
     <AuthLayout
@@ -45,26 +46,30 @@ export function SignInPage() {
         <p className="mb-4 text-sm text-ink-soft">{t('signInPage.demoBody')}</p>
 
         <h3 className="mb-2 text-[11px] font-bold tracking-widest text-ink-soft uppercase">
-          {t('signInPage.youthStories')}
+          {t('signInPage.golden')}
         </h3>
         <Stagger className="grid gap-2 sm:grid-cols-2">
-          {youth.map((p) => (
+          {golden.map((p) => (
             <StaggerItem key={p.id}>
               <PersonaCard persona={p} onSelect={() => go(p.id)} />
             </StaggerItem>
           ))}
         </Stagger>
 
-        <h3 className="mt-6 mb-2 text-[11px] font-bold tracking-widest text-ink-soft uppercase">
-          {t('signInPage.staff')}
-        </h3>
-        <Stagger className="grid gap-2 sm:grid-cols-2">
-          {staff.map((p) => (
-            <StaggerItem key={p.id}>
-              <PersonaCard persona={p} onSelect={() => go(p.id)} />
-            </StaggerItem>
-          ))}
-        </Stagger>
+        <details className="group mt-6">
+          <summary className="flex cursor-pointer list-none items-center gap-2 text-[11px] font-bold tracking-widest text-ink-soft uppercase hover:text-blue">
+            <ChevronDown
+              className="size-4 transition-transform group-open:rotate-180"
+              aria-hidden
+            />
+            {t('signInPage.more')}
+          </summary>
+          <div className="mt-2 grid gap-2 sm:grid-cols-2">
+            {extras.map((p) => (
+              <PersonaCard key={p.id} persona={p} onSelect={() => go(p.id)} />
+            ))}
+          </div>
+        </details>
       </section>
     </AuthLayout>
   )
