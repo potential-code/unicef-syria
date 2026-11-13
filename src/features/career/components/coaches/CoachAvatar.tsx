@@ -1,7 +1,9 @@
 import type { CoachId } from '@shared/types'
+import { useState } from 'react'
 import { GlobeGrid } from '@/components/brand'
 import { COACHES } from '@/data/coaches'
 import { useLocalized } from '@/i18n'
+import { asset } from '@/lib/asset'
 import { cn } from '@/lib/utils'
 import { COACH_STYLE } from '../../config/coaches'
 
@@ -20,8 +22,8 @@ const SIZE = {
 } as const
 
 /**
- * Coach identity tile: the coach's gradient, its initial set large over the emblem's globe lines,
- * and a small "AI" tag (AI coaches never use photographs).
+ * Coach identity tile: an AI-generated portrait on the coach's gradient, with a small "AI" tag so
+ * it always reads as an AI coach. Falls back to the initial over the globe lines if the image fails.
  */
 export function CoachAvatar({
   coachId,
@@ -37,6 +39,7 @@ export function CoachAvatar({
   const z = SIZE[size]
   const coach = COACHES.find((c) => c.id === coachId)
   const initial = coach ? Array.from(l(coach.name).trim())[0] : '?'
+  const [failed, setFailed] = useState(!coach?.image)
   return (
     <span className={cn('relative inline-flex shrink-0', className)} aria-hidden>
       <span
@@ -47,11 +50,23 @@ export function CoachAvatar({
           s.ink,
         )}
       >
-        <GlobeGrid
-          className={cn('absolute -end-[30%] -bottom-[30%] size-[110%]', s.motif)}
-          strokeWidth={2}
-        />
-        <span className={cn('relative leading-none font-extrabold', z.letter)}>{initial}</span>
+        {failed || !coach ? (
+          <>
+            <GlobeGrid
+              className={cn('absolute -end-[30%] -bottom-[30%] size-[110%]', s.motif)}
+              strokeWidth={2}
+            />
+            <span className={cn('relative leading-none font-extrabold', z.letter)}>{initial}</span>
+          </>
+        ) : (
+          <img
+            src={asset(coach.image)}
+            alt=""
+            loading="lazy"
+            onError={() => setFailed(true)}
+            className="absolute inset-0 size-full object-cover"
+          />
+        )}
       </span>
       <span
         className={cn(

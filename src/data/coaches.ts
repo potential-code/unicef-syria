@@ -44,7 +44,7 @@ const navigator: Coach = {
     'Assessment explanation, route exploration and next steps.',
     'شرح نتائج التقييم، واستكشاف المسارات، وتحديد الخطوات التالية.',
   ),
-  image: '',
+  image: 'images/generated/coach-navigator.webp',
   starters: navigatorStarters,
   steps: [
     {
@@ -194,7 +194,7 @@ const learning: Coach = {
     'Explains course concepts and recommends learning already in the library.',
     'يشرح مفاهيم الدورات ويقترح محتوى تعليميًا متوفرًا في المكتبة.',
   ),
-  image: '',
+  image: 'images/generated/coach-learning.webp',
   starters: learningStarters,
   steps: [
     {
@@ -379,7 +379,7 @@ const cv: Coach = {
     'Supports honest CV writing and interview practice.',
     'تدعم كتابة سيرة ذاتية صادقة والتدرب على المقابلات.',
   ),
-  image: '',
+  image: 'images/generated/coach-cv.webp',
   starters: cvStarters,
   steps: [
     {
@@ -516,7 +516,7 @@ const enterprise: Coach = {
     'Problem discovery, customer questions, business model and pitch practice.',
     'اكتشاف المشكلة، وأسئلة العملاء، ونموذج العمل، والتدرب على العرض.',
   ),
-  image: '',
+  image: 'images/generated/coach-enterprise.webp',
   starters: enterpriseStarters,
   steps: [
     {
@@ -682,7 +682,7 @@ const freelance: Coach = {
     'Service positioning, portfolio, proposals and scope discussions.',
     'تحديد الخدمة، وملف الأعمال، والمقترحات، ومناقشة نطاق العمل.',
   ),
-  image: '',
+  image: 'images/generated/coach-freelance.webp',
   starters: freelanceStarters,
   steps: [
     {

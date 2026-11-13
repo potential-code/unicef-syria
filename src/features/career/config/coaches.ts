@@ -2,7 +2,7 @@ import type { CoachId } from '@shared/types'
 import { BookOpenCheck, Compass, FileUser, Lightbulb, type LucideIcon, Palette } from 'lucide-react'
 
 /**
- * Identity per AI coach (no photographs: these are scripted demos). `grad` paints the avatar tile
+ * Identity per AI coach (portraits are AI-generated, never real people). `grad` paints the avatar tile
  * and the card header; `ink` is the text colour that reads on it; `motif` colours the emblem lines.
  */
 export const COACH_STYLE: Record<
