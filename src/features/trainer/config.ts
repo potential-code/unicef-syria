@@ -24,8 +24,8 @@ export const SAMPLE_SUBMISSIONS: Partial<Record<CourseId, Localized>> = {
     'عزيزي العميل، شكراً لإخبارنا بتأخر التوصيل. أعتذر عن الإزعاج. راجعت طلبك وسيصل غداً قبل الساعة 12:00. وإن لم يصل، يرجى الاتصال بي مباشرة على رقم المتجر وسأرتب استرداد رسوم التوصيل.',
   ),
   C05: L(
-    'Nour Hassan, Damascus. Summary: friendly and organised, looking for a customer service role. Experience: registered 120 participants at a community training event and answered their questions at the help desk. Skills: customer communication, digital records, teamwork.',
-    'نور حسن، دمشق. الملخص: ودودة ومنظمة وأبحث عن وظيفة في خدمة العملاء. الخبرة: سجلت 120 مشاركاً في فعالية تدريبية مجتمعية وأجبت عن أسئلتهم في مكتب المساعدة. المهارات: التواصل مع العملاء، السجلات الرقمية، العمل الجماعي.',
+    'Nour Hassan, Damascus. Summary: friendly and organised, looking for a customer service role. Experience: supported participant registration and maintained the attendance list for a training event, and answered questions at the help desk. Skills: customer communication, digital records, teamwork.',
+    'نور حسن، دمشق. الملخص: ودودة ومنظمة وأبحث عن وظيفة في خدمة العملاء. الخبرة: دعمت تسجيل المشاركين وحافظت على قائمة الحضور في فعالية تدريبية، وأجبت عن الأسئلة في مكتب المساعدة. المهارات: التواصل مع العملاء، السجلات الرقمية، العمل الجماعي.',
   ),
   C13: L(
     'Enquiry log: 1) Opening hours question, answered by phone. 2) Price of a repair, passed to the supervisor. 3) Delivery delay, apologised and confirmed a new time. Reply to customer 3: thank you for your patience, your order will arrive tomorrow morning.',

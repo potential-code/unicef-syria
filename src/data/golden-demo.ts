@@ -39,8 +39,8 @@ export const GOLDEN_DEMO: GuideStep[] = [
     to: '/youth/discovery',
     title: L('Career discovery', 'استكشاف المسار المهني'),
     hint: L(
-      'Start, click "Use preset answers", review and submit.',
-      'ابدأ، انقر "استخدام الإجابات الجاهزة"، راجع وأرسل.',
+      'On the intro screen click "Use preset answers", then "Submit and see results".',
+      'في شاشة البداية انقر "استخدام الإجابات الجاهزة"، ثم "أرسل واعرض النتائج".',
     ),
   },
   {

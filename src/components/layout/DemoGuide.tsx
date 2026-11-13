@@ -1,7 +1,7 @@
-import { useNavigate } from '@tanstack/react-router'
+import { useNavigate, useRouterState } from '@tanstack/react-router'
 import { ChevronLeft, ChevronRight, ListOrdered, Play, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Avatar } from '@/components/shared/Avatar'
 import { Button } from '@/components/ui/button'
@@ -10,7 +10,7 @@ import { PERSONA_BY_ID } from '@/data/personas'
 import { useLocalized } from '@/i18n'
 import { cn } from '@/lib/utils'
 import { setDemoGuide, setGuideStep } from '@/store/actions/guide'
-import { signInAs, signOut, usePrefs } from '@/store/actions/session'
+import { signInAs, signOut, usePersona, usePrefs } from '@/store/actions/session'
 import { resetDemo } from '@/store/db'
 
 /**
@@ -24,6 +24,26 @@ export function DemoGuide() {
   const navigate = useNavigate()
   const prefs = usePrefs()
   const [list, setList] = useState(false)
+  const pathname = useRouterState({ select: (r) => r.location.pathname })
+  const persona = usePersona()
+  const current = prefs.guideStep ?? 0
+
+  // Follow the presenter: arriving on one of the next few steps' pages (as that step's
+  // profile) by using the app itself moves the guide forward to that step.
+  useEffect(() => {
+    if (!prefs.demoGuide) return
+    for (let k = current + 1; k <= Math.min(current + 3, GOLDEN_DEMO.length - 1); k++) {
+      const s = GOLDEN_DEMO[k]
+      if (!s) continue
+      const samePage = pathname === s.to || (s.to !== '/' && pathname.startsWith(`${s.to}/`))
+      const samePerson = s.persona ? persona?.id === s.persona : !persona || k <= 1
+      if (samePage && samePerson) {
+        setGuideStep(k)
+        return
+      }
+    }
+  }, [pathname, persona, current, prefs.demoGuide])
+
   if (!prefs.demoGuide) return null
   const i = Math.min(prefs.guideStep ?? 0, GOLDEN_DEMO.length - 1)
   const step = GOLDEN_DEMO[i]
