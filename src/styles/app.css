@@ -180,7 +180,8 @@
     @apply rounded-2xl border border-border/70 bg-white shadow-md;
   }
   .card-hover {
-    @apply transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-lg;
+    /* Tailwind v4 moves elements with the `translate` property, so it must be in the transition list. */
+    @apply transition-[translate,transform,box-shadow,border-color,background-color] duration-300 ease-out will-change-transform hover:-translate-y-1 hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0;
   }
   /* Vertical brand gradient for the sidebar and auth panel. */
   .bg-grad-unicef-v {

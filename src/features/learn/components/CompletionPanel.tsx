@@ -32,7 +32,7 @@ export function CompletionPanel({
         className="relative mx-auto flex h-24 w-32 items-center justify-center"
         aria-hidden
       >
-        <LaurelWreath className="absolute inset-0 h-full text-yellow" />
+        <LaurelWreath className="absolute inset-0 size-full text-yellow" />
         <PartyPopper className="relative -mt-2 size-10 text-white" />
       </motion.span>
       <h2 className="relative mt-5 text-3xl text-white">{t('complete.title')}</h2>

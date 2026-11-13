@@ -76,7 +76,7 @@ export function QuestionStep({
                   checked={selected}
                   onChange={() => onSelect(o.dimension)}
                   className={cn(
-                    'group relative flex min-h-20 items-start gap-3 rounded-2xl border p-4 text-start shadow-sm transition-[transform,box-shadow,background-color,border-color] duration-200 active:scale-[0.99] sm:p-5',
+                    'group relative flex min-h-20 items-start gap-3 rounded-2xl border p-4 text-start shadow-sm transition-[translate,scale,transform,box-shadow,background-color,border-color] duration-200 active:scale-[0.99] sm:p-5',
                     selected
                       ? 'border-blue bg-blue text-white shadow-lg'
                       : 'border-border/70 bg-white hover:-translate-y-0.5 hover:border-cyan/60 hover:shadow-md',

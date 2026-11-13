@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import { LaurelBranch, LaurelWreath } from '@/components/brand'
+import { LaurelWreath } from '@/components/brand'
 import { Magnetic, Reveal, SplitWords } from '@/components/motion'
 import { SmartImage } from '@/components/shared/SmartImage'
 import { Button } from '@/components/ui/button'
@@ -24,10 +24,7 @@ export function FinalCta() {
           <Drift y={10} rotate={10} className="absolute start-2 top-6 text-white/[0.1] sm:start-6">
             <LaurelWreath className="h-64" />
           </Drift>
-          <LaurelBranch
-            className="absolute -bottom-6 start-[46%] hidden h-48 w-auto text-yellow/30 md:block"
-            mirrored
-          />
+          <LaurelWreath className="absolute bottom-6 start-[46%] hidden h-40 text-yellow/30 md:block" />
           <div className="relative max-w-xl px-6 py-14 sm:px-12 sm:py-20">
             <p className="mb-3 flex items-center gap-2 text-xs font-bold tracking-widest text-white/90 uppercase">
               <span className="h-0.5 w-6 rounded-full bg-yellow" aria-hidden />

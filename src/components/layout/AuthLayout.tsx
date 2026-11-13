@@ -33,8 +33,8 @@ export function AuthLayout({
     <div className="min-h-dvh bg-background lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
       <aside className="on-dark relative isolate overflow-hidden text-white lg:sticky lg:top-0 lg:h-dvh">
         <SmartImage src={image} alt="" className="absolute inset-0 -z-20 size-full" />
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(160deg,rgb(0_71_187/0.82)_0%,rgb(0_57_150/0.9)_45%,rgb(0_30_80/0.96)_100%)]" />
-        <Motif variant="auth" className="text-white/[0.09]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(170deg,rgb(0_71_187/0.5)_0%,rgb(0_57_150/0.62)_40%,rgb(0_30_80/0.9)_100%)]" />
+        <Motif variant="auth" className="text-white/[0.16]" />
         <div className="relative flex h-full flex-col gap-6 px-6 py-6 sm:px-10 lg:py-10">
           <Link to="/" aria-label={t('home')} className="w-fit">
             <Logo variant="white" className="h-7" />

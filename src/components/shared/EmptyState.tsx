@@ -25,7 +25,7 @@ export function EmptyState({
       )}
     >
       <span className="relative flex h-16 w-24 items-center justify-center">
-        <LaurelWreath className="absolute inset-0 h-full text-cyan/30" />
+        <LaurelWreath className="absolute inset-0 size-full text-cyan/30" />
         <Icon className="relative -mt-1 size-6 text-blue" aria-hidden />
       </span>
       <h3 className="text-lg">{title}</h3>

@@ -29,10 +29,10 @@ export function CertificatePreview({
         strokeWidth={1}
       />
       <LaurelBranch
-        className="pointer-events-none absolute -end-2 -bottom-6 h-36 w-auto text-cyan/20"
+        className="pointer-events-none absolute end-4 bottom-4 h-32 w-auto text-cyan/25"
         mirrored
       />
-      <LaurelBranch className="pointer-events-none absolute -start-2 -bottom-6 h-36 w-auto text-cyan/20" />
+      <LaurelBranch className="pointer-events-none absolute start-4 bottom-4 h-32 w-auto text-cyan/25" />
       <p
         className="pointer-events-none absolute inset-0 flex items-center justify-center whitespace-nowrap text-2xl font-extrabold uppercase tracking-widest text-blue/10 select-none sm:text-5xl"
         style={{ transform: 'rotate(-18deg)' }}
@@ -67,7 +67,7 @@ export function CertificatePreview({
             className="relative mx-auto flex h-14 w-20 items-center justify-center sm:h-20 sm:w-28"
             aria-hidden
           >
-            <LaurelWreath className="absolute inset-0 h-full text-yellow" />
+            <LaurelWreath className="absolute inset-0 size-full text-yellow" />
             <Award className="relative -mt-1 size-6 text-blue sm:size-8" />
           </span>
           <div className="text-end">

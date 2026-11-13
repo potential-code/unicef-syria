@@ -14,7 +14,7 @@ export function SessionRow({ session, meta }: { session: Session; meta?: ReactNo
     <Link
       to="/trainer/sessions/$sessionId"
       params={{ sessionId: session.id }}
-      className="group flex items-center gap-4 rounded-xl border border-border/70 bg-white p-3 shadow-sm transition-[box-shadow,border-color,transform] outline-none hover:-translate-y-px hover:border-cyan/50 hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring"
+      className="group flex items-center gap-4 rounded-xl border border-border/70 bg-white p-3 shadow-sm transition-[box-shadow,border-color,translate] duration-200 outline-none hover:-translate-y-px hover:border-cyan/50 hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring"
     >
       <span className="flex min-w-14 shrink-0 flex-col items-center rounded-lg bg-sky-50 px-2 py-1.5 text-navy ring-1 ring-cyan/25">
         <span className="text-[11px] font-semibold whitespace-nowrap text-blue uppercase">

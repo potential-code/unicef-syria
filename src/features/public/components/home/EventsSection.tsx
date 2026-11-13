@@ -1,7 +1,7 @@
 import { CalendarCheck, Clock, Globe, Users } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
-import { GlobeGrid, Motif, Rings } from '@/components/brand'
+import { Emblem, GlobeGrid, Motif } from '@/components/brand'
 import { Reveal } from '@/components/motion'
 import { Button } from '@/components/ui/button'
 import { SESSIONS } from '@/data/sessions'
@@ -22,8 +22,8 @@ export function EventsSection({ gate }: { gate: ReturnType<typeof useGate> }) {
       aria-labelledby="events-title"
       className="relative overflow-hidden bg-sky-50 py-20 sm:py-24"
     >
-      <Drift y={12} rotate={-30} className="absolute -start-32 -top-32 text-blue/[0.06]">
-        <Rings className="size-[26rem]" />
+      <Drift y={12} rotate={-6} className="absolute start-6 top-8 text-blue/[0.07]">
+        <Emblem className="h-64" />
       </Drift>
       <div className="container-page relative grid gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:items-center lg:gap-14">
         <SectionIntro

@@ -13,7 +13,7 @@ const TONE: Record<StatTone, { box: string; muted: string; motif: string; link: 
   blue: {
     box: 'bg-[linear-gradient(140deg,var(--unicef-blue),var(--unicef-navy))] text-white',
     muted: 'text-white/80',
-    motif: 'text-white/14',
+    motif: 'text-white/20',
     link: 'text-white',
   },
   cyan: {
@@ -25,7 +25,7 @@ const TONE: Record<StatTone, { box: string; muted: string; motif: string; link: 
   navy: {
     box: 'bg-[linear-gradient(140deg,var(--unicef-navy),#002a73)] text-white',
     muted: 'text-white/75',
-    motif: 'text-cyan/25',
+    motif: 'text-cyan/30',
     link: 'text-white',
   },
   yellow: {
@@ -37,13 +37,13 @@ const TONE: Record<StatTone, { box: string; muted: string; motif: string; link: 
   orange: {
     box: 'bg-[linear-gradient(140deg,var(--unicef-orange),#a93a06)] text-white',
     muted: 'text-white/85',
-    motif: 'text-white/18',
+    motif: 'text-white/25',
     link: 'text-white',
   },
   sky: {
     box: 'bg-[linear-gradient(140deg,var(--unicef-sky-100),#ffffff)] text-navy ring-1 ring-cyan/25',
     muted: 'text-ink-soft',
-    motif: 'text-blue/10',
+    motif: 'text-blue/15',
     link: 'text-blue',
   },
 }

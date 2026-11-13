@@ -42,7 +42,9 @@ export function BadgeMedal({
       style={{ width: size, height: size }}
       aria-hidden
     >
-      <LaurelWreath className={cn('absolute inset-0 h-full', earned ? b.wreath : 'text-border')} />
+      <LaurelWreath
+        className={cn('absolute inset-0 size-full', earned ? b.wreath : 'text-border')}
+      />
       <span
         className={cn(
           'relative flex items-center justify-center rounded-full',

@@ -45,7 +45,7 @@ export function CheckQuestion({ question, salt }: { question: Q; salt: number })
                 setChecked(false)
               }}
               className={cn(
-                'flex min-h-12 items-center gap-3 rounded-xl border px-4 py-2.5 text-start text-sm font-medium shadow-sm transition-[background-color,border-color,box-shadow,transform] duration-200',
+                'flex min-h-12 items-center gap-3 rounded-xl border px-4 py-2.5 text-start text-sm font-medium shadow-sm transition-[background-color,border-color,box-shadow,translate] duration-200',
                 showRight
                   ? 'border-success bg-success-soft'
                   : showWrong

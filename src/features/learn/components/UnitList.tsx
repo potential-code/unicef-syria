@@ -32,7 +32,7 @@ export function UnitList({
               params={{ courseId: course.id, unit: String(i + 1) }}
               aria-current={here ? 'step' : undefined}
               className={cn(
-                'flex min-h-12 items-start gap-3 rounded-2xl border p-3.5 transition-[transform,box-shadow,border-color] duration-200',
+                'flex min-h-12 items-start gap-3 rounded-2xl border p-3.5 transition-[translate,transform,box-shadow,border-color] duration-200',
                 here
                   ? 'border-blue bg-blue text-white shadow-md'
                   : 'border-border/70 bg-white shadow-sm hover:-translate-y-0.5 hover:border-cyan/60 hover:shadow-md',

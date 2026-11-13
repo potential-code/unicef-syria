@@ -56,7 +56,7 @@ export function DiscoveryHeroCard() {
           >
             <GlobeGrid className="size-full" strokeWidth={1.2} />
           </motion.span>
-          <LaurelWreath className="absolute inset-[8%] h-[84%] text-yellow/90" />
+          <LaurelWreath className="absolute inset-[8%] size-[84%] text-yellow/90" />
           <Compass className="relative -mt-4 size-16 text-white" strokeWidth={1.6} />
         </div>
       </div>

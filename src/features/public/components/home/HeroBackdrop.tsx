@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { LaurelBranch } from '@/components/brand'
+import { LaurelWreath } from '@/components/brand'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
 
 // Fine film grain (SVG turbulence) so the gradient never looks flat.
@@ -22,20 +22,12 @@ export function HeroBackdrop() {
         style={{ backgroundImage: GRAIN }}
       />
       <motion.div
-        className="absolute -start-24 -bottom-24 text-white/[0.08]"
+        className="absolute start-[3%] bottom-28 text-white/[0.09]"
         initial={reduce ? false : { opacity: 0, y: 60, rotate: -8 }}
         animate={{ opacity: 1, y: 0, rotate: 0 }}
         transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
       >
-        <LaurelBranch className="h-[38rem] w-auto" />
-      </motion.div>
-      <motion.div
-        className="absolute end-[38%] -top-28 hidden text-white/[0.06] lg:block"
-        initial={reduce ? false : { opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <LaurelBranch className="h-72 w-auto rotate-180" mirrored />
+        <LaurelWreath className="h-80" />
       </motion.div>
       <svg
         className="absolute inset-x-0 -bottom-px h-16 w-full text-sky-50 sm:h-24"

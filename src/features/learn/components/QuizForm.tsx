@@ -51,7 +51,7 @@ export function QuizForm({
                   checked={on}
                   onChange={() => onAnswer(qi, oi)}
                   className={cn(
-                    'flex min-h-12 items-center gap-3 rounded-xl border px-4 py-2.5 text-start text-sm font-medium shadow-sm transition-[background-color,border-color,box-shadow,transform] duration-200',
+                    'flex min-h-12 items-center gap-3 rounded-xl border px-4 py-2.5 text-start text-sm font-medium shadow-sm transition-[background-color,border-color,box-shadow,translate] duration-200',
                     on
                       ? 'border-blue bg-blue text-white shadow-md'
                       : 'border-border/70 bg-white hover:-translate-y-0.5 hover:border-cyan/60 hover:shadow-md',

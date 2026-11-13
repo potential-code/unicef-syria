@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, Building2, Handshake } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import { LaurelBranch } from '@/components/brand'
+import { LaurelWreath } from '@/components/brand'
 import { SmartImage } from '@/components/shared/SmartImage'
 import { cn } from '@/lib/utils'
 import { ClipReveal } from './ClipReveal'
@@ -46,7 +46,7 @@ export function PartnerBand() {
               className="absolute inset-0 -z-20 size-full transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 -z-10 bg-linear-to-t from-navy from-25% via-navy/75 via-55% to-navy/0" />
-            <LaurelBranch className="absolute end-4 top-4 h-24 w-auto text-white/[0.18]" mirrored />
+            <LaurelWreath className="absolute end-5 top-5 h-20 text-white/[0.2]" />
             <span className={cn('absolute inset-x-0 top-0 h-1.5', b.accent)} aria-hidden />
             <div className="relative p-6 sm:p-8">
               <p

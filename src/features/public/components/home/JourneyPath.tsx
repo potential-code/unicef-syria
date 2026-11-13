@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { GlobeGrid, LaurelBranch, Rings } from '@/components/brand'
+import { GlobeGrid, LaurelWreath } from '@/components/brand'
 import { SmartImage } from '@/components/shared/SmartImage'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { gsap } from '@/lib/gsap'
@@ -17,7 +17,7 @@ const TONES = [
   { bar: 'bg-orange', dot: 'bg-orange', icon: 'text-orange', motif: 'text-orange/20' },
   { bar: 'bg-navy', dot: 'bg-navy', icon: 'text-navy', motif: 'text-navy/15' },
 ]
-const MOTIFS = [GlobeGrid, LaurelBranch, Rings, LaurelBranch, GlobeGrid]
+const MOTIFS = [LaurelWreath, GlobeGrid, LaurelWreath, GlobeGrid, LaurelWreath]
 
 /**
  * "How the journey works": a zig-zag timeline. A progress line draws down the centre as you
@@ -95,8 +95,8 @@ export function JourneyPath() {
       className="relative overflow-hidden bg-white py-20 sm:py-24"
     >
       <div className="pointer-events-none absolute inset-0 text-blue/[0.06]" aria-hidden>
-        <LaurelBranch className="absolute -end-6 top-16 h-72 w-auto" mirrored />
-        <LaurelBranch className="absolute -start-10 bottom-8 h-56 w-auto" />
+        <LaurelWreath className="absolute end-6 top-16 h-56" />
+        <LaurelWreath className="absolute start-6 bottom-8 h-44" />
       </div>
       <div className="container-page relative">
         <SectionIntro
@@ -156,7 +156,7 @@ export function JourneyPath() {
                   </span>
                   <Motif
                     className={cn(
-                      'pointer-events-none absolute -end-6 -bottom-8 -z-10 h-28 w-auto',
+                      'pointer-events-none absolute end-4 bottom-4 -z-10 h-20 w-auto',
                       tone.motif,
                     )}
                   />
