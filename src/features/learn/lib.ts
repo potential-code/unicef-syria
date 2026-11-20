@@ -1,6 +1,6 @@
 import type { CourseId, CourseProgress, Youth, YouthId } from '@shared/types'
 import { COURSE_BY_ID } from '@/data/courses'
-import { isComplete } from '@/domain/completion'
+import { courseStatus, isComplete } from '@/domain/completion'
 import { isCohortCourse } from '@/store/actions/learning'
 
 /** Deterministic demonstration certificate ID. */
@@ -29,4 +29,27 @@ export function awaitingReview(y: Youth, courseId: CourseId): boolean {
     p.practical === 'submitted' &&
     isComplete({ ...p, practical: 'approved' }, true)
   )
+}
+
+/**
+ * Where a course card or CTA opens the course view: unit 1 to review a completed
+ * course, otherwise the resume point (first unfinished unit, else the quiz).
+ */
+export function courseEntry(
+  p: CourseProgress | undefined,
+): { to: '/youth/learn/$courseId/$unit'; unit: string } | { to: '/youth/learn/$courseId/quiz' } {
+  const where = p?.completedAt ? 1 : resumeTarget(p)
+  return where === 'quiz'
+    ? { to: '/youth/learn/$courseId/quiz' }
+    : { to: '/youth/learn/$courseId/$unit', unit: String(where) }
+}
+
+/** Label key for the single course CTA: start, continue or review. */
+export function courseCtaKey(p: CourseProgress | undefined): string {
+  const s = courseStatus(p)
+  return s === 'completed'
+    ? 'course.reviewCourse'
+    : s === 'inProgress'
+      ? 'course.continueCourse'
+      : 'course.startCourse'
 }

@@ -1,6 +1,5 @@
 import type { Course, Youth } from '@shared/types'
-import { Link } from '@tanstack/react-router'
-import { Award, Clock, Globe, MonitorPlay } from 'lucide-react'
+import { Award, Clock, Globe, MonitorPlay, Play } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { SmartImage } from '@/components/shared/SmartImage'
 import { Progress } from '@/components/ui/progress'
@@ -10,6 +9,8 @@ import { useLocalized } from '@/i18n'
 import { cn } from '@/lib/utils'
 import { isCohortCourse } from '@/store/actions/learning'
 import { CATEGORY_META, FULL_LESSON_COURSES } from '../config'
+import { courseCtaKey } from '../lib'
+import { CourseEntryLink } from './CourseEntryLink'
 import { CourseStatusBadge } from './CourseStatusBadge'
 
 /** Catalogue card: category, duration, route relevance, language, delivery, progress, certificate. */
@@ -25,9 +26,9 @@ export function CourseCard({ course, youth }: { course: Course; youth: Youth }) 
       : course.routes.map((r) => t(`common:routesShort.${r}`))
 
   return (
-    <Link
-      to="/youth/library/$courseId"
-      params={{ courseId: course.id }}
+    <CourseEntryLink
+      courseId={course.id}
+      progress={p}
       className="card card-hover group flex h-full flex-col overflow-hidden focus-visible:ring-4 focus-visible:ring-blue/30"
     >
       <div className="relative aspect-[16/9] overflow-hidden">
@@ -95,7 +96,11 @@ export function CourseCard({ course, youth }: { course: Course; youth: Youth }) 
             aria-label={t('library.progress')}
           />
         </div>
+        <span className="mt-4 inline-flex h-10 items-center justify-center gap-1.5 rounded-full bg-blue px-4 text-sm font-semibold text-white shadow-sm transition-colors group-hover:bg-navy">
+          <Play className="size-4" aria-hidden />
+          {t(courseCtaKey(p))}
+        </span>
       </div>
-    </Link>
+    </CourseEntryLink>
   )
 }

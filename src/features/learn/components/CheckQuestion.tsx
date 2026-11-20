@@ -9,7 +9,16 @@ import { cn } from '@/lib/utils'
 import { OptionRadio } from './OptionRadio'
 
 /** Unit check question with feedback. Options always pass through arrangeOptions. */
-export function CheckQuestion({ question, salt }: { question: Q; salt: number }) {
+export function CheckQuestion({
+  question,
+  salt,
+  onAnswered,
+}: {
+  question: Q
+  salt: number
+  /** Called each time the learner checks an answer, with whether it was right. */
+  onAnswered?: (right: boolean) => void
+}) {
   const { t } = useTranslation('learn')
   const { l } = useLocalized()
   const q = arrangeOptions(question, salt)
@@ -80,7 +89,10 @@ export function CheckQuestion({ question, salt }: { question: Q; salt: number })
       <Button
         className="mt-4 rounded-full"
         disabled={picked === null}
-        onClick={() => setChecked(true)}
+        onClick={() => {
+          setChecked(true)
+          onAnswered?.(picked === q.correct)
+        }}
       >
         {t('player.checkAnswer')}
       </Button>

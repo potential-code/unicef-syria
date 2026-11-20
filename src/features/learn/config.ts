@@ -17,6 +17,7 @@ import {
   Star,
   Wrench,
 } from 'lucide-react'
+import { COURSES } from '@/data/courses'
 
 /** Visual identity per career route (youth screens: colour blocks). */
 export const ROUTE_META: Record<
@@ -71,8 +72,8 @@ export const CATEGORY_META: Record<
   technical: { icon: Wrench, chip: 'bg-orange text-white', block: 'bg-orange' },
 }
 
-/** Courses with full English lessons (Arabic summaries); the rest are bilingual summaries. */
-export const FULL_LESSON_COURSES: CourseId[] = ['C05', 'C07', 'C11']
+/** Courses with full English lessons (Arabic summaries): every unit of every course now. */
+export const FULL_LESSON_COURSES: CourseId[] = COURSES.map((c) => c.id)
 
 /** Where a cohort session sits in the learning path (after the related course). */
 export const SESSION_AFTER: Partial<Record<SessionId, CourseId>> = {

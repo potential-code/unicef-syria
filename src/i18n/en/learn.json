@@ -330,7 +330,10 @@
     "openQuiz": "Open the knowledge check",
     "quizLocked": "Unlocks after the four units",
     "resources": "Downloadable resources",
-    "noResources": "This course uses the activities inside each unit. Templates are available in related courses."
+    "noResources": "This course uses the activities inside each unit. Templates are available in related courses.",
+    "startCourse": "Start course",
+    "continueCourse": "Continue course",
+    "reviewCourse": "Review course"
   },
   "template": {
     "hint": "Open, edit and download as text",
@@ -523,5 +526,32 @@
       "name": "Freelance Starter",
       "how": "Save a service profile and a proposal with portfolio."
     }
+  },
+  "view": {
+    "allCourses": "All courses",
+    "menu": "Course menu",
+    "now": "Now:",
+    "progress": "Your progress",
+    "finalTag": "Final check",
+    "unitsN": "{{count}} units"
+  },
+  "block": {
+    "kind": {
+      "video": "Video",
+      "lesson": "Lesson",
+      "scenario": "Practical scenario",
+      "check": "Knowledge check"
+    },
+    "stepOf": "Step {{n}} of {{total}}",
+    "unitProgress": "Unit progress",
+    "markComplete": "Mark complete",
+    "completed": "Completed",
+    "previous": "Previous",
+    "next": "Next",
+    "finishUnit": "Mark complete and finish unit",
+    "finishToQuiz": "Mark complete and go to the final check",
+    "watchToContinue": "Play the lesson preview to continue.",
+    "answerToContinue": "Answer the knowledge check correctly to continue.",
+    "locked": "Complete the step before this one to open it"
   }
 }

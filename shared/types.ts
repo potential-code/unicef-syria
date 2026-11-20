@@ -151,7 +151,7 @@ export interface Unit {
   id: string
   title: Localized
   synopsis: Localized
-  /** Full lesson only on showcase courses C05, C07, C11. */
+  /** Full lesson (learning blocks) on every unit; video preview on units 1 and 3. */
   objective?: Localized
   body?: Localized
   scenario?: Localized

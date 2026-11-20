@@ -12,7 +12,16 @@ import { PlaceholderLabel } from './PlaceholderLabel'
  * "Sample lesson preview": a styled poster, never a video element. Play opens the transcript,
  * which is always readable underneath (brief §6 Y07).
  */
-export function VideoPreview({ title, transcript }: { title: string; transcript: Localized }) {
+export function VideoPreview({
+  title,
+  transcript,
+  onPlayed,
+}: {
+  title: string
+  transcript: Localized
+  /** Called when the learner opens the preview, which unlocks Mark complete. */
+  onPlayed?: () => void
+}) {
   const { t } = useTranslation('learn')
   const { l } = useLocalized()
   const [reading, setReading] = useState(false)
@@ -21,6 +30,7 @@ export function VideoPreview({ title, transcript }: { title: string; transcript:
 
   const open = () => {
     setReading(true)
+    onPlayed?.()
     ref.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
     ref.current?.focus({ preventScroll: true })
   }

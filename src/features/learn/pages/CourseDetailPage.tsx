@@ -30,7 +30,7 @@ import { CourseStatusBadge } from '../components/CourseStatusBadge'
 import { TemplateDialog } from '../components/TemplateDialog'
 import { UnitList } from '../components/UnitList'
 import { CATEGORY_META } from '../config'
-import { isCourseId, resumeTarget } from '../lib'
+import { courseCtaKey, courseEntry, isCourseId } from '../lib'
 
 /** Y06 course detail: outcomes, units, resources, practical task, final check and actions. */
 export function CourseDetailPage({ courseId }: { courseId: string }) {
@@ -69,13 +69,9 @@ export function CourseDetailPage({ courseId }: { courseId: string }) {
   const unitsComplete = !!p && p.units.every((u) => u === 'done')
 
   const go = () => {
-    const where = resumeTarget(p)
-    if (where === 'quiz') void navigate({ to: '/youth/learn/$courseId/quiz', params: { courseId } })
-    else
-      void navigate({
-        to: '/youth/learn/$courseId/$unit',
-        params: { courseId, unit: String(where) },
-      })
+    const e = courseEntry(p)
+    if ('unit' in e) void navigate({ to: e.to, params: { courseId, unit: e.unit } })
+    else void navigate({ to: e.to, params: { courseId } })
   }
   const start = () => {
     startCourse(youth.id, courseId)
@@ -138,12 +134,12 @@ export function CourseDetailPage({ courseId }: { courseId: string }) {
             {status === 'todo' ? (
               <Button className="rounded-full" onClick={start}>
                 <Play className="size-4" aria-hidden />
-                {t('course.start')}
+                {t('course.startCourse')}
               </Button>
             ) : (
               <Button className="rounded-full" onClick={go}>
                 <Play className="size-4" aria-hidden />
-                {status === 'completed' ? t('course.reviewLessons') : t('course.continue')}
+                {t(courseCtaKey(p))}
               </Button>
             )}
             <Button variant="outline" className="rounded-full" onClick={add} disabled={inPlan}>

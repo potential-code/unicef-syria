@@ -1,5 +1,4 @@
 import type { CourseId, Youth } from '@shared/types'
-import { Link } from '@tanstack/react-router'
 import { ArrowDown, ArrowUp, CircleCheck, Clock, Target, Trash, Zap } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
@@ -8,6 +7,8 @@ import { courseStatus } from '@/domain/completion'
 import { useLocalized } from '@/i18n'
 import { cn } from '@/lib/utils'
 import { CATEGORY_META } from '../config'
+import { courseCtaKey } from '../lib'
+import { CourseEntryLink } from './CourseEntryLink'
 import { CourseStatusBadge } from './CourseStatusBadge'
 
 interface Props {
@@ -71,13 +72,13 @@ export function PlanCourseNode({
           )}
         </div>
         <h3 className="mt-2 text-lg">
-          <Link
-            to="/youth/library/$courseId"
-            params={{ courseId }}
+          <CourseEntryLink
+            courseId={courseId}
+            progress={youth.progress[courseId]}
             className="hover:text-blue hover:underline"
           >
             {title}
-          </Link>
+          </CourseEntryLink>
         </h3>
         <p className="mt-1 text-sm">{t(`path.reasons.${courseId}`)}</p>
         <dl className="mt-3 grid gap-x-6 gap-y-2 text-sm text-ink-soft sm:grid-cols-[auto_1fr]">
@@ -115,13 +116,9 @@ export function PlanCourseNode({
         </dl>
         <div className="mt-4 flex flex-wrap items-center gap-2">
           <Button asChild size="sm" className="rounded-full">
-            <Link to="/youth/library/$courseId" params={{ courseId }}>
-              {status === 'completed'
-                ? t('path.review')
-                : status === 'inProgress'
-                  ? t('path.continue')
-                  : t('path.open')}
-            </Link>
+            <CourseEntryLink courseId={courseId} progress={youth.progress[courseId]}>
+              {t(courseCtaKey(youth.progress[courseId]))}
+            </CourseEntryLink>
           </Button>
           {kind !== 'core' && (
             <span className="ms-auto flex gap-1">
