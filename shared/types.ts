@@ -627,3 +627,13 @@ export interface Prefs {
   demoGuide?: boolean
   guideStep?: number
 }
+
+/** A trainer's resource template linked to a course or cohort, with a task for learners. */
+export interface ResourceLink {
+  id: string
+  template: TemplateId
+  /** Cohort id (e.g. 'K01') or course id (e.g. 'C05'). */
+  target: string
+  task: string
+  at: string
+}

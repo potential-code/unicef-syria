@@ -20,20 +20,13 @@ import { useLocalized } from '@/i18n'
 import { RESOURCE_TEMPLATES } from '../config'
 import { FieldError } from './FieldError'
 
-export interface ResourceLink {
-  id: string
-  template: TemplateId
-  target: string
-  task: string
-}
-
 /** Associate a resource template and a task with a course or a cohort (brief §17 T04). */
 export function ResourceLinkForm({
   targets,
   onAdd,
 }: {
   targets: string[]
-  onAdd: (r: ResourceLink) => void
+  onAdd: (template: TemplateId, target: string, task: string) => void
 }) {
   const { t } = useTranslation('trainer')
   const { l } = useLocalized()
@@ -50,7 +43,7 @@ export function ResourceLinkForm({
     e.preventDefault()
     setTried(true)
     if (!task.trim() || !target) return
-    onAdd({ id: `${template}-${target}-${Date.now()}`, template, target, task: task.trim() })
+    onAdd(template, target, task.trim())
     toast.success(
       t('resources.linked', { resource: l(TEMPLATE_BY_ID[template].title), target: label(target) }),
     )
@@ -88,6 +81,7 @@ export function ResourceLinkForm({
             {l(TEMPLATE_BY_ID[template].body)}
           </p>
         </details>
+        <p className="text-xs text-ink-soft">{t('resources.libraryNote')}</p>
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="r-target">{t('resources.target')}</Label>

@@ -27,6 +27,7 @@ import { DemoRoomDialog } from '../components/cohort/DemoRoomDialog'
 import { RestrictedNotice } from '../components/cohort/RestrictedNotice'
 import { SessionCalendar } from '../components/cohort/SessionCalendar'
 import { SessionCard } from '../components/cohort/SessionCard'
+import { TrainerResources } from '../components/cohort/TrainerResources'
 import { EventCard } from '../components/EventCard'
 import { ViewToggle } from '../components/ViewToggle'
 import { hashHref } from '../lib/links'
@@ -132,6 +133,8 @@ export function CohortPage() {
           />
         </div>
       )}
+
+      {cohorts.length > 0 && <TrainerResources youth={youth} />}
 
       {cohorts.length === 0 ? (
         <EmptyState

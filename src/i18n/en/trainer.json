@@ -352,7 +352,8 @@
     "associate": "Link resource",
     "linked": "{{resource}} linked to {{target}}",
     "remove": "Remove link",
-    "preview": "Preview template"
+    "preview": "Preview template",
+    "libraryNote": "From the programme's shared template library. Learners in the chosen class see it on My Cohort and Sessions."
   },
   "results": {
     "title": "Results and certificates",

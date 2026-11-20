@@ -1,5 +1,4 @@
 import { FileText, FolderOpen, Trash2 } from 'lucide-react'
-import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Stagger, StaggerItem } from '@/components/motion'
 import { EmptyState } from '@/components/shared/EmptyState'
@@ -10,7 +9,8 @@ import { COURSE_BY_ID } from '@/data/courses'
 import { COHORT_COURSES, COHORTS } from '@/data/orgs'
 import { TEMPLATE_BY_ID } from '@/data/templates'
 import { useLocalized } from '@/i18n'
-import { type ResourceLink, ResourceLinkForm } from '../components/ResourceLinkForm'
+import { linkResource, unlinkResource, useResourceLinks } from '@/store/actions/resources'
+import { ResourceLinkForm } from '../components/ResourceLinkForm'
 import { useTrainerScope } from '../hooks/useTrainerScope'
 
 /** T04 Learning resources: course materials for the trainer's cohorts and new resource links. */
@@ -18,9 +18,9 @@ export function TrainerResourcesPage() {
   const { t } = useTranslation('trainer')
   const { l } = useLocalized()
   const { cohortIds } = useTrainerScope()
-  const [links, setLinks] = useState<ResourceLink[]>([])
   const courses = cohortIds.flatMap((k) => COHORT_COURSES[k])
   const targets = [...cohortIds, ...courses]
+  const links = useResourceLinks().filter((r) => targets.includes(r.target as never))
   const label = (id: string) =>
     id.startsWith('K')
       ? l(COHORTS.find((c) => c.id === id)?.name)
@@ -89,7 +89,7 @@ export function TrainerResourcesPage() {
                         variant="ghost"
                         size="icon"
                         aria-label={t('resources.remove')}
-                        onClick={() => setLinks(links.filter((x) => x.id !== r.id))}
+                        onClick={() => unlinkResource(r.id)}
                       >
                         <Trash2 className="size-4" aria-hidden />
                       </Button>
@@ -101,7 +101,7 @@ export function TrainerResourcesPage() {
           </section>
         </div>
         <div className="xl:sticky xl:top-24 xl:self-start">
-          <ResourceLinkForm targets={targets} onAdd={(r) => setLinks([r, ...links])} />
+          <ResourceLinkForm targets={targets} onAdd={linkResource} />
         </div>
       </div>
     </div>

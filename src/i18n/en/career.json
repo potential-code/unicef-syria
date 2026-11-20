@@ -136,6 +136,14 @@
       "upcomingHint": "Scheduled for your cohort, Syria time",
       "events": "Open events",
       "eventsHint": "Public events any learner can join"
+    },
+    "resources": {
+      "title": "Resources from your trainer",
+      "body": "Worksheets your trainer linked to your class or its courses, with what to do.",
+      "empty": "Your trainer has not linked any resources yet.",
+      "task": "Task",
+      "open": "Open resource",
+      "download": "Download as text"
     }
   },
   "event": {

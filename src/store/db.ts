@@ -8,6 +8,7 @@ import type {
   Outcome,
   PersonaId,
   Prefs,
+  ResourceLink,
   Session,
   SessionId,
   Youth,
@@ -64,6 +65,8 @@ export interface DemoDb {
   /** Sessions created by trainers in the demo. */
   newSessions: Session[]
   sessionNotes: Partial<Record<SessionId | string, string>>
+  /** Trainer resource links (T04); optional so saved demos from before still load. */
+  resourceLinks?: ResourceLink[]
   /** Per-session support reminders created by Absent marks. */
   reminders: { youthId: YouthId; sessionId: string; at: string }[]
   posts: CommunityPost[]
