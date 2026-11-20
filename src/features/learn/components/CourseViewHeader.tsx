@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { Motif } from '@/components/brand'
 import { SmartImage } from '@/components/shared/SmartImage'
 import { Progress } from '@/components/ui/progress'
-import { unitsDone } from '@/domain/completion'
+import { courseProgressPct } from '@/domain/completion'
 import { useLocalized } from '@/i18n'
 import { CourseStatusBadge } from './CourseStatusBadge'
 
@@ -21,7 +21,7 @@ export function CourseViewHeader({
   const { t } = useTranslation('learn')
   const { l } = useLocalized()
   const total = course.units.length
-  const pct = progress?.completedAt ? 100 : Math.round((unitsDone(progress) / total) * 100)
+  const pct = courseProgressPct(progress)
   return (
     <section className="on-dark relative overflow-hidden rounded-3xl bg-grad-unicef p-5 text-white shadow-lg sm:p-7">
       <Motif variant="banner" className="text-white/[0.12]" />
@@ -71,6 +71,7 @@ export function CourseViewHeader({
               className="mt-1.5 h-2.5 bg-white/20 [&>[data-slot=progress-indicator]]:bg-yellow"
               aria-label={t('view.progress')}
             />
+            <p className="mt-1.5 text-xs text-white/80">{t('view.progressHint')}</p>
           </div>
         </div>
       </div>

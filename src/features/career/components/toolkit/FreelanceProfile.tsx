@@ -4,9 +4,12 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
+import { useLocalized } from '@/i18n'
 import { saveToolkit } from '@/store/actions/toolkit'
+import { SAMPLE_FREELANCE } from '../../config/samples'
 import { ClientPreview } from './ClientPreview'
 import { Field } from './Field'
+import { SampleDataButton } from './SampleDataButton'
 import { ToolPanel } from './ToolPanel'
 
 type Profile = NonNullable<Toolkit['freelanceProfile']>
@@ -16,6 +19,7 @@ const FIELDS: (keyof Profile)[] = ['services', 'samples', 'availability', 'assig
 /** Freelance service profile with a "what a client sees" preview. */
 export function FreelanceProfile({ youth }: { youth: Youth }) {
   const { t } = useTranslation('career')
+  const { l } = useLocalized()
   const [p, setP] = useState<Profile>({ ...EMPTY, ...youth.toolkit.freelanceProfile })
   const [preview, setPreview] = useState(false)
   const [error, setError] = useState('')
@@ -33,6 +37,16 @@ export function FreelanceProfile({ youth }: { youth: Youth }) {
       intro={t('toolkit.freelance.intro')}
       actions={
         <>
+          <SampleDataButton
+            onFill={() => {
+              setP(
+                Object.fromEntries(
+                  Object.entries(SAMPLE_FREELANCE).map(([k, v]) => [k, l(v)]),
+                ) as Profile,
+              )
+              setError('')
+            }}
+          />
           <Button
             variant="outline"
             className="rounded-full"

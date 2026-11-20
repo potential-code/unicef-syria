@@ -19,7 +19,6 @@ export interface Filters {
   route: string
   topic: string
   level: string
-  lang: string
   duration: string
   status: string
 }
@@ -28,12 +27,11 @@ export const EMPTY_FILTERS: Filters = {
   route: 'all',
   topic: 'all',
   level: 'all',
-  lang: 'all',
   duration: 'all',
   status: 'all',
 }
 
-/** Catalogue filters: route, topic, level, language, duration, free-text search and status. */
+/** Catalogue filters: route, topic, level, duration, free-text search and status. */
 export function LibraryFilters({
   value,
   onChange,
@@ -62,11 +60,6 @@ export function LibraryFilters({
         key: 'level',
         label: t('library.f.level'),
         options: ['beginner', 'intermediate'].map((v) => ({ v, label: t(`library.level.${v}`) })),
-      },
-      {
-        key: 'lang',
-        label: t('library.f.lang'),
-        options: ['bilingual', 'enFull'].map((v) => ({ v, label: t(`library.lang.${v}`) })),
       },
       {
         key: 'duration',
@@ -115,14 +108,18 @@ export function LibraryFilters({
           </Button>
         )}
       </div>
-      <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2.5 md:grid-cols-3 xl:grid-cols-6">
+      <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2.5 md:grid-cols-3 xl:grid-cols-5">
         {selects.map((s) => (
           <div key={s.key} className="min-w-0">
             <Label htmlFor={`lib-${s.key}`} className="text-xs font-semibold text-ink-soft">
               {s.label}
             </Label>
             <Select value={value[s.key]} onValueChange={set(s.key)}>
-              <SelectTrigger id={`lib-${s.key}`} size="sm" className="mt-1 w-full">
+              <SelectTrigger
+                id={`lib-${s.key}`}
+                size="sm"
+                className="mt-1 w-full min-w-0 [&_[data-slot=select-value]]:truncate"
+              >
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>

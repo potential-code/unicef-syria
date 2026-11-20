@@ -196,7 +196,27 @@
     "empty": "No sessions scheduled",
     "emptyBody": "Create a sample session for your cohort to start recording attendance.",
     "sampleNote": "All schedules are sample data, not booked sessions. Online sessions open a demo room; no live meeting is created.",
-    "deniedTitle": "Session"
+    "deniedTitle": "Session",
+    "next": "Next session",
+    "open": "Open session",
+    "learnersN": "{{count}} learners",
+    "later": "Later sessions",
+    "attention": "Needs follow-up",
+    "attentionBody": "Learners marked absent in a past session. Open the session to add a follow-up note.",
+    "noAbsences": "No absences to follow up.",
+    "absentFrom": "Absent from {{id}}",
+    "followUp": "Follow up",
+    "stat": {
+      "upcoming": "Upcoming sessions",
+      "upcomingHint": "Scheduled for your cohorts",
+      "toMark": "Sessions to mark",
+      "toMarkHint": "Past sessions with learners not yet marked",
+      "rate": "Attendance rate",
+      "rateHint": "Present ÷ (present + absent). {{excused}} excused, tracked separately.",
+      "absent": "Absences",
+      "absentHint": "Absent marks across past sessions",
+      "none": "Not yet"
+    }
   },
   "detail": {
     "when": "Date and time",
@@ -311,7 +331,8 @@
     "return": "Return for revision",
     "approve": "Approve",
     "approvedToast": "Approved with {{total}}/6. {{name}} received practical points.",
-    "returnedToast": "Returned to {{name}} for revision"
+    "returnedToast": "Returned to {{name}} for revision",
+    "responseLearner": "Learner response"
   },
   "resources": {
     "title": "Learning resources",
@@ -330,7 +351,8 @@
     "errTask": "Describe the task for learners.",
     "associate": "Link resource",
     "linked": "{{resource}} linked to {{target}}",
-    "remove": "Remove link"
+    "remove": "Remove link",
+    "preview": "Preview template"
   },
   "results": {
     "title": "Results and certificates",
@@ -356,5 +378,19 @@
     "awaitingCentre": "Awaiting centre approval",
     "empty": "No results yet",
     "emptyBody": "Results appear once learners are assigned to your cohort."
+  },
+  "rubricGeneral": {
+    "understands": {
+      "label": "Completes the task",
+      "hint": "Delivers what was asked: {{output}}"
+    },
+    "clear": {
+      "label": "Clear and organised",
+      "hint": "Easy to follow, with the key points first"
+    },
+    "nextStep": {
+      "label": "Specific and realistic",
+      "hint": "Uses concrete actions, examples or evidence the learner could really use"
+    }
   }
 }

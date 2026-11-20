@@ -76,6 +76,19 @@ export function setUnitStatus(id: YouthId, courseId: CourseId, index: number, st
   })
 }
 
+/** Records how many learning blocks of a unit are complete (never goes backwards). */
+export function markBlocksDone(id: YouthId, courseId: CourseId, unitId: string, count: number) {
+  patch(id, courseId, (p) => ({
+    ...p,
+    blocks: { ...p.blocks, [unitId]: Math.max(p.blocks?.[unitId] ?? 0, count) },
+  }))
+}
+
+/** Saves the learner's scenario reflection for a unit. Not graded. */
+export function saveReflection(id: YouthId, courseId: CourseId, unitId: string, text: string) {
+  patch(id, courseId, (p) => ({ ...p, reflections: { ...p.reflections, [unitId]: text } }))
+}
+
 /** Records one quiz attempt. Two demo attempts, then trainer-support guidance. */
 export function submitQuiz(id: YouthId, courseId: CourseId, score: number) {
   patch(id, courseId, (p) => {
@@ -89,8 +102,12 @@ export function submitQuiz(id: YouthId, courseId: CourseId, score: number) {
 }
 
 /** Self-paced: counts on submission. Cohort course: waits for trainer review. */
-export function submitPractical(id: YouthId, courseId: CourseId) {
-  patch(id, courseId, (p) => ({ ...p, practical: 'submitted' }))
+export function submitPractical(id: YouthId, courseId: CourseId, text?: string) {
+  patch(id, courseId, (p) => ({
+    ...p,
+    practical: 'submitted',
+    ...(text?.trim() ? { practicalText: text.trim() } : {}),
+  }))
 }
 
 /** Trainer rubric review (brief §17 T04). Approval awards practical points once. */
@@ -167,12 +184,13 @@ export function setCertificate(id: YouthId, courseId: CourseId, state: Certifica
 }
 
 /** Presenter shortcut: finish every remaining unit, pass the quiz and submit the practical. */
-export function completeCourseShortcut(id: YouthId, courseId: CourseId) {
+/** Presenter shortcut. With `withPractical` false it leaves the practical task open to demo. */
+export function completeCourseShortcut(id: YouthId, courseId: CourseId, withPractical = true) {
   patch(id, courseId, (p) => ({
     ...p,
     units: p.units.map(() => 'done'),
     quizAttempts: p.quizBest && p.quizBest >= 80 ? p.quizAttempts : [...p.quizAttempts, 100],
     quizBest: Math.max(p.quizBest ?? 0, 100),
-    practical: p.practical === 'approved' ? 'approved' : 'submitted',
+    practical: p.practical === 'approved' ? 'approved' : withPractical ? 'submitted' : p.practical,
   }))
 }

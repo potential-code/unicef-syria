@@ -21,7 +21,7 @@ import { now } from '@/lib/clock'
 import { cn } from '@/lib/utils'
 import { reviewPractical } from '@/store/actions/learning'
 import { saveReview } from '@/store/actions/work-extra'
-import { GENERIC_SUBMISSION, RUBRIC_CRITERIA, SAMPLE_SUBMISSIONS } from '../config'
+import { GENERIC_SUBMISSION, RUBRIC_CRITERIA, rubricKey, SAMPLE_SUBMISSIONS } from '../config'
 import { FieldError } from './FieldError'
 import { LearnerName } from './LearnerName'
 
@@ -38,6 +38,9 @@ export function ReviewDialog({
   const { t } = useTranslation('trainer')
   const { l, isPlaceholder } = useLocalized()
   const course = COURSE_BY_ID[courseId]
+  const written = youth.progress[courseId]?.practicalText
+  const rk = rubricKey(courseId)
+  const output = l(course.output)
   const sample = SAMPLE_SUBMISSIONS[courseId] ?? GENERIC_SUBMISSION
   const [scores, setScores] = useState<(number | null)[]>([null, null, null])
   const [feedback, setFeedback] = useState('')
@@ -80,10 +83,12 @@ export function ReviewDialog({
         <LearnerName youth={youth} sub={t('review.submittedBy')} link={false} />
         <figure className="rounded-xl border border-sky-200 bg-sky-50 p-4">
           <figcaption className="mb-1 text-xs font-semibold uppercase tracking-wide text-ink-soft">
-            {t('review.response')}
+            {written ? t('review.responseLearner') : t('review.response')}
           </figcaption>
-          <p className="text-sm leading-relaxed text-ink">{l(sample)}</p>
-          {isPlaceholder(sample) && (
+          <p className="whitespace-pre-line text-sm leading-relaxed text-ink" dir="auto">
+            {written ?? l(sample)}
+          </p>
+          {!written && isPlaceholder(sample) && (
             <p className="mt-1 text-xs text-ink-soft">{t('common:arabicPlaceholder')}</p>
           )}
         </figure>
@@ -95,8 +100,8 @@ export function ReviewDialog({
               className="flex flex-wrap items-center justify-between gap-2 rounded-xl border p-3"
             >
               <div className="min-w-0">
-                <p className="font-semibold">{t(`rubric.${c}.label`)}</p>
-                <p className="text-xs text-ink-soft">{t(`rubric.${c}.hint`)}</p>
+                <p className="font-semibold">{t(`${rk}.${c}.label`)}</p>
+                <p className="text-xs text-ink-soft">{t(`${rk}.${c}.hint`, { output })}</p>
               </div>
               <div className="flex gap-1.5">
                 {[0, 1, 2].map((v) => (
@@ -116,7 +121,7 @@ export function ReviewDialog({
                       checked={scores[i] === v}
                       onChange={() => setScores(scores.map((s, j) => (j === i ? v : s)))}
                       className="sr-only"
-                      aria-label={`${t(`rubric.${c}.label`)}: ${v}`}
+                      aria-label={`${t(`${rk}.${c}.label`)}: ${v}`}
                     />
                     {v}
                   </label>

@@ -1,4 +1,4 @@
-import type { Course, Unit } from '@shared/types'
+import type { Course, Unit, YouthId } from '@shared/types'
 import { ArrowLeft, ArrowRight, CircleCheck, Info } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -20,6 +20,8 @@ export function BlockPlayer({
   step,
   done,
   lastUnit,
+  youthId,
+  reflection,
   onStep,
   onComplete,
 }: {
@@ -30,6 +32,8 @@ export function BlockPlayer({
   step: number
   done: number
   lastUnit: boolean
+  youthId: YouthId
+  reflection: string
   onStep: (i: number) => void
   onComplete: () => void
 }) {
@@ -37,6 +41,7 @@ export function BlockPlayer({
   const { l } = useLocalized()
   const [played, setPlayed] = useState<number[]>([])
   const [right, setRight] = useState<number[]>([])
+  const [reflected, setReflected] = useState<number[]>([])
   const kind = kinds[step] ?? 'lesson'
   const Icon = BLOCK_ICON[kind]
   const isDone = step < done
@@ -46,7 +51,9 @@ export function BlockPlayer({
       ? 'watch'
       : !isDone && kind === 'check' && !right.includes(step)
         ? 'answer'
-        : null
+        : !isDone && kind === 'scenario' && !reflection && !reflected.includes(step)
+          ? 'reflect'
+          : null
 
   const completeLabel = !lastBlock
     ? t('block.markComplete')
@@ -95,13 +102,16 @@ export function BlockPlayer({
           index={n - 1}
           onPlayed={() => setPlayed((s) => [...s, step])}
           onAnswered={(ok) => ok && setRight((s) => [...s, step])}
+          youthId={youthId}
+          reflection={reflection}
+          onSaved={() => setReflected((s) => [...s, step])}
         />
       </div>
 
       {gate && (
         <p className="mt-5 flex items-center gap-2 text-sm text-ink-soft" aria-live="polite">
           <Info className="size-4 shrink-0 text-blue" aria-hidden />
-          {t(gate === 'watch' ? 'block.watchToContinue' : 'block.answerToContinue')}
+          {t(`block.${gate}ToContinue`)}
         </p>
       )}
 

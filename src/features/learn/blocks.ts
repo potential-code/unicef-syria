@@ -26,14 +26,3 @@ export function unitBlocks(u: Unit): BlockKind[] {
   if (u.check) out.push('check')
   return out
 }
-
-/** Blocks completed this session per learner and unit (a unit marked done counts as all). */
-const doneBlocks = new Map<string, number>()
-
-export function blocksDone(key: string): number {
-  return doneBlocks.get(key) ?? 0
-}
-
-export function markBlocksDone(key: string, count: number) {
-  doneBlocks.set(key, Math.max(blocksDone(key), count))
-}

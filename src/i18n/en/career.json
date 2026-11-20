@@ -627,7 +627,8 @@
       "interview": "Interview practice",
       "business": "Business concept",
       "freelance": "Freelance profile",
-      "proposal": "Proposal builder"
+      "proposal": "Proposal builder",
+      "pitch": "Pitch and customer practice"
     },
     "stats": {
       "bullets": "CV bullets",
@@ -679,7 +680,7 @@
       "saved": "CV saved"
     },
     "interview": {
-      "intro": "Choose an opportunity and a question, type your answer and get feedback on relevance, clarity and evidence.",
+      "intro": "Practise a mock interview with Lina AI. Pick an opportunity, answer each question and get feedback on relevance, clarity and evidence.",
       "opportunity": "Opportunity",
       "question": "Question",
       "questionN": "Question {{n}}",
@@ -690,7 +691,7 @@
       "feedbackTitle": "Practice feedback",
       "overall": "Overall",
       "nextStep": "Next step",
-      "disclaimer": "This is practice feedback from a simple demo check. It is not a score and not a prediction of any hiring decision.",
+      "disclaimer": "AI coach simulation (demo). Feedback is for practice only. It is not a score and not a prediction of any hiring decision.",
       "save": "Save to practice history",
       "savedBtn": "Saved",
       "saved": "Practice and next step saved",
@@ -718,7 +719,26 @@
         "relevance": "Answer the same question again and connect it to one skill in the opportunity.",
         "clarity": "Answer again using situation, action and result, and finish with one sentence about the result.",
         "evidence": "Answer again with two specific things you did yourself. Use the STAR worksheet to plan it."
-      }
+      },
+      "sim": {
+        "hello": {
+          "cv": "Hi, I am {{name}}, your CV and Interview Coach. Let's practise for {{role}}. Answer as you would in a real interview. I will give you feedback on relevance, clarity and evidence.",
+          "enterprise": "Hi, I am {{name}}, your Enterprise Coach. Let's practise how you talk about your idea for {{role}}: who your customer is, the problem and what you learned from them. I will give you feedback on relevance, clarity and evidence.",
+          "freelance": "Hi, I am {{name}}, your Freelance and Client Coach. Let's practise a client conversation for {{role}}. Answer as you would to a real client. I will give you feedback on relevance, clarity and evidence."
+        },
+        "questionOf": "Question {{n}} of {{total}}",
+        "send": "Send answer",
+        "tryAgain": "Try again: your improved answer",
+        "retry": "Try again",
+        "next": "Next question",
+        "restart": "Start again from question 1",
+        "reply": {
+          "developing": "Thanks, that is a good start. Here is how to make it stronger.",
+          "clear": "That is a clear answer. A few things would make it even better.",
+          "strong": "Strong answer. You covered the situation, your actions and the result."
+        }
+      },
+      "introPitch": "Practise talking about your business idea with Amal AI. Pick an opportunity, answer each question and get feedback on relevance, clarity and evidence."
     },
     "business": {
       "intro": "Describe your idea and what you have learned from customers. Save a draft and generate a pitch outline you can edit.",
@@ -826,6 +846,12 @@
       "isAttached": "Proposal attached",
       "noDrafts": "Proposals can be attached to draft applications only.",
       "reviewFirst": "Review the proposal before you submit the application."
+    },
+    "sample": {
+      "fill": "Fill with sample data",
+      "answer": "Sample answer",
+      "proposal": "Sample proposal",
+      "filled": "Sample data added. Review and edit it before saving."
     }
   },
   "profile": {

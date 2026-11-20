@@ -4,10 +4,13 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
+import { useLocalized } from '@/i18n'
 import { saveToolkit } from '@/store/actions/toolkit'
+import { SAMPLE_BUSINESS } from '../../config/samples'
 import { Field } from './Field'
 import { ListEditor } from './ListEditor'
 import { PitchOutline } from './PitchOutline'
+import { SampleDataButton } from './SampleDataButton'
 import { ToolPanel } from './ToolPanel'
 
 type Business = NonNullable<Toolkit['business']>
@@ -34,6 +37,7 @@ const FIELDS: (keyof Omit<Business, 'questions'>)[] = [
 /** Business concept canvas with saved customer questions and a generated pitch outline. */
 export function BusinessConcept({ youth }: { youth: Youth }) {
   const { t } = useTranslation('career')
+  const { l } = useLocalized()
   const [b, setB] = useState<Business>({ ...EMPTY, ...youth.toolkit.business })
   const [outline, setOutline] = useState<string | null>(null)
   const [error, setError] = useState('')
@@ -47,6 +51,17 @@ export function BusinessConcept({ youth }: { youth: Youth }) {
       questions: b.questions.map((q) => q.trim()).filter(Boolean),
     })
     toast.success(t('toolkit.business.saved'))
+  }
+  const fillSample = () => {
+    const { questions, ...rest } = SAMPLE_BUSINESS
+    setB({
+      ...(Object.fromEntries(Object.entries(rest).map(([k, v]) => [k, l(v)])) as Omit<
+        Business,
+        'questions'
+      >),
+      questions: questions.map(l),
+    })
+    setError('')
   }
   const generate = () => {
     const missing = t('toolkit.business.addThis')
@@ -75,6 +90,7 @@ export function BusinessConcept({ youth }: { youth: Youth }) {
       intro={t('toolkit.business.intro')}
       actions={
         <>
+          <SampleDataButton onFill={fillSample} />
           <Button variant="outline" className="rounded-full" onClick={generate}>
             <Presentation className="size-4" aria-hidden />
             {t('toolkit.business.generate')}

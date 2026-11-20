@@ -1,5 +1,5 @@
 import type { TemplateId } from '@shared/types'
-import { Link2 } from 'lucide-react'
+import { ChevronDown, FileText, Link2 } from 'lucide-react'
 import { type FormEvent, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
@@ -75,14 +75,27 @@ export function ResourceLinkForm({
             ))}
           </SelectContent>
         </Select>
-        <p className="line-clamp-3 rounded-lg bg-sky-50 p-2 text-xs text-ink-soft">
-          {l(TEMPLATE_BY_ID[template].body)}
-        </p>
+        <details className="group rounded-xl border border-sky-200 bg-sky-50 text-sm">
+          <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 px-3 font-semibold text-blue [&::-webkit-details-marker]:hidden">
+            <FileText className="size-4 shrink-0" aria-hidden />
+            <span className="flex-1">{t('resources.preview')}</span>
+            <ChevronDown
+              className="size-4 transition-transform group-open:rotate-180"
+              aria-hidden
+            />
+          </summary>
+          <p className="max-h-60 overflow-y-auto border-t border-sky-200 px-3 py-2.5 text-xs leading-relaxed whitespace-pre-line text-ink">
+            {l(TEMPLATE_BY_ID[template].body)}
+          </p>
+        </details>
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="r-target">{t('resources.target')}</Label>
         <Select value={target} onValueChange={setTarget}>
-          <SelectTrigger id="r-target" className="w-full">
+          <SelectTrigger
+            id="r-target"
+            className="w-full min-w-0 [&_[data-slot=select-value]]:truncate"
+          >
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

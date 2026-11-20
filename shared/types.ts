@@ -210,6 +210,12 @@ export interface CourseProgress {
   /** Best quiz score percent, if attempted. */
   quizBest?: number
   practical: 'none' | 'submitted' | 'approved' | 'returned'
+  /** The learner's written practical submission, shown to the trainer for review. */
+  practicalText?: string
+  /** Learning blocks completed per unit id (the course view's step ticks). */
+  blocks?: Record<string, number>
+  /** The learner's written scenario reflections per unit id. */
+  reflections?: Record<string, string>
   completedAt?: string
   certificate?: CertificateState
 }

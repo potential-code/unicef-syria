@@ -301,7 +301,8 @@
     "count": "{{n}} courses",
     "noResults": "No courses match these filters",
     "noResultsBody": "Try a different search word or clear the filters to see all 16 courses.",
-    "tasterNote": "Illustrative technical tasters. They show how practical content could be organised and are not occupational qualifications."
+    "tasterNote": "Illustrative technical tasters. They show how practical content could be organised and are not occupational qualifications.",
+    "yourRoute": "Your route"
   },
   "course": {
     "notFound": "Course not found",
@@ -394,8 +395,8 @@
     "askMentor": "Ask a mentor",
     "reviewUnits": "Review the units",
     "passedBest": "Knowledge check passed with {{score}} percent.",
-    "shortcut": "Complete this course (demo)",
-    "shortcutDone": "Course requirements completed for the demonstration",
+    "shortcut": "Complete units and final check (demo)",
+    "shortcutDone": "Units and final check completed. Now submit the practical task below.",
     "questionN": "Question {{n}} of {{total}}"
   },
   "practical": {
@@ -533,7 +534,8 @@
     "now": "Now:",
     "progress": "Your progress",
     "finalTag": "Final check",
-    "unitsN": "{{count}} units"
+    "unitsN": "{{count}} units",
+    "progressHint": "Counts the 4 units, the final check and the practical task."
   },
   "block": {
     "kind": {
@@ -552,6 +554,25 @@
     "finishToQuiz": "Mark complete and go to the final check",
     "watchToContinue": "Play the lesson preview to continue.",
     "answerToContinue": "Answer the knowledge check correctly to continue.",
-    "locked": "Complete the step before this one to open it"
+    "locked": "Complete the step before this one to open it",
+    "reflectToContinue": "Write and save your answer to continue."
+  },
+  "scenario": {
+    "situation": "The situation",
+    "yourTurn": "Reflect",
+    "prompt": "What would you do in this situation? Write one or two sentences in your own words.",
+    "hint": "Write at least {{n}} characters, then save.",
+    "savedHint": "Saved. You can edit and save again.",
+    "save": "Save my answer",
+    "saved": "Answer saved",
+    "compare": "Compare with the takeaway",
+    "selfCheck": "This is for you. Nobody grades it.",
+    "checkTitle": "Did your answer cover this?",
+    "checkBody": "Tick what your answer already does. Edit and save again if you want to improve it.",
+    "check": {
+      "action": "It says what you would do first",
+      "takeaway": "It matches the takeaway above",
+      "realistic": "It is something you could really do this week"
+    }
   }
 }

@@ -12,7 +12,7 @@ import { useLocalized } from '@/i18n'
 import { useMyYouth } from '@/store/hooks'
 import { CourseCard } from '../components/CourseCard'
 import { EMPTY_FILTERS, type Filters, LibraryFilters } from '../components/LibraryFilters'
-import { CATEGORY_META, CATEGORY_ORDER, durationBucket, FULL_LESSON_COURSES } from '../config'
+import { CATEGORY_META, categoryOrderFor, durationBucket, ROUTE_CATEGORY } from '../config'
 
 /** Y06 course catalogue: 16 courses in five groups with filters and a no-results state. */
 export function LibraryPage() {
@@ -28,11 +28,6 @@ export function LibraryPage() {
         return false
       if (f.topic !== 'all' && c.category !== f.topic) return false
       if (f.level !== 'all' && c.level !== f.level) return false
-      if (
-        f.lang !== 'all' &&
-        (FULL_LESSON_COURSES.includes(c.id) ? 'enFull' : 'bilingual') !== f.lang
-      )
-        return false
       if (f.duration !== 'all' && durationBucket(c.minutes) !== f.duration) return false
       if (f.status !== 'all' && courseStatus(youth.progress[c.id]) !== f.status) return false
       if (!q) return true
@@ -72,7 +67,7 @@ export function LibraryPage() {
           }
         />
       ) : (
-        CATEGORY_ORDER.map((cat) => {
+        categoryOrderFor(youth.route).map((cat) => {
           const items = list.filter((c) => c.category === cat)
           if (!items.length) return null
           const meta = CATEGORY_META[cat]
@@ -82,6 +77,11 @@ export function LibraryPage() {
                 <span className={`h-6 w-1.5 rounded-full ${meta.block}`} aria-hidden />
                 {l(CATEGORY_LABELS[cat])}
                 <span className="text-sm font-semibold text-ink-soft">({items.length})</span>
+                {youth.route && ROUTE_CATEGORY[youth.route] === cat && (
+                  <span className="rounded-full bg-yellow px-2 py-0.5 text-xs font-bold text-ink">
+                    {t('library.yourRoute')}
+                  </span>
+                )}
               </h2>
               {cat === 'technical' && (
                 <p className="-mt-2 mb-4 text-sm text-ink-soft">{t('library.tasterNote')}</p>

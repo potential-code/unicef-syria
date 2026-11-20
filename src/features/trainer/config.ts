@@ -17,6 +17,14 @@ export type TrainingDecision = (typeof TRAINING_DECISIONS)[number]
 /** Practical rubric (brief §17 T04): proposed sample content, three criteria scored 0 to 2. */
 export const RUBRIC_CRITERIA = ['understands', 'clear', 'nextStep'] as const
 
+/** Courses whose practical task is a customer enquiry reply: they use the brief's rubric wording. */
+export const CUSTOMER_RUBRIC_COURSES: CourseId[] = ['C03', 'C13']
+
+/** i18n group for a course's rubric wording: the brief's customer rubric, or a general one. */
+export function rubricKey(courseId: CourseId): 'rubric' | 'rubricGeneral' {
+  return CUSTOMER_RUBRIC_COURSES.includes(courseId) ? 'rubric' : 'rubricGeneral'
+}
+
 /** Sample learner responses shown in the review dialog. Fictional demonstration text. */
 export const SAMPLE_SUBMISSIONS: Partial<Record<CourseId, Localized>> = {
   C03: L(

@@ -8,7 +8,7 @@ import { unitsDone } from '@/domain/completion'
 import { useLocalized } from '@/i18n'
 import { cn } from '@/lib/utils'
 import { isCohortCourse } from '@/store/actions/learning'
-import { CATEGORY_META, FULL_LESSON_COURSES } from '../config'
+import { CATEGORY_META } from '../config'
 import { courseCtaKey } from '../lib'
 import { CourseEntryLink } from './CourseEntryLink'
 import { CourseStatusBadge } from './CourseStatusBadge'
@@ -53,11 +53,6 @@ export function CourseCard({ course, youth }: { course: Course; youth: Youth }) 
       <div className="flex flex-1 flex-col p-5">
         <div className="flex flex-wrap items-center gap-2">
           <CourseStatusBadge progress={p} />
-          {course.showcase && (
-            <span className="rounded-full bg-yellow px-2 py-0.5 text-xs font-bold text-ink">
-              {t('library.showcase')}
-            </span>
-          )}
         </div>
         <h3 className="mt-2.5 text-base leading-snug font-bold group-hover:text-blue">
           {l(course.title)}
@@ -74,11 +69,7 @@ export function CourseCard({ course, youth }: { course: Course; youth: Youth }) 
           </li>
           <li className="flex items-center gap-1.5">
             <Globe className="size-3.5 shrink-0 text-blue" aria-hidden />
-            {t(
-              FULL_LESSON_COURSES.includes(course.id)
-                ? 'library.lang.enFull'
-                : 'library.lang.bilingual',
-            )}
+            {t('library.lang.enFull')}
           </li>
           <li className="flex items-center gap-1.5">
             <Award className="size-3.5 shrink-0 text-blue" aria-hidden />

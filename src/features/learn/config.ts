@@ -17,7 +17,6 @@ import {
   Star,
   Wrench,
 } from 'lucide-react'
-import { COURSES } from '@/data/courses'
 
 /** Visual identity per career route (youth screens: colour blocks). */
 export const ROUTE_META: Record<
@@ -61,6 +60,20 @@ export const CATEGORY_ORDER: CourseCategory[] = [
   'freelancing',
   'technical',
 ]
+/** Course group that matches each career route, shown right after Career Foundations. */
+export const ROUTE_CATEGORY: Record<CareerRoute, CourseCategory> = {
+  employment: 'employment',
+  enterprise: 'entrepreneurship',
+  freelance: 'freelancing',
+}
+
+/** Catalogue order for a learner: foundations, their route's group, then the rest. */
+export function categoryOrderFor(route: CareerRoute | undefined): CourseCategory[] {
+  if (!route) return CATEGORY_ORDER
+  const mine = ROUTE_CATEGORY[route]
+  return ['foundations', mine, ...CATEGORY_ORDER.filter((c) => c !== 'foundations' && c !== mine)]
+}
+
 export const CATEGORY_META: Record<
   CourseCategory,
   { icon: LucideIcon; chip: string; block: string }
@@ -71,9 +84,6 @@ export const CATEGORY_META: Record<
   freelancing: { icon: Laptop, chip: 'bg-cyan text-ink', block: 'bg-cyan' },
   technical: { icon: Wrench, chip: 'bg-orange text-white', block: 'bg-orange' },
 }
-
-/** Courses with full English lessons (Arabic summaries): every unit of every course now. */
-export const FULL_LESSON_COURSES: CourseId[] = COURSES.map((c) => c.id)
 
 /** Where a cohort session sits in the learning path (after the related course). */
 export const SESSION_AFTER: Partial<Record<SessionId, CourseId>> = {

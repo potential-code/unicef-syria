@@ -5,7 +5,7 @@ import { COURSES } from '@/data/courses'
 import { L } from '@/data/l'
 import { seedYouth } from '@/data/youth'
 import { nextStage, STAGES } from './application-stages'
-import { isComplete, missingRequirements } from './completion'
+import { courseProgressPct, isComplete, missingRequirements } from './completion'
 import { filterRows, kpis, sumRows } from './kpi'
 import { award, balance, hasAwarded } from './points'
 import { arrangeOptions } from './quiz'
@@ -126,5 +126,24 @@ describe('historical KPIs reconcile with the brief', () => {
   test('partner P01 covers Damascus and Homs only', () => {
     const p1 = filterRows(ANALYTICS_ROWS, { partnerId: 'P01' })
     expect(new Set(p1.map((r) => r.governorate))).toEqual(new Set(['Damascus', 'Homs']))
+  })
+})
+
+describe('courseProgressPct', () => {
+  const base = {
+    courseId: 'C04' as const,
+    units: ['done', 'done', 'done', 'done'] as ('done' | 'todo' | 'inProgress')[],
+    quizAttempts: [] as number[],
+    practical: 'none' as const,
+  }
+  test('units alone do not reach 100', () => {
+    expect(courseProgressPct(base)).toBe(67)
+  })
+  test('quiz and practical add steps but stay under 100 until complete', () => {
+    expect(courseProgressPct({ ...base, quizBest: 100, practical: 'submitted' })).toBe(99)
+  })
+  test('completed is 100, missing is 0', () => {
+    expect(courseProgressPct({ ...base, completedAt: '2026-11-20T10:00:00Z' })).toBe(100)
+    expect(courseProgressPct(undefined)).toBe(0)
   })
 })

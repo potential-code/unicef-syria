@@ -4,8 +4,8 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
 import { useLocalized } from '@/i18n'
-import { setUnitStatus } from '@/store/actions/learning'
-import { blocksDone, markBlocksDone, unitBlocks } from '../blocks'
+import { markBlocksDone, setUnitStatus } from '@/store/actions/learning'
+import { unitBlocks } from '../blocks'
 import { BlockPlayer } from './BlockPlayer'
 import { CourseViewLayout } from './CourseViewLayout'
 
@@ -27,10 +27,9 @@ export function UnitView({
   const { l } = useLocalized()
   const navigate = useNavigate()
   const kinds = unitBlocks(unit)
-  const key = `${youthId}:${unit.id}`
   const unitDone = progress?.units[n - 1] === 'done'
-  const [saved, setSaved] = useState(() => blocksDone(key))
-  const done = unitDone ? kinds.length : saved
+  const saved = progress?.blocks?.[unit.id] ?? 0
+  const done = unitDone ? kinds.length : Math.min(saved, kinds.length)
   const [step, setStep] = useState(() => Math.min(done, kinds.length - 1))
   const lastUnit = n === course.units.length
 
@@ -49,8 +48,7 @@ export function UnitView({
   }
 
   const complete = () => {
-    markBlocksDone(key, step + 1)
-    setSaved(blocksDone(key))
+    markBlocksDone(youthId, course.id, unit.id, step + 1)
     if (step === kinds.length - 1) finishUnit()
     else setStep(step + 1)
   }
@@ -71,6 +69,8 @@ export function UnitView({
         step={step}
         done={done}
         lastUnit={lastUnit}
+        youthId={youthId}
+        reflection={progress?.reflections?.[unit.id] ?? ''}
         onStep={setStep}
         onComplete={complete}
       />

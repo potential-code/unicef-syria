@@ -1,30 +1,55 @@
 import type { Session, Youth } from '@shared/types'
-import { CalendarPlus, CalendarX } from 'lucide-react'
+import {
+  CalendarClock,
+  CalendarPlus,
+  CalendarX,
+  ClipboardCheck,
+  UserCheck,
+  UserX,
+} from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Stagger, StaggerItem } from '@/components/motion'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { PageHeader } from '@/components/shared/PageHeader'
+import { StatCard } from '@/components/shared/StatCard'
 import { Button } from '@/components/ui/button'
+import { Progress } from '@/components/ui/progress'
 import { nowMs } from '@/lib/clock'
+import { AbsenceList } from '../components/AbsenceList'
+import { NextSessionCard } from '../components/NextSessionCard'
 import { SessionFormDialog } from '../components/SessionFormDialog'
 import { SessionRow } from '../components/SessionRow'
-import { useTrainerScope } from '../hooks/useTrainerScope'
+import { summarise, useTrainerScope } from '../hooks/useTrainerScope'
 
 /** T03 Sessions and attendance for the trainer's cohorts only. */
 export function TrainerSessionsPage() {
   const { t } = useTranslation('trainer')
-  const { sessions, learners, cohortIds } = useTrainerScope()
+  const { sessions, learners, cohortIds, stats } = useTrainerScope()
+  const sum = summarise(stats)
   const [creating, setCreating] = useState(false)
   const sorted = [...sessions].sort((a, b) => a.start.localeCompare(b.start))
   const upcoming = sorted.filter((s) => Date.parse(s.end) >= nowMs())
   const past = sorted.filter((s) => Date.parse(s.end) < nowMs()).reverse()
 
+  const rosterOf = (s: Session) =>
+    learners.filter((y) => s.cohortId && y.cohortIds.includes(s.cohortId))
+  const markedOf = (s: Session) =>
+    rosterOf(s).filter((y) => y.attendance[s.id as keyof Youth['attendance']]).length
+  const toMark = past.filter((s) => markedOf(s) < rosterOf(s).length).length
+  const [next, ...later] = upcoming
   const meta = (s: Session) => {
-    const roster = learners.filter((y) => s.cohortId && y.cohortIds.includes(s.cohortId))
-    const marked = roster.filter((y) => y.attendance[s.id as keyof Youth['attendance']]).length
+    const total = rosterOf(s).length
+    const marked = markedOf(s)
     return (
-      <span className="tabular-nums">{t('sessions.marked', { marked, total: roster.length })}</span>
+      <span className="flex items-center gap-2">
+        <Progress
+          value={total ? (marked / total) * 100 : 0}
+          className="h-1.5 w-14 bg-sky-100"
+          aria-hidden
+        />
+        <span className="tabular-nums">{t('sessions.marked', { marked, total })}</span>
+      </span>
     )
   }
   const group = (title: string, list: Session[]) => (
@@ -66,10 +91,50 @@ export function TrainerSessionsPage() {
       {sessions.length === 0 ? (
         <EmptyState icon={CalendarX} title={t('sessions.empty')} body={t('sessions.emptyBody')} />
       ) : (
-        <div className="grid gap-8 lg:grid-cols-2 [&>*]:min-w-0">
-          {group(t('sessions.upcoming'), upcoming)}
-          {group(t('sessions.past'), past)}
-        </div>
+        <>
+          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            <StatCard
+              tone="blue"
+              icon={CalendarClock}
+              label={t('sessions.stat.upcoming')}
+              value={upcoming.length}
+              hint={t('sessions.stat.upcomingHint')}
+            />
+            <StatCard
+              tone="yellow"
+              icon={ClipboardCheck}
+              label={t('sessions.stat.toMark')}
+              value={toMark}
+              hint={t('sessions.stat.toMarkHint')}
+            />
+            <StatCard
+              tone="cyan"
+              icon={UserCheck}
+              label={t('sessions.stat.rate')}
+              value={
+                sum.attendanceRate === null ? t('sessions.stat.none') : `${sum.attendanceRate}%`
+              }
+              hint={t('sessions.stat.rateHint', { excused: sum.excused })}
+            />
+            <StatCard
+              tone="navy"
+              icon={UserX}
+              label={t('sessions.stat.absent')}
+              value={sum.absent}
+              hint={t('sessions.stat.absentHint')}
+            />
+          </div>
+          <div className="grid gap-8 lg:grid-cols-2 [&>*]:min-w-0">
+            <div className="space-y-6">
+              {next && <NextSessionCard session={next} roster={rosterOf(next).length} />}
+              {(!next || later.length > 0) && group(t('sessions.later'), later)}
+            </div>
+            <div className="space-y-6">
+              {group(t('sessions.past'), past)}
+              <AbsenceList learners={learners} sessions={past} />
+            </div>
+          </div>
+        </>
       )}
       <p className="text-xs text-ink-soft">{t('sessions.sampleNote')}</p>
       {creating && (

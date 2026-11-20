@@ -58,7 +58,11 @@ export function ToolkitPage() {
                 className="h-10 flex-none gap-2 rounded-full border border-border bg-white px-4 text-sm font-semibold text-ink shadow-sm hover:border-blue/50 data-[state=active]:border-blue data-[state=active]:bg-blue data-[state=active]:text-white data-[state=active]:shadow-md"
               >
                 <Icon className="size-4" aria-hidden />
-                {t(`toolkit.tabs.${id}`)}
+                {t(
+                  id === 'interview' && youth.route === 'enterprise'
+                    ? 'toolkit.tabs.pitch'
+                    : `toolkit.tabs.${id}`,
+                )}
                 {i < 2 && youth.route && (
                   <span className="rounded-full bg-yellow px-1.5 text-[0.65rem] font-bold text-ink">
                     {t('toolkit.forYou')}

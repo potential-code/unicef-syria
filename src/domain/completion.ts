@@ -46,6 +46,19 @@ export function isComplete(p: CourseProgress | undefined, reviewed = false): boo
   return missingRequirements(p, reviewed).length === 0
 }
 
+/**
+ * Overall course progress, 0 to 100: each unit, the final check and the practical submission count
+ * as one step. Capped at 99 until the course is complete (e.g. waiting for trainer approval).
+ */
+export function courseProgressPct(p: CourseProgress | undefined): number {
+  if (!p) return 0
+  if (p.completedAt) return 100
+  const steps = p.units.length + 2
+  const practical = p.practical === 'submitted' || p.practical === 'approved' ? 1 : 0
+  const done = unitsDone(p) + (quizPassed(p) ? 1 : 0) + practical
+  return Math.min(99, Math.round((done / steps) * 100))
+}
+
 export type CourseStatus = 'todo' | 'inProgress' | 'completed'
 export function courseStatus(p: CourseProgress | undefined): CourseStatus {
   if (p?.completedAt) return 'completed'

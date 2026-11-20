@@ -69,7 +69,7 @@ export function QuizPage({ courseId }: { courseId: string }) {
     setResult(null)
   }
   const shortcut = () => {
-    completeCourseShortcut(youth.id, course.id)
+    completeCourseShortcut(youth.id, course.id, false)
     toast.success(t('quiz.shortcutDone'))
   }
 

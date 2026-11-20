@@ -6,11 +6,14 @@ import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
 import { Motif } from '@/components/brand'
 import { Button } from '@/components/ui/button'
+import { useLocalized } from '@/i18n'
 import { saveToolkit } from '@/store/actions/toolkit'
+import { sampleCv } from '../../config/samples'
 import { CertificateSuggestions } from './CertificateSuggestions'
 import { CvPreviewDialog } from './CvPreviewDialog'
 import { Field } from './Field'
 import { ListEditor } from './ListEditor'
+import { SampleDataButton } from './SampleDataButton'
 import { ToolPanel } from './ToolPanel'
 
 type Cv = NonNullable<Toolkit['cv']>
@@ -27,6 +30,7 @@ const EMPTY: Cv = {
 /** CV builder: contact details from the profile, editable sections, reviewed certificates. */
 export function CvBuilder({ youth }: { youth: Youth }) {
   const { t } = useTranslation('career')
+  const { l } = useLocalized()
   const [cv, setCv] = useState<Cv>(youth.toolkit.cv ?? EMPTY)
   const set = <K extends keyof Cv>(k: K, v: Cv[K]) => setCv((c) => ({ ...c, [k]: v }))
   const p = youth.profile
@@ -37,6 +41,18 @@ export function CvBuilder({ youth }: { youth: Youth }) {
     })
     toast.success(t('toolkit.cv.saved'))
   }
+  const fillSample = () => {
+    const SAMPLE_CV = sampleCv(youth.route)
+    setCv((c) => ({
+      ...c,
+      summary: l(SAMPLE_CV.summary),
+      experience: SAMPLE_CV.experience.map(l),
+      education: l(SAMPLE_CV.education),
+      projects: l(SAMPLE_CV.projects),
+      skills: l(SAMPLE_CV.skills),
+      languages: l(SAMPLE_CV.languages),
+    }))
+  }
   return (
     <ToolPanel
       icon={FileText}
@@ -44,6 +60,7 @@ export function CvBuilder({ youth }: { youth: Youth }) {
       intro={t('toolkit.cv.intro')}
       actions={
         <>
+          <SampleDataButton onFill={fillSample} />
           <CvPreviewDialog cv={cv} profile={p} />
           <Button className="rounded-full" onClick={save}>
             <Save className="size-4" aria-hidden />

@@ -37,7 +37,7 @@ export function PracticalPanel({
     if (text.trim().length < MIN) return
     setBusy(true)
     window.setTimeout(() => {
-      submitPractical(youthId, course.id)
+      submitPractical(youthId, course.id, text)
       setBusy(false)
       toast.success(reviewed ? t('practical.sentReview') : t('practical.sent'))
     }, 600)
